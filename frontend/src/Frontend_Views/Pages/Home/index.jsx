@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import _ from "lodash";
@@ -100,7 +100,7 @@ const Home = () => {
     product_distribution: "product_distribution",
     product_registration: "product_registration",
   };
-
+  const [counter, setCounter] = useState(0);
   const pageType = "home";
   const serviceOffered = "serviceOffered";
   const [testimonis, setTestmonis] = useState([]);
@@ -112,6 +112,7 @@ const Home = () => {
   const [homeCategoriesList, setHomeCategoriesList] = useState([]);
   const { categories } = useSelector((state) => state.categoryList);
   const { isLoading } = useSelector((state) => state.loader);
+  const showHideCompPageLoad = useRef(true);
 
   const [productDevelopment, setProductDevelopment] = useState("");
   const [productDistribution, setProductDistribution] = useState("");
@@ -224,8 +225,14 @@ const Home = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
+      showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 
@@ -532,7 +539,7 @@ const Home = () => {
             />
           )}
           {showHideCompList?.homeprojectcarousel?.visibility && (
-              <HomeProjectCarousel />
+            <HomeProjectCarousel />
           )}
         </div>
 

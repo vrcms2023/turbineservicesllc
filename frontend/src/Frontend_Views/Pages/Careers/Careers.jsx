@@ -47,7 +47,7 @@ const Careers = () => {
     vision: false,
     mission: false,
   };
-
+  const [counter, setCounter] = useState(0);
   const pageType = "careers";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -96,9 +96,14 @@ const Careers = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

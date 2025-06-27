@@ -29,6 +29,7 @@ const Projects = () => {
     banner: false,
     briefIntro: false,
   };
+  const [counter, setCounter] = useState(0);
   const pageType = "projects";
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
   const [show, setShow] = useState(false);
@@ -80,9 +81,14 @@ const Projects = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

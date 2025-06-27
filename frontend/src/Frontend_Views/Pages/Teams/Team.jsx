@@ -53,6 +53,7 @@ const Team = () => {
     editSection: false,
   };
 
+  const [counter, setCounter] = useState(0);
   const pageType = "teams";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -179,9 +180,14 @@ const Team = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

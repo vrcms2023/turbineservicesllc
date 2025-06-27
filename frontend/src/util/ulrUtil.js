@@ -1,14 +1,14 @@
 import { getCookie } from "./cookieUtil";
 
-// export function getBaseURL() {
-//   return process.env.NODE_ENV === "production"
-//     ? process.env.REACT_APP_SERVER_URL
-//     : "http://127.0.0.1:8000";
-// }
-
 export function getBaseURL() {
-  return "https://demo.vitsols.com";
+  return process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_SERVER_URL
+    : "http://127.0.0.1:8000";
 }
+
+// export function getBaseURL() {
+//   return "https://demo.vitsols.com";
+// }
 
 export function removeActiveClass() {
   const menuIDs = [

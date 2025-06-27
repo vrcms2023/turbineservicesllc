@@ -55,7 +55,7 @@ const Contact = () => {
     contact: false,
     map: false,
   };
-
+  const [counter, setCounter] = useState(0);
   const pageType = "contactus";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -152,9 +152,14 @@ const Contact = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

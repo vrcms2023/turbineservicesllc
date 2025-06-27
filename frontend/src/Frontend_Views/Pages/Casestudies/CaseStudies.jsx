@@ -46,7 +46,7 @@ const CaseStudies = () => {
     addSection: false,
     editSection: false,
   };
-
+  const [counter, setCounter] = useState(0);
   const pageType = "casestudies";
   const { isLoading } = useSelector((state) => state.loader);
   const { isAdmin, hasPermission } = useAdminLoginStatus();
@@ -151,9 +151,14 @@ const CaseStudies = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

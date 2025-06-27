@@ -42,6 +42,7 @@ const WhyChooseUs = () => {
     dynamickeypoints5: false,
     dynamickeypoints6: false,
   };
+  const [counter, setCounter] = useState(0);
   const dispatch = useDispatch();
   const pageType = "whychooseus";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
@@ -62,9 +63,14 @@ const WhyChooseUs = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

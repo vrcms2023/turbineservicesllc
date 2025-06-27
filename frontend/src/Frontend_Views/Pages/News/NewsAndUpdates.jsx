@@ -46,7 +46,7 @@ const NewsAndUpdates = () => {
     banner: false,
     news: false,
   };
-
+  const [counter, setCounter] = useState(0);
   const pageType = "news";
   const [news, setNews] = useState([]);
   const [show, setShow] = useState(false);
@@ -113,9 +113,14 @@ const NewsAndUpdates = () => {
   }, [showHideList]);
 
   useEffect(() => {
-    if (showHideList.length === 0 && showHideCompPageLoad.current) {
+    if (
+      showHideList.length === 0 &&
+      showHideCompPageLoad.current &&
+      counter < 3
+    ) {
       dispatch(getAllShowHideComponentsList());
       showHideCompPageLoad.current = false;
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

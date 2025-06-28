@@ -78,6 +78,7 @@ const Home = () => {
   const editComponentObj = {
     carousel: false,
     briefIntro: false,
+    homeServicebriefIntro: false,
     projects: false,
     projectsBrief: false,
     testmonial: false,
@@ -376,7 +377,29 @@ const Home = () => {
         </div>
         {/* INTRODUCTION COMPONENT END  =========================================================================================================== */}
 
-        {/* ICONS ALL SERVICES ============================ */}
+        {/* ==== PROJECT + BRIEF INTRODUCTION START ===================================================================================================== */}
+
+        <div
+          className={
+            showHideCompList?.hprinfra?.visibility && isAdmin && hasPermission
+              ? "border border-info mb-2"
+              : ""
+          }
+        >
+          {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.hprinfra?.visibility}
+              title={"Projects"}
+              componentName={"hprinfra"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.hprinfra?.id}
+            />
+          )}
+          {showHideCompList?.hprinfra?.visibility && <HomeProjects />}
+        </div>
+        {/* ==== PROJECT + BRIEF INTRODUCTION END ===================================================================================================== */}
+
+        {/* Dynamic ALL SERVICES ============================ */}
         <div
           className={
             showHideCompList?.homedynamciservicesbrief?.visibility &&
@@ -391,7 +414,7 @@ const Home = () => {
               showhideStatus={
                 showHideCompList?.homedynamciservicesbrief?.visibility
               }
-              title={"Dynamci Services Brief"}
+              title={"Dynamic Services Brief"}
               componentName={"homedynamciservicesbrief"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homedynamciservicesbrief?.id}
@@ -453,7 +476,155 @@ const Home = () => {
             </div>
           )}
         </div>
-        {/* END OF ICONS ALL SERVICES */}
+        {/* END OF Dynamic ALL SERVICES */}
+
+        {/* ======================= HOME List of Services ======================= */}
+        <div
+          className={
+            showHideCompList?.homeservices?.visibility &&
+            isAdmin &&
+            hasPermission
+              ? "border border-info mb-2"
+              : ""
+          }
+        >
+          {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.homeservices?.visibility}
+              title={"Home Service"}
+              componentName={"homeservices"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.homeservices?.id}
+            />
+          )}
+          {showHideCompList?.homeservices?.visibility && (
+            <div className="container py-5 homeServices">
+              <h2 className="mb-5">What We Do</h2>
+              <HomeServices />
+            </div>
+          )}
+
+          {/* SERVICE INTRODUCTION COMPONENT START ============================================ */}
+
+          {/* INTRODUCTION COMPONENT */}
+
+          <div className="container">
+            <div className="row">
+              <div className="breiftopMargin">
+                {isAdmin && hasPermission && (
+                  <EditIcon
+                    editHandler={() =>
+                      editHandler("homeServicebriefIntro", true)
+                    }
+                  />
+                )}
+
+                <BriefIntroFrontend
+                  introState={componentEdit.homeServicebriefIntro}
+                  linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
+                  linkLabel="Read More"
+                  moreLink=""
+                  introTitleCss="fs-3 text-center mb-4"
+                  introSubTitleCss="fw-medium text-muted text-center"
+                  introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
+                  detailsContainerCss="col-md-12 py-3"
+                  anchorContainer="d-flex justify-content-center align-items-center mt-4"
+                  anchersvgColor="#17427C"
+                  pageType="HomeserviceBrief"
+                />
+              </div>
+            </div>
+          </div>
+
+          {componentEdit.homeServicebriefIntro && (
+            <div className={`adminEditTestmonial selected `}>
+              <BriefIntroAdmin
+                editHandler={editHandler}
+                componentType="homeServicebriefIntro"
+                popupTitle="Brief Intro Banner"
+                pageType="HomeserviceBrief"
+              />
+            </div>
+          )}
+          {/* SERVICE INTRODUCTION COMPONENT END  ===================================== */}
+        </div>
+        {/* ======================= HOME List of Services  ======================= */}
+
+        {/* ==== TESTIMONIAL COMPONENT START ====================================================================================================*/}
+        <div
+          className={
+            showHideCompList?.testimonis?.visibility && isAdmin && hasPermission
+              ? "border border-info mb-2"
+              : ""
+          }
+        >
+          {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.testimonis?.visibility}
+              title={"Corporate Training"}
+              componentName={"testimonis"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.testimonis?.id}
+            />
+          )}
+
+          {showHideCompList?.testimonis?.visibility && (
+            <TestimonialCarouselPageStyled>
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col-md-12">
+                    <Title
+                      title="Corporate Training"
+                      cssClass="fs-1 fw-bold text-center my-5 text-uppercase"
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-12 testimonials text-center">
+                    {isAdmin && hasPermission && (
+                      <EditIcon
+                        editHandler={() => editHandler("testmonial", true)}
+                      />
+                    )}
+
+                    {testimonis.length < 1 ? (
+                      (testimonis.length, "No Testimonials Found")
+                    ) : testimonis.length === 1 ? (
+                      <h4>Please add 2 or more testimonials.</h4>
+                    ) : testimonis.length > 1 ? (
+                      <Testimonials testimonis={testimonis} />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  {componentEdit.testmonial && (
+                    <div className={`adminEditTestmonial selected `}>
+                      <AdminBanner
+                        editHandler={editHandler}
+                        componentType="testmonial"
+                        popupTitle={`Testmonial Banner`}
+                        getImageListURL="testimonials/clientTestimonials/"
+                        deleteImageURL="testimonials/updateTestimonials/"
+                        imagePostURL="testimonials/createTestimonials/"
+                        imageUpdateURL="testimonials/updateTestimonials/"
+                        imageIndexURL="testimonials/updateTestimonialsindex/"
+                        imageLabel="Add your Image"
+                        titleTitle="Testmonial Name"
+                        descriptionTitle="Testimonial Writeup "
+                        showDescription={false}
+                        showExtraFormFields={getTestimonialsFields(
+                          "testmonial"
+                        )}
+                        dimensions={imageDimensionsJson("testimonial")}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </TestimonialCarouselPageStyled>
+          )}
+        </div>
+        {/* END OF TESTIMONIAL COMPONENT =========================================================================================================== */}
 
         {/* ICONS HEILIGHT START ================================= */}
         <div
@@ -765,7 +936,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.services?.visibility}
-              title={"Service"}
+              title={"Image with Text description"}
               componentName={"services"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.services?.id}
@@ -774,7 +945,7 @@ const Home = () => {
           {showHideCompList?.services?.visibility && (
             <ABriefIntroStyled>
               <h1 className="fs-1 fw-bold text-center text-uppercase">
-                Services
+                Image with Text description
               </h1>
               <div className="container-lg mx-0 mx-md-0 px-md-0 mx-lg-auto randomServices">
                 <div className="row">
@@ -859,82 +1030,6 @@ const Home = () => {
           )}
         </div>
         {/* END OF PRODUCTS CATEGORIES =========================================================================================================== */}
-
-        {/* ==== TESTIMONIAL COMPONENT START ====================================================================================================*/}
-        <div
-          className={
-            showHideCompList?.testimonis?.visibility && isAdmin && hasPermission
-              ? "border border-info mb-2"
-              : ""
-          }
-        >
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.testimonis?.visibility}
-              title={"Testimonials"}
-              componentName={"testimonis"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.testimonis?.id}
-            />
-          )}
-
-          {showHideCompList?.testimonis?.visibility && (
-            <TestimonialCarouselPageStyled>
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-md-12">
-                    <Title
-                      title="Testimonials"
-                      cssClass="fs-1 fw-bold text-center my-5 text-uppercase"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-12 testimonials text-center">
-                    {isAdmin && hasPermission && (
-                      <EditIcon
-                        editHandler={() => editHandler("testmonial", true)}
-                      />
-                    )}
-
-                    {testimonis.length < 1 ? (
-                      (testimonis.length, "No Testimonials Found")
-                    ) : testimonis.length === 1 ? (
-                      <h4>Please add 2 or more testimonials.</h4>
-                    ) : testimonis.length > 1 ? (
-                      <Testimonials testimonis={testimonis} />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  {componentEdit.testmonial && (
-                    <div className={`adminEditTestmonial selected `}>
-                      <AdminBanner
-                        editHandler={editHandler}
-                        componentType="testmonial"
-                        popupTitle={`Testmonial Banner`}
-                        getImageListURL="testimonials/clientTestimonials/"
-                        deleteImageURL="testimonials/updateTestimonials/"
-                        imagePostURL="testimonials/createTestimonials/"
-                        imageUpdateURL="testimonials/updateTestimonials/"
-                        imageIndexURL="testimonials/updateTestimonialsindex/"
-                        imageLabel="Add your Image"
-                        titleTitle="Testmonial Name"
-                        descriptionTitle="Testimonial Writeup "
-                        showDescription={false}
-                        showExtraFormFields={getTestimonialsFields(
-                          "testmonial"
-                        )}
-                        dimensions={imageDimensionsJson("testimonial")}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </TestimonialCarouselPageStyled>
-          )}
-        </div>
-        {/* END OF TESTIMONIAL COMPONENT =========================================================================================================== */}
 
         {/* ==== Random Home Services START =================================================================================================*/}
         <div
@@ -1088,32 +1183,6 @@ const Home = () => {
           )}
         </div>
         {/* END OF HOME NEWS START =================================================================================================*/}
-
-        {/* ======================= HOME List of Services DEVELOPED FOR LEOMTECH START ======================= */}
-        <div
-          className={
-            showHideCompList?.news?.visibility && isAdmin && hasPermission
-              ? "border border-info mb-2"
-              : ""
-          }
-        >
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.homeservices?.visibility}
-              title={"Home Service"}
-              componentName={"homeservices"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.homeservices?.id}
-            />
-          )}
-          {showHideCompList?.homeservices?.visibility && (
-            <div className="container py-5 homeServices">
-              <h2 className="mb-5">What We Do</h2>
-              <HomeServices />
-            </div>
-          )}
-        </div>
-        {/* ======================= HOME List of Services DEVELOPED FOR LEOMTECH END ======================= */}
 
         {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS START ========================================================================== */}
         <div
@@ -1370,28 +1439,6 @@ const Home = () => {
         {/* === HPR INFRA START================================================================================================================= */}
 
         {/* Projects + brief intro  */}
-
-        {/* ==== PROJECT + BRIEF INTRODUCTION START ===================================================================================================== */}
-
-        <div
-          className={
-            showHideCompList?.hprinfra?.visibility && isAdmin && hasPermission
-              ? "border border-info mb-2"
-              : ""
-          }
-        >
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.hprinfra?.visibility}
-              title={"Projects"}
-              componentName={"hprinfra"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.hprinfra?.id}
-            />
-          )}
-          {showHideCompList?.hprinfra?.visibility && <HomeProjects />}
-        </div>
-        {/* ==== PROJECT + BRIEF INTRODUCTION END ===================================================================================================== */}
 
         {/* ==== PROJECT  BRIEF INTRODUCTION START ===================================================================================================== */}
 

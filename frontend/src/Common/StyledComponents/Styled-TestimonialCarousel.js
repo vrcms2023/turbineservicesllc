@@ -1,11 +1,26 @@
+import testmonialBgImg from "../../Images/testimonialBg.jpg";
+
 import styled from "styled-components";
 
 export const TestimonialCarouselPageStyled = styled.div`
 
+.testimonialsContainer {
+  background-image: url(${testmonialBgImg});
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    padding: 150px;
+
+    @media (max-width: 576px) {
+      padding: 10px;
+    }
+}
+    
 .testimonials {
-    background-color:${({ theme }) => theme.testimonialsBg}; 
+    // background-color:${({ theme }) => theme.testimonialsBg}; 
+    background-color: rgba(13, 117, 186, .9);
     color:${({ theme }) => theme.testimonialsTextColor};
     min-height: 480px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +46,8 @@ export const TestimonialCarouselPageStyled = styled.div`
         }
       }
 
-    .title {color:${({ theme }) => theme.black};}
-    p {color:${({ theme }) => theme.textColor};}
+    .title {color:${({ theme }) => theme.testimonialsTextColor}; text-align: left;}
+    p {color:${({ theme }) => theme.testimonialsTextColor}; text-align: left;}
 
     .article {
         /* top: 0;

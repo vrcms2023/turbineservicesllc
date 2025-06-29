@@ -4,7 +4,7 @@ import BgSymbol from "../../Images/footerBg.png";
 import styled from "styled-components";
 
 export const FooterStyled = styled.div`
-  background-image: url(${BgSymbol});
+  // background-image: url(${BgSymbol});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top right;
@@ -12,13 +12,13 @@ export const FooterStyled = styled.div`
   // background-position: 120% -250px;
   // background-size: 40%;
   // background: linear-gradient(360deg, ${({ theme }) => theme.white} 0%, ${({ theme }) => theme.black} 100%);
-  // background: ${({ theme }) => theme.footerBgColor};
+  background: ${({ theme }) => theme.footerBgColor};
     color: ${({ theme }) => theme.white};
     // border-top: 1px solid ${({ theme }) => theme.grayccc};
     font-size: .8rem;
 
     .footerCompanyBrief {
-      background: ${({ theme }) => theme.lightWhiteFD};
+      background: ${({ theme }) => theme.grayddd};
 
       p {
         color: ${({ theme }) => theme.gray444};

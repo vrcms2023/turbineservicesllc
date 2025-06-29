@@ -135,11 +135,7 @@ const Footer = () => {
             </div>
             <div className="col-md-8 col-lg-9 d-flex align-items-center">
               <p className="description m-0 text-center text-md-start p-4 pb-0 p-md-0">
-                ICONS has Integrated Management System in accordance to ISO ,
-                focused mainly on continuous improvement and learning based on
-                the successes and failures that occur during our day-to-day
-                activities. This system is a fundamental element in the
-                innovation process and encompasses the entire value chain.
+                TURBINE ELECTROMECHANICAL EQUIPMENT SERVICES LLC are pioneers in providing Maintenance, O & M, Repairs, Testing and Commissioning services to Power Generation, Petro-chemical, Fertilizers and Process Industries. We provide complete customized professional, management and consultancy services to support the Power, Oil & gas and Chemical Industries attaining high reliability and availability.
               </p>
             </div>
           </div>
@@ -337,7 +333,7 @@ const Footer = () => {
               ) : (
                 ""
               )}
-              {/* 
+ 
               <div className="d-flex flex-column justify-content-center align-items-center text-center justify-content-md-start align-items-md-start text-md-start mt-4">
               <Title title="Downloads" />
                 <Button label="Download Brochure" cssClass="btn btn-primary" /> 
@@ -345,7 +341,8 @@ const Footer = () => {
                 <div>
                   <DownloadBrochures />
                 </div>
-              </div> */}
+              </div>
+
             </div>
             <hr className="d-block d-md-none my-4" />
             {

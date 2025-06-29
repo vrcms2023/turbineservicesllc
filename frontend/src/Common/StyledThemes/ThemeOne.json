@@ -107,7 +107,7 @@
   "aboutPageTitleColor": "",
   "aboutPageTextColor": "",
 
-  "btnPrimary": "#6D2F9B",
+  "btnPrimary": "#0D75BA",
   "btnPrimaryHover": "#222222",
   "btnPrimaryTextColor": "#ffffff",
   "btnPrimaryTextHoverColor": "#ffffff",
@@ -121,11 +121,11 @@
   "btnSecondryBorderColor": "#aaaaaa",
   "btnSecondryBorderHoverColor": "#aaaaaa",
 
-  "btnOutline": "#6D2F9B",
-  "btnOutlineHover": "#ffffff",
-  "btnOutlineTextColor": "#444444",
-  "btnOutlineTextHoverColor": "#444444",
-  "btnOutlineBorderColor": "#6D2F9B",
+  "btnOutline": "#0D75BA",
+  "btnOutlineHover": "#222222",
+  "btnOutlineTextColor": "#0D75BA",
+  "btnOutlineTextHoverColor": "#ffffff",
+  "btnOutlineBorderColor": "#0D75BA",
   "btnOutlineBorderHoverColor": "#444444",
 
   "btnLinkTextColor": "#007CB9",

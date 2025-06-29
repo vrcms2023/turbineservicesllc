@@ -155,7 +155,7 @@ const ProjectTabs = () => {
                 cssClass={"btn btn-success"}
                 label="Back to projects"
                 handlerChange={() => {
-                  navigate("/projects/projects");
+                  navigate("/projects");
                 }}
               />
             </div>

@@ -31,6 +31,10 @@
   transition: 1s; */
   transform: translateX(100%);
   /* -webkit-transform: translateX(100%); */
+
+  label {
+    text-align: left;
+  }
 }
 
 .selected {

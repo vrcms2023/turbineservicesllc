@@ -256,7 +256,7 @@ const Home = () => {
     <>
       <div className="container-fluid p-0">
         {/*Download Broucher */}
-        <div className="">
+        <div className="homeBrochure">
           <DownloadBrochures />
         </div>
 

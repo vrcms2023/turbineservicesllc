@@ -252,7 +252,7 @@ function App() {
             <Route path="/clients" element={<ClientsList />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/career-details/:id" element={<CareerDetails />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/teams" element={<Team />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/project-details" element={<ProjectTabs />} />
             <Route path="/projectgallery" element={<ProjectsGallery />} />

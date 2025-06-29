@@ -570,15 +570,15 @@ const Home = () => {
 
           {showHideCompList?.testimonis?.visibility && (
             <TestimonialCarouselPageStyled>
-              <div className="container-fluid">
-                <div className="row">
+              <div className="container-fluid testimonialsContainer">
+                {/* <div className="row">
                   <div className="col-md-12">
                     <Title
                       title="Corporate Training"
                       cssClass="fs-1 fw-bold text-center my-5 text-uppercase"
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className="row">
                   <div className="col-md-12 testimonials text-center">
                     {isAdmin && hasPermission && (

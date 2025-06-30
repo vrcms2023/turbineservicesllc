@@ -28,7 +28,8 @@
   "lightWhiteFD": "#fdfdfd",
   "lightWhiteF8": "#f8f8f8",
 
-  "clientColor": "#6D2F9B",
+  "clientColor": "#0D75BA",
+  "clientSecondaryColor": "#EF4036",
 
   "yellow": "#ffff00",
 
@@ -47,11 +48,11 @@
   "teritoryHoverColor": "#2A5CA0",
 
   "navbarBg": "#222222",
-  "navbarTextColor": "#012060",
+  "navbarTextColor": "#eeeeee",
   "navbarLinkColor": "#012060",
   "navbarLinkBgColor": "#748E31",
-  "navbarLinkActiveColor": "#6D2F9B",
-  "navbarLinkHoverColor": "#6D2F9B",
+  "navbarLinkActiveColor": "#EF4036",
+  "navbarLinkHoverColor": "#EF4036",
 
   "navbarChildLinkBgColor": "#222222",
   "navbarChildLinkColor": "#ffffff",

@@ -1,8 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import careerBgImg from "../../Images/careers-bg.jpg";
+import commonBgImg from "../../Images/background-styling-image.png";
+import homeProjectsBgImg from "../../Images/home-ongoing-bg.jpg";
+import homeFutureBgImg from "../../Images/home-future-bg.jpg";
+import homeCompletedBgImg from "../../Images/home-completed-bg.jpg";
 
 export const GlobalStyles = createGlobalStyle`
-
 
 * {
     margin:0;
@@ -211,11 +214,15 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
-.lc1 {-webkit-line-clamp: 1;}
-.lc2 {-webkit-line-clamp: 2;}
-.lc3 {-webkit-line-clamp: 3;}
-.lc4 {-webkit-line-clamp: 4;}
-.lc5 {-webkit-line-clamp: 5;}
+.lc1 {-webkit-line-clamp: 1; line-clamp: 1;}
+.lc2 {-webkit-line-clamp: 2; line-clamp: 2;}
+.lc3 {-webkit-line-clamp: 3; line-clamp: 3;}
+.lc4 {-webkit-line-clamp: 4; line-clamp: 4;}
+.lc5 {-webkit-line-clamp: 5; line-clamp: 5;}
+.lc6 {-webkit-line-clamp: 6; line-clamp: 6;}
+.lc7 {-webkit-line-clamp: 7; line-clamp: 7;}
+.lc8 {-webkit-line-clamp: 8; line-clamp: 8;}
+.lc9 {-webkit-line-clamp: 9; line-clamp: 9;}
 
 .cursorPointer {
   cursor: pointer
@@ -359,5 +366,75 @@ body {
 
     .scrollTop {
       background-color: ${({theme}) => theme.clientColor};
+    }
+
+    .commonBg {
+      background-image:url(${commonBgImg});
+      background-attachment: fixed;
+      background-size: 100%;
+      background-position: center;
+    }
+    .homeProjectsContainer {
+      padding: 48px 0;
+      
+      .col-md-4:nth-child(1):after, .col-md-4:nth-child(2):after, .col-md-4:nth-child(3):after {
+        content: "";
+        width: auto;
+        position: relative;
+        top: -40px;
+        height: 40px;
+        display: block;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      .col-md-4:nth-child(1):after {
+        background: ${({theme}) => theme.green};
+      }
+
+      .col-md-4:nth-child(2):after {
+        background: ${({theme}) => theme.orange};
+      }
+
+      .col-md-4:nth-child(3):after {
+        background: ${({theme}) => theme.violet};
+      }
+
+      .col-md-4:nth-child(1) {
+        .card {
+          background-image:url(${homeProjectsBgImg});
+          background-repeat: no-repeat;
+          }
+      }
+
+      .col-md-4:nth-child(2) {
+        .card {
+          background-image:url(${homeFutureBgImg});
+          background-repeat: no-repeat;
+        }
+      }
+
+      .col-md-4:nth-child(3) {
+        .card {
+          background-image:url(${homeCompletedBgImg});
+          background-repeat: no-repeat;
+        }
+      }
+
+      .card-body {
+        background-color: ${({theme}) => theme.white};
+        border-radius: 4px;
+        padding: 48px 32px !important;
+
+        h5 {
+          letter-spacing: 0;
+          text-transform: capitalize;
+          font-weight: normal !important;
+        }
+        h5::first-letter {
+          font-weight: 500;
+          color: ${({theme}) => theme.clientSecondaryColor};
+        }
+      }
     }
 `;

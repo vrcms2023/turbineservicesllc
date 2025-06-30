@@ -386,16 +386,18 @@ const Home = () => {
               : ""
           }
         >
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.hprinfra?.visibility}
-              title={"Projects"}
-              componentName={"hprinfra"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.hprinfra?.id}
-            />
-          )}
-          {showHideCompList?.hprinfra?.visibility && <HomeProjects />}
+          <div className="commonBg homeProjectsContainer">
+            {isAdmin && hasPermission && (
+              <ShowHideToggle
+                showhideStatus={showHideCompList?.hprinfra?.visibility}
+                title={"Projects"}
+                componentName={"hprinfra"}
+                showHideHandler={showHideHandler}
+                id={showHideCompList?.hprinfra?.id}
+              />
+            )}
+            {showHideCompList?.hprinfra?.visibility && <HomeProjects />}
+            </div>
         </div>
         {/* ==== PROJECT + BRIEF INTRODUCTION END ===================================================================================================== */}
 

@@ -32,6 +32,9 @@
   "clientSecondaryColor": "#EF4036",
 
   "yellow": "#ffff00",
+  "orange": "#FF9D00",
+  "green": "#27C400",
+  "violet": "#6D2F9B",
 
   "lightgray": "#e3e3e3",
   "verylightgray": "#f3f3f3",

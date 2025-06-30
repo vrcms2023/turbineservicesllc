@@ -37,13 +37,11 @@ const HomeProjects = () => {
             <div className="row">
               {ProjectCategoryType?.map((item, index) => (
                 <div className="col-md-4" key={index}>
-                  <div className="card border-0">
-                    <div className="card-body">
-                      <Title title={item.category_Label} cssClass="" />
-                      <hr className="mb-0 title-border ongoing" />
-                    </div>
-                    <div className="card-body pt-0">
-                      <img
+                  <div className="card border-0 p-5">
+                    <div className="card-body p-0">
+                      <Title title={item.category_Label} cssClass="text-start" />
+                      {/* <hr className="mb-0 title-border ongoing" /> */}
+                      {/* <img
                         src={
                           item?.path ? getImagePath(item.path) : getDummyImage()
                         }
@@ -54,9 +52,9 @@ const HomeProjects = () => {
                           height: "100px",
                           objectFit: "cover",
                         }}
-                      />
+                      /> */}
 
-                      <p className="card-text my-4">
+                      <p className="card-text my-4 lineClamp lc9">
                         {item.category_description}
                       </p>
                       <Link to={`${item.readMore_link}`}>

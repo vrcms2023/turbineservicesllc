@@ -28,9 +28,9 @@ export const StyledMenu = styled.menu`
 
   .navbar {
     padding: 0;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, .95);
     // background-color:${({ theme }) => theme.navbarBg}; 
-    box-shadow: 0px 2px 10px ${({ theme }) => theme.navbarLinkActiveColor};
+    // box-shadow: 0px 2px 10px ${({ theme }) => theme.navbarLinkActiveColor};
     // box-shadow: 0 .125rem .25rem ${({ theme }) => theme.navbarLinkActiveColor};
 
     .nav-item {

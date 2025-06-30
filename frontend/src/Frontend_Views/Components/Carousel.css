@@ -18,11 +18,27 @@
 
 .carousel-item {
   overflow: hidden;
+  height: 60vh;
+  position: relative;
   /* box-shadow: 0 15px 0px #3cd9d2; */
 }
 .carousel-item img {
-  height: 60vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .25) 80%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .carousel-caption {

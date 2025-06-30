@@ -94,7 +94,7 @@ const DownloadBrochures = () => {
       {brochuresList.length > 1 && (
         <div class="dropdown">
           <button
-            class="btn btn-primary mb-1 p-4  dropdown-toggle"
+            class="btn btn-primary mb-1 dropdown-toggle"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"

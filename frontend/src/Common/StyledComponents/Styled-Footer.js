@@ -166,6 +166,20 @@ export const FooterStyled = styled.div`
         text-align: center;
       }
     }
+
+    .floatingButton {
+      button{
+        padding: 10px 24px !important;
+      }
+      .dropdown-menu {
+        min-width: 240px !important;
+        max-width: 320px;
+
+        li i {
+          color: ${({ theme }) => theme.gray444};
+        }
+      }
+    }
   }
 
   .footerCopyRights {

@@ -284,7 +284,7 @@ export const AdminTestimonial = () => {
                 catategoryImgState={setTestimonialObject}
                 project={testimonialProject}
                 category="testimonial"
-                cssClass="thumb75 mb-5 shadow-lg border border-5 border-warning rounded-5 fs-2"
+                cssClass="thumb75 mb-5 rounded-3 fs-2"
               />
             </div>
             <div className="text-center">

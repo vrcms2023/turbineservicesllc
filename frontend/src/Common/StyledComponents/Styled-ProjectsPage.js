@@ -72,6 +72,7 @@ export const ProjectsPageStyled = styled.div`
         .nav-link {
             border: 0px !important;
             border-radius: 0px !important;
+            margin-right: 2px;
 
             &:hover {
                 color: ${({ theme }) => theme.primaryColor} !important;
@@ -81,6 +82,64 @@ export const ProjectsPageStyled = styled.div`
         .nav-link.active {
             background-color: ${({ theme }) => theme.primaryColor} !important;
             color: #fff !important;
+        }
+
+        .tab-content {
+            padding: 24px 0;
+
+            h5.title {
+                color: ${({ theme }) => theme.gray444};
+                font-size: 1.5rem !important;
+            }
+            h5.subTitle {
+                color: ${({ theme }) => theme.gray666};
+                font-size: .8rem !important;
+            }
+        }
+
+        .pdfDownloadsAsSelectBox {
+            position: relative;
+            float: right;
+            border: 1px solid ${({ theme }) => theme.primaryColor};
+            padding: 12px 16px;
+            cursor: pointer;
+
+            &:hover .documents {
+                display: block;
+            }
+
+            .documents {
+                display: none;
+                position: absolute;
+                background: ${({ theme }) => theme.white};
+                border: 1px solid ${({ theme }) => theme.grayddd};
+                box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+                padding: 12px;
+                width: 500px;
+                right: 0;
+                max-height: 320px;
+                overflow: auto;
+
+                span {
+                    border-bottom: 1px solid ${({ theme }) => theme.verylightgray};
+                    padding: 6px;
+                    margin-bottom: 8px;
+
+                    &:hover {
+                        background-color: ${({ theme }) => theme.verylightgray};
+                    }
+
+                    span {
+                        border: 0;
+                    }
+                }
+            }
+        }
+
+        .projectHomeImage {
+            img {
+                max-width: 500px;
+            }
         }
     }
 

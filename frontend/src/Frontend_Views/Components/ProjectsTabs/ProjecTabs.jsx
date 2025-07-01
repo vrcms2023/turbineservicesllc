@@ -39,6 +39,8 @@ const ProjectTabs = () => {
   const [avlPdfs, setAvlPdfs] = useState([]);
   const [avlImgs, setAvlImgs] = useState([]);
 
+  console.log(amenities, "amenities")
+
   useEffect(() => {
     removeCookie("projectid");
     setCookie("projectid", projectid);
@@ -303,9 +305,8 @@ const ProjectTabs = () => {
                       LOCATION
                     </button>
                   )}
-
-                  {amenities?.amenitie ||
-                    (amenities?.feature && (
+                  
+                  {(amenities?.amenitie || amenities?.feature) && (
                       <button
                         className="nav-link"
                         id="nav-amenities-tab"
@@ -318,13 +319,13 @@ const ProjectTabs = () => {
                       >
                         AMENITIES
                       </button>
-                    ))}
+                    )}
                 </div>
               </nav>
 
               <div className="tab-content" id="nav-tabContent">
                 <div
-                  className="tab-pane fade show active"
+                  className="tab-pane fade show active p-3"
                   id="nav-home"
                   role="tabpanel"
                   aria-labelledby="nav-home-tab"

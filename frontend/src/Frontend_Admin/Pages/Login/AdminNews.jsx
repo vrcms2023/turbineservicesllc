@@ -259,7 +259,7 @@ export const AdminNews = () => {
                 catategoryImgState={setNewsObject}
                 project={newProject}
                 category="news"
-                cssClass="thumb75 mb-5 shadow-lg border border-5 border-warning rounded-5"
+                cssClass="thumb75 mb-5 rounded-3"
               />
             </div>
             <div className="text-center">

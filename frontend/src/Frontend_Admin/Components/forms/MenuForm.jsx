@@ -35,12 +35,14 @@ const MenuForm = ({
     editHandler(componentType, false);
     document.body.style.overflow = "";
   };
-  const { register, reset, handleSubmit } = useForm({
+  const { register, watch, reset, handleSubmit } = useForm({
     defaultValues: useMemo(() => {
       return editMenu;
     }, [editMenu]),
   });
   const [error, setError] = useState(false);
+
+  const pageUrlValue = watch("page_url");
 
   const [isParentVal, setisParentVal] = useState(
     editMenu ? (editMenu?.is_Parent ? true : false) : true
@@ -240,7 +242,7 @@ const MenuForm = ({
                 fieldName={"page_url"}
                 register={register}
                 onChange={onChangeHanlder}
-                disabled={true}
+                disabled={pageUrlValue != null && pageUrlValue !== ""}
               />
 
               <div className={!isParentHasChilds ? "d-flex" : ""}>

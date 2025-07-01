@@ -240,6 +240,7 @@ const MenuForm = ({
                 fieldName={"page_url"}
                 register={register}
                 onChange={onChangeHanlder}
+                disabled={true}
               />
 
               <div className={!isParentHasChilds ? "d-flex" : ""}>

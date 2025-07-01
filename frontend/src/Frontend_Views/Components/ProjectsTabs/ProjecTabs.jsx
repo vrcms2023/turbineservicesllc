@@ -13,6 +13,7 @@ import Cost from "./Cost";
 import Button from "../../../Common/Button";
 import ProjectGalleryView from "../../Pages/Projects/ProjectGalleryView";
 import { removeCookie, setCookie } from "../../../util/cookieUtil";
+import { ProjectsPageStyled } from "../../../Common/StyledComponents/Styled-ProjectsPage";
 
 const ProjectTabs = () => {
   const location = useLocation();
@@ -145,15 +146,15 @@ const ProjectTabs = () => {
   };
 
   return (
-    <>
-      <div className="container mt-5 pt-5">
+    <ProjectsPageStyled>
+      <div className="container">
         <div className="row p-0 pt-4 projectTabs">
           <div className="col-md-12">
-            <div className="text-end">
+            <div className="d-flex justify-content-end">
               <Button
                 type=""
-                cssClass={"btn btn-success"}
-                label="Back to projects"
+                cssClass={"btn btn-primary"}
+                label="Go To All Projects"
                 handlerChange={() => {
                   navigate("/projects");
                 }}
@@ -161,27 +162,41 @@ const ProjectTabs = () => {
             </div>
 
             <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
-              <Title
-                title={projectHome.projectCategoryName}
-                subTitle={projectTitle}
-                cssClass="blue-900 fs-5 fw-bold"
-              />
-              <select
-                className="form-select shadow-lg border border-1 rounded-0 border-success w-25"
-                aria-label="Default select example"
-                id="projectStatus"
-                value={projectid}
-                onChange={(e) => getProjects(e.target.value)}
-              >
-                <option value="select">Select Project</option>
-                {projects?.length > 0
-                  ? projects?.map((project) => (
-                      <option value={project.id} key={project.id}>
-                        {project.projectTitle}
-                      </option>
-                    ))
-                  : ""}
-              </select>
+              <div className="w-50">
+                <Title
+                  title={projectHome.projectCategoryName}
+                  subTitle={projectTitle}
+                  cssClass="fs-6 breadCrumb"
+                />
+              </div>
+
+              <div className="d-flex justify-content-end align-items-center gap-2 w-50">
+                <select
+                  className="form-select"
+                  aria-label="Default select example"
+                  id="projectStatus"
+                  value={projectid}
+                  onChange={(e) => getProjects(e.target.value)}
+                >
+                  <option value="select">Select</option>
+                  {projects?.length > 0
+                    ? projects?.map((project) => (
+                        <option value={project.id} key={project.id}>
+                          {project.projectTitle}
+                        </option>
+                      ))
+                    : ""}
+                </select>
+
+                {/* <Button
+                  type=""
+                  cssClass={"btn btn-outline"}
+                  label="Edit"
+                  handlerChange={() => {
+                    navigate("/editproject/");
+                  }}
+                /> */}
+              </div>
             </div>
 
             <div className="col-md-12 mb-4">
@@ -414,7 +429,7 @@ const ProjectTabs = () => {
           </div>
         </div>
       </div>
-    </>
+    </ProjectsPageStyled>
   );
 };
 

@@ -6,33 +6,32 @@ export const AboutPageStyled = styled.div`
     font-weight: 600 !important;
   }
 
-  .subTitle {
+  .subTitle { }
 
-  }
   .aboutPage {
+      padding-bottom: 80px;
 
-    padding-bottom: 24px;
-
-    .row {
-      border-bottom: 2px solid ${({ theme }) => theme.white};
-
-      &:last-child {
-        border-bottom: 0 !important;
+      .row {
+        border-bottom: 1px solid ${({ theme }) => theme.grayddd};
+        // box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+        // box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+        // &:last-child {
+        //   border-bottom: 0 !important;
+        // }
       }
-    }
-    
-    .quill {
-      background: none;
-    }
-    .ql-editor {
-      padding-left: 0;
-      padding-right: 0;
-    }
+      
+      .quill {
+        background: none;
+      }
+      .ql-editor {
+        padding-left: 0;
+        padding-right: 0;
+      }
 
-    p {
-      line-height: 1.6;
-      margin-bottom: 12px
-    }
+      p {
+        line-height: 1.6;
+        margin-bottom: 12px
+      }
       
     }
     
@@ -45,7 +44,10 @@ export const AboutPageStyled = styled.div`
       img {
         position: relative;
         transition: opacity 0.5s ease, transform 0.5s ease, border-radius 0.5s ease;
-        border-radius: 8px;
+        // border-radius: 8px;
+        max-width: auto;
+        width: 100%;
+        max-height: 280px;
         
       
         &:hover {
@@ -88,7 +90,7 @@ export const AboutPageStyled = styled.div`
       }
 
       li:last-child {
-        border: 0;
+        // border: 0;
         // border-bottom-left-radius: 5px;
         // border-bottom-right-radius: 5px;
       }
@@ -98,21 +100,19 @@ export const AboutPageStyled = styled.div`
       display: none;
     }
 
-    .normalCSS,
-      .flipCSS {
+    .normalCSS, .flipCSS {
+        // padding: 24px 10px;
+        margin-top: 80px;
       }
       
       .flipCSS {
         flex-direction: row-reverse;
         background: #fbfbfb;
-        padding: 24px 10px;
-        margin-top: 32px;
-        margin-bottom: 32px;
+        // margin-bottom: 48px;
 
         @media (max-width: 768px) {
           padding: 0;
           margin: 0px;
-
         }
       }
 `;

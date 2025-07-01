@@ -4,6 +4,8 @@ import commonBgImg from "../../Images/background-styling-image.png";
 import homeProjectsBgImg from "../../Images/home-ongoing-bg.jpg";
 import homeFutureBgImg from "../../Images/home-future-bg.jpg";
 import homeCompletedBgImg from "../../Images/home-completed-bg.jpg";
+import homeServicesBgImg from "../../Images/homeServicesBg.jpg";
+
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -368,12 +370,19 @@ body {
       background-color: ${({theme}) => theme.clientColor};
     }
 
-    .commonBg {
+    .commonBg, .homeDynamciServicesIntro {
       background-image:url(${commonBgImg});
       background-attachment: fixed;
       background-size: 100%;
       background-position: center;
     }
+
+    .homeDynamciServices {
+      background-image:url(${homeServicesBgImg});
+      background-attachment: fixed;
+      // background-color: ${({theme}) => theme.clientColor};
+    }
+
     .homeProjectsContainer {
       padding: 48px 0;
       
@@ -388,36 +397,40 @@ body {
         border-bottom-left-radius: 4px;
       }
 
-      .col-md-4:nth-child(1):after {
+      .cardItem:nth-child(1):after {
         background: ${({theme}) => theme.green};
       }
 
-      .col-md-4:nth-child(2):after {
+      .cardItem:nth-child(2):after {
         background: ${({theme}) => theme.orange};
       }
 
-      .col-md-4:nth-child(3):after {
+      .cardItem:nth-child(3):after {
         background: ${({theme}) => theme.violet};
       }
 
-      .col-md-4:nth-child(1) {
+      .cardItem {
         .card {
-          background-image:url(${homeProjectsBgImg});
           background-repeat: no-repeat;
-          }
-      }
-
-      .col-md-4:nth-child(2) {
-        .card {
-          background-image:url(${homeFutureBgImg});
-          background-repeat: no-repeat;
+          background-size: cover;
         }
       }
 
-      .col-md-4:nth-child(3) {
+      .cardItem:nth-child(1) {
+        .card {
+          background-image:url(${homeProjectsBgImg});
+          }
+      }
+
+      .cardItem:nth-child(2) {
+        .card {
+          background-image:url(${homeFutureBgImg});
+        }
+      }
+
+      .cardItem:nth-child(3) {
         .card {
           background-image:url(${homeCompletedBgImg});
-          background-repeat: no-repeat;
         }
       }
 
@@ -426,10 +439,14 @@ body {
         border-radius: 4px;
         padding: 48px 32px !important;
 
+        p {
+          color: ${({theme}) => theme.gray444};
+        }
         h5 {
           letter-spacing: 0;
           text-transform: capitalize;
           font-weight: normal !important;
+          color: ${({theme}) => theme.gray444};
         }
         h5::first-letter {
           font-weight: 500;

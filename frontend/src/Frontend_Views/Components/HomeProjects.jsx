@@ -30,14 +30,14 @@ const HomeProjects = () => {
   }, []);
   return (
     <div>
-      <Title title="PROJECTS" cssClass="text-center fs-1" />
+      <Title title="PROJECTS" cssClass="text-center fs-3 mb-5" />
       <div className="row my-3 homeProjectsBg">
         <div className="col-md-12 d-flex justify-content-center align-items-center">
           <div className="container">
             <div className="row">
               {ProjectCategoryType?.map((item, index) => (
-                <div className="col-md-4" key={index}>
-                  <div className="card border-0 p-5">
+                <div className="col-sm-12 col-md-12 col-lg-4 cardItem" key={index}>
+                  <div className="card border-0 p-3 p-md-5 ">
                     <div className="card-body p-0">
                       <Title title={item.category_Label} cssClass="text-start" />
                       {/* <hr className="mb-0 title-border ongoing" /> */}

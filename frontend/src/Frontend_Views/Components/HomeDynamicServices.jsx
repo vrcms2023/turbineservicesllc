@@ -45,10 +45,10 @@ const HomeDynamicServices = ({ editHandler, objectstatus, pageType }) => {
               linkCss="text-white"
               linkLabel="In detail..."
               moreLink=""
-              introTitleCss="fs-4 mb-4 lineClamp lc2"
+              introTitleCss="fs-4 mb-3 lineClamp lc2"
               introSubTitleCss="fw-medium text-muted text-center"
-              introDecTitleCss="text-start lineClamp lc5"
-              detailsContainerCss="col-md-12 py-3"
+              introDecTitleCss="text-start lineClamp lc6"
+              detailsContainerCss="col-md-12 py-4"
               anchorContainer="d-flex justify-content-start mt-4"
               anchersvgColor="#fff"
               pageType={pageType}

@@ -5,7 +5,7 @@ import homeProjectsBgImg from "../../Images/home-ongoing-bg.jpg";
 import homeFutureBgImg from "../../Images/home-future-bg.jpg";
 import homeCompletedBgImg from "../../Images/home-completed-bg.jpg";
 import homeServicesBgImg from "../../Images/homeServicesBg.jpg";
-
+import homeMultiServicesBgImg from "../../Images/homeMultiServicesBg.jpg";
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -370,12 +370,16 @@ body {
       background-color: ${({theme}) => theme.clientColor};
     }
 
-    .commonBg, .homeDynamciServicesIntro, .homeServicesContainer {
+    .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief {
       background-image:url(${commonBgImg});
       background-attachment: fixed;
       background-size: 100%;
       background-position: center;
     }
+
+    // .homeServicesContainer{
+    //   background-image:url(${homeMultiServicesBgImg});
+    // }
 
     .homeDynamciServices {
       background-image:url(${homeServicesBgImg});
@@ -386,12 +390,12 @@ body {
     .homeProjectsContainer {
       padding: 48px 0;
       
-      .col-md-4:nth-child(1):after, .col-md-4:nth-child(2):after, .col-md-4:nth-child(3):after {
+      .cardItem:nth-child(1):after, .cardItem:nth-child(2):after, .cardItem:nth-child(3):after {
         content: "";
         width: auto;
         position: relative;
-        top: -40px;
-        height: 40px;
+        top: -60px;
+        height: 60px;
         display: block;
         border-bottom-right-radius: 4px;
         border-bottom-left-radius: 4px;
@@ -438,6 +442,8 @@ body {
         background-color: ${({theme}) => theme.white};
         border-radius: 4px;
         padding: 48px 32px !important;
+        z-index: 9;
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 
         p {
           color: ${({theme}) => theme.gray444};

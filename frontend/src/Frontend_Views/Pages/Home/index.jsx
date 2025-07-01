@@ -514,6 +514,7 @@ const Home = () => {
 
           {/* INTRODUCTION COMPONENT */}
 
+          <div className="container-fluid homeServicesBrief">
           <div className="container">
             <div className="row">
               <div className="breiftopMargin">
@@ -540,6 +541,7 @@ const Home = () => {
                 />
               </div>
             </div>
+          </div>
           </div>
 
           {componentEdit.homeServicebriefIntro && (

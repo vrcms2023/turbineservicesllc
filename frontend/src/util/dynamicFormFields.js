@@ -38,7 +38,6 @@ export const getFormDynamicFields = (pageType) => {
       label: "Title",
       type: "text",
       fieldName: "banner_title",
-      validationObject: { required: "Please enter Title" },
     },
     banner_subTitle: {
       label: "Sub Title",

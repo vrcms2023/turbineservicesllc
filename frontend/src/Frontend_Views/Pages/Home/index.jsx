@@ -502,9 +502,11 @@ const Home = () => {
             />
           )}
           {showHideCompList?.homeservices?.visibility && (
-            <div className="container py-5 homeServices">
-              <h2 className="mb-5">What We Do</h2>
-              <HomeServices />
+            <div className="homeServicesContainer">
+              <div className="container py-5 homeServices">
+                {/* <h2 className="mb-5">What We Do</h2> */}
+                <HomeServices />
+              </div>
             </div>
           )}
 

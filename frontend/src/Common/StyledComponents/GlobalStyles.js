@@ -370,7 +370,7 @@ body {
       background-color: ${({theme}) => theme.clientColor};
     }
 
-    .commonBg, .homeDynamciServicesIntro {
+    .commonBg, .homeDynamciServicesIntro, .homeServicesContainer {
       background-image:url(${commonBgImg});
       background-attachment: fixed;
       background-size: 100%;

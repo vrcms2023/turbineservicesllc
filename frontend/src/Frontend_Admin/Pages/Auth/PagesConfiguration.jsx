@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Title from "../../../Common/Title";
-import {
-  axiosFileUploadServiceApi,
-  axiosServiceApi,
-} from "../../../util/axiosUtil";
+import { axiosServiceApi } from "../../../util/axiosUtil";
 import { toast } from "react-toastify";
 import { confirmAlert } from "react-confirm-alert";
 import DeleteDialog from "../../../Common/DeleteDialog";
@@ -28,7 +25,6 @@ import { getMenu } from "../../../redux/auth/authActions";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 import { getServiceValues } from "../../../redux/services/serviceActions";
 import { deleteServiceMenu, getServiceMenuItem } from "../../../util/menuUtil";
-import Error from "../../Components/Error";
 
 const PagesConfiguration = () => {
   const editComponentObj = {
@@ -185,63 +181,6 @@ const PagesConfiguration = () => {
           <th className="text-center">Action</th>
         </tr>
       </thead>
-    );
-  };
-
-  const UploadMenuJsonForm = () => {
-    const [file, setFile] = useState(null);
-    const [message, setMessage] = useState("");
-
-    const handleFileChange = (e) => {
-      setFile(e.target.files[0]);
-      setMessage("");
-    };
-
-    const handleUpload = async (e) => {
-      e.preventDefault();
-      if (!file) {
-        setMessage("Please select a file first.");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("file", file);
-
-      try {
-        const response = await axiosFileUploadServiceApi.post(
-          `/pageMenu/uploadMenuData/`,
-          formData
-        );
-
-        if (response.status === 201) {
-          toast.success(response.data.message || "File uploaded successfully!");
-          getAllPagesDetails();
-        }
-      } catch (error) {
-        toast.error("An error occurred while uploading.");
-      }
-    };
-
-    return (
-      <div className="p-4 max-w-md mx-auto bg-white shadow-md rounded-md">
-        <h2 className="text-xl font-bold mb-4">Upload Menu JSON File</h2>
-        {message && (
-          <p className="fw-bold d-inline-block ">
-            {message && <Error>{message}</Error>}
-          </p>
-        )}
-        <form onSubmit={handleUpload}>
-          <input
-            type="file"
-            accept=".json"
-            onChange={handleFileChange}
-            className="mb-4"
-          />
-          <button type="submit" className="btn btn-primary mx-3">
-            Upload
-          </button>
-        </form>
-      </div>
     );
   };
 
@@ -491,19 +430,11 @@ const PagesConfiguration = () => {
 
       <div className="row px-3 px-lg-5 py-4 table-responsive">
         {showContentPerRole(userInfo, hasPermission) ? (
-          <>
-            {pagesDetails.length > 0 ? (
-              <table className="table table-striped">
-                {tableHeader()}
+          <table className="table table-striped">
+            {tableHeader()}
 
-                {pagesDetails.length > 0 && (
-                  <Treeview treeData={pagesDetails} />
-                )}
-              </table>
-            ) : (
-              <UploadMenuJsonForm />
-            )}
-          </>
+            {pagesDetails.length > 0 && <Treeview treeData={pagesDetails} />}
+          </table>
         ) : (
           <h3>Not authorized to view this page </h3>
         )}

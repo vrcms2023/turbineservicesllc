@@ -460,4 +460,8 @@ body {
         }
       }
     }
+
+    .modal {
+      z-index: 99999 !important;
+    }
 `;

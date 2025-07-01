@@ -164,34 +164,57 @@ const About = () => {
 
   return (
     <>
-      {/* Page Banner Component */}
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.aboutbanner?.visibility && isAdmin && hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.aboutbanner?.visibility}
+            title={"Banner"}
+            componentName={"aboutbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.aboutbanner?.id}
+          />
         )}
-        {/* <Banner
+        {showHideCompList?.aboutbanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              {/* <Banner
           getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
           bannerState={componentEdit.banner}
         /> */}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        />
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+              />
+            </div>
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle="About Banner"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
       </div>
-      {componentEdit.banner && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle="About Banner"
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
-            dimensions={imageDimensionsJson("banner")}
-          />
-        </div>
-      )}
       <div
         className={
           showHideCompList?.aboutbriefintro?.visibility &&
@@ -344,6 +367,7 @@ const About = () => {
                     <RichTextView
                       data={item?.aboutus_description}
                       className={""}
+                      showMorelink={false}
                     />
                     {/* <div
                       dangerouslySetInnerHTML={{

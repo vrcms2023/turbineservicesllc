@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from django.http import Http404
+import json
 
 
 # Create your views here.
@@ -107,3 +108,28 @@ class ClientMenuListAPIView(generics.ListAPIView):
         serializer = PagesAdministrationSerializer(snippets, many=True)
         return Response({"PageDetails": serializer.data}, status=status.HTTP_200_OK)
     
+
+class JSONMenuDataUpload(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = PageDetails.objects.all()
+    serializer_class = PagesAdministrationSerializer
+
+    def post(self, request):
+        json_file = request.FILES.get('file')
+
+        if not json_file:
+            return Response({"error": "No file provided."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            data = json.load(json_file)
+        except Exception as e:
+            return Response({"error": f"Invalid JSON format: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+
+        if not isinstance(data, list):
+            return Response({"error": "Expected a list of records."}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = PagesAdministrationSerializer(data=data, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Menu uploaded successfully."}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

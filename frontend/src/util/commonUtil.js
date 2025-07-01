@@ -193,7 +193,7 @@ export const getPublishedSericeMenu = (menuList, publishedMenuList) => {
   let mainServiceMenu = getServiceMainMenu(clonedMenu);
   const childMenu = mainServiceMenu?.childMenu;
   let selectedMenu = [];
-  childMenu.forEach((item) => {
+  childMenu?.forEach((item) => {
     publishedMenuList.forEach((publishedMenu) => {
       if (
         item.page_label.toLowerCase() ===

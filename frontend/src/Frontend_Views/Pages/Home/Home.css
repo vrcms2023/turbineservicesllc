@@ -204,6 +204,7 @@
       background-repeat: no-repeat;
       background-position: right 15px bottom;
       border-radius: 8px;
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 
       &:hover {
         background-color: #0D75BA;
@@ -249,7 +250,8 @@
 
 .homeServices .row.service {
   background-color: #fff;
-  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+  /* box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075); */
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
   border-radius: 8px;
   overflow: hidden;
 
@@ -275,6 +277,10 @@
     align-items: start;
     justify-content: center;
   }
+}
+
+.homeServices .row.service:last-child {
+  margin-bottom: 0px !important;
 }
 
 /* Home Page Projects Carousel CSS */

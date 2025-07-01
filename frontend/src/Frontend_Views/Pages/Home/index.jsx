@@ -461,19 +461,21 @@ const Home = () => {
                   )}
                 </div>
               </div>
-              <div className="container homeDynamciServices">
-                <div className="row">
-                  {homeServices.map((service, i) => (
-                    <div className="col-sm-6 col-md-4" key={i}>
-                      <HomeDynamicServices
-                        key={i}
-                        editHandler={editHandler}
-                        objectstatus={componentEdit[`homeService${i}`]}
-                        pageType={`homeService${i}`}
-                      />
-                    </div>
-                  ))}
-                </div>
+              <div className="container-fluid homeDynamciServices py-5">
+                <div className="container">
+                  <div className="row">
+                    {homeServices.map((service, i) => (
+                      <div className="col-sm-6 col-md-4" key={i}>
+                        <HomeDynamicServices
+                          key={i}
+                          editHandler={editHandler}
+                          objectstatus={componentEdit[`homeService${i}`]}
+                          pageType={`homeService${i}`}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  </div>
               </div>
             </div>
           )}

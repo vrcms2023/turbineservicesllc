@@ -23,6 +23,7 @@ import {
   getAllShowHideComponentsList,
   updateShowHideComponent,
 } from "../../../redux/showHideComponent/showHideActions";
+import { ProjectsPageStyled } from "../../../Common/StyledComponents/Styled-ProjectsPage";
 
 const Projects = () => {
   const editComponentObj = {
@@ -183,22 +184,23 @@ const Projects = () => {
           </div>
         )}
       </div>
-      <div className="container-fluid container-lg ">
-        {ongoing?.length > 0 && (
-          <ProjectItem projectList={ongoing} projectType={ongoing} />
-        )}
+      <ProjectsPageStyled>
+        <div className="container-fluid projectsList">
+          {ongoing?.length > 0 && (
+            <ProjectItem projectList={ongoing} projectType={ongoing} />
+          )}
 
-        {/* Completed Projects */}
-        {completed?.length > 0 && (
-          <ProjectItem projectList={completed} projectType={completed} />
-        )}
+          {/* Completed Projects */}
+          {completed?.length > 0 && (
+            <ProjectItem projectList={completed} projectType={completed} />
+          )}
 
-        {/* future Projects */}
-        {future?.length > 0 && (
-          <ProjectItem projectList={future} projectType={future} />
-        )}
-      </div>
-
+          {/* future Projects */}
+          {future?.length > 0 && (
+            <ProjectItem projectList={future} projectType={future} />
+          )}
+        </div>
+      </ProjectsPageStyled>
       {show && <ModelBg />}
     </>
   );

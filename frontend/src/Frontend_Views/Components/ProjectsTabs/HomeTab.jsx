@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Title from "../../../Common/Title";
-import HomeImg from "../../../Images/project1.png";
+import HomeImg from "../../../Images/logo.svg";
 import { getCookie } from "../../../util/cookieUtil";
 import { getBaseURL } from "../../../util/ulrUtil";
 import ModelBg from "../../../Common/ModelBg";
@@ -42,7 +42,7 @@ const HomeTab = ({ project, thumbImgs, pdfs }) => {
 
   return (
     <>
-      <div className="py-5">
+      <div className="">
         <Title title={aboutstitle} cssClass="" />
         <Title title={aboutussubtitle} cssClass="fs-6 text-dark" />
         <div className="py-3">{description}</div>

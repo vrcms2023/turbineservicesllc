@@ -341,7 +341,7 @@ const About = () => {
                       </Link>
                     </>
                   )}
-                  <div className="col-12 col-lg-7 p-4 py-0 p-md-4 d-flex justify-content-center align-items-start flex-column leftColumn">
+                  <div className="col-12 col-lg-7 p-5 d-flex justify-content-center align-items-start flex-column leftColumn">
                     {item.aboutus_title ? (
                       <Title
                         title={item.aboutus_title}
@@ -384,7 +384,7 @@ const About = () => {
                     <img
                       src={getImagePath(item.path)}
                       alt=""
-                      className="w-75 object-fit-cover shadow m-auto"
+                      className="object-fit-cover shadow m-auto"
                     />
                   </div>
                 </div>

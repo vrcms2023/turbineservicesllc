@@ -100,9 +100,15 @@ export const ProjectsPageStyled = styled.div`
         .pdfDownloadsAsSelectBox {
             position: relative;
             float: right;
-            border: 1px solid ${({ theme }) => theme.primaryColor};
-            padding: 12px 16px;
+            border: 1px solid ${({ theme }) => theme.grayddd};
+            padding: 10px 16px;
             cursor: pointer;
+            border-radius: 4px;
+            font-size: .9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &:hover .documents {
                 display: block;
@@ -112,9 +118,9 @@ export const ProjectsPageStyled = styled.div`
                 display: none;
                 position: absolute;
                 background: ${({ theme }) => theme.white};
-                border: 1px solid ${({ theme }) => theme.grayddd};
+                border: 1px solid ${({ theme }) => theme.verylightgray};
                 box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
-                padding: 12px;
+                padding: 16px 24px;
                 width: 500px;
                 right: 0;
                 max-height: 320px;
@@ -124,6 +130,8 @@ export const ProjectsPageStyled = styled.div`
                     border-bottom: 1px solid ${({ theme }) => theme.verylightgray};
                     padding: 6px;
                     margin-bottom: 8px;
+                    font-size: .8rem;
+                    font-weight: 400;
 
                     &:hover {
                         background-color: ${({ theme }) => theme.verylightgray};
@@ -153,7 +161,7 @@ export const ProjectsPageStyled = styled.div`
         /* display: inline-block; */
         /* overflow: scroll; */
         border: 1px solid rgb(237, 237, 237);
-        padding: 15px 0;
+        // padding: 15px 0;
 
          img {
             -webkit-transition: all 0.2s ease;
@@ -165,11 +173,11 @@ export const ProjectsPageStyled = styled.div`
             /* vertical-align: middle; */
 
             &:hover {
-                -webkit-transform: scale(1.5);
-                -moz-transform: scale(1.5);
-                -o-transform: scale(1.5);
-                -ms-transform: scale(1.5);
-                transform: scale(1.5);
+                -webkit-transform: scale(2.5);
+                -moz-transform: scale(2.5);
+                -o-transform: scale(2.5);
+                -ms-transform: scale(2.5);
+                transform: scale(2.5);
                 /* transform: scale3d(1.1, 1.1, 1); */
             } 
         }
@@ -178,13 +186,32 @@ export const ProjectsPageStyled = styled.div`
     .galleryThumbs {
         h4 {
             font-size: 12px;
-            ${({ theme }) => theme.gray444}
+            color: ${({ theme }) => theme.gray444};
+
+            span {
+                color: ${({ theme }) => theme.clientSecondaryColor}
+            }
         }
 
         img {
             margin: 10px 10px 10px 0 !important;
             height: 120px !important;
             width: 140px !important;
+        }
+    }
+
+    .planThumbs {
+        > div {
+            width: 200px;
+            height: 200px;
+            border-radius: 4px;
+
+            img {
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 4px;
+            }
         }
     }
 

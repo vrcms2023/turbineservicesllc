@@ -45,8 +45,8 @@ const Cost = ({ images, pdfs }) => {
   let pdf;
   if (images.length > 0) {
     imgs = images.map((item, i) => (
-      <div className="my-5 text-center zoomImg" key={i}>
-        <img src={`${baseURL}${item.path}`} alt="" className="w-50" />
+      <div className="my-1 text-center zoomImg" key={i}>
+        <img src={`${baseURL}${item.path}`} alt="" className="" />
       </div>
     ));
   }
@@ -79,7 +79,7 @@ const Cost = ({ images, pdfs }) => {
   }
 
   return (
-    <div>
+    <div className="d-flex flex-wrap justify-content-start align-items-center gap-3 planThumbs">
       {pdfs.length > 0 ? pdf : null}
       {images.length > 0 ? imgs : null}
     </div>

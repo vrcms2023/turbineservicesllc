@@ -14,6 +14,7 @@ import Button from "../../../Common/Button";
 import ProjectGalleryView from "../../Pages/Projects/ProjectGalleryView";
 import { removeCookie, setCookie } from "../../../util/cookieUtil";
 import { ProjectsPageStyled } from "../../../Common/StyledComponents/Styled-ProjectsPage";
+import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 
 const ProjectTabs = () => {
   const location = useLocation();
@@ -38,8 +39,9 @@ const ProjectTabs = () => {
 
   const [avlPdfs, setAvlPdfs] = useState([]);
   const [avlImgs, setAvlImgs] = useState([]);
+  const { isAdmin, hasPermission } = useAdminLoginStatus();
 
-  console.log(amenities, "amenities")
+  // console.log(amenities, "amenities");
 
   useEffect(() => {
     removeCookie("projectid");
@@ -189,15 +191,16 @@ const ProjectTabs = () => {
                       ))
                     : ""}
                 </select>
-
-                {/* <Button
-                  type=""
-                  cssClass={"btn btn-outline"}
-                  label="Edit"
-                  handlerChange={() => {
-                    navigate("/editproject/");
-                  }}
-                /> */}
+                {isAdmin && hasPermission && (
+                  <Button
+                    type=""
+                    cssClass={"btn btn-outline"}
+                    label="Edit"
+                    handlerChange={() => {
+                      navigate(`/editproject/${projectid}`);
+                    }}
+                  />
+                )}
               </div>
             </div>
 
@@ -305,21 +308,21 @@ const ProjectTabs = () => {
                       LOCATION
                     </button>
                   )}
-                  
+
                   {(amenities?.amenitie || amenities?.feature) && (
-                      <button
-                        className="nav-link"
-                        id="nav-amenities-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#nav-amenities"
-                        type="button"
-                        role="tab"
-                        aria-controls="nav-amenities"
-                        aria-selected="false"
-                      >
-                        AMENITIES
-                      </button>
-                    )}
+                    <button
+                      className="nav-link"
+                      id="nav-amenities-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-amenities"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-amenities"
+                      aria-selected="false"
+                    >
+                      AMENITIES
+                    </button>
+                  )}
                 </div>
               </nav>
 

@@ -82,6 +82,7 @@ const HomeServices = ({ title }) => {
                   data={item.feature_description}
                   className={"description"}
                   characterLimit={600}
+                  showMorelink={false}
                 />
                 // <div
                 //   className="description"

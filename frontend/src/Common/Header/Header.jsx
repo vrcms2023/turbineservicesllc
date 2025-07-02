@@ -286,8 +286,8 @@ const Header = () => {
                 className="btn btn-primary mx-4"
                 onClick={loadAndSubmitMenuJSON}
               >
-                Generate Menu{" "}
-                <i className="fa fa-plus mx-2" aria-hidden="true"></i>
+                Generate Menu
+                {/* <i className="fa fa-plus mx-2" aria-hidden="true"></i> */}
               </Link>
             </div>
           )}
@@ -320,7 +320,6 @@ export const ClientMenu = ({ serviceMenuList, rootServiceMenu }) => {
   };
 
   const ChildMenuContent = ({ menu, className }) => {
-    console.log(menu, "MENU")
     return (
       <li
         className={`nav-item ${className}-${menu.page_label.replaceAll(" ", "-")} ${menu.childMenu ? "dropdown" : ""}`}

@@ -261,14 +261,18 @@ const HomeNews = ({
               </Link>
             </div>
             <div className="my-3 newsDetails">
-                <img
-                  className="w-100 mb-3"
-                  style={{ height: "240px", objectFit: "cover" }}
-                  src={getImagePath(obj.path)}
-                  alt={obj.news_title}
+              <img
+                className="w-100 mb-3"
+                style={{ height: "240px", objectFit: "cover" }}
+                src={getImagePath(obj.path)}
+                alt={obj.news_title}
+              />
+              {obj.news_description ? (
+                <RichTextView
+                  data={obj.news_description}
+                  className={""}
+                  showMorelink={false}
                 />
-                {obj.news_description ? (
-                <RichTextView data={obj.news_description} className={""} />
               ) : (
                 // <div
                 //   dangerouslySetInnerHTML={{ __html: obj.news_description }}
@@ -337,7 +341,9 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
                     className="w-100"
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <div className={`${isAdmin ? "px-3 d-flex align-items-center gap-3" : "cardInfo p-3"}`}>
+                    <div
+                      className={`${isAdmin ? "px-3 d-flex align-items-center gap-3" : "cardInfo p-3"}`}
+                    >
                       <Title
                         title={
                           item.news_title
@@ -362,6 +368,7 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
                             <RichTextView
                               data={item?.news_description}
                               className={`lineClamp ${isAdmin ? "lc1" : "lc2"}`}
+                              showMorelink={false}
                             />
                           ) : (
                             // <div

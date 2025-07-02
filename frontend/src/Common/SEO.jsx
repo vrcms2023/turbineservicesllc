@@ -64,7 +64,7 @@ const SEO = () => {
         <title>
           {seoObject?.seo_title
             ? seoObject?.seo_title
-            : "EZI defautl - Custom CMS"}
+            : "EZI Press - Custom CMS"}
         </title>
         <meta
           name="description"

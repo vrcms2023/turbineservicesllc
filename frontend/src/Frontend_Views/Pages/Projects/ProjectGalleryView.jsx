@@ -32,7 +32,7 @@ const ProjectGalleryView = ({ projectImages, type }) => {
       {projectImages?.length > 0 ? (
         projectImages.map((project) => (
           <div
-            className={`gallery projectTabs ${
+            className={`gallery projectTabs p-5 ${
               type === "applicationgallery"
                 ? "p-5 py-3 border-bottom"
                 : "p-0 pt-4"

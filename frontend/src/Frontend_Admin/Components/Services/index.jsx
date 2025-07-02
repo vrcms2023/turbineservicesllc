@@ -137,7 +137,7 @@ const AddService = ({
     } else if (serviceMenu) {
       if (serviceMenu.length > 0) {
         const filterMenu = _.filter(serviceMenu, (item) => {
-          return item.services_page_title.toLowerCase() !== "add new menu";
+          return item.services_page_title.toLowerCase() !== "add new service";
         });
         setServiceList(filterMenu);
       } else {

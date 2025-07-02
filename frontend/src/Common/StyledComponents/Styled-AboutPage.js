@@ -101,18 +101,18 @@ export const AboutPageStyled = styled.div`
     }
 
     .normalCSS, .flipCSS {
-        // padding: 24px 10px;
-        margin-top: 80px;
-      }
+      // padding: 24px 10px;
+      margin-top: 80px;
+    }
       
-      .flipCSS {
-        flex-direction: row-reverse;
-        background: #fbfbfb;
-        // margin-bottom: 48px;
+    .flipCSS {
+      flex-direction: row-reverse;
+      background: #fbfbfb;
+      // margin-bottom: 48px;
 
-        @media (max-width: 768px) {
-          padding: 0;
-          margin: 0px;
-        }
+      @media (max-width: 768px) {
+        padding: 0;
+        margin: 0px;
       }
+    }
 `;

@@ -257,16 +257,25 @@ body {
       }
       
       .newsModalWrapper {
-        width: 70%;
-        height: 90%;
+        width: 60%;
+        height: 80%;
         margin: auto;
         border-radius: 10px;
-        overflow: hidden;
+        overflow: auto;
       }
       
-      .newsModalWrapper .newsDetails {
-        max-height: 95%;
-        overflow-y: auto;
+      // .newsModalWrapper .newsDetails {
+      //   max-height: 95%;
+      //   overflow-y: auto;
+      // }
+
+      .newsModalWrapper .newsDetails .quill {
+        ol li, ul li {
+          padding: 8px;
+          border-bottom: 1px solid #eee;
+          width: 60%;
+          margin: auto;
+        }
       }
       
       @media (max-width: 768px) {

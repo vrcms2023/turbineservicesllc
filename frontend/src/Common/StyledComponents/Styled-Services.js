@@ -13,15 +13,30 @@ export const ServicesStyled = styled.div`
       }
     }
       
-      .services ul 
+    .normalCSS img, .flipCSS img {
+      width: 100%;
+      height: 100%;
+      // max-height: 280px;
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+
+    }
       
-      .normalCSS,
-      .flipCSS {
-      }
+      .normalCSS, .flipCSS {
+      // padding: 24px 10px;
+      margin-top: 48px !important;
+      border: 1px solid ${({ theme }) => theme.verylightgray} !important;
+    }
       
-      .flipCSS {
-        flex-direction: row-reverse;
+    .flipCSS {
+      flex-direction: row-reverse;
+      background: #fbfbfb;
+      // margin-bottom: 48px;
+
+      @media (max-width: 768px) {
+        padding: 0;
+        margin: 0px;
       }
+    }
       
       .servicesPage {
         ul, ol {
@@ -40,6 +55,17 @@ export const ServicesStyled = styled.div`
             width: 100%;
             // height: 100%;
         }
+
+        p, p span, ol span, ul span {
+          color: ${({ theme }) => theme.gray444} !important;
+        }
+
+        .quill {
+          background: none !important;
+        }
+        .ql-editor {
+          padding: 1rem 0 0 !important;
+        }
       }
       
       
@@ -50,7 +76,7 @@ export const ServicesStyled = styled.div`
         // margin: 0 auto;
         height: 120px;
         overflow-y: scroll;
-}
+      }
         
         li {
             cursor: pointer;
@@ -67,7 +93,7 @@ export const ServicesStyled = styled.div`
             overflow: hidden;
             // height: 20px;
           }
-      }
+
       
       .addPageForm {
         // background-color: ${({ theme }) => theme.teritoryColor};

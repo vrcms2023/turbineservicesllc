@@ -331,14 +331,14 @@ const Services = () => {
                       </Link>
                     </>
                   )}
-                  <div className="col-md-8 px-5">
+                  <div className="col-md-8 p-4 p-5">
                     <Title
                       title={
                         item.feature_title
                           ? item.feature_title
                           : "Update Feature title"
                       }
-                      cssClass="fs-1 fw-bold mt-3 mb-1"
+                      cssClass="fs-3 mb-2 title"
                     />
                     <Title
                       title={
@@ -359,7 +359,7 @@ const Services = () => {
                       }}
                     /> */}
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 px-0">
                     <img src={getImagePath(item.path)} alt="" />
                   </div>
                 </div>

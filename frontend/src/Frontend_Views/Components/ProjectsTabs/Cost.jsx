@@ -79,7 +79,7 @@ const Cost = ({ images, pdfs }) => {
   }
 
   return (
-    <div className="d-flex flex-wrap justify-content-start align-items-center gap-3 planThumbs">
+    <div className="d-flex flex-wrap justify-content-start align-items-center gap-3 planThumbs px-2">
       {pdfs.length > 0 ? pdf : null}
       {images.length > 0 ? imgs : null}
     </div>

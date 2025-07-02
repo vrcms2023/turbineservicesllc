@@ -8,7 +8,7 @@ const Location = ({ amenities }) => {
       {googleMap === "" ? (
         ""
       ) : (
-        <div className="p-5 py-4">
+        <div className="px-5">
           <Title title = "TURBINE ELECTROMECHANICAL EQUIPMENT SERVICES LLC - Project Location" cssClass="fs-5 mb-4 text-center" />
           <iframe
             className="googlemap"

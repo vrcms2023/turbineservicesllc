@@ -320,6 +320,7 @@ export const ClientMenu = ({ serviceMenuList, rootServiceMenu }) => {
   };
 
   const ChildMenuContent = ({ menu, className }) => {
+    console.log(menu, "MENU")
     return (
       <li
         className={`nav-item ${className}-${menu.page_label.replaceAll(" ", "-")} ${menu.childMenu ? "dropdown" : ""}`}

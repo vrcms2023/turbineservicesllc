@@ -311,7 +311,7 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
           >
             <NewsStyled>
               <div
-                className={`card homeNews ${isAdmin ? "adminView" : ""}`}
+                className={`card homeNews ${isAdmin ? "border-0 adminView mb-0" : ""}`}
                 style={{ minHeight: isAdmin ? "auto" : "" }}
               >
                 <div
@@ -344,7 +344,7 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
                             ? item.news_title
                             : "Update news Title"
                         }
-                        cssClass={`lineClamp lc2 ${!isAdmin && ""}`}
+                        cssClass={`lineClamp lc2 fs-6 ${isAdmin && "border-0"}`}
                         // mainTitleClassess={` fw-medium lh-sm lineClamp lc1 ${isAdmin ? "fs-6" : "fs-5"}`}
                         subTitleClassess=""
                       />

@@ -42,7 +42,7 @@ const HomeTab = ({ project, thumbImgs, pdfs }) => {
 
   return (
     <>
-      <div className="p-4">
+      <div className="px-5">
         <Title title={aboutstitle} cssClass="title" />
         <Title title={aboutussubtitle} cssClass="subTitle" />
         <div className="py-3">{description}</div>
@@ -74,7 +74,7 @@ const HomeTab = ({ project, thumbImgs, pdfs }) => {
                         fill="#017DB9"
                       />
                     </svg>
-                    <span className="ms-2" download>
+                    <span className="text-dark ms-2" download>
                       {pdf.originalname}
                     </span>
                    

@@ -90,7 +90,7 @@
   "briefIntroTextColor": "#3F3F3F",
 
   "newsCardBg": "#ffffff",
-  "newsCardTextColor": "#000000",
+  "newsCardTextColor": "#444444",
   "newsCardTitleColor": "#17427f",
   "newsCardLinkColor": "#17427f",
   "newsCardLinkHoverColor": "#3cd9d2",

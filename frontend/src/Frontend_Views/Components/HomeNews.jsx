@@ -261,15 +261,13 @@ const HomeNews = ({
               </Link>
             </div>
             <div className="my-3 newsDetails">
-              <div className="text-center">
                 <img
-                  className="w-auto mb-3"
+                  className="w-100 mb-3"
                   style={{ height: "240px", objectFit: "cover" }}
                   src={getImagePath(obj.path)}
                   alt={obj.news_title}
                 />
-              </div>
-              {obj.news_description ? (
+                {obj.news_description ? (
                 <RichTextView data={obj.news_description} className={""} />
               ) : (
                 // <div
@@ -302,7 +300,7 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
     >
       {(provided) => (
         <div
-          className={`${isAdmin ? "col-12" : "col-sm-6 col-lg-4 px-2 px-md-4 px-lg-5"} image`}
+          className={`${isAdmin ? "col-12" : "col-sm-6 col-lg-3 px-4"} image`}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
@@ -322,7 +320,7 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
                   {!isAdmin && (
                     <img
                       src={getImagePath(item.path)}
-                      className="img-fluid rounded-3"
+                      className="img-fluid"
                       alt={item.alternitivetext}
                     />
                   )}
@@ -339,20 +337,20 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
                     className="w-100"
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <div className={`${isAdmin ? "px-3" : "py-3"}`}>
+                    <div className={`${isAdmin ? "px-3 d-flex align-items-center gap-3" : "cardInfo p-3"}`}>
                       <Title
                         title={
                           item.news_title
                             ? item.news_title
                             : "Update news Title"
                         }
-                        cssClass={`fs-6 lineClamp lc2 ${!isAdmin && "fw-bold"}`}
-                        mainTitleClassess={` fw-medium lh-sm lineClamp lc1 ${isAdmin ? "fs-6" : "fs-5"}`}
+                        cssClass={`lineClamp lc2 ${!isAdmin && ""}`}
+                        // mainTitleClassess={` fw-medium lh-sm lineClamp lc1 ${isAdmin ? "fs-6" : "fs-5"}`}
                         subTitleClassess=""
                       />
                       {/* <small className="d-block my-2">{moment(item.created_at).format('DD-MM-YYYY hh:mm:ss')}</small> */}
                       {!isAdmin && (
-                        <small className="d-block mb-3">
+                        <small className="newsDate d-block mb-3">
                           {moment(item.created_at).format("MMM DD, YYYY")}
                         </small>
                       )}

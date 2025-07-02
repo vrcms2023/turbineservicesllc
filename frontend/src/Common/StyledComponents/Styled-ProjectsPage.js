@@ -69,6 +69,14 @@ export const ProjectsPageStyled = styled.div`
             max-width: 190px;galleryThumbs
         }
 
+        .breadCrumb {
+            text-transform: capitalize;
+
+            span {
+                color: ${({ theme }) => theme.primaryColor}
+            }
+        }
+
         .nav-link {
             border: 0px !important;
             border-radius: 0px !important;
@@ -85,7 +93,7 @@ export const ProjectsPageStyled = styled.div`
         }
 
         .tab-content {
-            padding: 24px 0;
+            padding: 48px 0;
 
             h5.title {
                 color: ${({ theme }) => theme.gray444};

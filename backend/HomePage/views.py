@@ -210,6 +210,33 @@ class HomeIntroUpdateAndDeleteView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
+class UpdateIntorIndex(APIView):
+    """
+    Retrieve, update or delete a Carousel instance.
+    """
+
+    def get_object(self, obj_id):
+        try:
+            return HomeIntro.objects.get(id=obj_id)
+        except (HomeIntro.DoesNotExist):
+            raise status.HTTP_400_BAD_REQUEST
+        
+    def put(self, request, *args, **kwargs):
+        obj_list = request.data
+        instances = []
+        user = request.user
+        for item in obj_list:
+            obj = self.get_object(obj_id=item["id"])
+            obj.updated_by = user.userName
+            obj.address_position = item["intro_position"]
+            obj.save()
+            instances.append(obj)
+
+        serializer = HomeIntroSerializer(instances,  many=True)
+        return Response({"intro": serializer.data}, status=status.HTTP_200_OK)
+
+
    
 class ClientHomeIntroView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
@@ -228,6 +255,25 @@ class ClientHomeIntroView(generics.CreateAPIView):
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = HomeIntroSerializer(snippet)
+        return Response({"intro": serializer.data}, status=status.HTTP_200_OK)
+
+class ClientHomeIntroListView(generics.CreateAPIView):
+    permission_classes = [permissions.AllowAny]
+    queryset = HomeIntro.objects.all()
+    serializer_class = HomeIntroSerializer
+
+    """
+    List all carousel, or create a new carousel.
+    """
+    def get_object(self, pageType):
+        try:
+            return HomeIntro.objects.filter(pageType=pageType)
+        except HomeIntro.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pageType, format=None):
+        snippet = self.get_object(pageType)
+        serializer = HomeIntroSerializer(snippet, many=True)
         return Response({"intro": serializer.data}, status=status.HTTP_200_OK)
     
 '''

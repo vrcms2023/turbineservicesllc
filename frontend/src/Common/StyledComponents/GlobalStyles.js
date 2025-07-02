@@ -143,7 +143,7 @@ body {
 
 // .ABriefAbout h3, .ABriefAbout .title { border-color: ${({ theme }) => theme.ABriefAboutTitleBorderColor}; }
 
-// .ABriefAbout h3::before, .ABriefAbout .title::before { border-color: ${({ theme}) => theme.ABriefAboutTitleBorderColor}; }
+// .ABriefAbout h3::before, .ABriefAbout .title::before { border-color: ${({ theme }) => theme.ABriefAboutTitleBorderColor}; }
 
 .homeServices {
     color:${({ theme }) => theme.secondaryColor}; 
@@ -348,26 +348,26 @@ body {
 
     input,
     textarea, select {
-      background-color: ${({theme}) => theme.inputBg};
-      border: 1px solid ${({theme}) => theme.inputBorder} !important;
+      background-color: ${({ theme }) => theme.inputBg};
+      border: 1px solid ${({ theme }) => theme.inputBorder} !important;
       padding: 10px !important;
       border-radius: 0px !important;
-      color: ${({theme}) => theme.gray444} !important;
+      color: ${({ theme }) => theme.gray444} !important;
       font-size: 14px !important;
     }
     input[type="checkbox"], input[type="radio"] {
       padding: 0;
       margin: 0;
       border-radius:3px !important;
-      background-color: ${({theme}) => theme.white};
+      background-color: ${({ theme }) => theme.white};
     }
 
     input:checked[type=checkbox] {
-      background-color: ${({theme}) => theme.primaryColor};
+      background-color: ${({ theme }) => theme.primaryColor};
     }
 
     .scrollTop {
-      background-color: ${({theme}) => theme.clientColor};
+      background-color: ${({ theme }) => theme.clientColor};
     }
 
     .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief, .projectsList {
@@ -384,11 +384,11 @@ body {
     .homeDynamciServices {
       background-image:url(${homeServicesBgImg});
       background-attachment: fixed;
-      // background-color: ${({theme}) => theme.clientColor};
+      // background-color: ${({ theme }) => theme.clientColor};
     }
 
     .homeProjectsContainer {
-      padding: 48px 0;
+      padding: 0;
       
       .cardItem:nth-child(1):after, .cardItem:nth-child(2):after, .cardItem:nth-child(3):after {
         content: "";
@@ -402,15 +402,15 @@ body {
       }
 
       .cardItem:nth-child(1):after {
-        background: ${({theme}) => theme.green};
+        background: ${({ theme }) => theme.green};
       }
 
       .cardItem:nth-child(2):after {
-        background: ${({theme}) => theme.orange};
+        background: ${({ theme }) => theme.orange};
       }
 
       .cardItem:nth-child(3):after {
-        background: ${({theme}) => theme.violet};
+        background: ${({ theme }) => theme.violet};
       }
 
       .cardItem {
@@ -439,24 +439,24 @@ body {
       }
 
       .card-body {
-        background-color: ${({theme}) => theme.white};
+        background-color: ${({ theme }) => theme.white};
         border-radius: 4px;
         padding: 48px 32px !important;
         z-index: 9;
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 
         p {
-          color: ${({theme}) => theme.gray444};
+          color: ${({ theme }) => theme.gray444};
         }
         h5 {
           letter-spacing: 0;
           text-transform: capitalize;
           font-weight: normal !important;
-          color: ${({theme}) => theme.gray444};
+          color: ${({ theme }) => theme.gray444};
         }
         h5::first-letter {
           font-weight: 500;
-          color: ${({theme}) => theme.clientSecondaryColor};
+          color: ${({ theme }) => theme.clientSecondaryColor};
         }
       }
     }

@@ -54,6 +54,7 @@ const NewsAndUpdates = () => {
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [showModal, setShowModal] = useState(false);
   const [obj, setObj] = useState({});
+  const [editCarousel, setEditCarousel] = useState({});
 
   const [paginationData, setPaginationData] = useState({});
   const [pageLoadResult, setPageloadResults] = useState(false);
@@ -261,6 +262,7 @@ const NewsAndUpdates = () => {
             <div className={`adminEditTestmonial selected`}>
               <AddEditAdminNews
                 editHandler={editHandler}
+                setEditCarousel={setEditCarousel}
                 componentType="addNews"
                 popupTitle="Add News"
                 imageGetURL="appNews/createAppNews/"

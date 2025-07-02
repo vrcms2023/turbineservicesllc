@@ -501,6 +501,13 @@ export const getTitleAndDescriptionFields = (pageType) => {
       value: pageType ? pageType : "",
       fieldName: "pageType",
     },
+    pageType: {
+      label: "intro_position",
+      readonly: true,
+      type: "hidden",
+      value: "",
+      fieldName: "intro_position",
+    },
   };
 };
 

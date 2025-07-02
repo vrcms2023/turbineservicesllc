@@ -1,4 +1,3 @@
-
 .homeServices .row.service:nth-child(odd) {
   flex-direction: row-reverse;
 }
@@ -38,11 +37,11 @@
   -o-object-position: center;
 }
 
-.homeServices .homeServiceDetails .description div,
+/* .homeServices .homeServiceDetails .description div,
 .homeServices .homeServiceDetails .description p,
 .homeServices .homeServiceDetails .description ul {
   display: none;
-}
+} */
 
 .homeServices .homeServiceDetails .description p:first-child {
   display: block;

@@ -5,7 +5,7 @@ import Button from "./Button";
 const RichTextView = ({
   data,
   className = "",
-  characterLimit = 240,
+  characterLimit = 400,
   showMorelink = true,
 }) => {
   if (!data) return;

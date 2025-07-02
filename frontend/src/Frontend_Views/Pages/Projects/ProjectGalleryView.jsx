@@ -32,10 +32,10 @@ const ProjectGalleryView = ({ projectImages, type }) => {
       {projectImages?.length > 0 ? (
         projectImages.map((project) => (
           <div
-            className={`gallery projectTabs p-5 ${
+            className={`gallery projectTabs ${
               type === "applicationgallery"
-                ? "p-5 py-3 border-bottom"
-                : "p-0 pt-4"
+                ? "px-5 py-3 border-bottom"
+                : "px-5"
             }`}
             key={project.id}
           >
@@ -44,7 +44,7 @@ const ProjectGalleryView = ({ projectImages, type }) => {
             ) : (
               ""
             )}
-            <p className="fs-6 text-dark text-start">
+            <p className="">
               {project.imageDescription}
             </p>
             <GalleryImgThumb

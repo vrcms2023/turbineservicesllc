@@ -325,7 +325,7 @@ const ProjectTabs = () => {
 
               <div className="tab-content" id="nav-tabContent">
                 <div
-                  className="tab-pane fade show active p-3"
+                  className="tab-pane fade show active"
                   id="nav-home"
                   role="tabpanel"
                   aria-labelledby="nav-home-tab"

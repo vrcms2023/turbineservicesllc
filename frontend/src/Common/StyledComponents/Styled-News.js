@@ -5,7 +5,7 @@ export const NewsStyled = styled.div`
     min-height: 380px;
     background-color: ${({ theme }) => theme.newsCardBg};
     color: ${({ theme }) => theme.newsCardTextColor};
-    // margin-bottom: 30px;
+    margin-bottom: 30px;
     border-radius: 8px;
     border: 1px solid ${({ theme }) => theme.grayddd};
     overflow: hidden;

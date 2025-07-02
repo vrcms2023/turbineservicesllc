@@ -351,6 +351,7 @@ const Services = () => {
                     <RichTextView
                       data={item.feature_description}
                       className={""}
+                      showMorelink={false}
                     />
                     {/*                  
                     <div

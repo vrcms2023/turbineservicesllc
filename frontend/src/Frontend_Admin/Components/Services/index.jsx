@@ -135,7 +135,14 @@ const AddService = ({
       onPageLoadAction.current = false;
       dispatch(getServiceValues());
     } else if (serviceMenu) {
-      setServiceList(serviceMenu);
+      if (serviceMenu.length > 0) {
+        const filterMenu = _.filter(serviceMenu, (item) => {
+          return item.services_page_title.toLowerCase() !== "add new menu";
+        });
+        setServiceList(filterMenu);
+      } else {
+        setServiceList(serviceMenu);
+      }
     }
     if (serviceMenu?.length === 0) {
       removeCookie("pageLoadServiceID");

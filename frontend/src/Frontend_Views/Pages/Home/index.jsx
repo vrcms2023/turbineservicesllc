@@ -73,6 +73,9 @@ import HomeDynamicServices from "../../Components/HomeDynamicServices";
 import { getObjectsByKey } from "../../../util/showHideComponentUtil";
 import { HomeClientList } from "../../Components/HomeClientList";
 import DownloadBrochures from "../../Components/DownloadBrochures";
+import ListofTitleandDescription from "../../../Frontend_Admin/Components/forms/ListofTitleandDescription";
+import { getHomeIntroList } from "../../../redux/homeintroList/homeIntroListActions";
+import TitleWithDescripton from "../../Components/TitleWithDescripton";
 
 const Home = () => {
   const editComponentObj = {
@@ -86,6 +89,7 @@ const Home = () => {
     product_development: false,
     product_distribution: false,
     iconsHelightsBrief: false,
+    projectbriefIntro: false,
     homeService0: false,
     homeService1: false,
     homeService2: false,
@@ -121,6 +125,7 @@ const Home = () => {
 
   const [showHideCompList, setShowHideCompList] = useState([]);
   const { serviceMenu } = useSelector((state) => state.serviceMenu);
+  const { homeIntroList } = useSelector((state) => state.homeIntroList);
 
   const dispatch = useDispatch();
 
@@ -139,6 +144,12 @@ const Home = () => {
       setNews([]);
     }
   };
+
+  useEffect(() => {
+    if (homeIntroList.length == 0) {
+      dispatch(getHomeIntroList());
+    }
+  }, [homeIntroList?.length]);
 
   useEffect(() => {
     const getHomePageCategoryList = async () => {
@@ -396,8 +407,52 @@ const Home = () => {
                 id={showHideCompList?.hprinfra?.id}
               />
             )}
-            {showHideCompList?.hprinfra?.visibility && <HomeProjects />}
-            </div>
+            {showHideCompList?.hprinfra?.visibility && (
+              <>
+                <div>
+                  <div className="container">
+                    <div className="row">
+                      <div className="breiftopMargin">
+                        {isAdmin && hasPermission && (
+                          <EditIcon
+                            editHandler={() =>
+                              editHandler("projectbriefIntro", true)
+                            }
+                          />
+                        )}
+
+                        <BriefIntroFrontend
+                          introState={componentEdit.projectbriefIntro}
+                          linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
+                          linkLabel="Read More"
+                          moreLink=""
+                          introTitleCss="fs-3 text-center mb-4"
+                          introSubTitleCss="fw-medium text-muted text-center"
+                          introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
+                          detailsContainerCss="col-md-12 py-3"
+                          anchorContainer="d-flex justify-content-center align-items-center mt-4"
+                          anchersvgColor="#17427C"
+                          pageType={`${pageType}projectbriefIntro`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {componentEdit.projectbriefIntro && (
+                    <div className={`adminEditTestmonial selected `}>
+                      <BriefIntroAdmin
+                        editHandler={editHandler}
+                        componentType="projectbriefIntro"
+                        popupTitle="Brief Intro Banner"
+                        pageType={`${pageType}projectbriefIntro`}
+                      />
+                    </div>
+                  )}
+                </div>
+                <HomeProjects />
+              </>
+            )}
+          </div>
         </div>
         {/* ==== PROJECT + BRIEF INTRODUCTION END ===================================================================================================== */}
 
@@ -475,7 +530,7 @@ const Home = () => {
                       </div>
                     ))}
                   </div>
-                  </div>
+                </div>
               </div>
             </div>
           )}
@@ -515,33 +570,33 @@ const Home = () => {
           {/* INTRODUCTION COMPONENT */}
 
           <div className="container-fluid homeServicesBrief">
-          <div className="container">
-            <div className="row">
-              <div className="breiftopMargin">
-                {isAdmin && hasPermission && (
-                  <EditIcon
-                    editHandler={() =>
-                      editHandler("homeServicebriefIntro", true)
-                    }
-                  />
-                )}
+            <div className="container">
+              <div className="row">
+                <div className="breiftopMargin">
+                  {isAdmin && hasPermission && (
+                    <EditIcon
+                      editHandler={() =>
+                        editHandler("homeServicebriefIntro", true)
+                      }
+                    />
+                  )}
 
-                <BriefIntroFrontend
-                  introState={componentEdit.homeServicebriefIntro}
-                  linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
-                  linkLabel="Read More"
-                  moreLink=""
-                  introTitleCss="fs-3 text-center mb-4"
-                  introSubTitleCss="fw-medium text-muted text-center"
-                  introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                  detailsContainerCss="col-md-12 py-3"
-                  anchorContainer="d-flex justify-content-center align-items-center mt-4"
-                  anchersvgColor="#17427C"
-                  pageType="HomeserviceBrief"
-                />
+                  <BriefIntroFrontend
+                    introState={componentEdit.homeServicebriefIntro}
+                    linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
+                    linkLabel="Read More"
+                    moreLink=""
+                    introTitleCss="fs-3 text-center mb-4"
+                    introSubTitleCss="fw-medium text-muted text-center"
+                    introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
+                    detailsContainerCss="col-md-12 py-3"
+                    anchorContainer="d-flex justify-content-center align-items-center mt-4"
+                    anchersvgColor="#17427C"
+                    pageType="HomeserviceBrief"
+                  />
+                </div>
               </div>
             </div>
-          </div>
           </div>
 
           {componentEdit.homeServicebriefIntro && (
@@ -595,35 +650,18 @@ const Home = () => {
                       />
                     )}
 
-                    {testimonis.length < 1 ? (
-                      (testimonis.length, "No Testimonials Found")
-                    ) : testimonis.length === 1 ? (
-                      <h4>Please add 2 or more testimonials.</h4>
-                    ) : testimonis.length > 1 ? (
-                      <Testimonials testimonis={testimonis} />
-                    ) : (
-                      ""
+                    {homeIntroList.length > 1 && (
+                      <TitleWithDescripton list={homeIntroList} />
                     )}
                   </div>
                   {componentEdit.testmonial && (
                     <div className={`adminEditTestmonial selected `}>
-                      <AdminBanner
+                      <ListofTitleandDescription
                         editHandler={editHandler}
                         componentType="testmonial"
-                        popupTitle={`Testmonial Banner`}
-                        getImageListURL="testimonials/clientTestimonials/"
-                        deleteImageURL="testimonials/updateTestimonials/"
-                        imagePostURL="testimonials/createTestimonials/"
-                        imageUpdateURL="testimonials/updateTestimonials/"
-                        imageIndexURL="testimonials/updateTestimonialsindex/"
-                        imageLabel="Add your Image"
-                        titleTitle="Testmonial Name"
-                        descriptionTitle="Testimonial Writeup "
-                        showDescription={false}
-                        showExtraFormFields={getTestimonialsFields(
-                          "testmonial"
-                        )}
-                        dimensions={imageDimensionsJson("testimonial")}
+                        popupTitle={`Corporate Training`}
+                        homeintros={homeIntroList}
+                        pageType={`HomeCorporate`}
                       />
                     </div>
                   )}

@@ -178,7 +178,8 @@ export const AdminNews = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteSelectedNews}
-            message={`deleting the ${news.newstitle} news?`}
+            // message={`deleting the ${news.newstitle} news?`}
+            message={<>Confirm deletion of  <span>{news.newstitle}</span> news?</>}
           />
         );
       },

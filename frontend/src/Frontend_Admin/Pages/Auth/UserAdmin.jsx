@@ -55,7 +55,8 @@ const UserAdmin = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteUser}
-            message={`you want to delete the ${user.userName}`}
+            // message={`you want to delete the ${user.userName}`}
+            message={<>Confirm deletion of  <span>{user.userName}</span> ?</>}
           />
         );
       },

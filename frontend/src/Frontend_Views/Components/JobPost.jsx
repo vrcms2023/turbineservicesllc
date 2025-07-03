@@ -88,7 +88,8 @@ const JobPost = ({
           <DeleteDialog
             onClose={onClose}
             callback={deleteImageByID}
-            message={`deleting the ${title} image?`}
+            // message={`deleting the ${title} image?`}
+            message={<>Confirm deletion of <span>{title}</span> News?</>}
           />
         );
       },

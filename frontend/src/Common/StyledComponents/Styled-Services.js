@@ -21,7 +21,7 @@ export const ServicesStyled = styled.div`
 
     }
       
-      .normalCSS, .flipCSS {
+    .normalCSS, .flipCSS {
       // padding: 24px 10px;
       margin-top: 48px !important;
       border: 1px solid ${({ theme }) => theme.verylightgray} !important;

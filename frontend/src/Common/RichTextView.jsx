@@ -33,11 +33,13 @@ const RichTextView = ({
         </div>
       </div>
       {showMorelink && data.length > characterLimit && (
+        <div className="d-flex justify-content-center align-items-center">
         <Button
-          label={showFullContent ? "Less" : "More..."}
+          label={showFullContent ? " LESS ⇡" : " MORE ⇣"}
           handlerChange={toggleShowContent}
-          cssClass="btn moreLink float-end p-0"
+          cssClass="btn moreLink p-0"
         />
+        </div>
       )}
     </div>
   );

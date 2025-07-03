@@ -197,7 +197,8 @@ const AdvertisementsAdminSettings = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteMenuItemByID}
-            message={`you want to delete the ${title} Advertisement`}
+            // message={`you want to delete the ${title} Advertisement`}
+            message={<>Confirm deletion of  <span>{title}</span> Advertisement?</>}
           />
         );
       },

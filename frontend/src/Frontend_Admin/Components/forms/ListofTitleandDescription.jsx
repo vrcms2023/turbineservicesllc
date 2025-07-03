@@ -82,7 +82,8 @@ const ListofTitleandDescription = ({
           <DeleteDialog
             onClose={onClose}
             callback={deleteImageByID}
-            message={`deleting the ${name} image?`}
+            // message={`deleting the ${name} image?`}
+            message={<>Confirm deletion of  <span>{name}</span> image?</>}
           />
         );
       },

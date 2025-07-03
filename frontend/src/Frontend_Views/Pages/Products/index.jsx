@@ -163,7 +163,8 @@ const ProductsPage = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteSection}
-            message={`Do you want to delete the ${selectedCategory?.category_name} ?`}
+            // message={`Do you want to delete the ${selectedCategory?.category_name} ?`}
+            message={<>Confirm deletion of <span>{selectedCategory?.category_name}</span> ?</>}
           />
         );
       },

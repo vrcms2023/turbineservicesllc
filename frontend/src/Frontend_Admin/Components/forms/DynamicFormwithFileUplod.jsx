@@ -113,7 +113,8 @@ export default function DynamicFormwithFileUplod({
           <DeleteDialog
             onClose={onClose}
             callback={deleteImageByID}
-            message={`deleting the ${category_name} image?`}
+            // message={`deleting the ${category_name} image?`}
+            message={<>Confirm deletion of  <span>{category_name}</span> image?</>}
           />
         );
       },

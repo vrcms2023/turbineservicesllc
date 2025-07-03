@@ -48,6 +48,8 @@ import {
 } from "../../../redux/showHideComponent/showHideActions";
 import ShowHideToggle from "../../../Common/ShowHideToggle";
 
+import "./TestimonialsList.css"
+
 const TestimonialsList = () => {
   const editComponentObj = {
     banner: false,
@@ -140,7 +142,7 @@ const TestimonialsList = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteSection}
-            message={`deleting the ${name} Service?`}
+            message={<>Confirm deletion of <span>{name}</span> Service?</>}
           />
         );
       },
@@ -419,7 +421,7 @@ const TestimonialsList = () => {
                                     <EditIcon
                                       icon={"fa-trash-o"}
                                       iconCss={"text-danger fs-4"}
-                                      cssClasses={""}
+                                      cssClasses={"position-absolute deleteIcon"}
                                       editHandler={() =>
                                         deleteAboutSection(item)
                                       }
@@ -435,11 +437,11 @@ const TestimonialsList = () => {
                                     </Link> */}
                                   </>
                                 )}
-                                <div className="col-12 col-lg-10 p-3 p-md-4 py-md-4 d-flex justify-content-center align-items-start flex-column">
+                                <div className="col-12 col-lg-9 p-3 p-md-4 py-md-4 d-flex justify-content-center align-items-start flex-column">
                                   {item.testimonial_title ? (
                                     <Title
                                       title={item.testimonial_title}
-                                      cssClass="fs-1 fw-bold mb-1"
+                                      cssClass="fs-3 mb-1"
                                     />
                                   ) : (
                                     ""
@@ -455,8 +457,8 @@ const TestimonialsList = () => {
                                   /> */}
                                 </div>
 
-                                <div className="col-lg-2 d-none d-lg-block h-100">
-                                  <div className="h-100 p-3 p-md-5 py-md-4 testimonialAvatar ">
+                                <div className="col-lg-3 d-none d-lg-block text-center">
+                                  <div className="p-3 py-md-4 testimonialAvatar ">
                                     <Link
                                       to=""
                                       className="text-decoration-underline"
@@ -465,7 +467,7 @@ const TestimonialsList = () => {
                                       <img
                                         src={getImagePath(item.path)}
                                         alt=""
-                                        className="img-fluid rounded-circle border border-3 border-light shadow-lg img-thumbnail "
+                                        className="img-fluid rounded-circle shadow-lg"
                                       />
                                     </Link>
                                   </div>
@@ -525,6 +527,7 @@ const TestimonialsList = () => {
           privacy={""}
           closeModel={closeModel}
           flag="footer"
+          cssClass="TestimonialModal"
         />
       )}
 

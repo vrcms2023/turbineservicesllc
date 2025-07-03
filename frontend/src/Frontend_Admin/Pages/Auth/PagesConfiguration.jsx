@@ -108,7 +108,8 @@ const PagesConfiguration = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteMenuItemByID}
-            message={`you want to delete the ${title} Menu`}
+            // message={`you want to delete the ${title} Menu`}
+            message={<>Confirm deletion of  <span>{title}</span> Menu?</>}
           />
         );
       },

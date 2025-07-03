@@ -196,7 +196,8 @@ export const AdminTestimonial = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteSelectedNews}
-            message={`deleting the ${testimonial.title} testimonial?`}
+            // message={`deleting the ${testimonial.title} testimonial?`}
+            message={<>Confirm deletion of  <span>{testimonial.title}</span> testimonial?</>}
           />
         );
       },

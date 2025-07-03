@@ -112,7 +112,8 @@ const ProjectCategory = () => {
               title={title}
               showConfirmButotns={false}
               onClose={onClose}
-              message={`category has ${isProjectsAvailable.length} projects, cannot delete`}
+              // message={`category has ${isProjectsAvailable.length} projects, cannot delete`}
+              message={<>Category has <span>{isProjectsAvailable.length}</span> projects, cannot delete</>}
             />
           );
         },
@@ -135,7 +136,8 @@ const ProjectCategory = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteMenuItemByID}
-            message={`you want to delete the ${title} category`}
+            // message={`you want to delete the ${title} category`}
+            message={<>Do you wish to delete the <span>{title}</span> category?</>}
           />
         );
       },

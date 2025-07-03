@@ -106,7 +106,8 @@ const UploadBrochures = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteMenuItemByID}
-            message={`you want to delete the ${title} Brochures`}
+            // message={`you want to delete the ${title} Brochures`}
+            message={<>Confirm deletion of  <span>{title}</span> Brochures?</>}
           />
         );
       },

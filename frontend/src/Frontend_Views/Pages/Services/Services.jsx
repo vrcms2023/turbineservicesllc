@@ -137,7 +137,8 @@ const Services = () => {
           <DeleteDialog
             onClose={onClose}
             callback={deleteSelectedSection}
-            message={`deleting the ${name} Service?`}
+            // message={`deleting the ${name} Service?`}
+            message={<>Confirm deletion of <span>{name}</span> Service?</>}
           />
         );
       },

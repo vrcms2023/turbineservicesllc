@@ -119,6 +119,28 @@ body {
   color:${({ theme }) => theme.secondaryColor} !important;
 }
 
+.btn.moreLink {
+    float: left !important;
+    font-size: .8rem;
+    margin-top: 12px;
+    letter-spacing: .1rem;
+
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-style: dashed;
+    text-decoration-color: rgba(109, 47, 155, .3) !important;
+    transition: 
+        color 0.3s ease,
+        text-decoration-color 0.3s ease,
+        margin-top 0.3s ease;
+
+    &:hover {
+        color: ${({ theme }) => theme.footerLinkHoverColor};
+        text-decoration-color: rgba(109, 47, 155, 1) !important;
+        margin-top: 1.2rem;
+    }
+}
+
 .carousel-caption {
     h1 { color:${({ theme }) => theme.carouselSlideTitleColor};     }
     p { color:${({ theme }) => theme.carouselSlideCaptionColor}; }
@@ -472,5 +494,28 @@ body {
 
     .modal {
       z-index: 99999 !important;
+      .modal-header {
+        padding: .7rem 1rem !important;
+      }
+      .modal-header .modal-title {
+        color: ${({ theme }) => theme.gray444} !important;
+        font-weight: 600 !important;
+        font-size: 1.4rem !important;
+      }
+
+      .modal-body {
+        padding: 1.5rem 2rem !important;
+      }
     }
+
+    .quill {
+      background: none !important;
+
+      .ql-editor {
+        padding: 1rem 0 0px;
+        color: ${({ theme }) => theme.gray444} !important;
+      }
+    }
+
+    
 `;

@@ -12,13 +12,13 @@ django-templated-mail==1.1.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
 djoser==2.2.0
-et-xmlfile @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/et_xmlfile_1699245044998/work
+et-xmlfile==2.0.0
 filelock==3.12.3
 idna==3.4
 libmagic==1.0
 mysqlclient==2.2.6
 oauthlib==3.2.2
-openpyxl @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_96hhik4ygv/croot/openpyxl_1721752931204/work
+openpyxl==3.1.5
 Pillow==10.0.1
 platformdirs==3.10.0
 pycparser==2.21

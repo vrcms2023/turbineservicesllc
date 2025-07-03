@@ -244,12 +244,10 @@ const Header = () => {
   // }
   return (
     <StyledMenu>
-      {componentEdit.menu ? (
+      {componentEdit.menu && (
         <div className="adminEditTestmonial">
           <LogoForm editHandler={editHandler} />
         </div>
-      ) : (
-        ""
       )}
       <nav
         className={

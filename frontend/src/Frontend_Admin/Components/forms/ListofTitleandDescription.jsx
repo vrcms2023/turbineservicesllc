@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { getCookie } from "../../../util/cookieUtil";
 import { axiosServiceApi } from "../../../util/axiosUtil";
 import EditAdminPopupHeader from "../EditAdminPopupHeader";
-import { InputField, InputFields, RichTextInputEditor } from "./FormFields";
+import { InputField, InputFields, RichTextInputEditor_V2 } from "./FormFields";
 import Button from "../../../Common/Button";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -32,8 +32,9 @@ const ListofTitleandDescription = ({
 }) => {
   const { homeIntroList } = useSelector((state) => state.homeIntroList);
   const [userName, setUserName] = useState("");
-  const [description, setDescription] = useState("");
+
   const {
+    control,
     register,
     reset,
     handleSubmit,
@@ -52,12 +53,13 @@ const ListofTitleandDescription = ({
     setUserName(getCookie("userName"));
   }, []);
 
-  const handleCarouselEdit = (event, address) => {
+  const handleCarouselEdit = (event, selectedItem) => {
     event.preventDefault();
 
-    const fieldKeys = Object.keys(address);
+    const fieldKeys = Object.keys(selectedItem);
+
     fieldKeys.forEach((item) => {
-      setValue(item, address[item]);
+      setValue(item, selectedItem[item]);
     });
   };
 
@@ -96,7 +98,7 @@ const ListofTitleandDescription = ({
   const onSubmit = async (data) => {
     let response = "";
     data["pageType"] = pageType;
-    data["intro_desc"] = description;
+
     try {
       if (data.id) {
         data["updated_by"] = userName;
@@ -115,12 +117,12 @@ const ListofTitleandDescription = ({
 
       if (response.status === 200 || response.status === 201) {
         reset();
-        toast.success(`Address Values are updated successfully `);
+        toast.success(`Intro Values are updated successfully `);
         updateAddressList(response.data.intro);
         dispatch(getHomeIntroList());
       }
     } catch (error) {
-      console.log("unable to save the footer form");
+      console.log("unable to save the Intro form");
     }
   };
 
@@ -168,7 +170,7 @@ const ListofTitleandDescription = ({
         return response.data.homeIntroList;
       }
     } catch (error) {
-      console.log("unable to save the footer form");
+      console.log("unable to save the Intro form");
     }
   };
 
@@ -232,12 +234,13 @@ const ListofTitleandDescription = ({
                   error={errors?.intro_title?.message}
                   isRequired={true}
                 />
-
-                <RichTextInputEditor
+                <RichTextInputEditor_V2
                   label={"Description"}
-                  editorSetState={setDescription}
-                  initialText={""}
+                  Controller={Controller}
+                  name="intro_desc"
+                  control={control}
                 />
+
                 <InputField
                   label="More links"
                   fieldName="intro_morelink"

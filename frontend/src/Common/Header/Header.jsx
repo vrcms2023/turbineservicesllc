@@ -31,25 +31,16 @@ import {
 import { getServiceValues } from "../../redux/services/serviceActions";
 import { isAppAccess } from "../../util/permissions";
 
-// import Logo from "../../Images/logo.png";
-import headersvgLogo from "../../Images/headerLogo.svg";
-import LogoForm from "../../Frontend_Admin/Components/forms/Logo";
 import {
   updatedMenulist,
   updatedMenuloadedStatus,
 } from "../../redux/auth/authSlice";
-import {
-  axiosFileUploadServiceApi,
-  axiosServiceApi,
-} from "../../util/axiosUtil";
+import { axiosServiceApi } from "../../util/axiosUtil";
 import { toast } from "react-toastify";
 import Menudata from "../../data/Menu.json";
 import ImageInputsForm from "../../Frontend_Admin/Components/forms/ImgTitleIntoForm";
 import EditIcon from "../AdminEditIcon";
-import {
-  getLogoFormFields,
-  imageDimensionsJson,
-} from "../../util/dynamicFormFields";
+import { getLogoFormFields } from "../../util/dynamicFormFields";
 import ApplicationLogo from "../Logo/ApplicationLogo";
 
 const Header = () => {

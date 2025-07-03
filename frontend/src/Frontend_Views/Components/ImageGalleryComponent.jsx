@@ -3,6 +3,7 @@ import { getImagePath } from "../../util/commonUtil";
 
 import ModelBg from "../../Common/ModelBg";
 import DynamicCarousel from "./DynamicCarousel";
+import Title from "../../Common/Title";
 
 const ImageGalleryComponent = ({ pageType, componentEdit, imageGallery }) => {
   //const [show, setShow] = useState(false);
@@ -45,15 +46,16 @@ const ImageGalleryComponent = ({ pageType, componentEdit, imageGallery }) => {
   return (
     <div>
       <div className="row gallery">
-        <div className="col-md-10 offset-md-1">
-          <div className="container">
+        <div className="">
+          <div className="container-fluid">
             <div className="text-center my-5">
-              <span className="fs-1">View Gallery</span>
+              {/* <span className="fs-1">View Gallery</span> */}
+              <Title title="View Gallery" cssClass={"fs-1"}/>
             </div>
             <div className="row">
               {imageGallery?.length > 0 &&
                 imageGallery?.map((item, index) => (
-                  <div className="col-sm-6 col-md-4 mb-4" key={item.id}>
+                  <div className="col-sm-6 col-md-2 mb-4" key={item.id}>
                     <img
                       src={getImagePath(item.path)}
                       alt={item.alternitivetext}

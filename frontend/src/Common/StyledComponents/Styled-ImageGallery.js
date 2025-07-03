@@ -4,9 +4,10 @@ export const ImageGalleryStyled = styled.div`
 
   .gallery img {
     cursor: pointer;
-    border: 3px solid ${({ theme }) => theme.gray};
-    border-radius: 15px;
+    border: 3px solid ${({ theme }) => theme.grayddd};
+    border-radius: 4px;
     height: 200px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     filter: gray; /* IE6-9 */
   -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
   filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
@@ -16,7 +17,7 @@ export const ImageGalleryStyled = styled.div`
     &:hover {
         -webkit-filter: grayscale(0);
         filter: none;
-        border: 3px solid ${({ theme }) => theme.black};
+        border: 6px solid ${({ theme }) => theme.grayddd};
     }
   }
 

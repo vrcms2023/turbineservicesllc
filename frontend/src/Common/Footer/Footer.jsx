@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-
 // Components
 import FooterAdminFeilds from "../../Frontend_Admin/Components/forms/FooterInputs";
 import ContactInputs from "../../Frontend_Admin/Components/forms/ContactInputs";
@@ -29,7 +28,7 @@ import Button from "../Button";
 import DownloadBrochures from "../../Frontend_Views/Components/DownloadBrochures";
 import BriefIntroFrontend from "../BriefIntro";
 import BriefIntroAdmin from "../../Frontend_Admin/Components/BriefIntro";
-
+import ApplicationLogo from "../Logo/ApplicationLogo";
 
 const Footer = () => {
   const editComponentObj = {
@@ -38,6 +37,7 @@ const Footer = () => {
     contact: false,
     social: false,
     footerAboutBrief: false,
+    menu: false,
   };
 
   const pageType = "footer";
@@ -59,8 +59,6 @@ const Footer = () => {
   const date = new Date();
   const fullYear = date.getFullYear();
 
-
-  
   // console.log(footerData)
   // console.log(addressList, "addressList")
 
@@ -135,54 +133,60 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4 col-lg-3 d-flex align-items-center">
-              <img
+              <ApplicationLogo
+                getBannerAPIURL={`banner/clientBannerIntro/header-logo/`}
+                bannerState={componentEdit.menu}
+                imageCss="footerLogo"
+              />
+              {/* <img
                 src={svgLogo}
                 width="90%"
                 alt="ICONS ENGINEERING WITH EXCELLENCE"
                 className="footerLogo"
-              />
+              /> */}
             </div>
             <div className="col-md-8 col-lg-9 d-flex align-items-center">
               <div className="description m-0 text-center text-md-start p-4 pb-0 p-md-0">
                 <div>
-              <div className="container">
-                <div className="row">
-                  <div className="breiftopMargin">
-                    {isAdmin && hasPermission && (
-                      <EditIcon
-                        editHandler={() => editHandler("footerAboutBrief", true)}
-                      />
-                    )}
+                  <div className="container">
+                    <div className="row">
+                      <div className="breiftopMargin">
+                        {isAdmin && hasPermission && (
+                          <EditIcon
+                            editHandler={() =>
+                              editHandler("footerAboutBrief", true)
+                            }
+                          />
+                        )}
 
-                    <BriefIntroFrontend
-                      introState={componentEdit.footerAboutBrief}
-                      linkCss="btn btn-primary d-flex justify-content-center align-items-center gap-3"
-                      linkLabel="Read More"
-                      moreLink=""
-                      introTitleCss="fs-3 text-left mb-2"
-                      introSubTitleCss="fw-medium text-muted text-left mb-3"
-                      introDecTitleCss="fs-6 fw-normal  text-left lh-6"
-                      detailsContainerCss="col-md-12 py-3"
-                      anchorContainer="d-flex justify-content-left align-items-center mt-4"
-                      anchersvgColor="#17427C"
-                      pageType={pageType}
-                    />
+                        <BriefIntroFrontend
+                          introState={componentEdit.footerAboutBrief}
+                          linkCss="btn btn-primary d-flex justify-content-center align-items-center gap-3"
+                          linkLabel="Read More"
+                          moreLink=""
+                          introTitleCss="fs-3 text-left mb-2"
+                          introSubTitleCss="fw-medium text-muted text-left mb-3"
+                          introDecTitleCss="fs-6 fw-normal  text-left lh-6"
+                          detailsContainerCss="col-md-12 py-3"
+                          anchorContainer="d-flex justify-content-left align-items-center mt-4"
+                          anchersvgColor="#17427C"
+                          pageType={pageType}
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              {componentEdit.footerAboutBrief && (
-                <div className={`adminEditTestmonial selected `}>
-                  <BriefIntroAdmin
-                    editHandler={editHandler}
-                    componentType="footerAboutBrief"
-                    popupTitle="Footer Company Brief"
-                    pageType={pageType}
-                  />
+                  {componentEdit.footerAboutBrief && (
+                    <div className={`adminEditTestmonial selected `}>
+                      <BriefIntroAdmin
+                        editHandler={editHandler}
+                        componentType="footerAboutBrief"
+                        popupTitle="Footer Company Brief"
+                        pageType={pageType}
+                      />
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-                
               </div>
             </div>
           </div>
@@ -380,15 +384,14 @@ const Footer = () => {
               ) : (
                 ""
               )}
- 
+
               <div className="d-flex flex-column justify-content-center align-items-center text-center justify-content-md-start align-items-md-start text-md-start mt-4">
-              <Title title="Downloads" />
+                <Title title="Downloads" />
                 {/* <Button label="Download Brochure" cssClass="btn btn-primary" />  */}
                 <div>
                   <DownloadBrochures />
                 </div>
               </div>
-
             </div>
             <hr className="d-block d-md-none my-4" />
             {
@@ -509,7 +512,8 @@ const Footer = () => {
             <div className="row">
               <div className="">
                 <div className="d-flex flex-column flex-md-row justify-content-between align-items-center  gap-2">
-                  &copy; {fullYear} - {addressList[0]?.company_name}. All rights reserved
+                  &copy; {fullYear} - {addressList[0]?.company_name}. All rights
+                  reserved
                   {/* <span className="d-inline-block  d-none d-md-block">|</span> */}
                   <div className="d-flex gap-2">
                     <Link

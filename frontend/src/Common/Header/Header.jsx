@@ -44,13 +44,20 @@ import {
 } from "../../util/axiosUtil";
 import { toast } from "react-toastify";
 import Menudata from "../../data/Menu.json";
+import ImageInputsForm from "../../Frontend_Admin/Components/forms/ImgTitleIntoForm";
+import EditIcon from "../AdminEditIcon";
+import {
+  getLogoFormFields,
+  imageDimensionsJson,
+} from "../../util/dynamicFormFields";
+import ApplicationLogo from "../Logo/ApplicationLogo";
 
 const Header = () => {
   const editComponentObj = {
     logo: false,
     menu: false,
   };
-  const { isAdmin } = useAdminLoginStatus();
+  const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
   const [show, setShow] = useState(false);
   const { userInfo, menuList, menuRawList, permissions, menuloadedStatus } =
@@ -60,6 +67,7 @@ const Header = () => {
   const onPageLoadServiceAction = useRef(true);
   const [rootServiceMenu, setRootServiceMenu] = useState({});
   const navigate = useNavigate();
+  const pageType = "header";
 
   const pathList = [
     "/login",
@@ -244,11 +252,6 @@ const Header = () => {
   // }
   return (
     <StyledMenu>
-      {componentEdit.menu && (
-        <div className="adminEditTestmonial">
-          <LogoForm editHandler={editHandler} />
-        </div>
-      )}
       <nav
         className={
           isAdmin
@@ -257,9 +260,31 @@ const Header = () => {
         }
       >
         <div className="container">
+          <div className="position-relative">
+            {isAdmin && hasPermission && (
+              <EditIcon editHandler={() => editHandler("menu", true)} />
+            )}
+            {componentEdit.menu && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="menu"
+                  popupTitle="Application Logo"
+                  pageType={`${pageType}-logo`}
+                  imageLabel="Application Logo"
+                  category="Logo"
+                  showDescription={false}
+                  validTypes={"image/svg+xml"}
+                  showExtraFormFields={getLogoFormFields(`${pageType}-logo`)}
+                />
+              </div>
+            )}
+          </div>
           <Link to={isHideMenu ? "#" : "/"} className="navbar-brand logo">
-            {/* <img src={Logo} alt="" /> */}
-            <img src={headersvgLogo} alt="" />
+            <ApplicationLogo
+              getBannerAPIURL={`banner/clientBannerIntro/${pageType}-logo/`}
+              bannerState={componentEdit.menu}
+            />
           </Link>
 
           {!isHideBurgetIcon && !showAddMenuMessage && (

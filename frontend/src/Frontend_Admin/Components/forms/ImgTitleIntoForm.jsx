@@ -80,7 +80,7 @@ const ImageInputsForm = ({
             onClose={onClose}
             callback={deleteImageByID}
             // message={`deleting the ${name} image?`}
-            message={<>Confirm deletion of  <span>{name}</span> image?</>}
+            message={`Confirm deletion of  <span>${name}</span> image?`}
           />
         );
       },

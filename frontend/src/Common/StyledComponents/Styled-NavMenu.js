@@ -12,6 +12,12 @@ export const StyledMenu = styled.menu`
     padding: 0;
     z-index: 99997;
 
+    .logo {
+      img {
+        height: 90px;
+      }
+    }
+
   // .navbar-brand {
   //   img {
   //     width: 85%;

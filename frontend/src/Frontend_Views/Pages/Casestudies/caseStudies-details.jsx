@@ -116,7 +116,7 @@ const CaseStudiesDetails = () => {
             <Ancher
               AncherLabel="Back"
               AncherClass="btn btn-secondary d-flex gap-2 justify-content-center align-items-center float-end fw-bold"
-              Ancherpath={`/clients/casestudies/`}
+              Ancherpath={`/casestudies/`}
               AnchersvgColor=""
             />
           </div>

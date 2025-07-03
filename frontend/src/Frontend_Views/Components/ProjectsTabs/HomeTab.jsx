@@ -46,7 +46,9 @@ const HomeTab = ({ project, thumbImgs, pdfs }) => {
         <Title title={aboutstitle} cssClass="title" />
         <Title title={aboutussubtitle} cssClass="subTitle" />
         <div className="py-3">{description}</div>
-        <div className="pdfDownloadsAsSelectBox">
+
+        {pdfs.length > 0 && 
+          <div className="pdfDownloadsAsSelectBox">
           PDF's Download <i
                   class="fa fa-download  fs-5 ms-2"
                   aria-hidden="true"
@@ -83,6 +85,8 @@ const HomeTab = ({ project, thumbImgs, pdfs }) => {
               : null}
           </div>
         </div>
+        }
+        
         
 
         <div className="d-flex justify-content-left my-2 clearfix projectHomeImage">

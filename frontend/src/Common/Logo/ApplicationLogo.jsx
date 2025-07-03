@@ -7,7 +7,6 @@ import { getDummyImage, getImagePath } from "../../util/commonUtil";
 import SkeletonImage from "../Skeltons/SkeletonImage";
 
 // Styles
-import { PageBannerStyled } from "../StyledComponents/Styled-PageBanner";
 import headersvgLogo from "../../Images/headerLogo.svg";
 
 const ApplicationLogo = ({
@@ -37,7 +36,7 @@ const ApplicationLogo = ({
   }, [bannerState, getBannerAPIURL]);
 
   return (
-    <PageBannerStyled>
+    <>
       {bannerdata.path ? (
         <img
           src={bannerdata?.path ? getImagePath(bannerdata.path) : headersvgLogo}
@@ -47,7 +46,7 @@ const ApplicationLogo = ({
       ) : (
         <SkeletonImage />
       )}
-    </PageBannerStyled>
+    </>
   );
 };
 export default ApplicationLogo;

@@ -255,7 +255,7 @@ const Header = () => {
             {isAdmin && hasPermission && (
               <EditIcon editHandler={() => editHandler("menu", true)} />
             )}
-            {componentEdit.menu && (
+            {/* {componentEdit.menu && (
               <div className={`adminEditTestmonial selected `}>
                 <ImageInputsForm
                   editHandler={editHandler}
@@ -269,7 +269,7 @@ const Header = () => {
                   showExtraFormFields={getLogoFormFields(`${pageType}-logo`)}
                 />
               </div>
-            )}
+            )} */}
           </div>
           <Link to={isHideMenu ? "#" : "/"} className="navbar-brand logo">
             <ApplicationLogo
@@ -316,6 +316,23 @@ const Header = () => {
           </div>
         </div>
       </nav>
+
+      {/* Edit Logo Code */}
+      {componentEdit.menu && (
+        <div className={`adminEditTestmonial selected `}>
+          <ImageInputsForm
+            editHandler={editHandler}
+            componentType="menu"
+            popupTitle="Application Logo"
+            pageType={`${pageType}-logo`}
+            imageLabel="Application Logo"
+            category="Logo"
+            showDescription={false}
+            validTypes={"image/svg+xml"}
+            showExtraFormFields={getLogoFormFields(`${pageType}-logo`)}
+          />
+        </div>
+      )}
       {show && <ModalBg />}
     </StyledMenu>
   );

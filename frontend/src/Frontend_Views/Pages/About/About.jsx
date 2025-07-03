@@ -156,7 +156,11 @@ const About = () => {
             onClose={onClose}
             callback={deleteSection}
             // message={`deleting the ${name} Service?`}
-            message={<>Confirm deletion of <span>{name}</span> service?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> service?
+              </>
+            }
           />
         );
       },
@@ -188,10 +192,6 @@ const About = () => {
               {isAdmin && hasPermission && (
                 <EditIcon editHandler={() => editHandler("banner", true)} />
               )}
-              {/* <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        /> */}
               <Banner
                 getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
                 bannerState={componentEdit.banner}

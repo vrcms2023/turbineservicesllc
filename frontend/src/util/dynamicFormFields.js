@@ -686,6 +686,41 @@ export const imageDimensionsJson = (component) => {
       w: "300px",
       h: "200px",
     },
+    logo: {
+      w: "300px",
+      h: "200px",
+    },
   };
   return imgDimension[component];
+};
+
+export const getLogoFormFields = (pageType) => {
+  return {
+    banner_title: {
+      readonly: true,
+      type: "hidden",
+      fieldName: "banner_title",
+    },
+    banner_subTitle: {
+      readonly: true,
+      type: "hidden",
+      fieldName: "banner_subTitle",
+    },
+    banner_descripiton: {
+      readonly: true,
+      type: "hidden",
+      fieldName: "banner_descripiton",
+    },
+    moreLink: {
+      readonly: true,
+      type: "hidden",
+      fieldName: "moreLink",
+    },
+    pageType: {
+      readonly: true,
+      type: "hidden",
+      value: pageType ? pageType : "",
+      fieldName: "pageType",
+    },
+  };
 };

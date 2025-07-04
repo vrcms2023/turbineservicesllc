@@ -46,7 +46,6 @@ const ClientsList = () => {
     editSection: false,
   };
 
-  const [counter, setCounter] = useState(0);
   const pageType = "clients";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -132,7 +131,11 @@ const ClientsList = () => {
             onClose={onClose}
             callback={deleteSection}
             // message={`deleting the ${name} Service?`}
-            message={<>Confirm deletion of <span>{name}</span> service?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> service?
+              </>
+            }
           />
         );
       },
@@ -140,7 +143,6 @@ const ClientsList = () => {
   };
 
   const [showHideCompList, setShowHideCompList] = useState([]);
-  const showHideCompPageLoad = useRef(true);
   const dispatch = useDispatch();
   const { error, success, showHideList } = useSelector(
     (state) => state.showHide
@@ -149,18 +151,6 @@ const ClientsList = () => {
   useEffect(() => {
     if (showHideList.length > 0) {
       setShowHideCompList(getObjectsByKey(showHideList));
-    }
-  }, [showHideList]);
-
-  useEffect(() => {
-    if (
-      showHideList.length === 0 &&
-      showHideCompPageLoad.current &&
-      counter < 3
-    ) {
-      dispatch(getAllShowHideComponentsList());
-      showHideCompPageLoad.current = false;
-      setCounter(counter + 1);
     }
   }, [showHideList]);
 
@@ -178,31 +168,55 @@ const ClientsList = () => {
 
   return (
     <>
-      {/* Page Banner Component */}
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.clientlistbanner?.visibility &&
+          isAdmin &&
+          hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
-        )}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        />
-      </div>
-      {componentEdit.banner && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle="Client List Banner"
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
-            dimensions={imageDimensionsJson("banner")}
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.clientlistbanner?.visibility}
+            title={"Banner"}
+            componentName={"clientlistbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.clientlistbanner?.id}
           />
-        </div>
-      )}
-
+        )}
+        {showHideCompList?.clientlistbanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+              />
+            </div>
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle="Client List Banner"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
       <div
         className={
           showHideCompList?.clientsbriefintro?.visibility &&

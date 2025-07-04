@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import _ from "lodash";
@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 
 // Components
 import LoadingSpinner from "./Common/LoadingSpinner";
-import { NO_FOOTER_ROUTES } from "./util/commonUtil";
+import { isNotEmptyObject, NO_FOOTER_ROUTES } from "./util/commonUtil";
 import SkeletonPage from "./Common/Skeltons/SkeletonPage";
 import Footer from "./Common/Footer/Footer";
 import Header from "./Common/Header/Header";
@@ -27,6 +27,8 @@ import ScrollToTop from "react-scroll-to-top";
 import ThemeSwitcher from "./themes/ThemeSwitcher";
 import { getCookie } from "./util/cookieUtil";
 import SEO from "./Common/SEO";
+import { getAllShowHideComponentsList } from "./redux/showHideComponent/showHideActions.js";
+import { getObjectsByKey } from "./util/showHideComponentUtil.js";
 
 // Lazy Loading
 
@@ -141,9 +143,11 @@ const RAQAdmininistration = lazy(
 function App() {
   const { isLoading } = useSelector((state) => state.loader);
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const isHideMenu = NO_FOOTER_ROUTES.includes(location.pathname);
   const [flashAdd, setFlashAdd] = useState(false);
+  const [counter, setCounter] = useState(0);
   const { userInfo, permissions } = useSelector((state) => state.auth);
 
   const { error, success, showHideList } = useSelector(
@@ -152,10 +156,18 @@ function App() {
 
   useEffect(() => {
     const isAdmin = Boolean(getCookie("is_admin"));
-    if (showHideList.length > 0) {
-      if (showHideList?.advertisement?.visibility && !isAdmin) {
+    if (showHideList.length > 0 && !isAdmin) {
+      const showHideCompList = getObjectsByKey(showHideList);
+      if (showHideCompList?.advertisement?.visibility) {
         setFlashAdd(false);
       }
+    }
+  }, [showHideList]);
+
+  useEffect(() => {
+    if (showHideList.length === 0 && counter < 3) {
+      dispatch(getAllShowHideComponentsList());
+      setCounter(counter + 1);
     }
   }, [showHideList]);
 

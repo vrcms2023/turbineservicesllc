@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import BriefIntroFrontend from "../../../Common/BriefIntro";
@@ -28,6 +29,12 @@ import ApplyForm from "./ApplyForm";
 import CareersFilter from "../../Components/CareersSearch/CareersFilter";
 import { CareerFilterStyled } from "../../../Common/StyledComponents/Styled-CareerFilter";
 import RichTextView from "../../../Common/RichTextView";
+import { getObjectsByKey } from "../../../util/showHideComponentUtil";
+import ShowHideToggle from "../../../Common/ShowHideToggle";
+import {
+  createShowHideComponent,
+  updateShowHideComponent,
+} from "../../../redux/showHideComponent/showHideActions";
 
 const Careers = () => {
   const editComponentObj = {
@@ -79,34 +86,81 @@ const Careers = () => {
     document.body.style.overflow = "hidden";
   };
 
+  const [showHideCompList, setShowHideCompList] = useState([]);
+  const dispatch = useDispatch();
+  const { error, success, showHideList } = useSelector(
+    (state) => state.showHide
+  );
+
+  useEffect(() => {
+    if (showHideList.length > 0) {
+      setShowHideCompList(getObjectsByKey(showHideList));
+    }
+  }, [showHideList]);
+
+  const showHideHandler = async (id, compName) => {
+    if (id) {
+      dispatch(updateShowHideComponent(id));
+    } else {
+      const newData = {
+        componentName: compName.toLowerCase(),
+        pageType: pageType,
+      };
+      dispatch(createShowHideComponent(newData));
+    }
+  };
+
   return (
     <>
-
-      {/* Page Banner Component */}
-
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.careerdetailsbanner?.visibility &&
+          isAdmin &&
+          hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
-        )}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        />
-      </div>
-
-      {componentEdit.banner && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle="Career Details Banner"
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.careerdetailsbanner?.visibility}
+            title={"Banner"}
+            componentName={"careerdetailsbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.careerdetailsbanner?.id}
           />
-        </div>
-      )}
+        )}
+        {showHideCompList?.careerdetailsbanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+              />
+            </div>
+
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle="Career Details Banner"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
 
       {/* Introduction */}
       {isAdmin && hasPermission && (

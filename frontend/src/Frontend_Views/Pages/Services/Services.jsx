@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { confirmAlert } from "react-confirm-alert";
+import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import ImageInputsForm from "../../../Frontend_Admin/Components/forms/ImgTitleIntoForm";
@@ -34,6 +35,12 @@ import { getCookie } from "../../../util/cookieUtil";
 import { ServicesStyled } from "../../../Common/StyledComponents/Styled-Services";
 
 import RichTextView from "../../../Common/RichTextView";
+import ShowHideToggle from "../../../Common/ShowHideToggle";
+import { getObjectsByKey } from "../../../util/showHideComponentUtil";
+import {
+  createShowHideComponent,
+  updateShowHideComponent,
+} from "../../../redux/showHideComponent/showHideActions";
 
 const Services = () => {
   const editComponentObj = {
@@ -138,7 +145,11 @@ const Services = () => {
             onClose={onClose}
             callback={deleteSelectedSection}
             // message={`deleting the ${name} Service?`}
-            message={<>Confirm deletion of <span>{name}</span> Service?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> Service?
+              </>
+            }
           />
         );
       },
@@ -166,36 +177,83 @@ const Services = () => {
     document.body.style.overflow = "hidden";
   };
   // console.log(selectedServiceProject)
+
+  const [showHideCompList, setShowHideCompList] = useState([]);
+  const dispatch = useDispatch();
+  const { error, success, showHideList } = useSelector(
+    (state) => state.showHide
+  );
+
+  useEffect(() => {
+    if (showHideList.length > 0) {
+      setShowHideCompList(getObjectsByKey(showHideList));
+    }
+  }, [showHideList]);
+
+  const showHideHandler = async (id, compName) => {
+    if (id) {
+      dispatch(updateShowHideComponent(id));
+    } else {
+      const newData = {
+        componentName: compName.toLowerCase(),
+        pageType: pageType,
+      };
+      dispatch(createShowHideComponent(newData));
+    }
+  };
+
   return (
     <>
-      {/* Page Banner Component */}
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.servicebanner?.visibility &&
+          isAdmin &&
+          hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
-        )}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-${pageLoadServiceName}-banner/`}
-          bannerState={componentEdit.banner}
-          pageLoadServiceName={pageLoadServiceName}
-        />
-      </div>
-      {componentEdit.banner && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle={`Service ${pageLoadServiceName ? "-" + pageLoadServiceName : ""} Banner`}
-            pageType={`${pageType}-${pageLoadServiceName}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(
-              `${pageType}-${selectedServiceName}-banner`
-            )}
-            dimensions={imageDimensionsJson("banner")}
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.servicebanner?.visibility}
+            title={"Banner"}
+            componentName={"servicebanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.servicebanner?.id}
           />
-        </div>
-      )}
-
+        )}
+        {showHideCompList?.servicebanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-${pageLoadServiceName}-banner/`}
+                bannerState={componentEdit.banner}
+                pageLoadServiceName={pageLoadServiceName}
+              />
+            </div>
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle={`Service ${pageLoadServiceName ? "-" + pageLoadServiceName : ""} Banner`}
+                  pageType={`${pageType}-${pageLoadServiceName}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-${selectedServiceName}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
       {/* End Of Page Banner Component */}
 
       <ServicesStyled>

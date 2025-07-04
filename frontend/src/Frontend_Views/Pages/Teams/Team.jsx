@@ -53,7 +53,6 @@ const Team = () => {
     editSection: false,
   };
 
-  const [counter, setCounter] = useState(0);
   const pageType = "teams";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -133,7 +132,11 @@ const Team = () => {
             onClose={onClose}
             callback={deleteSection}
             // message={`deleting the ${name} Service?`}
-            message={<>Confirm deletion of <span>{name}</span> Service?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> Service?
+              </>
+            }
           />
         );
       },
@@ -170,25 +173,12 @@ const Team = () => {
   };
 
   const [showHideCompList, setShowHideCompList] = useState([]);
-  const showHideCompPageLoad = useRef(true);
   const dispatch = useDispatch();
   const { error, showHideList } = useSelector((state) => state.showHide);
 
   useEffect(() => {
     if (showHideList.length > 0) {
       setShowHideCompList(getObjectsByKey(showHideList));
-    }
-  }, [showHideList]);
-
-  useEffect(() => {
-    if (
-      showHideList.length === 0 &&
-      showHideCompPageLoad.current &&
-      counter < 3
-    ) {
-      dispatch(getAllShowHideComponentsList());
-      showHideCompPageLoad.current = false;
-      setCounter(counter + 1);
     }
   }, [showHideList]);
 
@@ -206,30 +196,52 @@ const Team = () => {
 
   return (
     <>
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.teamsbanner?.visibility && isAdmin && hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
-        )}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        />
-      </div>
-      {componentEdit.banner && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle="Team Banner"
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
-            dimensions={imageDimensionsJson("banner")}
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.teamsbanner?.visibility}
+            title={"Banner"}
+            componentName={"teamsbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.teamsbanner?.id}
           />
-        </div>
-      )}
-
+        )}
+        {showHideCompList?.teamsbanner?.visibility && (
+          <>
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+              />
+            </div>
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle="Team Banner"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
       <div
         className={
           showHideCompList?.teambriefintro?.visibility &&

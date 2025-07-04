@@ -42,14 +42,14 @@ const WhyChooseUs = () => {
     dynamickeypoints5: false,
     dynamickeypoints6: false,
   };
-  const [counter, setCounter] = useState(0);
+
   const dispatch = useDispatch();
   const pageType = "whychooseus";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
   const [show, setShow] = useState(false);
   const [showHideCompList, setShowHideCompList] = useState([]);
-  const showHideCompPageLoad = useRef(true);
+
   const keyPointsList = [1, 2, 3, 4, 5, 6];
 
   const { error, success, showHideList } = useSelector(
@@ -59,18 +59,6 @@ const WhyChooseUs = () => {
   useEffect(() => {
     if (showHideList.length > 0) {
       setShowHideCompList(getObjectsByKey(showHideList));
-    }
-  }, [showHideList]);
-
-  useEffect(() => {
-    if (
-      showHideList.length === 0 &&
-      showHideCompPageLoad.current &&
-      counter < 3
-    ) {
-      dispatch(getAllShowHideComponentsList());
-      showHideCompPageLoad.current = false;
-      setCounter(counter + 1);
     }
   }, [showHideList]);
 
@@ -102,31 +90,58 @@ const WhyChooseUs = () => {
 
   return (
     <>
-      {/* Page Banner Component */}
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.whychooseusbanner?.visibility &&
+          isAdmin &&
+          hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("whychooseus", true)} />
-        )}
-
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.whychooseus}
-        />
-      </div>
-      {componentEdit.whychooseus && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="whychooseus"
-            popupTitle="Why Choose US"
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
-            dimensions={imageDimensionsJson("banner")}
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.whychooseusbanner?.visibility}
+            title={"Banner"}
+            componentName={"whychooseusbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.whychooseusbanner?.id}
           />
-        </div>
-      )}
+        )}
+        {showHideCompList?.whychooseusbanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon
+                  editHandler={() => editHandler("whychooseus", true)}
+                />
+              )}
+
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.whychooseus}
+              />
+            </div>
+            {componentEdit.whychooseus && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="whychooseus"
+                  popupTitle="Why Choose US"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
       <div
         className={
           showHideCompList?.whychooseusbriefintro?.visibility &&

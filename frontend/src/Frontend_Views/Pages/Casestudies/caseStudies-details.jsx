@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { axiosClientServiceApi } from "../../../util/axiosUtil";
 import { useParams } from "react-router-dom";
 import { CaseStudiesPageStyled } from "../../../Common/StyledComponents/Styled-Casestudies";
@@ -16,6 +17,12 @@ import {
 import { getImagePath } from "../../../util/commonUtil";
 
 import RichTextView from "../../../Common/RichTextView";
+import ShowHideToggle from "../../../Common/ShowHideToggle";
+import { getObjectsByKey } from "../../../util/showHideComponentUtil";
+import {
+  createShowHideComponent,
+  updateShowHideComponent,
+} from "../../../redux/showHideComponent/showHideActions";
 
 const CaseStudiesDetails = () => {
   const editComponentObj = {
@@ -59,34 +66,84 @@ const CaseStudiesDetails = () => {
     // }
     document.body.style.overflow = "hidden";
   };
+
+  const [showHideCompList, setShowHideCompList] = useState([]);
+  const dispatch = useDispatch();
+  const { error, success, showHideList } = useSelector(
+    (state) => state.showHide
+  );
+
+  useEffect(() => {
+    if (showHideList.length > 0) {
+      setShowHideCompList(getObjectsByKey(showHideList));
+    }
+  }, [showHideList]);
+
+  const showHideHandler = async (id, compName) => {
+    if (id) {
+      dispatch(updateShowHideComponent(id));
+    } else {
+      const newData = {
+        componentName: compName.toLowerCase(),
+        pageType: pageType,
+      };
+      dispatch(createShowHideComponent(newData));
+    }
+  };
+
   return (
     <CaseStudiesPageStyled>
-      {/* Page Banner Component */}
-      <div className="position-relative">
+      <div
+        className={
+          showHideCompList?.casestudiesdetailsbanner?.visibility &&
+          isAdmin &&
+          hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
-        )}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        />
-      </div>
-      {componentEdit.banner ? (
-        <div className="adminEditTestmonial">
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle="Case Studies Details Banner"
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
-            dimensions={imageDimensionsJson("banner")}
+          <ShowHideToggle
+            showhideStatus={
+              showHideCompList?.casestudiesdetailsbanner?.visibility
+            }
+            title={"Banner"}
+            componentName={"casestudiesdetailsbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.casestudiesdetailsbanner?.id}
           />
-        </div>
-      ) : (
-        ""
-      )}
+        )}
+        {showHideCompList?.casestudiesdetailsbanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+              />
+            </div>
+            {componentEdit.banner && (
+              <div className="adminEditTestmonial">
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle="Case Studies Details Banner"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
 
       {/* Brief Introduction
       {isAdmin && hasPermission && (

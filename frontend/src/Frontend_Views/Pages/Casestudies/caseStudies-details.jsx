@@ -88,7 +88,7 @@ const CaseStudiesDetails = () => {
         ""
       )}
 
-      {/* Brief Introduction */}
+      {/* Brief Introduction
       {isAdmin && hasPermission && (
         <EditIcon editHandler={() => editHandler("briefIntro", true)} />
       )}
@@ -102,12 +102,12 @@ const CaseStudiesDetails = () => {
         <div className={`adminEditTestmonial selected `}>
           <AdminBriefIntro
             editHandler={editHandler}
-            popupTitle="Case Studies Details"
+            popupTitle="Case Studies Brief"
             componentType="briefIntro"
             pageType={pageType}
           />
         </div>
-      )}
+      )} */}
 
       {selectedCaseStudieDetails && (
         <div className="container">

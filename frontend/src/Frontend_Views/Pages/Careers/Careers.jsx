@@ -47,7 +47,6 @@ const Careers = () => {
     vision: false,
     mission: false,
   };
-  const [counter, setCounter] = useState(0);
   const pageType = "careers";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -83,7 +82,6 @@ const Careers = () => {
   };
 
   const [showHideCompList, setShowHideCompList] = useState([]);
-  const showHideCompPageLoad = useRef(true);
   const dispatch = useDispatch();
   const { error, success, showHideList } = useSelector(
     (state) => state.showHide
@@ -92,18 +90,6 @@ const Careers = () => {
   useEffect(() => {
     if (showHideList.length > 0) {
       setShowHideCompList(getObjectsByKey(showHideList));
-    }
-  }, [showHideList]);
-
-  useEffect(() => {
-    if (
-      showHideList.length === 0 &&
-      showHideCompPageLoad.current &&
-      counter < 3
-    ) {
-      dispatch(getAllShowHideComponentsList());
-      showHideCompPageLoad.current = false;
-      setCounter(counter + 1);
     }
   }, [showHideList]);
 
@@ -121,30 +107,53 @@ const Careers = () => {
 
   return (
     <>
-      {/* Page Banner Component */}
-      <div className="position-relative careersPage">
+      <div
+        className={
+          showHideCompList?.careerbanner?.visibility && isAdmin && hasPermission
+            ? "border border-info mb-2"
+            : ""
+        }
+      >
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("banner", true)} />
-        )}
-        <Banner
-          getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-          bannerState={componentEdit.banner}
-        />
-      </div>
-      {componentEdit.banner && (
-        <div className={`adminEditTestmonial selected `}>
-          <ImageInputsForm
-            editHandler={editHandler}
-            componentType="banner"
-            popupTitle={`Careers Banner`}
-            pageType={`${pageType}-banner`}
-            imageLabel="Banner Image"
-            showDescription={false}
-            showExtraFormFields={getFormDynamicFields(`${pageType}-banner`)}
-            dimensions={imageDimensionsJson("banner")}
+          <ShowHideToggle
+            showhideStatus={showHideCompList?.careerbanner?.visibility}
+            title={"Banner"}
+            componentName={"careerbanner"}
+            showHideHandler={showHideHandler}
+            id={showHideCompList?.careerbanner?.id}
           />
-        </div>
-      )}
+        )}
+        {showHideCompList?.careerbanner?.visibility && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative careersPage">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} />
+              )}
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+              />
+            </div>
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle={`Careers Banner`}
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Banner Image"
+                  showDescription={false}
+                  showExtraFormFields={getFormDynamicFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
 
       <div
         className={

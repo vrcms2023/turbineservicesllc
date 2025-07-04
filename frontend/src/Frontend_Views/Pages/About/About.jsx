@@ -50,7 +50,6 @@ const About = () => {
     editSection: false,
   };
   const dispatch = useDispatch();
-  const [counter, setCounter] = useState(0);
   const pageType = "aboutus";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
@@ -58,7 +57,6 @@ const About = () => {
   const [show, setShow] = useState(false);
   const [editCarousel, setEditCarousel] = useState({});
   const [showHideCompList, setShowHideCompList] = useState([]);
-  const showHideCompPageLoad = useRef(true);
 
   const { error, success, showHideList } = useSelector(
     (state) => state.showHide
@@ -67,18 +65,6 @@ const About = () => {
   useEffect(() => {
     if (showHideList.length > 0) {
       setShowHideCompList(getObjectsByKey(showHideList));
-    }
-  }, [showHideList]);
-
-  useEffect(() => {
-    if (
-      showHideList.length === 0 &&
-      showHideCompPageLoad.current &&
-      counter < 3
-    ) {
-      dispatch(getAllShowHideComponentsList());
-      showHideCompPageLoad.current = false;
-      setCounter(counter + 1);
     }
   }, [showHideList]);
 

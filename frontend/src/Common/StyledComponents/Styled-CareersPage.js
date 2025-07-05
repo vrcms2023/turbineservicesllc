@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const CareersPageStyled = styled.div`
+
+  .jobBriefDetails h5 {
+    font-size: 1.6rem !important;
+  }
   .jobTitle {
     color: ${({ theme }) => theme.textColor};
     font-weight: 600;
@@ -34,8 +38,8 @@ export const CareersPageStyled = styled.div`
   }
 
   .currentOpenings {
-    max-height: 300px;
-    overflow-y: auto;
+    // max-height: 300px;
+    // overflow-y: auto;
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -53,12 +57,13 @@ export const CareersPageStyled = styled.div`
 
     .title {
       color: ${({ theme }) => theme.textColor};
-      border-bottom: 1px solid ${({ theme }) => theme.white};
+      border-bottom: 1px solid ${({ theme }) => theme.grayddd};
+      padding-bottom: 8px;
       text-align: center;
     }
 
     // background: ${({ theme }) => theme.secondaryColor};
-    border: 1px solid ${({ theme }) => theme.primaryColor};
+    // border: 1px solid ${({ theme }) => theme.primaryColor};
 
     ul {
       list-style: none;
@@ -82,9 +87,10 @@ export const CareersPageStyled = styled.div`
   }
 
   .jobBriefDetails {
-    background: linear-gradient(90deg, rgba(225,242,253,1) 0%, ${({ theme }) => theme.white} 50%, rgba(225,242,253,1) 100%);
+    background: linear-gradient(-15deg, rgba(225,242,253,0) 0%, ${({ theme }) => theme.white} 50%, rgba(225,242,253,.8) 100%);
     // background-color: rgba(255,255,255, .3);
-    // border: 1px solid ${({ theme }) => theme.secondaryColor};
+    // border-bottom: 1px solid ${({ theme }) => theme.grayddd};
+    padding: .8rem;
   }
 
   .jobDescription {

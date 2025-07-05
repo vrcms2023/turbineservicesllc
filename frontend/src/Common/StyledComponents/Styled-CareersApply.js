@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const CareersFormStyled = styled.div`
-    background: ${({theme}) => theme.verylightgray};
+    border: 1px solid ${({theme}) => theme.verylightgray};
+    padding: 1rem .3rem;
 
-    
     .careers-or-text {
         padding: 20px 0 15px;
         position: relative;
@@ -32,5 +32,19 @@ export const CareersFormStyled = styled.div`
         display: inline-block;
     }
 
+    input, select, textarea {
+        border: 1px solid  ${({theme}) => theme.verylightgray} !important;
+        border-radius: 4px !important;
+        font-size: .8rem !important;
+    }
+
+    input[type="checkbox"] {
+        border: 1px solid  ${({theme}) => theme.grayddd} !important;
+        border-radius: 0px !important;
+    }
+
+    label {
+        font-size: .9rem  !important;
+    }
     
 `

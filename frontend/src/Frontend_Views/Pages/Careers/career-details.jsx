@@ -172,20 +172,20 @@ const Careers = () => {
         pageType={pageType}
       />
 
-      <div className="container my-4">
+      <div className="container mb-3">
         <div className="row">
           <div className="col-8 col-md-10">
             <Title
-              title="Careers Details"
+              title="Details"
               cssClass="fw-medium fs-4 pageTitle "
             />
           </div>
-          <div className="col-4 col-md-2">
+          <div className="col-4 col-md-2 text-end">
             <Link
               to="/profile/careers"
-              className="btn btn-outline m-auto w-auto d-flex justify-content-center align-items-center gap-2"
+              className="btn btn-primary"
             >
-              <i className="fa fa-chevron-left" aria-hidden="true"></i>
+              <i className="fa fa-chevron-left me-2" aria-hidden="true"></i>
               <span className="">Back</span>
             </Link>
           </div>
@@ -193,7 +193,7 @@ const Careers = () => {
       </div>
 
       <CareerFilterStyled>
-        <div className="container p-5 py-3 careersFilter">
+        <div className="container careersFilter">
           <CareersFilter />
         </div>
       </CareerFilterStyled>
@@ -201,11 +201,11 @@ const Careers = () => {
       <CareersPageStyled>
         <div className="container py-4 mb-md-5 py-md-4">
           <div className="row d-flex flex-rowreverse">
-            <div className="col-md-9 px-3">
+            <div className="col-md-9 p-0">
               <JobBriefDetails jobDetails={posts} />
-              <div className="jobDescription p-4">
+              <div className="jobDescription mb-4">
                 {posts.description && (
-                  <RichTextView data={posts.description} className={""} />
+                  <RichTextView data={posts.description} className={""} showMorelink={false}/>
                   // <div
                   //   dangerouslySetInnerHTML={{ __html: posts.description }}
                   // />
@@ -220,10 +220,9 @@ const Careers = () => {
                   </span>
                 </div> */}
               </div>
-            </div>
-            <div className="col-md-3 mt-4 mt-md-0">
               <JobCurrentOpenings />
-
+            </div>
+            <div className="col-md-3 pe-0">
               <ApplyForm />
             </div>
           </div>

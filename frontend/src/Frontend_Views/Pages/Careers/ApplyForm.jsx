@@ -8,13 +8,9 @@ const ApplyForm = () => {
     <CareersFormStyled>
       <div className="container">
         <div className="row">
-          <div className="col-md-12 py-4">
-            <Title title="Apply Now" cssClass={"fs-5 fw-medium "} />
-            <hr />
-          </div>
-        </div>
-        <div className="row">
           <div className="col-md-12">
+            <Title title="Apply Now" cssClass={"fs-5 fw-medium text-center"} />
+            <hr />
             <div className="mb-3">
               <label for="exampleFormControlInput1" className="form-label">
                 First Name *
@@ -49,7 +45,7 @@ const ApplyForm = () => {
               />
             </div>
 
-            <div className="mb-3 border border-1 p-3 py-4">
+            <div className="mb-3 border border-1 p-2">
               <label for="formFile" className="form-label">
                 Upload Resume / Share LinkedIn Profile *
               </label>
@@ -129,8 +125,8 @@ const ApplyForm = () => {
                 rows="3"
               ></textarea>
             </div>
-            <div className="mb-3">
-              <Button label={"Apply"} cssClass="btn btn-secondary" />
+            <div className=" d-flex justify-content-center align-items-center">
+              <Button label={"Apply"} cssClass="btn btn-primary" />
             </div>
           </div>
         </div>

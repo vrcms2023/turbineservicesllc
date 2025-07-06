@@ -22,18 +22,27 @@ export const CareersPageStyled = styled.div`
   .jobPost {
     border: 1px solid ${({ theme }) => theme.grayddd};
     // background-color: ${({ theme }) => theme.primaryColor};
-    border-bottom: 4px solid ${({ theme }) => theme.clientColor};
+    border-bottom: 4px solid ${({ theme }) => theme.clientSecondaryColor};
 
     &:hover {
       border-bottom: 4px solid ${({ theme }) => theme.teritoryColor};
     }
 
     .fa-map-marker {
-      color: ${({ theme }) => theme.clientColor};
+      color: ${({ theme }) => theme.clientSecondaryColor};
     }
 
     .fa-expand {
       font-size: 1.2rem;
+    }
+
+    .subTitle {
+      font-size: 1rem !important;
+      font-weight: 600;
+    }
+
+    .ql-editor {
+      padding-top: .5rem !important;
     }
   }
 

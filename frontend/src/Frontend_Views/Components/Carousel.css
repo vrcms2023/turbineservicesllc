@@ -1,18 +1,4 @@
-/* .homeCarousel::after {
-  content: "";
-  display: block;
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(22, 93, 61, 0.95) 95%
-  );
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-  top: 0;
-} */
-
-.noImg {
+/* .noImg {
   min-height: 300px;
 }
 
@@ -20,7 +6,6 @@
   overflow: hidden;
   height: 60vh;
   position: relative;
-  /* box-shadow: 0 15px 0px #3cd9d2; */
 }
 .carousel-item img {
   width: 100%;
@@ -42,13 +27,11 @@
 }
 
 .carousel-caption {
-  /* background-color: rgba(34, 34, 34, .1); */
   position: absolute;
   z-index: 999;
   text-align: right !important;
   bottom: 30%;
   right: 10%;
-  /* width: 75%; */
 }
 
 .carousel-caption h1 {
@@ -56,9 +39,6 @@
   font-weight: 600 !important;
   font-size: 3rem;
   margin: 0px;
-  /* font-family: "PT Sans Narrow", sans-serif; */
-  /* font-weight: 700 !important; */
-  /* font-style: normal; */
   text-shadow: 0px 4px 0 rgba(0,0,0, .3);
   font-family: "Barlow",sans-serif;
 }
@@ -105,4 +85,4 @@
   .homeCarousel::after {
     height: 50vh;
   }
-}
+} */

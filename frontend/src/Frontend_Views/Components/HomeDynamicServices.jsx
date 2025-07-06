@@ -42,15 +42,15 @@ const HomeDynamicServices = ({ editHandler, objectstatus, pageType }) => {
 
             <BriefIntroFrontend
               introState={objectstatus}
-              linkCss="text-white"
+              linkCss=""
               linkLabel="In detail..."
               moreLink=""
-              introTitleCss="fs-4 mb-3 lineClamp lc2"
-              introSubTitleCss="fw-medium text-muted text-center"
-              introDecTitleCss="text-start lineClamp lc6"
+              introTitleCss="fs-5 mb-3 lineClamp lc2 "
+              introSubTitleCss="fw-medium text-muted"
+              introDecTitleCss="lineClamp lc6"
               detailsContainerCss="col-md-12 py-4"
-              anchorContainer="d-flex justify-content-start mt-4"
-              anchersvgColor="#fff"
+              anchorContainer="mt-4"
+              anchersvgColor=" "
               pageType={pageType}
               showLink="true"
             />

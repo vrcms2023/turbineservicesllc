@@ -76,6 +76,9 @@ import DownloadBrochures from "../../Components/DownloadBrochures";
 import ListofTitleandDescription from "../../../Frontend_Admin/Components/forms/ListofTitleandDescription";
 import { getHomeIntroList } from "../../../redux/homeintroList/homeIntroListActions";
 import TitleWithDescripton from "../../Components/TitleWithDescripton";
+import { HomeServiceStylesComponent } from "../../../Common/StyledComponents/Styled-HomeServices-Compoent";
+import { HomeDynamicServiceStylesComponent } from "../../../Common/StyledComponents/Styled-HomeDynamicServices-Compoent";
+import { HomeCauroselComponentStyles } from "../../../Common/StyledComponents/Styled-HomeCarousel";
 
 const Home = () => {
   const editComponentObj = {
@@ -298,7 +301,9 @@ const Home = () => {
                         editHandler={() => editHandler("carousel", true)}
                       />
                     )}
-                    <Carousel carouselState={componentEdit.carousel} />
+                    <HomeCauroselComponentStyles>
+                      <Carousel carouselState={componentEdit.carousel} />
+                    </HomeCauroselComponentStyles>
                   </div>
                 </div>
               </div>
@@ -478,61 +483,64 @@ const Home = () => {
             />
           )}
           {showHideCompList?.homedynamciservicesbrief?.visibility && (
-            <div className="homeDynamciServicesIntro">
-              <div>
-                <div className="breiftopMargin">
-                  {isAdmin && hasPermission && (
-                    <EditIcon
-                      editHandler={() =>
-                        editHandler("homeDynamciServicesBrief", true)
-                      }
-                    />
-                  )}
-
-                  <BriefIntroFrontend
-                    introState={componentEdit.homeDynamciServicesBrief}
-                    linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
-                    linkLabel="Read More"
-                    moreLink=""
-                    introTitleCss="text-center mb-4"
-                    introSubTitleCss="fw-medium text-muted text-center"
-                    introDecTitleCss="fs-6 fw-normal mx-4 text-center"
-                    detailsContainerCss="col-md-12 py-3"
-                    anchorContainer="d-flex justify-content-center align-items-center mt-4"
-                    anchersvgColor="#17427C"
-                    pageType={"homeDynamciServicesBrief"}
-                    maxHeight="300"
-                  />
-
-                  {componentEdit.homeDynamciServicesBrief && (
-                    <div className={`adminEditTestmonial selected `}>
-                      <BriefIntroAdmin
-                        editHandler={editHandler}
-                        componentType="homeDynamciServicesBrief"
-                        popupTitle="Brief Intro Banner"
-                        pageType="homeDynamciServicesBrief"
+            <HomeDynamicServiceStylesComponent>
+              <div className="homeDynamciServicesIntro">
+                <div>
+                  <div className="breiftopMargin">
+                    {isAdmin && hasPermission && (
+                      <EditIcon
+                        editHandler={() =>
+                          editHandler("homeDynamciServicesBrief", true)
+                        }
                       />
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="container-fluid homeDynamciServices py-5">
-                <div className="container">
-                  <div className="row">
-                    {homeServices.map((service, i) => (
-                      <div className="col-sm-6 col-md-4" key={i}>
-                        <HomeDynamicServices
-                          key={i}
+                    )}
+
+                    <BriefIntroFrontend
+                      introState={componentEdit.homeDynamciServicesBrief}
+                      linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
+                      linkLabel="Read More"
+                      moreLink=""
+                      introTitleCss="text-center mb-4"
+                      introSubTitleCss="fw-medium text-muted text-center"
+                      introDecTitleCss="fs-6 fw-normal mx-4 text-center"
+                      detailsContainerCss="col-md-12 py-3"
+                      anchorContainer="d-flex justify-content-center align-items-center mt-4"
+                      anchersvgColor="#17427C"
+                      pageType={"homeDynamciServicesBrief"}
+                      maxHeight="300"
+                    />
+
+                    {componentEdit.homeDynamciServicesBrief && (
+                      <div className={`adminEditTestmonial selected `}>
+                        <BriefIntroAdmin
                           editHandler={editHandler}
-                          objectstatus={componentEdit[`homeService${i}`]}
-                          pageType={`homeService${i}`}
+                          componentType="homeDynamciServicesBrief"
+                          popupTitle="Brief Intro Banner"
+                          pageType="homeDynamciServicesBrief"
                         />
                       </div>
-                    ))}
+                    )}
                   </div>
                 </div>
+
+                  <div className="container-fluid homeDynamciServices py-5">
+                    <div className="container">
+                      <div className="row">
+                        {homeServices.map((service, i) => (
+                          <div className="col-sm-6 col-md-4" key={i}>
+                            <HomeDynamicServices
+                              key={i}
+                              editHandler={editHandler}
+                              objectstatus={componentEdit[`homeService${i}`]}
+                              pageType={`homeService${i}`}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
               </div>
-            </div>
+            </HomeDynamicServiceStylesComponent>
           )}
         </div>
         {/* END OF Dynamic ALL SERVICES */}
@@ -557,12 +565,14 @@ const Home = () => {
             />
           )}
           {showHideCompList?.homeservices?.visibility && (
+            <HomeServiceStylesComponent>
             <div className="homeServicesContainer">
               <div className="container py-5 homeServices">
                 {/* <h2 className="mb-5">What We Do</h2> */}
                 <HomeServices />
               </div>
             </div>
+            </HomeServiceStylesComponent>
           )}
 
           {/* SERVICE INTRODUCTION COMPONENT START ============================================ */}

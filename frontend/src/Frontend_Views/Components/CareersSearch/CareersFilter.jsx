@@ -99,7 +99,7 @@ const CareersFilter = () => {
       </div>
     </div>
         
-    <div className="col-md-2 d-flex justify-content-center align-items-center">
+    <div className="col-md-2 d-flex justify-content-center align-items-start">
       <Button type="button" label="Search" cssClass={"btn btn-primary"} icon="fa-search" />
     </div>
   </div>

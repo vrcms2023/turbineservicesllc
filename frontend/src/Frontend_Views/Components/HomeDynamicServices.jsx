@@ -37,7 +37,7 @@ const HomeDynamicServices = ({ editHandler, objectstatus, pageType }) => {
         <div className="row">
           <div className="breiftopMargin">
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler(pageType, true)} />
+              <EditIcon editHandler={() => editHandler(pageType, true)} editlabel="Dynamic Services" />
             )}
 
             <BriefIntroFrontend

@@ -156,6 +156,7 @@ const Footer = () => {
                             editHandler={() =>
                               editHandler("footerAboutBrief", true)
                             }
+                            editlabel="Footer"
                           />
                         )}
 
@@ -427,6 +428,7 @@ const Footer = () => {
                   {isAdmin && (
                     <EditIcon
                       editHandler={() => editHandler("address", true)}
+                      editlabel="Media"
                     />
                   )}
 
@@ -505,7 +507,7 @@ const Footer = () => {
 
         <div className="p-3 footerCopyRights">
           {isAdmin && (
-            <EditIcon editHandler={() => editHandler("termsPolacy", true)} />
+            <EditIcon editHandler={() => editHandler("termsPolacy", true)} editlabel="CR" />
           )}
 
           <div className="container">

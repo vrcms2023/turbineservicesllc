@@ -523,22 +523,22 @@ const Home = () => {
                   </div>
                 </div>
 
-                  <div className="container-fluid homeDynamciServices py-5">
-                    <div className="container">
-                      <div className="row">
-                        {homeServices.map((service, i) => (
-                          <div className="col-sm-6 col-md-4" key={i}>
-                            <HomeDynamicServices
-                              key={i}
-                              editHandler={editHandler}
-                              objectstatus={componentEdit[`homeService${i}`]}
-                              pageType={`homeService${i}`}
-                            />
-                          </div>
-                        ))}
-                      </div>
+                <div className="container-fluid homeDynamciServices py-5">
+                  <div className="container">
+                    <div className="row">
+                      {homeServices.map((service, i) => (
+                        <div className="col-sm-6 col-md-4" key={i}>
+                          <HomeDynamicServices
+                            key={i}
+                            editHandler={editHandler}
+                            objectstatus={componentEdit[`homeService${i}`]}
+                            pageType={`homeService${i}`}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
+                </div>
               </div>
             </HomeDynamicServiceStylesComponent>
           )}
@@ -566,12 +566,53 @@ const Home = () => {
           )}
           {showHideCompList?.homeservices?.visibility && (
             <HomeServiceStylesComponent>
-            <div className="homeServicesContainer">
-              <div className="container py-5 homeServices">
-                {/* <h2 className="mb-5">What We Do</h2> */}
-                <HomeServices />
+              <div className="homeServicesContainer">
+                <div className="container py-5 homeServices">
+                  {/* <h2 className="mb-5">What We Do</h2> */}
+                  <HomeServices />
+                </div>
               </div>
-            </div>
+
+              <div className="container-fluid homeServicesBrief">
+                <div className="container">
+                  <div className="row">
+                    <div className="breiftopMargin">
+                      {isAdmin && hasPermission && (
+                        <EditIcon
+                          editHandler={() =>
+                            editHandler("homeServicebriefIntro", true)
+                          }
+                        />
+                      )}
+
+                      <BriefIntroFrontend
+                        introState={componentEdit.homeServicebriefIntro}
+                        linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
+                        linkLabel="Read More"
+                        moreLink=""
+                        introTitleCss="fs-3 text-center mb-4"
+                        introSubTitleCss="fw-medium text-muted text-center"
+                        introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
+                        detailsContainerCss="col-md-12 py-3"
+                        anchorContainer="d-flex justify-content-center align-items-center mt-4"
+                        anchersvgColor="#17427C"
+                        pageType="HomeserviceBrief"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {componentEdit.homeServicebriefIntro && (
+                <div className={`adminEditTestmonial selected `}>
+                  <BriefIntroAdmin
+                    editHandler={editHandler}
+                    componentType="homeServicebriefIntro"
+                    popupTitle="Brief Intro Banner"
+                    pageType="HomeserviceBrief"
+                  />
+                </div>
+              )}
             </HomeServiceStylesComponent>
           )}
 
@@ -579,46 +620,6 @@ const Home = () => {
 
           {/* INTRODUCTION COMPONENT */}
 
-          <div className="container-fluid homeServicesBrief">
-            <div className="container">
-              <div className="row">
-                <div className="breiftopMargin">
-                  {isAdmin && hasPermission && (
-                    <EditIcon
-                      editHandler={() =>
-                        editHandler("homeServicebriefIntro", true)
-                      }
-                    />
-                  )}
-
-                  <BriefIntroFrontend
-                    introState={componentEdit.homeServicebriefIntro}
-                    linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
-                    linkLabel="Read More"
-                    moreLink=""
-                    introTitleCss="fs-3 text-center mb-4"
-                    introSubTitleCss="fw-medium text-muted text-center"
-                    introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                    detailsContainerCss="col-md-12 py-3"
-                    anchorContainer="d-flex justify-content-center align-items-center mt-4"
-                    anchersvgColor="#17427C"
-                    pageType="HomeserviceBrief"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {componentEdit.homeServicebriefIntro && (
-            <div className={`adminEditTestmonial selected `}>
-              <BriefIntroAdmin
-                editHandler={editHandler}
-                componentType="homeServicebriefIntro"
-                popupTitle="Brief Intro Banner"
-                pageType="HomeserviceBrief"
-              />
-            </div>
-          )}
           {/* SERVICE INTRODUCTION COMPONENT END  ===================================== */}
         </div>
         {/* ======================= HOME List of Services  ======================= */}

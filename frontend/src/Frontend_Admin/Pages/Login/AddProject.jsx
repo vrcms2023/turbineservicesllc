@@ -445,6 +445,12 @@ const AddProject = () => {
             <Button
               type=""
               cssClass="btn btn-outline"
+              label="Back"
+              handlerChange={() => navigate(-1)}
+            />
+            <Button
+              type=""
+              cssClass="btn btn-outline"
               label="Dashboard"
               handlerChange={() => navigate("/dashboard")}
             />

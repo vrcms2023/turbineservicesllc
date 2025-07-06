@@ -384,8 +384,8 @@ class ClientLogoSearchAPIView(generics.ListAPIView):
   
     def get_object(self, query):
         try:
-            return ClientLogo.objects.filter(
-                Q(client_title__icontains=query) | Q(client_description__icontains=query)
+            return ClientLogo.objects.filter( Q(client_title__icontains=query)
+                # Q(client_title__icontains=query) | Q(client_description__icontains=query)
             )
         except ClientLogo.DoesNotExist:
             raise Http404

@@ -254,7 +254,7 @@ const NewsAndUpdates = () => {
               clientSearchURL={"/appNews/searchAppNews/"}
               adminSearchURL={"/appNews/createAppNews/"}
               clientDefaultURL={"/appNews/clientAppNews/"}
-              searchfiledDeatails={"News Title / News Description"}
+              searchfiledDeatails={"News Title"}
               setPageloadResults={setPageloadResults}
               setSearchquery={setSearchquery}
               searchQuery={searchQuery}

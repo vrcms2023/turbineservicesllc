@@ -165,16 +165,10 @@ const Careers = () => {
       <div className="container mb-3">
         <div className="row">
           <div className="col-8 col-md-10">
-            <Title
-              title="Details"
-              cssClass="fw-medium fs-4 pageTitle "
-            />
+            <Title title="Details" cssClass="fw-medium fs-4 pageTitle " />
           </div>
           <div className="col-4 col-md-2 text-end">
-            <Link
-              to="/careers"
-              className="btn btn-primary"
-            >
+            <Link to="/careers" className="btn btn-primary">
               <i className="fa fa-chevron-left me-2" aria-hidden="true"></i>
               <span className="">Back</span>
             </Link>
@@ -182,11 +176,11 @@ const Careers = () => {
         </div>
       </div>
 
-      <CareerFilterStyled>
+      {/* <CareerFilterStyled>
         <div className="container careersFilter">
           <CareersFilter />
         </div>
-      </CareerFilterStyled>
+      </CareerFilterStyled> */}
 
       <CareersPageStyled>
         <div className="container py-4 mb-md-5 py-md-4">
@@ -195,7 +189,11 @@ const Careers = () => {
               <JobBriefDetails jobDetails={posts} />
               <div className="jobDescription mb-4">
                 {posts.description && (
-                  <RichTextView data={posts.description} className={""} showMorelink={false}/>
+                  <RichTextView
+                    data={posts.description}
+                    className={""}
+                    showMorelink={false}
+                  />
                   // <div
                   //   dangerouslySetInnerHTML={{ __html: posts.description }}
                   // />
@@ -218,7 +216,7 @@ const Careers = () => {
           </div>
         </div>
       </CareersPageStyled>
-      
+
       {show && <ModelBg />}
     </>
   );

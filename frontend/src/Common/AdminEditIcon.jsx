@@ -6,6 +6,7 @@ const EditIcon = ({
   icon = "fa-pencil",
   iconCss = "text-warning cursor-pointer fs-3",
   cssClasses = "position-absolute ",
+  editlabel,
 }) => {
   return (
     <span className={`${cssClasses} editIcon`}>
@@ -14,6 +15,7 @@ const EditIcon = ({
         aria-hidden="true"
         onClick={editHandler}
       ></i>
+      {editlabel && <span>{editlabel}</span>}
     </span>
   );
 };

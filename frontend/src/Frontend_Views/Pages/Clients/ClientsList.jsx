@@ -296,7 +296,7 @@ const ClientsList = () => {
               clientSearchURL={"/client/searchClientLogos/"}
               adminSearchURL={"/client/createClientLogo/"}
               clientDefaultURL={"/client/getAllClientLogos/"}
-              searchfiledDeatails={"client Title / client description "}
+              searchfiledDeatails={"client Title"}
               setPageloadResults={setPageloadResults}
               setSearchquery={setSearchquery}
               searchQuery={searchQuery}

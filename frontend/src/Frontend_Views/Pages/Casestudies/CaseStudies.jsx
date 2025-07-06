@@ -291,9 +291,7 @@ const CaseStudies = () => {
               clientSearchURL={"/caseStudies/searchCaseStudies/"}
               adminSearchURL={"/caseStudies/createCaseStudies/"}
               clientDefaultURL={"/caseStudies/clientCaseStudies/"}
-              searchfiledDeatails={
-                "Case studies Title / Case studies description "
-              }
+              searchfiledDeatails={"Case studies Title "}
               setPageloadResults={setPageloadResults}
               setSearchquery={setSearchquery}
               searchQuery={searchQuery}

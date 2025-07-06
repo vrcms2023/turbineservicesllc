@@ -15,7 +15,7 @@ const Search = ({
   searchQuery,
   imageGallery,
   setImageGallery,
-  hideSearchBy,
+  hideSearchBy = true,
   searchBy = " Search ",
   addStateChanges,
   editStateChanges,
@@ -96,7 +96,7 @@ const Search = ({
           {/* <span className="text-muted">Search by</span> */}
           <small className="text-dark">
             <span className="fw-bolder">Search by</span> :{" "}
-            {searchfiledDeatails ? searchfiledDeatails : ""}
+            <span>{searchfiledDeatails ? searchfiledDeatails : ""}</span>
           </small>
         </div>
       )}

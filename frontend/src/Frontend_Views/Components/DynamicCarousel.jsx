@@ -35,7 +35,30 @@ const DCarousel = ({ obj, all, closeCarousel }) => {
                   alt={item.alternitivetext}
                   className="d-block"
                 />
-                <div className=" w-100 p-4 fs-5 text-center position-absolute text-white" style={{ zIndex: "9999", bottom: "0px", background: 'rgba(0,0,0,.4)'}}>{item.image_title}</div>
+                {item?.image_title && (
+                  <h5
+                    className=" w-100 p-4 fs-5 text-center position-absolute text-white"
+                    style={{
+                      zIndex: "9999",
+                      bottom: "0px",
+                      background: "rgba(0,0,0,.4)",
+                    }}
+                  >
+                    {item?.image_title}
+                  </h5>
+                )}
+                {item?.image_description && (
+                  <p
+                    className=" w-100 p-4 fs-5 text-center position-absolute text-white"
+                    style={{
+                      zIndex: "9999",
+                      bottom: "0px",
+                      background: "rgba(0,0,0,.4)",
+                    }}
+                  >
+                    {item?.image_description}
+                  </p>
+                )}
               </div>
             ))
           : null}

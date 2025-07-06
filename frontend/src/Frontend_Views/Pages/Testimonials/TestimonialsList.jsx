@@ -346,7 +346,7 @@ const TestimonialsList = () => {
               clientSearchURL={"/testimonials/searchtestimonials/"}
               adminSearchURL={"/testimonials/createTestimonials/"}
               clientDefaultURL={"/testimonials/clientTestimonials/"}
-              searchfiledDeatails={"client Title / client description "}
+              searchfiledDeatails={"client Title "}
               setPageloadResults={setPageloadResults}
               setSearchquery={setSearchquery}
               searchQuery={searchQuery}

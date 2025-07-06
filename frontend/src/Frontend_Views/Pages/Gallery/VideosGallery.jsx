@@ -69,7 +69,10 @@ const VideosGallery = () => {
       <div className="row">
         <div className="col-md-12 py-5">
           {isAdmin && hasPermission && (
-            <EditIcon editHandler={() => editHandler("gallery", true)} />
+            <EditIcon
+              editHandler={() => editHandler("gallery", true)}
+              editlabel={"Video gallery"}
+            />
           )}
           {componentEdit.gallery && (
             <div className={`adminEditTestmonial selected `}>

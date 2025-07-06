@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import Title from "../../Common/Title";
 
 // Styles
-import "./HomeServices.css";
-
 import { useAdminLoginStatus } from "../../Common/customhook/useAdminLoginStatus";
 import ServiceForm from "../../Frontend_Admin/Components/forms/ImgTitleIntoForm-List";
 import ModelBg from "../../Common/ModelBg";
@@ -91,7 +89,7 @@ const HomeServices = ({ title }) => {
               )}
               <Link
                 to={`/services/${item.services_page_title}/`}
-                className="btn btn-primary mt-4"
+                className="mt-3"
               >
                 Know More
               </Link>

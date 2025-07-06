@@ -162,16 +162,6 @@ const Careers = () => {
         )}
       </div>
 
-      {/* Introduction */}
-      {isAdmin && hasPermission && (
-        <EditIcon editHandler={() => editHandler("briefIntro", true)} />
-      )}
-
-      <BriefIntroFrontend
-        introState={componentEdit.briefIntro}
-        pageType={pageType}
-      />
-
       <div className="container mb-3">
         <div className="row">
           <div className="col-8 col-md-10">
@@ -182,7 +172,7 @@ const Careers = () => {
           </div>
           <div className="col-4 col-md-2 text-end">
             <Link
-              to="/profile/careers"
+              to="/careers"
               className="btn btn-primary"
             >
               <i className="fa fa-chevron-left me-2" aria-hidden="true"></i>
@@ -228,34 +218,7 @@ const Careers = () => {
           </div>
         </div>
       </CareersPageStyled>
-
-      {componentEdit.briefIntro && (
-        <div className={`adminEditTestmonial selected `}>
-          <AdminBriefIntro
-            editHandler={editHandler}
-            componentType="briefIntro"
-            popupTitle="Career Details"
-            pageType={pageType}
-            extraFormParamas={[
-              {
-                pageType: {
-                  readonly: true,
-                  defaultValue: pageType,
-                  fieldName: "pageType",
-                },
-              },
-              {
-                bannerTitle: {
-                  label: "Career Title",
-                  type: "text",
-                  fieldName: "bannerTitle",
-                },
-              },
-            ]}
-          />
-        </div>
-      )}
-
+      
       {show && <ModelBg />}
     </>
   );

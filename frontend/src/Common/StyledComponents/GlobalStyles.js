@@ -1,3 +1,7 @@
+
+
+
+
 import { createGlobalStyle } from "styled-components";
 import careerBgImg from "../../Images/careers-bg.jpg";
 import commonBgImg from "../../Images/background-styling-image.png";
@@ -9,6 +13,8 @@ import homeMultiServicesBgImg from "../../Images/homeMultiServicesBg.jpg";
 
 export const GlobalStyles = createGlobalStyle`
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin:0;
     padding: 0;
@@ -17,27 +23,29 @@ export const GlobalStyles = createGlobalStyle`
 ul, li {
     margin: 0;
     padding:0;
-    // list-style: none;
+    list-style: none;
 }
 
 a {
-  color: ${({ theme }) => theme.gray222};
+  font-size: .9rem;
+  color: ${({ theme }) => theme.gray444};
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: rgba(109, 47, 155, .3) !important;
+  text-decoration-color: rgba(0, 0, 0, .3) !important;
   &:hover {
     color: ${({ theme }) => theme.footerLinkHoverColor};
-    text-decoration-color: rgba(109, 47, 155, 1) !important;
+    text-decoration-color: rgba(0, 0, 0, .8) !important;
   }
 }
 
 h1, h2, h3, h4, h5, h6, th {
     // font-family: Poppins;
-    font-family: "Barlow", sans-serif;
+    font-family: ${({ theme }) => theme.headingFontFamily};
 }
 
 th {
-  font-weight: normal
+  font-weight: normal;
+  font-family: ${({ theme }) => theme.headingFontFamily};
 }
 td {
   font-size: 15px;
@@ -46,10 +54,14 @@ td {
 body {
     font-family: ${({ theme }) => theme.fontFamily};
     background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.textColor};
     font-size: 16px;
     line-height: 1.6;
 }
+
+body, p {
+  color: ${({ theme }) => theme.textColor};
+}
+
 
 .btn {
   // border-radius: 0.375rem !important;
@@ -112,39 +124,13 @@ body {
 }
 
 .moreLink {
-  color:${({ theme }) => theme.primaryColor};
+  // color:${({ theme }) => theme.primaryColor};
 }
 
 .moreLink:hover {
-  color:${({ theme }) => theme.secondaryColor} !important;
+  // color:${({ theme }) => theme.secondaryColor} !important;
 }
 
-.btn.moreLink {
-    float: left !important;
-    font-size: .8rem;
-    margin-top: 12px;
-    letter-spacing: .1rem;
-
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-style: dashed;
-    text-decoration-color: rgba(109, 47, 155, .3) !important;
-    transition: 
-        color 0.3s ease,
-        text-decoration-color 0.3s ease,
-        margin-top 0.3s ease;
-
-    &:hover {
-        color: ${({ theme }) => theme.footerLinkHoverColor};
-        text-decoration-color: rgba(109, 47, 155, 1) !important;
-        margin-top: 1.2rem;
-    }
-}
-
-.carousel-caption {
-    h1 { color:${({ theme }) => theme.carouselSlideTitleColor};     }
-    p { color:${({ theme }) => theme.carouselSlideCaptionColor}; }
-}
 
 .ABrief {
     background-color:${({ theme }) => theme.verylightgray}; 
@@ -167,25 +153,6 @@ body {
 
 // .ABriefAbout h3::before, .ABriefAbout .title::before { border-color: ${({ theme }) => theme.ABriefAboutTitleBorderColor}; }
 
-.homeServices {
-    color:${({ theme }) => theme.secondaryColor}; 
-    h2 {
-        color:${({ theme }) => theme.secondaryColor}; 
-        border-color: ${({ theme }) => theme.primaryColor}; 
-    }
-
-    h3 {
-        color:${({ theme }) => theme.secondaryColor}; 
-    }
-
-    a.btn {
-        background-color:${({ theme }) => theme.primaryColor};
-    }
-
-    a.btn:hover {
-        background-color:${({ theme }) => theme.secondaryColor};
-    }
-}
 
 .moreLink:hover {
   color:${({ theme }) => theme.btnLinkTextHoverColor};
@@ -408,10 +375,6 @@ body {
       background-position: center;
     }
 
-    // .homeServicesContainer{
-    //   background-image:url(${homeMultiServicesBgImg});
-    // }
-
     .homeDynamciServices {
       background-image:url(${homeServicesBgImg});
       background-attachment: fixed;
@@ -519,3 +482,47 @@ body {
 
     
 `;
+
+
+// .homeServices {
+//     color:${({ theme }) => theme.secondaryColor}; 
+//     h2 {
+//         color:${({ theme }) => theme.secondaryColor}; 
+//         border-color: ${({ theme }) => theme.primaryColor}; 
+//     }
+
+//     h3 {
+//         color:${({ theme }) => theme.secondaryColor}; 
+//     }
+
+//     a.btn {
+//         background-color:${({ theme }) => theme.primaryColor};
+//     }
+
+//     a.btn:hover {
+//         background-color:${({ theme }) => theme.secondaryColor};
+//     }
+// }
+
+
+// .btn.moreLink {
+//     float: left !important;
+//     font-size: .8rem;
+//     margin-top: 12px;
+//     letter-spacing: .1rem;
+
+//     text-decoration: underline;
+//     text-underline-offset: 4px;
+//     text-decoration-style: dashed;
+//     text-decoration-color: rgba(109, 47, 155, .3) !important;
+//     transition: 
+//         color 0.3s ease,
+//         text-decoration-color 0.3s ease,
+//         margin-top 0.3s ease;
+
+//     &:hover {
+//         color: ${({ theme }) => theme.footerLinkHoverColor};
+//         text-decoration-color: rgba(109, 47, 155, 1) !important;
+//         margin-top: 1.2rem;
+//     }
+// }

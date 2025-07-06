@@ -1,7 +1,7 @@
 {
   "name": "VRCMS Theme One",
   "fontFamily": "Roboto, Poppins, 'Fira Sans', sans-serif, Arial, verdana",
-  "background": "#ffffff",
+  "headingFontFamily": "Barlow, sans-serif",
   "bodyBgImage": "",
 
   "textColor": "#444444",

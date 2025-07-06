@@ -116,7 +116,7 @@ const ABrief = ({ title, cssClass, linkClass, moreLink, dimensions }) => {
       </div>
       <div className="col-12 col-lg-6 p-4 d-flex justify-content-center align-items-start flex-column position-relative briefServices">
         {isAdmin && hasPermission && (
-          <EditIcon editHandler={() => editHandler("homecareers", true)} />
+          <EditIcon editHandler={() => editHandler("homecareers", true)} editlabel="Brief" />
         )}
 
         <div className="d-flex align-items-center mb-5">

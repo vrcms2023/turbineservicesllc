@@ -128,7 +128,7 @@ const Careers = () => {
             {/* Page Banner Component */}
             <div className="position-relative careersPage">
               {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("banner", true)} />
+                <EditIcon editHandler={() => editHandler("banner", true)}  />
               )}
               <Banner
                 getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
@@ -179,7 +179,7 @@ const Careers = () => {
           <div>
             {/* Introduction */}
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("briefIntro", true)} />
+              <EditIcon editHandler={() => editHandler("briefIntro", true)}  />
             )}
 
             <BriefIntroFrontend

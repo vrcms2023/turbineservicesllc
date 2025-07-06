@@ -253,7 +253,7 @@ const Header = () => {
         <div className="container">
           <div className="position-relative">
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("menu", true)} />
+              <EditIcon editHandler={() => editHandler("menu", true)} editlabel="Logo" />
             )}
             {/* {componentEdit.menu && (
               <div className={`adminEditTestmonial selected `}>

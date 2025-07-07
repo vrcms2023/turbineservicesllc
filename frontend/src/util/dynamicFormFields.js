@@ -14,7 +14,7 @@ export const getProductCategoryBannerFormFields = (pageType) => {
     },
     banner_descripiton: {
       label: "Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "banner_descripiton",
     },
     moreLink: {
@@ -155,7 +155,7 @@ export const getserviceOfferedFields = (category) => {
     },
     carouse_description: {
       label: "Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "carouse_description",
     },
     category: {
@@ -199,7 +199,7 @@ export const getTestimonialsFields = (category) => {
     },
     testimonial_description: {
       label: "Writeup",
-      type: "textarea",
+      type: "richText",
       fieldName: "testimonial_description",
     },
     category: {
@@ -335,7 +335,7 @@ export const getImageGalleryFields = (category) => {
     },
     image_description: {
       label: "Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "image_description",
     },
     category: {
@@ -365,7 +365,7 @@ export const getCategoryFormDynamicFields = () => {
     },
     description: {
       label: "Category Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "description",
     },
     category_fileuplod: {
@@ -429,12 +429,12 @@ export const getProductFormDynamicFields = (selectedCategory) => {
     },
     seo_keywords: {
       label: "SEO keywords",
-      type: "textarea",
+      type: "richText",
       fieldName: "seo_keywords",
     },
     seo_description: {
       label: "SEO Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "seo_description",
     },
     category_id: {
@@ -491,7 +491,7 @@ export const getTitleAndDescriptionFields = (pageType) => {
     },
     intro_desc: {
       label: "Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "intro_desc",
     },
     pageType: {

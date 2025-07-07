@@ -2,7 +2,7 @@ import React from "react";
 import RichTextView from "./RichTextView";
 
 const Model = ({ obj, closeModel, flag, cssClass }) => {
-  console.log(obj)
+  console.log(obj);
   const title = obj.testimonial_title;
   // const { dec, title, cr, crm } = privacy;
 
@@ -25,7 +25,9 @@ const Model = ({ obj, closeModel, flag, cssClass }) => {
       <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title text-dark fw-bold">{obj.title || title}</h5>
+            <h5 className="modal-title text-dark fw-bold">
+              {obj.title || title}
+            </h5>
             <button
               type="button"
               className="btn-close"
@@ -40,7 +42,10 @@ const Model = ({ obj, closeModel, flag, cssClass }) => {
                 <img src={obj.path} alt="Testimonial" className="img-fluid" />
               )}
             </div>
-            <RichTextView data={obj.data || obj.testimonial_description} />
+            <RichTextView
+              data={obj.data || obj.testimonial_description}
+              showMorelink={false}
+            />
           </div>
         </div>
       </div>

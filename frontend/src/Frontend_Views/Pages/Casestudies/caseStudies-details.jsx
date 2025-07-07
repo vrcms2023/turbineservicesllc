@@ -188,6 +188,7 @@ const CaseStudiesDetails = () => {
                 <RichTextView
                   data={selectedCaseStudieDetails.case_studies_description}
                   className={""}
+                  showMorelink={false}
                 />
               </p>
             </div>

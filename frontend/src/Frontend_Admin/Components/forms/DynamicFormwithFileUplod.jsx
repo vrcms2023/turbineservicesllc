@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import Error from "../Error";
-import { InputFields, RichTextInputEditor } from "./FormFields";
+import {
+  InputFields,
+  RichTextInputEditor,
+  RichTextInputEditor_V2,
+} from "./FormFields";
 import EditAdminPopupHeader from "../EditAdminPopupHeader";
 import Button from "../../../Common/Button";
 import { axiosServiceApi } from "../../../util/axiosUtil";
@@ -31,9 +35,11 @@ export default function DynamicFormwithFileUplod({
   };
   const [error, setError] = useState(false);
   const {
+    control,
     register,
     reset,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: useMemo(() => {
@@ -114,7 +120,11 @@ export default function DynamicFormwithFileUplod({
             onClose={onClose}
             callback={deleteImageByID}
             // message={`deleting the ${category_name} image?`}
-            message={<>Confirm deletion of  <span>{category_name}</span> image?</>}
+            message={
+              <>
+                Confirm deletion of <span>{category_name}</span> image?
+              </>
+            }
           />
         );
       },
@@ -139,11 +149,13 @@ export default function DynamicFormwithFileUplod({
 
                 if (type == "richText") {
                   return (
-                    <RichTextInputEditor
+                    <RichTextInputEditor_V2
+                      Controller={Controller}
+                      control={control}
                       key={index}
                       label={label}
-                      editorSetState={setEditorState}
-                      initialText={""}
+                      name={fieldName}
+                      value={value}
                     />
                   );
                 } else {

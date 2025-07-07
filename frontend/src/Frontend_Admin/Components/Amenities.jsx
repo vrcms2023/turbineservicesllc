@@ -46,7 +46,14 @@ export const AmenitiesList = ({ project, amenities, setAmenities }) => {
   );
 };
 
-export const Amenities = ({ title, value, amenities, setAmenities, name, rows }) => {
+export const Amenities = ({
+  title,
+  value,
+  amenities,
+  setAmenities,
+  name,
+  rows,
+}) => {
   const handleChange = (e, i) => {
     const { name, value } = e.target;
     const onchangeVal = { ...amenities };

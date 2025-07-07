@@ -291,7 +291,7 @@ function App() {
             <Route path="/addproject" element={<AddProject />} />
             <Route path="/addCategory" element={<ProjectCategory />} />
 
-            <Route path="/adminNews" element={<AdminNews />} />
+            {/* <Route path="/adminNews" element={<AdminNews />} /> */}
             <Route path="/testimonial" element={<AdminTestimonial />} />
           </Routes>
         </Suspense>

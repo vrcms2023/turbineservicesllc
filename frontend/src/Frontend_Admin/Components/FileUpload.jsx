@@ -15,8 +15,6 @@ import { axiosFileUploadServiceApi } from "../../util/axiosUtil";
 import {
   InputField,
   InputFields,
-  TextAreaField,
-  RichTextInputEditor,
   RichTextInputEditor_V2,
 } from "./forms/FormFields";
 import { getImageFileFromUrl, getImagePath } from "../../util/commonUtil";
@@ -289,7 +287,7 @@ const FileUpload = ({
       setError("Please add an image ");
       return true;
     }
-    data = getFormDataonSubmit();
+    data = getFormDataonSubmit(data);
 
     if (files.length > 0) {
       files.forEach((element, index) => {
@@ -328,10 +326,10 @@ const FileUpload = ({
     }
   };
 
-  const getFormDataonSubmit = () => {
+  const getFormDataonSubmit = (data) => {
     const adminActionForm = document.getElementById("adminActionForm");
     const getFormData = new FormData(adminActionForm);
-    const data = {};
+
     for (const pair of getFormData.entries()) {
       if (pair[0] !== "path") {
         data[pair[0]] = pair[1];
@@ -607,12 +605,14 @@ const FileUpload = ({
                 fieldName={imageTitleFieldName}
                 register={register}
               />
-
-              <TextAreaField
+              <RichTextInputEditor_V2
+                Controller={Controller}
+                control={control}
                 label={descriptionTitle}
-                fieldName={imageDescriptionFieldName}
-                register={register}
+                name={imageDescriptionFieldName}
+                value={value}
               />
+
               <>
                 {extraFormParamas.map((item, index) => {
                   let key = Object.keys(item);

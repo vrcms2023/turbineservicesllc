@@ -168,12 +168,6 @@ export const RichTextInputEditor_V2 = ({
 }) => {
   return (
     <div className="mb-2 row">
-      {/* <label
-        htmlFor=""
-        className="col-sm-3 col-form-label text-start text-md-end text-capitalize"
-      >
-        <small>{label}</small>
-      </label> */}
       <div className="col-sm-12">
         <p className="fs-6 pt-3 py-md-0">
           <small>{label}</small>

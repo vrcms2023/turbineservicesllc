@@ -11,6 +11,7 @@ urlpatterns = [
     path('clientCarouselbyCategory/<category>/', ClientCarouselViewByCategory.as_view(), name="get_client_Carousel_by_Category"),
     path('createHomeIntro/', HomeIntroAPIView.as_view(), name="create_get_HomeIntro"),
     path('updateHomeIntro/<pk>/', HomeIntroUpdateAndDeleteView.as_view(), name='retrieve_update_delete_HomeIntro'),
+    path('updateHomelistIntro/<pk>/', HomeIntroListUpdateAndDeleteView.as_view(), name='retrieve_update_delete_HomeIntro'),
     path('clientHomeIntro/<pk>/', ClientHomeIntroView.as_view(), name="get_client_HomeIntro"),
     path('clientHomeIntroList/<pageType>/', ClientHomeIntroListView.as_view(), name="get_client_HomeIntro_list"),
     path('updateIntroindex/', UpdateIntorIndex.as_view(), name="update_intro_index"),

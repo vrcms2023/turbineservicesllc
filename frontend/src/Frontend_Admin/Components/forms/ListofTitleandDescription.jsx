@@ -70,7 +70,7 @@ const ListofTitleandDescription = ({
   const thumbDelete = (id, name) => {
     const deleteImageByID = async () => {
       const response = await axiosServiceApi.delete(
-        `carousel/updateHomeIntro/${id}/`
+        `carousel/updateHomelistIntro/${id}/`
       );
       if (response.status === 204) {
         const list = listofHomeIntros.filter((item) => item.id !== id);
@@ -85,7 +85,11 @@ const ListofTitleandDescription = ({
             onClose={onClose}
             callback={deleteImageByID}
             // message={`deleting the ${name} image?`}
-            message={<>Confirm deletion of  <span>{name}</span> image?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> image?
+              </>
+            }
           />
         );
       },
@@ -103,7 +107,7 @@ const ListofTitleandDescription = ({
       if (data.id) {
         data["updated_by"] = userName;
         response = await axiosServiceApi.put(
-          `/carousel/updateHomeIntro/${data.id}/`,
+          `/carousel/updateHomelistIntro/${data.id}/`,
           data
         );
       } else {

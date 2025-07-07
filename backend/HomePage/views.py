@@ -195,6 +195,43 @@ class HomeIntroUpdateAndDeleteView(APIView):
         return Response({"intro": serializer.data}, status=status.HTTP_200_OK)
 
     def put(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        user = request.user
+        request.data.update({"updated_by": user.userName})
+        serializer = HomeIntroSerializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"intro": serializer.data}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object_pk(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class HomeIntroListUpdateAndDeleteView(APIView):
+    """
+    Retrieve, update or delete a carousel instance.
+    """
+    def get_object(self, pk):
+        try:
+            return HomeIntro.objects.get(pageType=pk)
+        except HomeIntro.DoesNotExist:
+            raise Http404
+        
+    def get_object_pk(self, pk):
+        try:
+            return HomeIntro.objects.get(pk=pk)
+        except HomeIntro.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        serializer = HomeIntroSerializer(snippet)
+        return Response({"intro": serializer.data}, status=status.HTTP_200_OK)
+
+    def put(self, request, pk, format=None):
         snippet = self.get_object_pk(pk)
         user = request.user
         request.data.update({"updated_by": user.userName})

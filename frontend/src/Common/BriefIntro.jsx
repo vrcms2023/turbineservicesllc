@@ -6,6 +6,7 @@ import { axiosClientServiceApi } from "../util/axiosUtil";
 
 import { BriefIntroStyled } from "./StyledComponents/Styled-BriefIntro";
 import Ancher from "./Ancher";
+import RichTextView from "./RichTextView";
 
 const BriefIntroFrontend = ({
   pageType,
@@ -54,7 +55,16 @@ const BriefIntroFrontend = ({
             {introValue?.subTitle !== "" && (
               <Title title={introValue?.subTitle} cssClass={introSubTitleCss} />
             )}
-            {introValue?.intro_desc ? (
+            <RichTextView
+              data={
+                introValue?.intro_desc
+                  ? introValue?.intro_desc
+                  : "Please Update Brief Intro"
+              }
+              className={"introDecTitleCss"}
+              showMorelink={false}
+            />
+            {/* {introValue?.intro_desc ? (
               <p className={introDecTitleCss}>
                 {introValue?.intro_desc
                   ? introValue?.intro_desc
@@ -62,7 +72,7 @@ const BriefIntroFrontend = ({
               </p>
             ) : (
               ""
-            )}
+            )} */}
 
             {showLink && introValue?.intro_morelink && (
               <div className={anchorContainer}>

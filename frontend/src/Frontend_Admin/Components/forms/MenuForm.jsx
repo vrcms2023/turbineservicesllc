@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import _ from "lodash";
 import { toast } from "react-toastify";
 // Comonents
@@ -35,7 +35,15 @@ const MenuForm = ({
     editHandler(componentType, false);
     document.body.style.overflow = "";
   };
-  const { register, watch, reset, handleSubmit } = useForm({
+  const {
+    control,
+    register,
+    reset,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
     defaultValues: useMemo(() => {
       return editMenu;
     }, [editMenu]),
@@ -121,7 +129,7 @@ const MenuForm = ({
       setError("Menu url should be starting with /");
       return true;
     }
-    if (isParentVal) {
+    if (!data?.id && isParentVal) {
       data["page_parent_ID"] = "";
     }
     if (data.id === data.page_parent_ID) {
@@ -148,7 +156,7 @@ const MenuForm = ({
         setError("Please select parent menu");
         return true;
       }
-    } else {
+    } else if (!data?.id) {
       data["page_position"] = menuList?.length > 0 ? menuList?.length + 1 : 1;
     }
     if (!data?.id) {
@@ -302,6 +310,8 @@ const MenuForm = ({
                   <SEOForm
                     register={register}
                     onChangeHanlder={onChangeHanlder}
+                    Controller={Controller}
+                    control={control}
                   />
                 </div>
               )}

@@ -32,8 +32,44 @@ class CarouselAPIView(generics.CreateAPIView):
      """
         
      def get(self, request, format=None):
-        #snippets = self.get_object(category)
-        snippets = Carousel.objects.all()
+        snippets = self.get_object("carousel")
+        #snippets = Carousel.objects.all()
+        serializer = CarouselSerializer(snippets, many=True)
+        return Response({"carousel": serializer.data}, status=status.HTTP_200_OK)
+        
+     def post(self, request, format=None):
+        requestObj = get_carousel_data_From_request_Object(request)
+        requestObj['created_by'] = request.data["created_by"]
+        serializer = CarouselSerializer(data=requestObj)
+        if 'path' in request.data and not request.data['path']:
+            serializer.remove_fields(['path','originalname','contentType'])
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"carousel": serializer.data}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ServiceCarouselAPIView(generics.CreateAPIView):
+     permission_classes = [permissions.IsAuthenticated]
+     serializer_class = CarouselSerializer
+     queryset = Carousel.objects.all()
+
+     def get_object(self, category):
+        try:
+              return Carousel.objects.filter(
+                Q(category__icontains=category)
+            )
+        except (Carousel.DoesNotExist):
+            raise status.HTTP_400_BAD_REQUEST
+        
+
+     """
+     List all Carousel, or create a new Carousel.
+     """
+        
+     def get(self, request,category, format=None):
+        snippets = self.get_object(category)
+        #snippets = Carousel.objects.all()
         serializer = CarouselSerializer(snippets, many=True)
         return Response({"carousel": serializer.data}, status=status.HTTP_200_OK)
         

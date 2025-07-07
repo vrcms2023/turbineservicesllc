@@ -4,7 +4,7 @@ from .views import *
 
 urlpatterns = [
     path('createCarousel/', CarouselAPIView.as_view(), name="create_get_Carousel"),
-    path('getCarousel/<category>/', CarouselAPIView.as_view(), name="get_Carousel"),
+    path('getCarousel/<category>/', ServiceCarouselAPIView.as_view(), name="get_service_Carousel"),
     path('updateCarousel/<pk>/', CarouselUpdateAndDeleteView.as_view(), name='retrieve_update_delete_Carousel'),
     path('updateCarouselindex/', UpdateCarouselIndex.as_view(), name="update_carousel_index"),
     path('clientCarousel/', ClientCarouselView.as_view(), name="get_client_Carousel"),

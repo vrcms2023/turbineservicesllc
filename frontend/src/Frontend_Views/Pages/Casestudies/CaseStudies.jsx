@@ -378,12 +378,8 @@ const CaseStudies = () => {
                     <RichTextView
                       data={item.case_studies_description}
                       className={""}
+                      showMorelink={false}
                     />
-                    {/* <div
-                      dangerouslySetInnerHTML={{
-                        __html: item.case_studies_description,
-                      }}
-                    /> */}
 
                     <div>
                       <Ancher

@@ -160,6 +160,7 @@ const Client = ({ item, index, editHandler, deleteAboutSection }) => {
                   className={`details ${
                     isAdmin ? "" : "overlay fa fa-map-marker"
                   }`}
+                  showMorelink={false}
                 />
                 {/* <div
                   className={`details ${

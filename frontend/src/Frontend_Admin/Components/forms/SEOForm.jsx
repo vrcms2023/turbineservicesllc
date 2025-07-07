@@ -1,7 +1,7 @@
 import React from "react";
-import { InputFields } from "./FormFields";
+import { InputFields, RichTextInputEditor_V2 } from "./FormFields";
 
-function SEOForm({ register, onChangeHanlder }) {
+function SEOForm({ Controller, control, register, onChangeHanlder }) {
   return (
     <>
       <InputFields
@@ -28,22 +28,34 @@ function SEOForm({ register, onChangeHanlder }) {
         register={register}
         onChange={onChangeHanlder}
       />
-      <InputFields
+      <RichTextInputEditor_V2
+        Controller={Controller}
+        control={control}
+        label={"Keywords"}
+        name={"seo_keywords"}
+      />
+      <RichTextInputEditor_V2
+        Controller={Controller}
+        control={control}
+        label={"Description"}
+        name={"seo_description"}
+      />
+      {/* <InputFields
         key={5}
         label={"Keywords"}
         type={"textarea"}
         fieldName={"seo_keywords"}
         register={register}
         onChange={onChangeHanlder}
-      />
-      <InputFields
+      /> */}
+      {/* <InputFields
         key={6}
         label={"Description"}
         type={"textarea"}
         fieldName={"seo_description"}
         register={register}
         onChange={onChangeHanlder}
-      />
+      /> */}
     </>
   );
 }

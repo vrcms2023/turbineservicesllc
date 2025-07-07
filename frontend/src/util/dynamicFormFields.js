@@ -128,7 +128,7 @@ export const getCarouselFields = (category) => {
     },
     carouse_description: {
       label: "Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "carouse_description",
     },
     category: {

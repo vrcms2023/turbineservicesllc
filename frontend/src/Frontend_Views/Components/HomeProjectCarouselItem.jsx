@@ -2,6 +2,7 @@ import React from "react";
 import { getImagePath } from "../../util/commonUtil";
 import Ancher from "../../Common/Ancher";
 import { useNavigate } from "react-router-dom";
+import RichTextView from "../../Common/RichTextView";
 
 export const HomeProjectCarouselItem = ({ item, index }) => {
   const navigate = useNavigate();
@@ -24,13 +25,15 @@ export const HomeProjectCarouselItem = ({ item, index }) => {
               <span>PROJECTS</span>
               {item.projectTitle && <h1 className="">{item.projectTitle}</h1>}
 
-              {item.projectDescription ||
-                (item.imageDescription && (
-                  <p className="fw-normal description fs-5">
-                    {item.imageDescription
-                      ? item.imageDescription
-                      : item.projectDescription}
-                  </p>
+              {item?.projectDescription ||
+                (item?.imageDescription && (
+                 
+                   <RichTextView data={item.imageDescription
+                        ? item.imageDescription
+                        : item.projectDescription} 
+                        className={"introDecTitleCss"}
+                        showMorelink={false}
+                        />
                 ))}
 
               <div>

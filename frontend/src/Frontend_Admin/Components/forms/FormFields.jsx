@@ -37,6 +37,29 @@ export const InputFields = ({
           </div>
         </div>
       );
+    case "number":
+      return (
+        <div className="mb-1 row">
+          <label
+            htmlFor=""
+            className="col-sm-12 col-form-label text-capitalize text-start"
+          >
+            <small className="">{label}</small>
+          </label>
+          <div className="col-sm-12">
+            <input
+              {...register(fieldName, validationObject)}
+              value={value}
+              type={type}
+              id={rest?.id}
+              onChange={onChange}
+              disabled={rest.disabled}
+              className="form-control p-2"
+            />
+            <span className="error">{error}</span>
+          </div>
+        </div>
+      );
     case "dropdown":
       return (
         <div className="mb-2 row">
@@ -133,8 +156,11 @@ export const InputFields = ({
         <div className="mb-2 row">
           <input
             {...register(fieldName)}
+            value={value}
             type={type}
-            defaultValue={value}
+            id={rest?.id}
+            onChange={onChange}
+            disabled={rest.disabled}
             className="form-control p-2"
           />
         </div>

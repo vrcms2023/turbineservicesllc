@@ -7,7 +7,11 @@ import { ThemeProvider } from "styled-components";
 
 // Components
 import LoadingSpinner from "./Common/LoadingSpinner";
-import { isNotEmptyObject, NO_FOOTER_ROUTES } from "./util/commonUtil";
+import {
+  isNotEmptyObject,
+  NO_FOOTER_ROUTES,
+  NO_HEADER_ROUTES,
+} from "./util/commonUtil";
 import SkeletonPage from "./Common/Skeltons/SkeletonPage";
 import Footer from "./Common/Footer/Footer";
 import Header from "./Common/Header/Header";
@@ -29,7 +33,10 @@ import { getCookie } from "./util/cookieUtil";
 import SEO from "./Common/SEO";
 import { getAllShowHideComponentsList } from "./redux/showHideComponent/showHideActions.js";
 import { getObjectsByKey } from "./util/showHideComponentUtil.js";
+import AllServices from "./Frontend_Views/Pages/Services/allServices.jsx";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 // Lazy Loading
 
 const HPRHome = lazy(() => import("./Frontend_Views/Pages/HPR-Home"));
@@ -139,6 +146,9 @@ const AdminSettings = lazy(
 const RAQAdmininistration = lazy(
   () => import("./Frontend_Admin/Pages/Auth/RAQAdmininistration")
 );
+const HomeServices = lazy(
+  () => import("./Frontend_Views/Components/HomeServices")
+);
 
 function App() {
   const { isLoading } = useSelector((state) => state.loader);
@@ -146,6 +156,7 @@ function App() {
   const dispatch = useDispatch();
 
   const isHideMenu = NO_FOOTER_ROUTES.includes(location.pathname);
+  const isHideHeader = NO_HEADER_ROUTES.includes(location.pathname);
   const [flashAdd, setFlashAdd] = useState(false);
   const [counter, setCounter] = useState(0);
   const { userInfo, permissions } = useSelector((state) => state.auth);
@@ -208,9 +219,6 @@ function App() {
   return (
     <>
       <SEO />
-      {/* Google Language Translator */}
-      {/* <div id="google_translate_element"></div> */}
-      {/* End of Google Language Translator */}
 
       {flashAdd && <Advertisement setFlashAdd={setFlashAdd} />}
 
@@ -219,13 +227,15 @@ function App() {
 
         {isLoading ? <LoadingSpinner /> : ""}
         <TopStrip />
-        <Header />
+        {!isHideHeader && <Header />}
 
         <Suspense fallback={<SkeletonPage />}>
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route path="/change_password" element={<ChangePassword />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/addproject" element={<AddProject />} />
+              <Route path="/addCategory" element={<ProjectCategory />} />
               <Route path="/contactUSList" element={<ContactUSAdmin />} />
             </Route>
 
@@ -254,6 +264,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/hpr-home" element={<HPRHome />} />
             <Route path="/about" element={<About />} />
+<Route path="/keypoints" element={<WhyChooseUs />} />
             <Route path="/whychooseus" element={<WhyChooseUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<Products />} />
@@ -290,6 +301,7 @@ function App() {
             <Route path="/authForm" element={<AuthForm />} />
             <Route path="/addproject" element={<AddProject />} />
             <Route path="/addCategory" element={<ProjectCategory />} />
+            <Route path="/allServices" element={<HomeServices />} />
 
             {/* <Route path="/adminNews" element={<AdminNews />} /> */}
             <Route path="/testimonial" element={<AdminTestimonial />} />

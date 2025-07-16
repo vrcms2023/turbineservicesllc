@@ -81,7 +81,8 @@ INSTALLED_APPS = [
     'products',
     'app_themes',
     'showHideComponents',
-    'advertisement'
+    'advertisement',
+    'counter'
 ]
 
 MIDDLEWARE = [
@@ -269,6 +270,13 @@ DJOSER = {
         'password_changed_confirmation': 'user_auth.email.PasswordChangedConfirmationEmail',
     },
 }
+
+CSRF_COOKIE_PATH = "/"                # Ensure cookie is available on all paths
+CSRF_COOKIE_DOMAIN = None            # Default: current domain
+CSRF_COOKIE_HTTPONLY = False         # Allows JS access
+CSRF_COOKIE_SAMESITE = "Lax"         # Allows sending CSRF from same-site frontends
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_SECURE = False  # Set to True in production with HTTPS
 
 CORS_EXPOSE_HEADERS = ['Content-Disposition']  # ← Critical for React access
 

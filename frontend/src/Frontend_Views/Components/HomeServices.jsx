@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Title from "../../Common/Title";
 
 // Styles
+import "./HomeServices.css";
+
 import { useAdminLoginStatus } from "../../Common/customhook/useAdminLoginStatus";
 import ServiceForm from "../../Frontend_Admin/Components/forms/ImgTitleIntoForm-List";
 import ModelBg from "../../Common/ModelBg";
@@ -44,7 +46,7 @@ const HomeServices = ({ title }) => {
         `/services/getClientHomePageService/`
       );
 
-      let data = mapServicePagetoComponent(response.data);
+      let data = mapServicePagetoComponent(response.data, 6);
       setClientServiceList(data);
     } catch (error) {
       console.log("Unable to get the intro");
@@ -53,33 +55,33 @@ const HomeServices = ({ title }) => {
 
   return (
     <>
-      {clientServiceList.map((servicelist, index) =>
-        servicelist?.service.map((item) => (
+      {clientServiceList?.map((items, index) =>
+        items?.child.map((item) => (
           <div
-            className="row service mb-3 mb-md-5"
+            className="col-md-4 col-sm-6 p-4 py-3 p-md-1 p-lg-3"
             key={`${index}+homeService`}
           >
-            <div className="col-md-6 p-2 homeServiceImg">
-              <img
-                src={
-                  item.path
-                    ? getImagePath(item.path)
-                    : getImagePath("/media/images/dummy-image-square.png")
-                }
-                alt={item.alternitivetext}
-                className="img-fluid w-100 h-100"
-              />
-            </div>
-            <div className="col-md-6 p-2 p-md-4 homeServiceDetails">
-              <Title
-                title={item.feature_title}
-                cssClass="fw-bold serviceTitle"
-              />
+            <div
+              className="briefIntro"
+              // style={{
+              //   backgroundImage: `url(${item.path ? getImagePath(item.path) : getImagePath("/media/images/dummy-image-square.png")})`,
+              // }}
+            >
+              <Link
+                to={`${item.services_page_url}`}
+                className="m-0 text-decoration-none titleLink"
+              >
+                <Title
+                  title={item.feature_title}
+                  cssClass="serviceTitle lc1 lineClamp"
+                />
+              </Link>
+
               {item.feature_description && (
                 <RichTextView
                   data={item.feature_description}
                   className={"description"}
-                  characterLimit={600}
+                  // characterLimit={200}
                   showMorelink={false}
                 />
                 // <div
@@ -87,10 +89,7 @@ const HomeServices = ({ title }) => {
                 //   dangerouslySetInnerHTML={{ __html: item.feature_description }}
                 // />
               )}
-              <Link
-                to={`/services/${item.services_page_title}/`}
-                className="mt-3"
-              >
+              <Link to={`${item.services_page_url}`} className="mt-3">
                 Know More
               </Link>
             </div>

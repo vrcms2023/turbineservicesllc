@@ -57,7 +57,7 @@ const ImageGalleryComponent = ({ pageType, componentEdit, imageGallery }) => {
                 imageGallery?.map((item, index) => (
                   <div className="col-sm-6 col-md-2 mb-4" key={item.id}>
                     <img
-                      src={getImagePath(item.path)}
+                      src={getImagePath(item?.path)}
                       alt={item.alternitivetext}
                       className="d-block w-100 img-fluid"
                       onClick={() => findThumbHandler(item.id)}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./DynamicCarousel.css";
 import { getImagePath } from "../../util/commonUtil";
+import RichTextView from "../../Common/RichTextView";
 
 const DCarousel = ({ obj, all, closeCarousel }) => {
   const findImg = all.find((item) => item.id === obj.id);
@@ -30,35 +31,42 @@ const DCarousel = ({ obj, all, closeCarousel }) => {
                 className={`carousel-item ${index === 0 ? "active" : ""}`}
                 key={item.id}
               >
-                <img
-                  src={getImagePath(item.path)}
-                  alt={item.alternitivetext}
-                  className="d-block"
-                />
-                {item?.image_title && (
-                  <h5
-                    className=" w-100 p-4 fs-5 text-center position-absolute text-white"
-                    style={{
-                      zIndex: "9999",
-                      bottom: "0px",
-                      background: "rgba(0,0,0,.4)",
-                    }}
-                  >
-                    {item?.image_title}
-                  </h5>
-                )}
-                {item?.image_description && (
-                  <p
-                    className=" w-100 p-4 fs-5 text-center position-absolute text-white"
-                    style={{
-                      zIndex: "9999",
-                      bottom: "0px",
-                      background: "rgba(0,0,0,.4)",
-                    }}
-                  >
-                    {item?.image_description}
-                  </p>
-                )}
+                <div className="imgContainer">
+                  <img
+                    src={getImagePath(item?.path)}
+                    alt={item.alternitivetext}
+                    className="d-block img-fluid"
+                  />
+                </div>
+                <div className="imgInfo">
+                  {item?.image_title ||
+                    (item?.client_title && (
+                      <h5
+                        className=" w-100 py-2 fs-4 text-center d-block"
+                        style={{}}
+                      >
+                        {item?.image_title || item?.client_title}
+                      </h5>
+                    ))}
+                  {item?.image_description ||
+                    (item?.client_description && (
+                      // <p
+                      //   className=" w-100 px-0 text-center"
+                      //   style={{
+
+                      //   }}
+                      // >
+                      //   {item?.image_description}
+                      // </p>
+                      <RichTextView
+                        data={
+                          item?.image_description || item?.client_description
+                        }
+                        className={" w-100 px-0 text-center"}
+                        showMorelink={false}
+                      />
+                    ))}
+                </div>
               </div>
             ))
           : null}

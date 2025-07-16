@@ -67,7 +67,11 @@ export const ServicesStyled = styled.div`
           padding: 1rem 0 0 !important;
         }
       }
-      
+          .viewAllServices {
+        padding: 8px !important;
+        font-weight: 600 !important;
+        font-size: .8rem;
+      }
       
       
       .servicePageLinks {

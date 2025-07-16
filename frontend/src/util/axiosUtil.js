@@ -5,6 +5,8 @@ import { getCookie } from "./cookieUtil";
 import { startLoading, stoptLoading } from "../redux/project/loadingSlice";
 
 axios.defaults.baseURL = getBaseURL() + "/api/v1";
+
+axios.defaults.withCredentials = true;
 /**
  * Axios API call with Access token
  */

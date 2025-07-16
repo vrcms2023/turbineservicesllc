@@ -115,7 +115,11 @@ const HomeNews = ({
             onClose={onClose}
             callback={deleteImageByID}
             // message={`deleting the ${name} News?`}
-            message={<>Confirm deletion of <span>{name}</span> News?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> News?
+              </>
+            }
           />
         );
       },

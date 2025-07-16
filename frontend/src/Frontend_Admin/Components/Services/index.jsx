@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import Button from "../../../Common/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   axiosClientServiceApi,
@@ -14,8 +14,12 @@ import { confirmAlert } from "react-confirm-alert";
 import DeleteDialog from "../../../Common/DeleteDialog";
 import Title from "../../../Common/Title";
 import moment from "moment";
-import { sortByCreatedDate } from "../../../util/dataFormatUtil";
-import { storeServiceMenuValueinCookie } from "../../../util/commonUtil";
+import { sortByCreatedDate, sortByDate } from "../../../util/dataFormatUtil";
+import {
+  getClonedObject,
+  sortByFieldName,
+  storeServiceMenuValueinCookie,
+} from "../../../util/commonUtil";
 
 import { useLocation } from "react-router-dom";
 import {
@@ -24,12 +28,16 @@ import {
 } from "../../../util/menuUtil";
 import { getMenu } from "../../../redux/auth/authActions";
 import { getServiceValues } from "../../../redux/services/serviceActions";
+import Ancher from "../../../Common/Ancher";
 
 const AddService = ({
   setSelectedServiceProject,
   selectedServiceProject,
   pageType,
+  isNewServiceCreated,
 }) => {
+  const [serviceLinksBoxHeight, setServiceLinksBoxHeight] = useState(86);
+  const [showAll, setShowAll] = useState("SHOW ALL..");
   const [serviceName, setServiceName] = useState("");
   const [error, setError] = useState("");
   const [serviceList, setServiceList] = useState([]);
@@ -40,10 +48,11 @@ const AddService = ({
   const { serviceMenu, serviceerror } = useSelector(
     (state) => state.serviceMenu
   );
-  const { menuList } = useSelector((state) => state.auth);
+  const { menuList, menuRawList } = useSelector((state) => state.auth);
   const inputRef = useRef(null);
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const onChangeHandler = (event) => {
     setError("");
@@ -51,15 +60,29 @@ const AddService = ({
   };
 
   const onClickSelectedService = (item) => {
-    storeServiceMenuValueinCookie(item);
-    setSelectedServiceProject(item);
-    //window.scroll(0, 700);
-    // document.getElementById('servicesPage').scrollTo(0,100);
+    isNewServiceCreated.current = false;
+    navigate(item.page_url, { replace: true });
+    // storeServiceMenuValueinCookie(item);
+    // setSelectedServiceProject(item);
   };
 
   useEffect(() => {
     setUserName(getCookie("userName"));
   }, []);
+
+  useEffect(() => {
+    if (serviceMenu.length > 0) {
+      let filterMenu = _.filter(serviceMenu, (item) => {
+        return item?.page_url?.toLowerCase() !== "/services/addservices";
+      });
+
+      const sortedMapped = sortByFieldName(filterMenu, "service_postion");
+
+      setServiceList(sortedMapped);
+    } else {
+      setServiceList(serviceMenu);
+    }
+  }, [serviceMenu]);
 
   /**
    * Add Service handler
@@ -74,13 +97,14 @@ const AddService = ({
       services_page_title: serviceName,
       created_by: userName,
       pageType: pageType,
-      publish: editServiceObject.publish ? true : false,
+      publish: editServiceObject?.publish ? true : false,
     };
     try {
       if (editServiceObject?.id) {
         const _tempEditObj = _.cloneDeep(editServiceObject);
         data["id"] = editServiceObject.id;
         data["updated_by"] = userName;
+        data["page_url"] = editServiceObject.page_url;
         response = await axiosServiceApi.put(
           `/services/updateService/${editServiceObject.id}/`,
           data
@@ -93,15 +117,24 @@ const AddService = ({
         setServiceName("");
         setEditServiceObject({});
       } else {
+        const _serviceMenuObject = serviceMenu[0];
+        const position = Math.floor(
+          parseInt(_serviceMenuObject?.service_postion) / 10
+        );
+        data["service_postion"] = position * 10 + serviceMenu.length + 1;
+        data["page_url"] =
+          `/services/${serviceName.replace(/\s/g, "").toLowerCase()}`;
         response = await axiosServiceApi.post(`/services/createService/`, data);
         createChildMenu(response.data.services, false, "");
       }
       if (response?.status === 201 || response?.status === 200) {
+        const item = response.data.services;
         toast.success(`${serviceName} service is created `);
         setServiceName("");
         dispatch(getServiceValues());
-
-        setSelectedServiceProject(response.data.services);
+        isNewServiceCreated.current = true;
+        setSelectedServiceProject(item);
+        navigate(item.page_url, { replace: true });
       } else {
         setError(response.data.message);
       }
@@ -134,16 +167,8 @@ const AddService = ({
     if (serviceMenu?.length === 0 && onPageLoadAction.current) {
       onPageLoadAction.current = false;
       dispatch(getServiceValues());
-    } else if (serviceMenu) {
-      if (serviceMenu.length > 0) {
-        const filterMenu = _.filter(serviceMenu, (item) => {
-          return item.services_page_title.toLowerCase() !== "add new service";
-        });
-        setServiceList(filterMenu);
-      } else {
-        setServiceList(serviceMenu);
-      }
     }
+
     if (serviceMenu?.length === 0) {
       removeCookie("pageLoadServiceID");
       removeCookie("pageLoadServiceName");
@@ -181,7 +206,7 @@ const AddService = ({
         `/services/updateService/${item.id}/`
       );
       if (response.status === 204) {
-        const deleteresponse = await deleteServiceItem(menuList, item);
+        const deleteresponse = await deleteServiceItem(item.menu_ID);
 
         dispatch(getServiceValues());
         dispatch(getMenu());
@@ -196,7 +221,11 @@ const AddService = ({
             onClose={onClose}
             callback={deleteImageByID}
             // message={`deleting the ${name} Service?`}
-            message={<>Confirm deletion of  <span>{name}</span> Service?</>}
+            message={
+              <>
+                Confirm deletion of <span>{name}</span> Service?
+              </>
+            }
           />
         );
       },
@@ -216,6 +245,7 @@ const AddService = ({
     setServiceName("");
     setEditServiceObject({});
     setEditState(false);
+    isNewServiceCreated.current = false;
   };
 
   const createChildMenu = async (serviceResponse, isEdit, oldTilte) => {
@@ -226,8 +256,18 @@ const AddService = ({
       isEdit,
       oldTilte
     );
-
+    dispatch(getServiceValues());
     dispatch(getMenu());
+  };
+
+  const handlerHeightSetting = () => {
+    if (serviceLinksBoxHeight === 86) {
+      setServiceLinksBoxHeight(320);
+      setShowAll("FEW ONLY");
+    } else {
+      setServiceLinksBoxHeight(86);
+      setShowAll("SHOW ALL..");
+    }
   };
 
   return (
@@ -260,13 +300,18 @@ const AddService = ({
             <div className="d-flex gap-2">
               <Button
                 type="submit"
-                cssClass="btn btn-secondary mt-3"
+                // cssClass="btn btn-primary mt-2"
+                cssClass={
+                  serviceName
+                    ? "btn btn-primary mt-2"
+                    : "btn btn-secondary mt-2"
+                }
                 handlerChange={submitHandler}
-                label={editServiceObject?.id ? "Change Name" : "Save"}
+                label={editServiceObject?.id ? "Change Name" : "SAVE"}
               />
               {editServiceObject?.id ? (
                 <Button
-                  cssClass="btn btn-primary mt-3"
+                  cssClass="btn btn-outline mt-2"
                   handlerChange={CancelServiceNameChange}
                   label="Cancel"
                 />
@@ -276,13 +321,13 @@ const AddService = ({
             </div>
           </div>
 
-          <div className="col-md-6 servicePageLinks">
+          <div className={"col-md-6 p-0 servicePageLinks"}>
             {/* <Title title="Pages" cssClass="fs-6 fw-bold text-center border-bottom pb-2 mb-2 " /> */}
-            <ul>
+            <ul style={{ height: `${serviceLinksBoxHeight}px` }}>
               {serviceList &&
                 serviceList.map((item) => (
                   <li
-                    className={`d-flex justify-content-between align-items-center p-1 px-3
+                    className={`d-flex justify-content-between align-items-center py-1
                      ${editState && item.id === editServiceObject?.id ? "border border-warning" : ""} 
               ${
                 item.id === selectedServiceProject?.id
@@ -292,16 +337,23 @@ const AddService = ({
                     key={item.id}
                   >
                     <div className="w-50">
-                      <Link
+                      <Ancher
+                        Ancherpath={item.page_url}
+                        AncherClass="text-dark pageTitle"
+                        AncherLabel={item.services_page_title}
+                        handleModel={(event) => onClickSelectedService(item)}
+                      />
+                      {/* <Link
+                        to={item.page_url}
                         onClick={(event) => onClickSelectedService(item)}
                         className="text-dark pageTitle"
                       >
                         {item.services_page_title}{" "}
-                      </Link>
+                      </Link> */}
                     </div>
 
                     {/* <p>{moment(item.created_at).format('DD-MM-YYYY hh:mm:ss')}</p> */}
-                    <div className="w-50 text-end">
+                    <div className="w-50 text-end publishState">
                       <Link
                         onClick={() => publishService(item)}
                         // className={`p-1 px-2 rounded ${
@@ -345,6 +397,18 @@ const AddService = ({
                   </li>
                 ))}
             </ul>
+
+            <div className="row">
+              <div className="col-12 text-end">
+                <a
+                  href="#"
+                  className="btn viewAllServices"
+                  onClick={() => handlerHeightSetting()}
+                >
+                  {showAll}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

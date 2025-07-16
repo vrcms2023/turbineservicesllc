@@ -24,7 +24,7 @@ const DynamicKeyPoints = ({ editHandler, objectstatus, pageType }) => {
 
       <DynamicKeyPoint
         getBannerAPIURL={`banner/clientBannerIntro/${pageType}/`}
-        bannerState={objectstatus}
+        keyPointsState={objectstatus}
       />
 
       {objectstatus && (

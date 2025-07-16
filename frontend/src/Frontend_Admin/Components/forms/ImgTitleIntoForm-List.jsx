@@ -24,6 +24,7 @@ import {
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 import NoteComponent from "../../../Common/NoteComponent";
+import RichTextView from "../../../Common/RichTextView";
 
 const AdminBanner = ({
   editHandler,
@@ -266,7 +267,7 @@ const AdminCarouselItem = ({
                 aria-hidden="true"
               ></i>
               <img
-                src={item.path ? getImagePath(item.path) : getDummyImage()}
+                src={item?.path ? getImagePath(item?.path) : getDummyImage()}
                 alt={item.alternitivetext}
                 className="w-100 d-none d-lg-block"
               />
@@ -276,9 +277,24 @@ const AdminCarouselItem = ({
                 {getObjectTitle(componentType, item)}
               </h6>
               <small className="description text-muted d-none d-md-block">
-                {getObjectDescription(componentType, item)}
-                {item.carouseDescription && item.carouseDescription}
-                {item.image_description && item.image_description}
+                {/* {getObjectDescription(componentType, item)} */}
+                {/* {item.carouseDescription && item.carouseDescription}
+                {item.image_description && item.image_description} */}
+                <RichTextView
+                  data={getObjectDescription(componentType, item)}
+                  className={""}
+                  showMorelink={false}
+                />
+                {/* <RichTextView
+                    data={item.carouseDescription && item.carouseDescription}
+                    className={""}
+                    showMorelink={false}
+                  />
+                  <RichTextView
+                    data={item.image_description && item.image_description}
+                    className={""}
+                    showMorelink={false}
+                  /> */}
               </small>
             </div>
             <div className="col-4 col-md-2 d-flex justify-content-around align-items-center flex-md-row gap-3">

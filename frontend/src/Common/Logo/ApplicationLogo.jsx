@@ -37,7 +37,7 @@ const ApplicationLogo = ({
 
   return (
     <>
-      {bannerdata.path ? (
+      {bannerdata?.path ? (
         <img
           src={bannerdata?.path ? getImagePath(bannerdata.path) : headersvgLogo}
           alt={bannerdata.alternitivetext}

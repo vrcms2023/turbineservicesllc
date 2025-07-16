@@ -212,7 +212,7 @@ export const getTestimonialsFields = (category) => {
   };
 };
 
-export const getServiceFormFields = (id, title) => {
+export const getServiceFormFields = (id, title, page_url) => {
   return {
     feature_title: {
       label: "Service Title",
@@ -242,6 +242,13 @@ export const getServiceFormFields = (id, title) => {
       type: "hidden",
       value: title ? title : "",
       fieldName: "services_page_title",
+    },
+    services_page_url: {
+      label: "hidden",
+      readonly: true,
+      type: "hidden",
+      value: page_url ? page_url : "",
+      fieldName: "services_page_url",
     },
   };
 };

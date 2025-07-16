@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import { HomeClientItem } from "./HomeClientItem";
 import { Link } from "react-router-dom";
 
@@ -36,9 +36,9 @@ export const HomeClientList = ({ clientsList }) => {
   };
   return (
     <>
-      <div className="text-center my-5">
+      <div className="text-center">
         <span
-          className="fs-3 px-4 py-2"
+          className="fs-1 pb-4 d-block"
           // style={{ borderBottom: "1px solid #444444" }}
         >
           Our Clients We Proudly Served

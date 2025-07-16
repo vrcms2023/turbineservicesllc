@@ -47,6 +47,7 @@ def get_service_data_From_request_Object(request):
         requestObj['feature_description'] = request.data["feature_description"]
         requestObj['services_page_title'] = request.data["services_page_title"]
         requestObj['serviceID'] = request.data["serviceID"]
+        requestObj['services_page_url'] = request.data["services_page_url"]
         return requestObj
 
 def get_carousel_data_From_request_Object(request):

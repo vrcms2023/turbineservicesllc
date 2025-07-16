@@ -7,6 +7,7 @@ import { axiosClientServiceApi } from "../util/axiosUtil";
 import { BriefIntroStyled } from "./StyledComponents/Styled-BriefIntro";
 import Ancher from "./Ancher";
 import RichTextView from "./RichTextView";
+import useAdminLoginStatus from "./customhook/useAdminLoginStatus";
 
 const BriefIntroFrontend = ({
   pageType,
@@ -24,6 +25,7 @@ const BriefIntroFrontend = ({
   maxHeight,
 }) => {
   const [introValue, setIntroValues] = useState([]);
+  const { isAdmin, hasPermission } = useAdminLoginStatus();
 
   useEffect(() => {
     const getBriefIntro = async () => {
@@ -59,7 +61,9 @@ const BriefIntroFrontend = ({
               data={
                 introValue?.intro_desc
                   ? introValue?.intro_desc
-                  : "Please Update Brief Intro"
+                  : isAdmin
+                    ? "Please Update Brief Intro"
+                    : ""
               }
               className={"introDecTitleCss"}
               showMorelink={false}

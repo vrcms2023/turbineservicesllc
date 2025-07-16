@@ -1,5 +1,6 @@
 import React from "react";
 import { getImagePath } from "../../util/commonUtil";
+import RichTextView from "../../Common/RichTextView";
 
 export const CarouselItem = ({ item, index }) => {
   return (
@@ -32,13 +33,11 @@ export const CarouselItem = ({ item, index }) => {
           ""
         )} */}
 
-        {item.carouse_description ? (
-          <p className="fw-normal description fs-5">
-            {item.carouse_description}
-          </p>
-        ) : (
-          ""
-        )}
+        <div className="d-none d-lg-block">
+          {item?.carouse_description && (
+            <RichTextView data={item?.carouse_description} showMorelink={false} />
+          )}
+        </div>
       </div>
     </div>
   );

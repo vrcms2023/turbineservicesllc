@@ -10,6 +10,7 @@ import ModelBg from "../../../Common/ModelBg";
 import MenuForm from "../../Components/forms/MenuForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getFilterObjectByID,
   getItemStyle,
   getListStyle,
   getMenuObject,
@@ -24,7 +25,11 @@ import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { getMenu } from "../../../redux/auth/authActions";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 import { getServiceValues } from "../../../redux/services/serviceActions";
-import { deleteServiceMenu, getServiceMenuItem } from "../../../util/menuUtil";
+import {
+  deleteServiceMenu,
+  getServiceMenuItem,
+  updateServiceMenuIndex,
+} from "../../../util/menuUtil";
 
 const PagesConfiguration = () => {
   const editComponentObj = {
@@ -54,7 +59,7 @@ const PagesConfiguration = () => {
       item?.page_parent_ID === rootServiceMenu?.id
     ) {
       setselectedServiceMenu(selectedService);
-    }
+    } else setselectedServiceMenu("");
   };
 
   /**
@@ -94,8 +99,8 @@ const PagesConfiguration = () => {
         toast.success(`${title} Memu is delete successfully `);
         getAllPagesDetails();
 
-        if (selectedService) {
-          await deleteServiceMenu(selectedService);
+        if (menu.service_menu_ID) {
+          await deleteServiceMenu(menu.service_menu_ID);
           dispatch(getServiceValues());
         }
         dispatch(getMenu());
@@ -109,7 +114,11 @@ const PagesConfiguration = () => {
             onClose={onClose}
             callback={deleteMenuItemByID}
             // message={`you want to delete the ${title} Menu`}
-            message={<>Confirm deletion of  <span>{title}</span> Menu?</>}
+            message={
+              <>
+                Confirm deletion of <span>{title}</span> Menu?
+              </>
+            }
           />
         );
       },
@@ -223,11 +232,7 @@ const PagesConfiguration = () => {
                   {node.page_label}
                 </td>
                 <td>
-                  <Link
-                    to={`${rootServiceMenu?.id === node?.page_parent_ID ? rootServiceMenu?.page_url + node?.page_url : node.page_url}`}
-                  >
-                    {`${rootServiceMenu?.id === node?.page_parent_ID ? rootServiceMenu?.page_url + node?.page_url : node.page_url}`}
-                  </Link>
+                  <Link to={`${node.page_url}`}>{`${node.page_url}`}</Link>
                 </td>
                 <td>{node.is_Parent ? "Parent Menu" : "Child Menu"}</td>
                 {/* <td className="text-center">
@@ -353,9 +358,15 @@ const PagesConfiguration = () => {
           _finalObject.push(...childObjs);
         }
       });
+      const serviceMenuRoot = getFilterObjectByID(rawData, draggableId)[0];
 
       const response = await updateObjectsIndex(_finalObject);
       if (response?.length > 0) {
+        if (serviceMenuRoot && serviceMenuRoot?.page_url?.match("/services/")) {
+          await updateServiceMenuIndex(response, serviceList);
+          dispatch(getServiceValues());
+        }
+
         const result = getMenuObject(response);
         setPagesDetails(result);
       }

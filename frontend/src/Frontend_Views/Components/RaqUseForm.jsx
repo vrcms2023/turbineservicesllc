@@ -183,7 +183,7 @@ const RaqUseForm = ({ closeModel, downloadPDF }) => {
               />
             </div>
             <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 mt-3">
-              <button className="btn btn-primary mx-3">Save</button>
+              <button className="btn btn-primary mx-3">DOWNLOAD</button>
             </div>
           </div>
         </form>

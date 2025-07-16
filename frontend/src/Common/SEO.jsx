@@ -23,7 +23,7 @@ const SEO = () => {
   useEffect(() => {
     if (menuRawList?.length > 0 && !ispathExit) {
       let seoMenu = _.filter(menuRawList, (item) => {
-        return item.page_url.toLowerCase() === pathname.toLowerCase();
+        return item?.page_url?.toLowerCase() === pathname.toLowerCase();
       })[0];
       if (seoMenu) {
         setSeoObject(seoMenu);

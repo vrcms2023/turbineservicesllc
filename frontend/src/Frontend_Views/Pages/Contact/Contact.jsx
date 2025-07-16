@@ -292,23 +292,29 @@ const Contact = () => {
                     <div className="row">
                       {addressList?.map((item, index) => (
                         <div
-                          className={`my-4 ${addressList.length === 1 ? "col-md-12" : addressList.length === 2 ? "col-md-6" : addressList.length === 3 ? "col-md-6" : "col-md-3"}`}
+                          className={`my-4 px-4 px-sm-auto addressItem ${addressList.length === 1 ? "col-md-12" : addressList.length === 2 ? "col-md-6" : addressList.length === 3 ? "col-md-6" : "col-md-3"}`}
                         >
-                          <Title
+                          {item.location_title && (
+                            <Title
                             title={item.location_title}
                             cssClass="mb-2 title"
                           />
+                          )}
+                          
                           <div className="mb-2 contactAddress" key={index}>
-                            <p className="m-0 fs-4 fw-medium">
-                              {item.company_name}
-                            </p>
-                            <p className="m-0">{item.address_dr_no}</p>
-                            <p className="m-0">{item.street} </p>
-                            <p className="m-0">{item.location} </p>
-                            <p className="m-0">{item.city} </p>
-                            <p className="mb-3">{item.state}</p>
+                            {item.company_name && (
+                              <p className="m-0 fs-4 fw-medium"> {item.company_name} </p>
+                            )}
+                            
+                            {item.address_dr_no && (<p className="m-0">{item.address_dr_no}</p>)}
+                            {item.street && (<p className="m-0">{item.street} </p>)}
+                            {item.location && (<p className="m-0">{item.location} </p>)}
+                            {item.city && (<p className="m-0">{item.city} </p>)}
+                            {item.state && (<p className="mb-3">{item.state}</p>)}
+                            
                             {/* <p className="m-0">Pincode - {item.postcode}</p> */}
-                            <p className="mt-2">
+                            {item.phonen_number && (
+                              <p className="mt-2">
                               {item.phonen_number && (
                                 <>
                                   {/* <Title title="Phone Number :" cssClass="mb-2" /> */}
@@ -320,7 +326,10 @@ const Contact = () => {
                                 </>
                               )}
                             </p>
-                            <p className="mt-2">
+                            )}
+
+                            {item.phonen_number_2 && (
+                              <p className="mt-2">
                               {item.phonen_number_2 && (
                                 <>
                                   {/* <Title title="Phone Number :" cssClass="mb-2" /> */}
@@ -332,7 +341,11 @@ const Contact = () => {
                                 </>
                               )}
                             </p>
-                            <p className="mt-2">
+                            )}
+                            
+                            
+                            {item.phonen_number_3 && (
+                              <p className="mt-2">
                               {item.phonen_number_3 && (
                                 <>
                                   <i
@@ -343,7 +356,29 @@ const Contact = () => {
                                 </>
                               )}
                             </p>
-                            <p className="mt-0">
+                            )}
+
+                            {item.emailid && (
+                              <p className="mt-0">
+                              {item.emailid && (
+                                <>
+                                  <i
+                                    className="fa fa-envelope-o fs-4 me-2"
+                                    aria-hidden="true"
+                                  ></i>{" "}
+                                  {/* <a href="">{item.emailid_2}</a> */}
+                                  <Link
+                                    to={`mailto: ${item.emailid && item.emailid}`}
+                                  >
+                                    ${item.emailid && item.emailid}
+                                  </Link>
+                                </>
+                              )}
+                            </p>
+                            )}
+                            
+                            {item.emailid_2 && (
+                              <p className="mt-0">
                               {item.emailid_2 && (
                                 <>
                                   <i
@@ -359,7 +394,10 @@ const Contact = () => {
                                 </>
                               )}
                             </p>
-                            <p className="mt-0">
+                            )}
+                            
+                            {item.emailid_3 && (
+                              <p className="mt-0">
                               {item.emailid_3 && (
                                 <>
                                   <i
@@ -374,6 +412,8 @@ const Contact = () => {
                                 </>
                               )}
                             </p>
+                            )}
+                            
                           </div>
                         </div>
                       ))}

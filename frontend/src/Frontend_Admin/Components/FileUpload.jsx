@@ -149,30 +149,14 @@ const FileUpload = ({
 
     if (showExtraFormFields) {
       for (const key in showExtraFormFields) {
-        if (showExtraFormFields.hasOwnProperty(key)) {
+        if (
+          showExtraFormFields.hasOwnProperty(key) &&
+          showExtraFormFields[key].type !== "hidden"
+        ) {
           formData.append(key, data[key]);
-          // if (key === "feature_description") {
-          //   formData.append("feature_description", editorState);
-          // } else if (key === "news_description") {
-          //   formData.append("news_description", editorState);
-          // } else if (key === "aboutus_description") {
-          //   formData.append("aboutus_description", editorState);
-          // } else if (key === "team_member_about_us") {
-          //   formData.append("team_member_about_us", editorState);
-          // } else if (key === "case_studies_description") {
-          //   formData.append("case_studies_description", editorState);
-          // } else if (key === "client_description") {
-          //   formData.append("client_description", editorState);
-          // } else if (key === "description") {
-          //   formData.append("description", editorState);
-          // } else if (
-          //   key === "banner_descripiton" &&
-          //   listofAboutSection.indexOf(pageType) > -1
-          // ) {
-          //   formData.append("banner_descripiton", editorState);
-          // } else {
-          //   formData.append(key, data[key]);
-          // }
+        }
+        if (showExtraFormFields[key].type === "hidden") {
+          formData.append(key, showExtraFormFields[key]?.value);
         }
       }
     }
@@ -479,8 +463,8 @@ const FileUpload = ({
                 </div>
               )}
             {editImage?.id &&
-              editImage.path &&
-              editImage.contentType !== ".pdf" && (
+              editImage?.path &&
+              editImage?.contentType !== ".pdf" && (
                 <div className="col-6">
                   <img
                     src={getImagePath(editImage.path, editImage.contentType)}
@@ -519,30 +503,7 @@ const FileUpload = ({
 
               if (type == "richText") {
                 return (
-                  // <RichTextInputEditor
-                  //   key={index}
-                  //   label={label}
-                  //   editorSetState={setEditorState}
-                  //   initialText={
-                  //     editImage?.feature_description
-                  //       ? editImage?.feature_description
-                  //       : editImage?.news_description
-                  //         ? editImage?.news_description
-                  //         : editImage?.banner_descripiton
-                  //           ? editImage?.banner_descripiton
-                  //           : editImage?.aboutus_description
-                  //             ? editImage?.aboutus_description
-                  //             : editImage?.client_description
-                  //               ? editImage?.client_description
-                  //               : editImage?.case_studies_description
-                  //                 ? editImage?.case_studies_description
-                  //                 : editImage?.team_member_about_us
-                  //                   ? editImage?.team_member_about_us
-                  //                   : editImage?.description
-                  //                     ? editImage?.description
-                  //                     : ""
-                  //   }
-                  // />
+                  
                   <RichTextInputEditor_V2
                     Controller={Controller}
                     control={control}

@@ -46,7 +46,7 @@ const Advertisement = ({ setFlashAdd }) => {
         <span className="close" onClick={() => setFlashAdd(false)}>
           x
         </span>
-        {advertisementList.length == 1 && (
+        {advertisementList?.length == 1 && (
           <div>
             <div className="advertismentInfo">
               {advertisementList[0].title && (
@@ -69,7 +69,7 @@ const Advertisement = ({ setFlashAdd }) => {
             <img
               src={
                 advertisementList[0]?.path
-                  ? getImagePath(advertisementList[0].path)
+                  ? getImagePath(advertisementList[0]?.path)
                   : getDummyImage()
               }
               alt={advertisementList[0].alternitivetext}
@@ -77,7 +77,7 @@ const Advertisement = ({ setFlashAdd }) => {
             />
           </div>
         )}
-        {advertisementList.length > 1 && (
+        {advertisementList?.length > 1 && (
           <div
             id="carouselExampleIndicators"
             className="homeCarousel carousel slide"

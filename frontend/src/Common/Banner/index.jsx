@@ -74,7 +74,7 @@ const Banner = ({
             </small>
           )}
         </div>
-        {bannerdata.path ? (
+        {bannerdata?.path ? (
           <img
             src={
               bannerdata?.path ? getImagePath(bannerdata.path) : getDummyImage()

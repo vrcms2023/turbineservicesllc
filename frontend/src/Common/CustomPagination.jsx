@@ -41,7 +41,7 @@ const CustomPagination = ({
 
   return (
     <>
-      {total_count > 10 && (
+      {total_count > 12 && (
         <nav aria-label="Page navigation example">
           <ul className="pagination justify-content-end">
             <li className={`page-item ${previous_url ? "" : "disabled"}`}>

@@ -128,13 +128,15 @@ export const getObjectDescription = (type, item) => {
 export const storeServiceMenuValueinCookie = (item) => {
   removeCookie("pageLoadServiceID");
   removeCookie("pageLoadServiceName");
+  removeCookie("pageLoadServiceURL");
   setCookie("pageLoadServiceID", item.id);
   setCookie("pageLoadServiceName", urlStringFormat(item?.services_page_title));
+  setCookie("pageLoadServiceURL", item?.page_url);
 };
 
 export const urlStringFormat = (str) => {
   if (!str) return null;
-  return str.replace(/\s+/g, "-").toLowerCase();
+  return str.replace(/\s+/g, "").toLowerCase();
 };
 
 export const TitleStringFormat = (str) => {
@@ -180,7 +182,7 @@ export const getselectedUserMenu = (permisions, menuList) => {
 };
 export const getServiceMainMenu = (data) => {
   return _.filter(data, (item) => {
-    return item.page_url.toLowerCase() === "/services";
+    return item?.page_url.toLowerCase() === "/services";
   })[0];
 };
 
@@ -205,7 +207,7 @@ export const getPublishedSericeMenu = (menuList, publishedMenuList) => {
   });
 
   _.map(clonedMenu, (item) => {
-    if (item?.page_url.toLowerCase() === "/services") {
+    if (item?.page_url?.toLowerCase() === "/services") {
       item["childMenu"] = selectedMenu;
     }
   });
@@ -267,6 +269,15 @@ export const NO_FOOTER_ROUTES = [
   "/userpermission",
   "/contactuslist",
   "/change_password",
+];
+export const NO_HEADER_ROUTES = [
+  "/login",
+  "/register",
+  "/unauthorized",
+  "/activate/",
+  "/reset_password",
+  "/authForm",
+  "/resend_activation",
 ];
 
 export const reorder = (list, startIndex, endIndex) => {

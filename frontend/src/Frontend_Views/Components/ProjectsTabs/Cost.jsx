@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getCookie, setCookie, removeCookie } from "../../../util/cookieUtil";
 import { useNavigate } from "react-router-dom";
 import DeleteDialog from "../../../Common/DeleteDialog";
 import { confirmAlert } from "react-confirm-alert";
 import { getBaseURL } from "../../../util/ulrUtil";
+import RaqFormModel from "../../../Common/RaqFormModel";
+import ModelBg from "../../../Common/ModelBg";
 
 const Cost = ({ images, pdfs }) => {
   const navigate = useNavigate();
   const baseURL = getBaseURL();
+  const [show, setShow] = useState(false);
+  const [pathName, setPathName] = useState("");
+  const [fileName, setFileName] = useState("");
+
+  const showModel = () => {
+    setShow(!show);
+  };
+  const closeModel = () => {
+    setShow(!show);
+  };
 
   const downloadPDF = (path, name) => {
     const navigateTocontactus = () => {
-      removeCookie("previousPath");
-      setCookie("previousPath", window.location.pathname);
-      navigate(`/contact`);
+      setPathName(path);
+      setFileName(name);
+      showModel();
     };
 
     if (getCookie("clientInformation") !== undefined) {
@@ -79,9 +91,15 @@ const Cost = ({ images, pdfs }) => {
   }
 
   return (
-    <div className="d-flex flex-wrap justify-content-start align-items-center gap-3 planThumbs px-2">
-      {pdfs.length > 0 ? pdf : null}
-      {images.length > 0 ? imgs : null}
+    <div>
+      <div className="d-flex flex-wrap justify-content-start align-items-center gap-3 planThumbs px-2">
+        {pdfs.length > 0 ? pdf : null}
+        {images.length > 0 ? imgs : null}
+      </div>
+      {show && (
+        <RaqFormModel closeModel={closeModel} downloadPDF={downloadPDF} />
+      )}
+      {show && <ModelBg />}
     </div>
   );
 };

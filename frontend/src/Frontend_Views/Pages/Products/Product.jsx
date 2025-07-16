@@ -64,7 +64,7 @@ const Product = ({
           }
         >
           <img
-            src={getImagePath(item.path)}
+            src={getImagePath(item?.path)}
             alt={item.alternitivetext}
             className="w-75 rounded-4 shadow object-fit-cover productImage"
           />

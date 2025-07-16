@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import _ from "lodash";
 import { getCookie } from "../../util/cookieUtil";
 import { useDispatch, useSelector } from "react-redux";
@@ -173,7 +173,6 @@ const Header = () => {
     if (
       menuList.length > 0 &&
       serviceMenuList.length > 0 &&
-      !isAdmin &&
       menuUpdateInitialized.current
     ) {
       menuUpdateInitialized.current = false;
@@ -351,32 +350,53 @@ export const ClientMenu = ({ serviceMenuList, rootServiceMenu }) => {
   };
 
   const ChildMenuContent = ({ menu, className }) => {
+    const location = useLocation();
+    const isParentActive = (item) => {
+      const current = location.pathname;
+
+      // Check if home route matches
+      if (current === "/" && item.page_url === "/home") return true;
+
+      // Check if current route matches parent or aliases
+      if (current === item.page_url) return true;
+
+      // Check if any child path exactly matches
+      if (item.childMenu) {
+        return item.childMenu.some(
+          (child) => child.page_url.toLowerCase() === current
+        );
+      }
+
+      return false;
+    };
+
     return (
       <li
         className={`nav-item ${className}-${menu.page_label.replaceAll(" ", "-")} ${menu.childMenu ? "dropdown" : ""}`}
         key={menu.id}
       >
         <NavLink
-          to={urlStringFormat(
-            `${rootServiceMenu?.id === menu?.page_parent_ID ? rootServiceMenu?.page_url + menu.page_url : menu.page_url}`
-          )}
-          className={
-            (({ isActive }) => (isActive ? "active" : ""),
-            `${menu.is_Parent ? "nav-Link" : "dropdown-item"} ${
-              menu.childMenu?.length > 0 && "dropdown-toggle isChildAvailable"
-            }`)
-          }
-          onClick={
-            menu?.page_parent_ID === rootServiceMenu?.id
-              ? () => {
-                  getSelectedServiceMenu(menu);
-                }
-              : ""
-          }
+          to={urlStringFormat(`${menu.page_url}`)}
+          className={({ isActive }) => {
+            const baseClass = menu.is_Parent ? "nav-Link" : "dropdown-item";
+            const childToggleClass =
+              menu.childMenu?.length > 0
+                ? "dropdown-toggle isChildAvailable"
+                : "";
+            const activeClass =
+              isActive || isParentActive(menu) ? "active" : "";
+
+            return `${baseClass} ${childToggleClass} ${activeClass}`;
+          }}
+          onClick={(e) => {
+            if (menu?.page_parent_ID === rootServiceMenu?.id) {
+              getSelectedServiceMenu(menu);
+            }
+          }}
           id={menu.id}
-          data-bs-toggle={`${menu.childMenu?.length > 0 ? "dropdown" : ""}`}
-          aria-expanded={`${menu.childMenu?.length > 0 ? false : true}`}
-          role={`${menu.childMenu?.length > 0 ? "button" : ""}`}
+          data-bs-toggle={menu.childMenu?.length > 0 ? "dropdown" : undefined}
+          aria-expanded={menu.childMenu?.length > 0 ? "false" : "true"}
+          role={menu.childMenu?.length > 0 ? "button" : undefined}
         >
           {menu.page_label}
         </NavLink>

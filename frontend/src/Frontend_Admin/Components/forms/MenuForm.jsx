@@ -17,6 +17,7 @@ import {
   createServiceChildFromMenu,
   getMenuPosition,
   updatedMenu,
+  updateServiceMmenuID,
 } from "../../../util/menuUtil";
 import SEOForm from "./SEOForm";
 import { getServiceValues } from "../../../redux/services/serviceActions";
@@ -137,15 +138,24 @@ const MenuForm = ({
       return true;
     }
 
-    // if (data.page_parent_ID) {
-    //   const getSelectedParentObject = _.filter(menuList, (item) => {
-    //     return item.id === data.page_parent_ID;
-    //   })[0];
-    //   const _url = data["page_url"].split("/");
+    if (data.page_parent_ID) {
+      const getSelectedParentObject = _.filter(menuList, (item) => {
+        return item.id === data.page_parent_ID;
+      })[0];
+      const _url = data["page_url"].split("/");
 
-    //   data["page_url"] =
-    //     getSelectedParentObject?.page_url + "/" + _url[_url.length - 1];
-    // }
+      data["page_url"] =
+        getSelectedParentObject?.page_url + "/" + _url[_url.length - 1];
+      if (!data?.id) {
+        const parentPosition = getSelectedParentObject.childMenu?.length
+          ? getSelectedParentObject.childMenu.length
+          : 1;
+        data["page_position"] =
+          getSelectedParentObject.page_position * 10 + parentPosition;
+      }
+    } else if (!data.page_parent_ID && !data?.id) {
+      data["page_position"] = menuList?.length > 0 ? menuList?.length + 1 : 1;
+    }
     //data["page_position"] = menuList?.length > 0 ? menuList?.length + 1 : 1;
     // const _url = data["page_url"].split("/");
 
@@ -156,8 +166,6 @@ const MenuForm = ({
         setError("Please select parent menu");
         return true;
       }
-    } else if (!data?.id) {
-      data["page_position"] = menuList?.length > 0 ? menuList?.length + 1 : 1;
     }
     if (!data?.id) {
       data["created_by"] = getCookie("userName");
@@ -196,9 +204,16 @@ const MenuForm = ({
         selectedServiceMenu,
         PageDetails
       );
+      if (response?.status === 201) {
+        const res = await updateServiceMmenuID(
+          response.data.services,
+          PageDetails
+        );
+      }
       if (response?.status === 201 || response?.status === 200) {
         toast.success(`$service is created `);
         dispatch(getServiceValues());
+        dispatch(getMenu());
       }
     } catch (error) {
       toast.error("Unable to load user details");
@@ -250,7 +265,6 @@ const MenuForm = ({
                 fieldName={"page_url"}
                 register={register}
                 onChange={onChangeHanlder}
-                disabled={pageUrlValue != null && pageUrlValue !== ""}
               />
 
               <div className={!isParentHasChilds ? "d-flex" : ""}>

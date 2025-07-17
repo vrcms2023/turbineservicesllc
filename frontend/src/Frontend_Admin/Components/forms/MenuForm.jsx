@@ -142,10 +142,13 @@ const MenuForm = ({
       const getSelectedParentObject = _.filter(menuList, (item) => {
         return item.id === data.page_parent_ID;
       })[0];
-      const _url = data["page_url"].split("/");
+      if (getSelectedParentObject.page_url === "/services") {
+        const _url = data["page_url"].split("/");
 
-      data["page_url"] =
-        getSelectedParentObject?.page_url + "/" + _url[_url.length - 1];
+        data["page_url"] =
+          getSelectedParentObject?.page_url + "/" + _url[_url.length - 1];
+      }
+
       if (!data?.id) {
         const parentPosition = getSelectedParentObject.childMenu?.length
           ? getSelectedParentObject.childMenu.length

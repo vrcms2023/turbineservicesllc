@@ -1,14 +1,42 @@
 import styled from 'styled-components'
 
 export const HomeCauroselComponentStyles = styled.div`
+
     .carousel-caption {
-    position: absolute;
-    z-index: 999;
+      position: absolute;
+      z-index: 999;
+      position: absolute;
+      z-index: 999;
+      text-align: left !important;
+      bottom: 10%;
+      right: 10%;
+      width: 50%;
+
+      h1 {
+        letter-spacing: 0.1rem;
+        font-weight: 600 !important;
+        font-size: 3rem;
+        margin: 0px;
+        text-shadow: 0px 4px 0 rgba(0,0,0, .3);
+        color:${({ theme }) => theme.carouselSlideTitleColor};
+      }
+
+      p.description {
+        color: ${({ theme }) => theme.white};
+        color:${({ theme }) => theme.carouselSlideCaptionColor};
+      }
+
+      .subtitle {
+        color: ${({ theme }) => theme.white};
+        letter-spacing: .1rem;
+        text-transform: uppercase;
+        font-weight: normal !important;
+        font-family: "Barlow",sans-serif;
+      }
+
     }
 
-    .carousel-caption h1 {
-    letter-spacing: 0.3rem;
-    }
+
 
     @media (max-width: 768px) {
     .banner {
@@ -64,35 +92,9 @@ export const HomeCauroselComponentStyles = styled.div`
   pointer-events: none;
 }
 
-.carousel-caption {
-  /* background-color: rgba(34, 34, 34, .1); */
-  position: absolute;
-  z-index: 999;
-  text-align: right !important;
-  bottom: 30%;
-  right: 10%;
-  /* width: 75%; */
-}
 
-.carousel-caption h1 {
-  letter-spacing: 0 !important;
-  font-weight: 600 !important;
-  font-size: 3rem;
-  margin: 0px;
-  /* font-family: "PT Sans Narrow", sans-serif; */
-  /* font-weight: 700 !important; */
-  /* font-style: normal; */
-  text-shadow: 0px 4px 0 rgba(0,0,0, .3);
-  font-family: "Barlow",sans-serif;
-}
 
-.subtitle {
-  color: #ffffff;
-  letter-spacing: .1rem;
-  text-transform: uppercase;
-  font-weight: normal !important;
-  font-family: "Barlow",sans-serif;
-}
+
 
 @media (max-width: 768px) {
   .banner {
@@ -143,10 +145,6 @@ export const HomeCauroselComponentStyles = styled.div`
   top: 0;
 }
 
-.carousel-caption {
-    h1 { color:${({ theme }) => theme.carouselSlideTitleColor};     }
-    p { color:${({ theme }) => theme.carouselSlideCaptionColor}; }
-}
 
 .homeMultyPurposeCarousel {
   /* background-color: rgba(34, 34, 34, .1); */

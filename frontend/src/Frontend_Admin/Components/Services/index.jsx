@@ -36,8 +36,11 @@ const AddService = ({
   pageType,
   isNewServiceCreated,
 }) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const ulRef = useRef(null);
   const [serviceLinksBoxHeight, setServiceLinksBoxHeight] = useState(86);
-  const [showAll, setShowAll] = useState("SHOW ALL..");
+  const [linkShow, setLinkHide] = useState(true);
   const [serviceName, setServiceName] = useState("");
   const [error, setError] = useState("");
   const [serviceList, setServiceList] = useState([]);
@@ -211,6 +214,7 @@ const AddService = ({
         dispatch(getServiceValues());
         dispatch(getMenu());
         toast.success(`${name} is deleted`);
+        
       }
     };
 
@@ -260,15 +264,40 @@ const AddService = ({
     dispatch(getMenu());
   };
 
-  const handlerHeightSetting = () => {
-    if (serviceLinksBoxHeight === 86) {
-      setServiceLinksBoxHeight(320);
-      setShowAll("FEW ONLY");
+//   const handlerHeightSetting = () => {
+//   if (ulRef.current) {
+//     const fullHeight = ulRef.current.scrollHeight;
+
+//     if (serviceLinksBoxHeight === "86px") {
+//       const newHeight = fullHeight > 320 ? "320px" : `${fullHeight}px`;
+//       setServiceLinksBoxHeight(newHeight);
+//       setShowAll("FEW ONLY");
+//       setLinkHide(false)
+//     } else {
+//       setServiceLinksBoxHeight("86px");
+//       setShowAll("SHOW ALL..");
+//       setLinkHide(true)
+//     }
+//   }
+// };
+
+const handlerHeightSetting = () => {
+  if (ulRef.current) {
+    const fullHeight = ulRef.current.scrollHeight;
+    const newHeight = fullHeight > 320 ? 320 : fullHeight;
+
+    if (!isExpanded) {
+      // Expand
+      setServiceLinksBoxHeight(newHeight);
     } else {
+      // Collapse
       setServiceLinksBoxHeight(86);
-      setShowAll("SHOW ALL..");
     }
-  };
+
+    setIsExpanded(!isExpanded);
+  }
+};
+
 
   return (
     <div className="pb-3 border border-0">
@@ -292,8 +321,10 @@ const AddService = ({
               name="services_page_title"
               id=""
               value={serviceName}
-              placeholder="Add Service Name"
+              placeholder={serviceName || isFocused ? "" : "Add Service Name"}
               onChange={onChangeHandler}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
               ref={inputRef}
             />
 
@@ -302,7 +333,7 @@ const AddService = ({
                 type="submit"
                 // cssClass="btn btn-primary mt-2"
                 cssClass={
-                  serviceName
+                  isFocused || serviceName
                     ? "btn btn-primary mt-2"
                     : "btn btn-secondary mt-2"
                 }
@@ -323,7 +354,14 @@ const AddService = ({
 
           <div className={"col-md-6 p-0 servicePageLinks"}>
             {/* <Title title="Pages" cssClass="fs-6 fw-bold text-center border-bottom pb-2 mb-2 " /> */}
-            <ul style={{ height: `${serviceLinksBoxHeight}px` }}>
+            <ul  ref={ulRef}
+              style={{
+                height: `${serviceLinksBoxHeight}px`,
+                maxHeight: "320px",
+                overflowY: isExpanded && ulRef.current && ulRef.current.scrollHeight > 320 && "auto",
+                transition: "height 0.3s ease"
+              }}
+            >
               {serviceList &&
                 serviceList.map((item) => (
                   <li
@@ -398,17 +436,19 @@ const AddService = ({
                 ))}
             </ul>
 
-            <div className="row">
+            {linkShow && (
+              <div className="row">
               <div className="col-12 text-end">
                 <a
                   href="#"
                   className="btn viewAllServices"
                   onClick={() => handlerHeightSetting()}
                 >
-                  {showAll}
+                  {isExpanded  ? "FEW ONLY" : "SHOW ALL.."}
                 </a>
-              </div>
+              </div> 
             </div>
+            )}
           </div>
         </div>
       </div>

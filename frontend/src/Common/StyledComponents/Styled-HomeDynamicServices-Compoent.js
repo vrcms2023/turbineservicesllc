@@ -32,6 +32,58 @@ export const HomeDynamicServiceStylesComponent = styled.div`
         h5 {
             font-weight: 500;
         }
+
+        h5,
+        .quill,
+        a {
+          position: relative;
+        }
+        h5 {
+          z-index: 2;
+          font-weight: 500;
+          font-size: 1.6rem;
+          color: ${({ theme }) => theme.clientSecondaryColor};
+          hyphens: manual;
+          overflow-wrap: break-word; /* optional, for better word breaking */
+          word-break: break-word; /* optional, for better word breaking */
+        }
+
+        .quill {
+          z-index: 3;
+
+          p,
+          p span,
+          h1 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+          }
+
+          p,
+          p span,
+          h1,
+          h1 strong,
+          span {
+            background: transparent;
+            color: ${({ theme }) => theme.gray333};
+            font-family: Roboto;
+            font-size: 1rem;
+            font-family: roboto;
+            font-weight: normal;
+            line-height: 1.5;
+          }
+
+          .description {
+            p:not(:first-child) {
+              display: none;
+            }
+          }
+
+          .ql-editor {
+            padding: 0.3rem 0 0px;
+          }
+        }
     }
 
     .row {

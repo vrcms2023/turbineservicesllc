@@ -365,7 +365,7 @@ body, p {
     }
 
     .scrollTop {
-      background-color: ${({ theme }) => theme.clientColor};
+      background-color: ${({ theme }) => theme.clientColor} !important;
     }
 
     .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief, .projectsList {
@@ -474,6 +474,10 @@ body, p {
     .quill {
       background: none !important;
 
+      p, p span {
+        background-color: transparent !important;
+      }
+      
       .ql-editor {
         padding: 1rem 0 0px;
         color: ${({ theme }) => theme.gray444} !important;

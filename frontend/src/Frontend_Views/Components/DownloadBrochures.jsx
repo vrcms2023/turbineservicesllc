@@ -81,8 +81,8 @@ const DownloadBrochures = () => {
     <div className={`floatingButton ${scrolled ? "scrolled" : ""}`}>
       {brochuresList.length === 1 && (
         <Button
-          label="BROCHURE"
-          cssClass="btn btn-primary mb-1 p-4 text-uppercase"
+          label="Pdf"
+          cssClass="btn btn-primary mb-1"
           icon="fa-download"
           handlerChange={() =>
             checkClientInfoAndDownload(
@@ -107,7 +107,7 @@ const DownloadBrochures = () => {
               class="fa fa-download cursor-pointer fs-4"
               aria-hidden="true"
             ></i>
-            <span>BROCHURES </span>
+            <span className=""> Pdfs</span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {brochuresList?.map((brochures) => (

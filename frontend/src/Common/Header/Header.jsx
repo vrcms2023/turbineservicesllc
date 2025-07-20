@@ -250,10 +250,11 @@ const Header = () => {
         }
       >
         <div className="container">
+          {isAdmin && hasPermission && (
           <div className="position-relative">
-            {isAdmin && hasPermission && (
+            
               <EditIcon editHandler={() => editHandler("menu", true)} editlabel="Logo" />
-            )}
+           
             {/* {componentEdit.menu && (
               <div className={`adminEditTestmonial selected `}>
                 <ImageInputsForm
@@ -270,6 +271,7 @@ const Header = () => {
               </div>
             )} */}
           </div>
+           )}
           <Link to={isHideMenu ? "#" : "/"} className="navbar-brand logo">
             <ApplicationLogo
               getBannerAPIURL={`banner/clientBannerIntro/${pageType}-logo/`}

@@ -365,7 +365,7 @@ body, p {
     }
 
     .scrollTop {
-      background-color: ${({ theme }) => theme.clientColor} !important;
+      background-color: ${({ theme }) => theme.clientPrimaryColor} !important;
     }
 
     .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief, .projectsList {
@@ -378,7 +378,7 @@ body, p {
     .homeDynamciServices {
       background-image:url(${homeServicesBgImg});
       background-attachment: fixed;
-      // background-color: ${({ theme }) => theme.clientColor};
+      // background-color: ${({ theme }) => theme.clientPrimaryColor};
     }
 
     .homeProjectsContainer {

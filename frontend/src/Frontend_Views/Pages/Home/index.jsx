@@ -88,6 +88,7 @@ import { HomeProjectCauroselComponentStyles } from "../../../Common/StyledCompon
 import CounterForm from "../../../Frontend_Admin/Components/forms/CounterForm";
 import CounterCompnentView from "../../../Common/CounterCompnentView";
 import { CounterComponentStyles } from "../../../Common/StyledComponents/Styled-Count-Component";
+import { HomeCauroselComponentStyles } from "../../../Common/StyledComponents/Styled-HomeCarousel";
 
 const Home = () => {
   const editComponentObj = {
@@ -302,11 +303,13 @@ const Home = () => {
                         editlabel="Carousel"
                       />
                     )}
+                    <HomeCauroselComponentStyles>
                     <Carousel
                       carouselState={componentEdit.carousel}
                       category={"carousel"}
                       containerId="carouselHomeGallery"
                     />
+                    </HomeCauroselComponentStyles>
                   </div>
                 </div>
               </div>

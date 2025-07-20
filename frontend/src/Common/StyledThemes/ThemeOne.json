@@ -8,7 +8,10 @@
 
   "white": "#ffffff",
   "black": "#000000",
-
+  "yellow": "#ffff00",
+  "orange": "#FF9D00",
+  "green": "#27C400",
+  "violet": "#6D2F9B",
   "gray111": "#111111",
   "gray222": "#222222", 
   "gray333": "#333333",
@@ -24,22 +27,19 @@
   "grayddd": "#dddddd",
   "grayeee": "#eeeeee",
   "graye6": "#e6e6e6",
+  "lightgray": "#e3e3e3",
+  "verylightgray": "#f3f3f3",
+
   "lightWhiteFB": "#fbfbfb",
   "lightWhiteFD": "#fdfdfd",
   "lightWhiteF8": "#f8f8f8",
-
-  "clientColor": "#0D75BA",
-  "clientSecondaryColor": "#EF4036",
-
-  "yellow": "#ffff00",
-  "orange": "#FF9D00",
-  "green": "#27C400",
-  "violet": "#6D2F9B",
-
-  "lightgray": "#e3e3e3",
-  "verylightgray": "#f3f3f3",
+  
   "error": "#f23838",
   "transparent": "transparent",
+
+  "clientPrimaryColor": "#0D75BA",
+  "clientSecondaryColor": "#EF4036",
+  "clientTeritoryColor": "",
 
   "primaryColor": "#0D75BA",
   "primaryHoverColor": "#007CB9",
@@ -54,8 +54,8 @@
   "navbarTextColor": "#eeeeee",
   "navbarLinkColor": "#012060",
   "navbarLinkBgColor": "#748E31",
-  "navbarLinkActiveColor": "#EF4036",
-  "navbarLinkHoverColor": "#EF4036",
+  "navbarLinkActiveColor": "#0D75BA",
+  "navbarLinkHoverColor": "#0D75BA",
 
   "navbarChildLinkBgColor": "#222222",
   "navbarChildLinkColor": "#ffffff",

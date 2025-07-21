@@ -623,74 +623,8 @@ const Home = () => {
               )}
             </HomeServiceStylesComponent>
           )}
-
-          {/* SERVICE INTRODUCTION COMPONENT START ============================================ */}
-
-          {/* INTRODUCTION COMPONENT */}
-
-          {/* SERVICE INTRODUCTION COMPONENT END  ===================================== */}
         </div>
-        {/* ======================= HOME List of Services  ======================= */}
-
-        {/* ==== TESTIMONIAL COMPONENT START ====================================================================================================*/}
-        <div
-          className={
-            showHideCompList?.testimonis?.visibility && isAdmin && hasPermission
-              ? "border border-info mb-2"
-              : ""
-          }
-        >
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.testimonis?.visibility}
-              title={"Corporate Training"}
-              componentName={"testimonis"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.testimonis?.id}
-            />
-          )}
-
-          {showHideCompList?.testimonis?.visibility && (
-            <TestimonialCarouselPageStyled>
-              <div className="container-fluid testimonialsContainer">
-                {/* <div className="row">
-                  <div className="col-md-12">
-                    <Title
-                      title="Corporate Training"
-                      cssClass="fs-1 fw-bold text-center my-5 text-uppercase"
-                    />
-                  </div>
-                </div> */}
-                <div className="row">
-                  <div className="col-md-12 testimonials text-center">
-                    {isAdmin && hasPermission && (
-                      <EditIcon
-                        editHandler={() => editHandler("testmonial", true)}
-                        editlabel=""
-                      />
-                    )}
-
-                    {homeIntroList.length > 1 && (
-                      <TitleWithDescripton list={homeIntroList} />
-                    )}
-                  </div>
-                  {componentEdit.testmonial && (
-                    <div className={`adminEditTestmonial selected `}>
-                      <ListofTitleandDescription
-                        editHandler={editHandler}
-                        componentType="testmonial"
-                        popupTitle={`Corporate Training`}
-                        homeintros={homeIntroList}
-                        pageType={`HomeCorporate`}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-            </TestimonialCarouselPageStyled>
-          )}
-        </div>
-        {/* END OF TESTIMONIAL COMPONENT =========================================================================================================== */}
+{/* DYNAMIC SERVICE END  ===================================== */}
 
         {/* ICONS HEILIGHT START ================================= */}
         <div
@@ -757,7 +691,7 @@ const Home = () => {
         </div>
         {/* END OF ICONS HEILIGHT ========================= */}
 
-        {/* ==== HOME PROJECT CAROUSEL CATEGORIES START ===================================================================================================== */}
+        {/* ==== HOME PROJECT CAROUSEL START ===================================================================================================== */}
         <div
           className={
             showHideCompList?.homeprojectcarousel?.visibility &&
@@ -781,7 +715,71 @@ const Home = () => {
           )}
         </div>
 
-        {/* END OF HOME PROJECT CAROUSEL CATEGORIES END ============================== */}
+{/* END HOME PROJECT CAROUSEL ============================== */}
+
+
+        {/* ==== TESTIMONIAL COMPONENT START ====================================================================================================*/}
+        <div
+          className={
+            showHideCompList?.testimonis?.visibility && isAdmin && hasPermission
+              ? "border border-info mb-2"
+              : ""
+          }
+        >
+          {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.testimonis?.visibility}
+              title={"Corporate Training"}
+              componentName={"testimonis"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.testimonis?.id}
+            />
+          )}
+
+          {showHideCompList?.testimonis?.visibility && (
+            <TestimonialCarouselPageStyled>
+              <div className="container-fluid testimonialsContainer">
+                {/* <div className="row">
+                  <div className="col-md-12">
+                    <Title
+                      title="Corporate Training"
+                      cssClass="fs-1 fw-bold text-center my-5 text-uppercase"
+                    />
+                  </div>
+                </div> */}
+                <div className="row">
+                  <div className="col-md-12 col-lg-8 offset-lg-2 testimonials text-center">
+                    {isAdmin && hasPermission && (
+                      <EditIcon
+                        editHandler={() => editHandler("testmonial", true)}
+                        editlabel=""
+                      />
+                    )}
+
+                    {homeIntroList.length > 1 && (
+                      <TitleWithDescripton list={homeIntroList} />
+                    )}
+                  </div>
+                  {componentEdit.testmonial && (
+                    <div className={`adminEditTestmonial selected `}>
+                      <ListofTitleandDescription
+                        editHandler={editHandler}
+                        componentType="testmonial"
+                        popupTitle={`Corporate Training`}
+                        homeintros={homeIntroList}
+                        pageType={`HomeCorporate`}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </TestimonialCarouselPageStyled>
+          )}
+        </div>
+{/* END OF TESTIMONIAL COMPONENT =========================================================================================================== */}
+
+
+        
 
         {/* === CLIENTS - COMPONENTS DEVELOPER IN SAP DESIGNS START ===========================================================================  */}
         <div

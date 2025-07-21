@@ -5,11 +5,11 @@ import styled from 'styled-components'
 
 export const CounterComponentStyles = styled.div`
     background-image: url(${bgImage});
-    background-position: center;
+    background-position: top;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    color: #ffffff;
+    color: ${({ theme }) => theme.white};;
     position: relative;
 
     @media(min-width: 992px) {
@@ -33,8 +33,9 @@ export const CounterComponentStyles = styled.div`
         bottom: 0;
         background: linear-gradient(
             to bottom,
-            rgba(1, 33, 96, 0.92),  /* start: semi-transparent black */
-            rgba(0, 0, 0, 0.6)   /* end: darker */
+            // rgba(1, 33, 96, 0.92),  
+            rgba(0, 0, 0, 0.9),
+             #ef3f366d
         );
         z-index: 0;
         pointer-events: none; /* let clicks pass through */
@@ -47,10 +48,9 @@ export const CounterComponentStyles = styled.div`
 
     .counterComponentView {
         .counterTitle{
-            font-size: 2rem !important;
             text-align: center;
-            width: 80%;
             margin: auto;
+            color: ${({ theme }) => theme.white} !important;
 
             @media(max-width: 480px) {
                 font-size: 1.5rem !important;
@@ -60,7 +60,11 @@ export const CounterComponentStyles = styled.div`
     }
     
     .counterComponentViewContainer  {
-        gap: 50px;
+        border: 2px solid rgba(255, 255, 255, .1);
+        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.4);
+        padding: 24px;
+        margin-top: 1rem;
+        gap: 30px;
 
         @media(max-width: 991px) {
             gap: 24px;
@@ -71,7 +75,7 @@ export const CounterComponentStyles = styled.div`
         }
 
         .counterItem {
-            gap: 48px;
+            gap: 28px;
 
             @media(max-width: 991px) { 
                 gap: 24px;
@@ -84,10 +88,10 @@ export const CounterComponentStyles = styled.div`
 
         .counterLabel {
             width: 120px;
-            text-align: left;
+            text-align: right;
 
             @media(min-width: 481px) {
-                font-size: 1.6rem;
+                font-size: 1.2rem;
             }
 
             @media(max-width: 480px) {
@@ -97,11 +101,11 @@ export const CounterComponentStyles = styled.div`
 
         .counterValue {
             
-            text-decoration: underline;
-            text-underline-offset: 12px;
-            text-decoration-thickness: 4px;
-            text-decoration-color: ${({ theme }) => theme.black};
-            color: #fff;
+            // text-decoration: underline;
+            // text-underline-offset: 12px;
+            // text-decoration-thickness: 4px;
+            // text-decoration-color: ${({ theme }) => theme.black};
+            color: ${({ theme }) => theme.white};
             // box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.4);
 
             font-weight: bold;
@@ -126,20 +130,20 @@ export const CounterComponentStyles = styled.div`
             font-size: 8rem;
 
             @media(max-width: 991px) {
-                font-size: 6rem;
+                font-size: 5rem;
             }
 
             @media(max-width: 480px) {
-                font-size: 5rem;
+                font-size: 4rem;
             }
         }
     }
 
     .counterSymbol {
-        font-size: 5rem;
+        font-size: 3rem;
 
          @media(max-width: 480px) {
-            font-size: 3rem;
+            font-size: 2rem;
         }
     }
 `

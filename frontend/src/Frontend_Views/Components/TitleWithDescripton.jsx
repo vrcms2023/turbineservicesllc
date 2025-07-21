@@ -7,12 +7,14 @@ import RichTextView from "../../Common/RichTextView";
 
 const TitleWithDescripton = ({ list }) => {
   const settings = {
-    fade: true,
+    fade: false,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
+    // autoplay: true,
+    autoplaySpeed: 5000,
+    draggable: true,
+    swipe: true,
   };
 
   return (
@@ -30,7 +32,7 @@ const ItemSlide = (props) => {
   const { item, ...otherProps } = props;
   return (
     <div {...otherProps}>
-      <h3>{item?.intro_title}</h3>
+      <Title title={item?.intro_title} cssClass="text-start"/>
       <div className="quill ">
         <div className="ql-container ql-snow">
           <div className="ql-editor">

@@ -190,7 +190,7 @@ const JobPost = ({
                         </small>
                       )}
                     </Link>
-                    {/* <EditIcon editHandler={() => publishCareer(item)} /> */}
+                    {/* <EditIcon editHandler={() => publishCareer(item)} editlabel="Careers" /> */}
                   </div>
                 </>
               ) : (
@@ -209,7 +209,7 @@ const JobPost = ({
             {/* <div className="position-realative">
                 {isAdmin ? (
                   <EditIcon
-                    editHandler={() => editHandler("job", true, item)}
+                    editHandler={() => editHandler("job", true, item)} editlabel="Banner"
                   />
                 ) : (
                   ""

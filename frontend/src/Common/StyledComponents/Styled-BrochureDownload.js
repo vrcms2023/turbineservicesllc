@@ -27,16 +27,14 @@ export const BrochureDownloadStyling = styled.div`
       }
 
       button.btn.btn-primary {
-        background-color: #6d2f9b !important;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-        // background: radial-gradient(circle,rgba(109, 47, 155, 0.89) 1%, rgba(0, 0, 0, 1) 100%);
-        // background-color: #012060;
       }
 
       button {
+        padding: 12px 16px !important;
         i {
           font-size: 24px;
-          margin-right: 8px;
+          margin-right: 4px;
         }
 
         @media (max-width: 768px) {
@@ -80,10 +78,8 @@ export const BrochureDownloadStyling = styled.div`
       }
 
       button:not(.modal button) {
-        padding: 10px !important;
-        i {
-          margin-right: 0px;
-        }
+        margin-top: 10px !important;
+        
       }
     }
   }

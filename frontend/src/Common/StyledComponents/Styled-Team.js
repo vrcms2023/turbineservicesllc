@@ -57,7 +57,7 @@ export const TeamStyled = styled.div`
       small {
         font-size: 0.7rem;
         text-transform: uppercase;
-        color: ${({ theme }) => theme.clientColor};
+        color: ${({ theme }) => theme.clientPrimaryColor};
       }
 
       .strengths {

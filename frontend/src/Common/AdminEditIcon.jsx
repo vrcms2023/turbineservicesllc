@@ -10,12 +10,13 @@ const EditIcon = ({
 }) => {
   return (
     <span className={`${cssClasses} editIcon`}>
+      {editlabel && <span className="componentType">{editlabel}</span>}
       <i
         className={`fa ${icon} ${iconCss}`}
         aria-hidden="true"
         onClick={editHandler}
       ></i>
-      {editlabel && <span>{editlabel}</span>}
+      
     </span>
   );
 };

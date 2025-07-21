@@ -161,6 +161,7 @@ const Client = ({
               <>
                 <EditIcon
                   editHandler={() => editHandler("editSection", true, item)}
+                  editlabel="Clients"
                 />
                 <Link
                   className="deleteSection"

@@ -397,7 +397,7 @@ const NewsItem = ({ item, index, handleModel, DeleteNews, editHandler }) => {
                     {/* Edit News */}
                     {isAdmin && hasPermission && (
                       <div className="d-flex justify-content-end gap-2">
-                        {/* <EditIcon editHandler={() => editHandler("news", true, item)} /> */}
+                        {/* <EditIcon editHandler={() => editHandler("news", true, item)} editlabel="News" /> */}
                         <Link
                           onClick={() => editHandler("news", true, item)}
                           className=" p-2"

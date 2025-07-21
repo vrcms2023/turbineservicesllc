@@ -36,7 +36,7 @@ const CounterCompnentView = ({ getDataAPIURL, componentState }) => {
       {!counterData && <SkeletonImage />}
       {counterData?.title !== "" && <Title title={counterData?.title} cssClass="counterTitle" />}
       <div className="counterComponentViewContainer d-flex flex-wrap justify-content-center">
-        {counterData.counters &&
+        {counterData?.counters &&
           counterData.counters.map((counter, index) => (
             <div
               key={index}

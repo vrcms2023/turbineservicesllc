@@ -11,9 +11,9 @@ import homeCompletedBgImg from "../../Images/home-completed-bg.jpg";
 import homeServicesBgImg from "../../Images/homeServicesBg.jpg";
 import homeMultiServicesBgImg from "../../Images/homeMultiServicesBg.jpg";
 
-export const GlobalStyles = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+export const GlobalStyles = createGlobalStyle`
 
 * {
     margin:0;
@@ -45,7 +45,6 @@ h1, h2, h3, h4, h5, h6, th {
 
 th {
   font-weight: normal;
-  font-family: ${({ theme }) => theme.headingFontFamily};
 }
 td {
   font-size: 15px;
@@ -64,14 +63,12 @@ body, p {
 
 
 .btn {
-  // border-radius: 0.375rem !important;
-  
+  font-family: ${({ theme }) => theme.headingFontFamily};
+  font-weight: 400 !important;
   // transition: all .35s;
   // padding: .6rem 1.2rem !important;
   // font-family: Amarante;
-  font-family: "Barlow", sans-serif;
-  font-weight: normal !important;
-  border-radius: 4px !important;
+  // border-radius: 4px !important;
 
   // &:hover svg { transform: rotate(-45deg);}
   &:hover {
@@ -111,14 +108,14 @@ body, p {
 }
 
 .btn-outline {
-  // background-color:${({ theme }) => theme.btnOutline}; 
+  background-color:${({ theme }) => theme.transparent}; 
   color:${({ theme }) => theme.btnOutlineTextColor};
   border: 1px solid ${({ theme }) => theme.btnOutlineBorderColor} !important; 
-  font-weight: 600;
+  font-weight: 500 !important;
 }
 
 .btn-outline:hover { 
-  background-color:${({ theme }) => theme.btnOutlineHover}; 
+  
   color:${({ theme }) => theme.btnOutlineTextHoverColor};
   border: 1px solid ${({ theme }) => theme.btnOutlineBorderHoverColor} !important; 
 }
@@ -365,7 +362,7 @@ body, p {
     }
 
     .scrollTop {
-      background-color: ${({ theme }) => theme.clientColor};
+      background-color: ${({ theme }) => theme.clientPrimaryColor} !important;
     }
 
     .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief, .projectsList {
@@ -378,11 +375,16 @@ body, p {
     .homeDynamciServices {
       background-image:url(${homeServicesBgImg});
       background-attachment: fixed;
-      // background-color: ${({ theme }) => theme.clientColor};
+      // background-color: ${({ theme }) => theme.clientPrimaryColor};
     }
 
     .homeProjectsContainer {
       padding: 0;
+
+      .ql-editor {
+        padding: 0 !important;
+        text-align: center !important;
+      }
       
       .cardItem:nth-child(1):after, .cardItem:nth-child(2):after, .cardItem:nth-child(3):after {
         content: "";
@@ -474,6 +476,13 @@ body, p {
     .quill {
       background: none !important;
 
+      p, p span, .introDecTitleCss {
+        background-color: transparent !important;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      
       .ql-editor {
         padding: 1rem 0 0px;
         color: ${({ theme }) => theme.gray444} !important;

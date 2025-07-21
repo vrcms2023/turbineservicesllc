@@ -88,6 +88,7 @@ import { HomeProjectCauroselComponentStyles } from "../../../Common/StyledCompon
 import CounterForm from "../../../Frontend_Admin/Components/forms/CounterForm";
 import CounterCompnentView from "../../../Common/CounterCompnentView";
 import { CounterComponentStyles } from "../../../Common/StyledComponents/Styled-Count-Component";
+import { HomeCauroselComponentStyles } from "../../../Common/StyledComponents/Styled-HomeCarousel";
 
 const Home = () => {
   const editComponentObj = {
@@ -267,14 +268,15 @@ const Home = () => {
   return (
     <>
       <div className="container-fluid p-0">
-        {/*Download Broucher */}
+      {/* ==== Download Broucher ======================================== */}
         <BrochureDownloadStyling>
           <div className="homeBrochure">
             <DownloadBrochures />
           </div>
         </BrochureDownloadStyling>
+{/* ==== END ======================================== */}        
 
-        {/* ==== CAROUSEL COMPONENT START ======================================================================================================= */}
+      {/* ==== CAROUSEL COMPONENT  ===================================== */}
         <div
           className={
             showHideCompList?.carousel?.visibility && isAdmin && hasPermission
@@ -299,13 +301,16 @@ const Home = () => {
                     {isAdmin && hasPermission && (
                       <EditIcon
                         editHandler={() => editHandler("carousel", true)}
+                        editlabel="Carousel"
                       />
                     )}
+                    <HomeCauroselComponentStyles>
                     <Carousel
                       carouselState={componentEdit.carousel}
                       category={"carousel"}
                       containerId="carouselHomeGallery"
                     />
+                    </HomeCauroselComponentStyles>
                   </div>
                 </div>
               </div>
@@ -331,9 +336,9 @@ const Home = () => {
             </>
           )}
         </div>
-        {/* ==== END CAROUSEL ========================================================================================================= */}
+{/* ==== END CAROUSEL =============================== */}
 
-        {/* INTRODUCTION COMPONENT START =========================================================================================================== */}
+        {/* BRIEF INTRODUCTION ========================================= */}
         <div
           className={
             showHideCompList?.briefintro?.visibility && isAdmin && hasPermission
@@ -351,15 +356,13 @@ const Home = () => {
             />
           )}
 
-          {/* INTRODUCTION COMPONENT */}
           {showHideCompList?.briefintro?.visibility && (
-            <div>
+            <div className="homeBriefIntroduction">
               <div className="container">
                 <div className="row">
-                  <div className="breiftopMargin">
                     {isAdmin && hasPermission && (
                       <EditIcon
-                        editHandler={() => editHandler("briefIntro", true)}
+                        editHandler={() => editHandler("briefIntro", true)} editlabel="Brief"
                       />
                     )}
 
@@ -368,15 +371,14 @@ const Home = () => {
                       linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                       linkLabel="Read More"
                       moreLink=""
-                      introTitleCss="fs-3 text-center mb-4"
-                      introSubTitleCss="fw-medium text-muted text-center"
-                      introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                      detailsContainerCss="col-md-12 py-3"
+                      introTitleCss="text-center"
+                      introSubTitleCss="mt-2 text-center"
+                      introDecTitleCss="fw-normal mx-4 text-center lh-6"
+                      detailsContainerCss="col-md-10 offset-md-1"
                       anchorContainer="d-flex justify-content-center align-items-center mt-4"
                       anchersvgColor="#17427C"
                       pageType={pageType}
                     />
-                  </div>
                 </div>
               </div>
 
@@ -393,7 +395,7 @@ const Home = () => {
             </div>
           )}
         </div>
-        {/* INTRODUCTION COMPONENT END  =========================================================================================================== */}
+{/* ==== END ===================================================== */}
 
         {/* ==== PROJECT + BRIEF INTRODUCTION START ===================================================================================================== */}
 
@@ -424,7 +426,8 @@ const Home = () => {
                           <EditIcon
                             editHandler={() =>
                               editHandler("projectbriefIntro", true)
-                            }
+                            } 
+                            editlabel="Projects"
                           />
                         )}
 
@@ -433,10 +436,10 @@ const Home = () => {
                           linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                           linkLabel="Read More"
                           moreLink=""
-                          introTitleCss="fs-3 text-center mb-4"
-                          introSubTitleCss="fw-medium text-muted text-center"
+                          introTitleCss="text-center"
+                          introSubTitleCss="text-center"
                           introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                          detailsContainerCss="col-md-12 py-3"
+                          detailsContainerCss="col-md-12 pt-3"
                           anchorContainer="d-flex justify-content-center align-items-center mt-4"
                           anchersvgColor="#17427C"
                           pageType={`${pageType}projectbriefIntro`}
@@ -461,7 +464,7 @@ const Home = () => {
             )}
           </div>
         </div>
-        {/* ==== PROJECT + BRIEF INTRODUCTION END ===================================================================================================== */}
+{/* ==== PROJECT END ===================================================================================================== */}
 
         {/* Dynamic ALL SERVICES ============================ */}
         <div
@@ -488,12 +491,13 @@ const Home = () => {
             <HomeDynamicServiceStylesComponent>
               <div className="homeDynamciServicesIntro">
                 <div className="container">
-                  <div className="breiftopMargin">
+                  <div className="breiftopMargin col-md-10 offset-md-1">
                     {isAdmin && hasPermission && (
                       <EditIcon
                         editHandler={() =>
                           editHandler("homeDynamciServicesBrief", true)
                         }
+                        
                       />
                     )}
 
@@ -585,6 +589,7 @@ const Home = () => {
                           editHandler={() =>
                             editHandler("homeServicebriefIntro", true)
                           }
+                          editlabel="Services"
                         />
                       )}
 
@@ -661,6 +666,7 @@ const Home = () => {
                     {isAdmin && hasPermission && (
                       <EditIcon
                         editHandler={() => editHandler("testmonial", true)}
+                        editlabel=""
                       />
                     )}
 
@@ -715,6 +721,7 @@ const Home = () => {
                         editHandler={() =>
                           editHandler("iconsHelightsBrief", true)
                         }
+                        editlabel=""
                       />
                     )}
 
@@ -825,11 +832,11 @@ const Home = () => {
               <div className="row">
                 <div className="col-md-12 p-0 position-relative homePage">
                   {isAdmin && hasPermission && (
-                    <EditIcon editHandler={() => editHandler("banner", true)} />
+                    <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner"/>
                   )}
                   <Banner
                     getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-                    bannerState={componentEdit.banner}
+                    bannerState={componentEdit.banner} 
                   />
                 </div>
               </div>
@@ -1074,6 +1081,7 @@ const Home = () => {
                           editHandler={() =>
                             editHandler(productComp.product_development, true)
                           }
+                          editlabel="Hilights"
                         />
                       )}
 
@@ -1106,7 +1114,8 @@ const Home = () => {
                         <EditIcon
                           editHandler={() =>
                             editHandler(productComp.product_distribution, true)
-                          }
+                          } 
+                          editlabel="Hilights"
                         />
                       )}
                       <SimpleTitleDescComponent
@@ -1139,6 +1148,7 @@ const Home = () => {
                           editHandler={() =>
                             editHandler(productComp.product_registration, true)
                           }
+                          editlabel="Hilights"
                         />
                       )}
                       <SimpleTitleDescComponent
@@ -1690,7 +1700,7 @@ const Home = () => {
                 <div className="col-md-12 carousel">
                   {isAdmin && hasPermission && (
                     <EditIcon
-                      editHandler={() => editHandler("serviceOffered", true)}
+                      editHandler={() => editHandler("serviceOffered", true)} editlabel=""
                     />
                   )}
 
@@ -1780,7 +1790,7 @@ const Home = () => {
                   <div className="breiftopMargin">
                     {isAdmin && hasPermission && (
                       <EditIcon
-                        editHandler={() => editHandler("projectsBrief", true)}
+                        editHandler={() => editHandler("projectsBrief", true)} editlabel="Hilights"
                       />
                     )}
 

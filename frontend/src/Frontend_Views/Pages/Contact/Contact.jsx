@@ -187,7 +187,7 @@ const Contact = () => {
             {/* Page Banner Component */}
             <div className="position-relative">
               {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("banner", true)} />
+                <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner" />
               )}
               <Banner
                 getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
@@ -238,7 +238,7 @@ const Contact = () => {
           <div>
             {/* Introduction */}
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("briefIntro", true)} />
+              <EditIcon editHandler={() => editHandler("briefIntro", true)} editlabel="Brief" />
             )}
 
             <BriefIntroFrontend
@@ -268,7 +268,7 @@ const Contact = () => {
         <div className="row">
           <div className="contactPage position-relative col-md-12 text-white blueBg-500 p-0 p-md-3 p-md-5">
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("address", true)} />
+              <EditIcon editHandler={() => editHandler("address", true)} editlabel="Address" />
             )}
             {componentEdit.address && (
               <div className={`adminEditTestmonial selected `}>
@@ -461,7 +461,7 @@ const Contact = () => {
             style={{ bottom: "-10px" }}
           >
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("map", true)} />
+              <EditIcon editHandler={() => editHandler("map", true)} editlabel="Map" />
             )}
             {mapValues?.google_map_url && (
               <iframe

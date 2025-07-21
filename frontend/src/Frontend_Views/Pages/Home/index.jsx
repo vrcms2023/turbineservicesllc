@@ -371,10 +371,10 @@ const Home = () => {
                       linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                       linkLabel="Read More"
                       moreLink=""
-                      introTitleCss=" text-center"
+                      introTitleCss="text-center"
                       introSubTitleCss="mt-2 text-center"
                       introDecTitleCss="fw-normal mx-4 text-center lh-6"
-                      detailsContainerCss="col-md-12"
+                      detailsContainerCss="col-md-10 offset-md-1"
                       anchorContainer="d-flex justify-content-center align-items-center mt-4"
                       anchersvgColor="#17427C"
                       pageType={pageType}
@@ -436,10 +436,10 @@ const Home = () => {
                           linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                           linkLabel="Read More"
                           moreLink=""
-                          introTitleCss="fs-3 text-center mb-4"
-                          introSubTitleCss="fw-medium text-muted text-center"
+                          introTitleCss="text-center"
+                          introSubTitleCss="text-center"
                           introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                          detailsContainerCss="col-md-12 py-3"
+                          detailsContainerCss="col-md-12 pt-3"
                           anchorContainer="d-flex justify-content-center align-items-center mt-4"
                           anchersvgColor="#17427C"
                           pageType={`${pageType}projectbriefIntro`}
@@ -464,7 +464,7 @@ const Home = () => {
             )}
           </div>
         </div>
-        {/* ==== PROJECT + BRIEF INTRODUCTION END ===================================================================================================== */}
+{/* ==== PROJECT END ===================================================================================================== */}
 
         {/* Dynamic ALL SERVICES ============================ */}
         <div
@@ -491,7 +491,7 @@ const Home = () => {
             <HomeDynamicServiceStylesComponent>
               <div className="homeDynamciServicesIntro">
                 <div className="container">
-                  <div className="breiftopMargin">
+                  <div className="breiftopMargin col-md-10 offset-md-1">
                     {isAdmin && hasPermission && (
                       <EditIcon
                         editHandler={() =>

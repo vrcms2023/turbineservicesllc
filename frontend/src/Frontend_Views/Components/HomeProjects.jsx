@@ -30,8 +30,8 @@ const HomeProjects = () => {
   }, []);
   return (
     <div>
-      <Title title="PROJECTS" cssClass="text-center fs-3 mb-5" />
-      <div className="row my-3 homeProjectsBg">
+      {/* <Title title="PROJECTS" cssClass="text-center fs-3 mb-5" /> */}
+      <div className="row homeProjectsBg">
         <div className="col-md-12 d-flex justify-content-center align-items-center">
           <div className="container">
             <div className="row">

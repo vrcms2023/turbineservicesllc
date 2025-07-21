@@ -89,7 +89,7 @@ const HomeServices = ({ title }) => {
                 //   dangerouslySetInnerHTML={{ __html: item.feature_description }}
                 // />
               )}
-              <Link to={`${item.services_page_url}`} className="mt-3">
+              <Link to={`${item.services_page_url}`} className="mt-4 d-block">
                 Know More
               </Link>
             </div>

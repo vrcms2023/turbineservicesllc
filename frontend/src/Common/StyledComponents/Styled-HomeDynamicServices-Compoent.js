@@ -72,10 +72,11 @@ export const HomeDynamicServiceStylesComponent = styled.div`
             font-family: roboto;
             font-weight: normal;
             line-height: 1.5;
+            text-align: left;
           }
 
           .description {
-            p:not(:first-child) {
+            p:not(:first-child),ul, ol {
               display: none;
             }
           }
@@ -90,14 +91,18 @@ export const HomeDynamicServiceStylesComponent = styled.div`
         .col-md-4 .briefIntro {
         background-repeat: no-repeat;
         background-position: right 15px bottom;
-        border-radius: 8px;
+        border-radius: 4px;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+        *, p, p span {
+            color: ${({ theme }) => theme.gray444} !important;
+            }
 
         &:hover {
             background-color: #0d75ba;
 
-            * {
-            color: #fff;
+            *, p, p span {
+            color: ${({ theme }) => theme.white} !important;
             }
         }
 

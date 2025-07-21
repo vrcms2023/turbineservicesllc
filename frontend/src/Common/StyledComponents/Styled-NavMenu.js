@@ -41,9 +41,9 @@ export const StyledMenu = styled.menu`
             padding: 1.2rem;
           }
           
-          @media (min-width: 992px) {
-            background-color: ${({ theme }) => theme.transparent};
-          }
+          // @media (min-width: 992px) {
+          //   background-color: ${({ theme }) => theme.transparent};
+          // }
 
           .nav-Link {
             color:${({ theme }) => theme.navbarTextColor}; 

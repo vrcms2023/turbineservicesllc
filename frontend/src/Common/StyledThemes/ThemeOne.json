@@ -125,12 +125,11 @@
   "btnSecondryBorderColor": "#aaaaaa",
   "btnSecondryBorderHoverColor": "#aaaaaa",
 
-  "btnOutline": "#0D75BA",
-  "btnOutlineHover": "#222222",
-  "btnOutlineTextColor": "#0D75BA",
-  "btnOutlineTextHoverColor": "#ffffff",
-  "btnOutlineBorderColor": "#0D75BA",
-  "btnOutlineBorderHoverColor": "#444444",
+ 
+  "btnOutlineTextColor": "#444444",
+  "btnOutlineTextHoverColor": "#EF4036",
+  "btnOutlineBorderColor": "#eeeeee",
+  "btnOutlineBorderHoverColor": "#cccccc",
 
   "btnLinkTextColor": "#007CB9",
   "btnLinkTextHoverColor": "#005689",

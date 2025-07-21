@@ -484,7 +484,7 @@ body, p {
       }
       
       .ql-editor {
-        padding: 1rem 0 0px;
+        padding: 0px;
         color: ${({ theme }) => theme.gray444} !important;
       }
     }

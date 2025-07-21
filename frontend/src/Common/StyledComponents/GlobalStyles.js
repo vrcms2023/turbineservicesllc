@@ -380,6 +380,11 @@ body, p {
 
     .homeProjectsContainer {
       padding: 0;
+
+      .ql-editor {
+        padding: 0 !important;
+        text-align: center !important;
+      }
       
       .cardItem:nth-child(1):after, .cardItem:nth-child(2):after, .cardItem:nth-child(3):after {
         content: "";
@@ -471,8 +476,11 @@ body, p {
     .quill {
       background: none !important;
 
-      p, p span {
+      p, p span, .introDecTitleCss {
         background-color: transparent !important;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.6;
       }
       
       .ql-editor {

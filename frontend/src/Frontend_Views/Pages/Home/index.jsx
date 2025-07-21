@@ -268,14 +268,15 @@ const Home = () => {
   return (
     <>
       <div className="container-fluid p-0">
-        {/*Download Broucher */}
+      {/* ==== Download Broucher ======================================== */}
         <BrochureDownloadStyling>
           <div className="homeBrochure">
             <DownloadBrochures />
           </div>
         </BrochureDownloadStyling>
+{/* ==== END ======================================== */}        
 
-        {/* ==== CAROUSEL COMPONENT START ======================================================================================================= */}
+      {/* ==== CAROUSEL COMPONENT  ===================================== */}
         <div
           className={
             showHideCompList?.carousel?.visibility && isAdmin && hasPermission
@@ -335,9 +336,9 @@ const Home = () => {
             </>
           )}
         </div>
-        {/* ==== END CAROUSEL ========================================================================================================= */}
+{/* ==== END CAROUSEL =============================== */}
 
-        {/* INTRODUCTION COMPONENT START =========================================================================================================== */}
+        {/* BRIEF INTRODUCTION ========================================= */}
         <div
           className={
             showHideCompList?.briefintro?.visibility && isAdmin && hasPermission
@@ -355,12 +356,10 @@ const Home = () => {
             />
           )}
 
-          {/* INTRODUCTION COMPONENT */}
           {showHideCompList?.briefintro?.visibility && (
-            <div>
+            <div className="homeBriefIntroduction">
               <div className="container">
                 <div className="row">
-                  <div className="breiftopMargin">
                     {isAdmin && hasPermission && (
                       <EditIcon
                         editHandler={() => editHandler("briefIntro", true)} editlabel="Brief"
@@ -372,15 +371,14 @@ const Home = () => {
                       linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                       linkLabel="Read More"
                       moreLink=""
-                      introTitleCss="fs-3 text-center mb-4"
-                      introSubTitleCss="fw-medium text-muted text-center"
-                      introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                      detailsContainerCss="col-md-12 py-3"
+                      introTitleCss=" text-center"
+                      introSubTitleCss="mt-2 text-center"
+                      introDecTitleCss="fw-normal mx-4 text-center lh-6"
+                      detailsContainerCss="col-md-12"
                       anchorContainer="d-flex justify-content-center align-items-center mt-4"
                       anchersvgColor="#17427C"
                       pageType={pageType}
                     />
-                  </div>
                 </div>
               </div>
 
@@ -397,7 +395,7 @@ const Home = () => {
             </div>
           )}
         </div>
-        {/* INTRODUCTION COMPONENT END  =========================================================================================================== */}
+{/* ==== END ===================================================== */}
 
         {/* ==== PROJECT + BRIEF INTRODUCTION START ===================================================================================================== */}
 

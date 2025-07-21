@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BriefIntroStyled = styled.div`
     background-color: ${({ theme }) => theme.transparent};
-    padding: 16px 0;
+    padding: 48px 0;
 
     @media(max-width: 768px) {
       padding-bottom: 0;
@@ -21,7 +21,7 @@ export const BriefIntroStyled = styled.div`
   }
 
   .briefIntro h5 {
-    color: ${({ theme }) => theme.gray222};
+    // color: ${({ theme }) => theme.gray222};
   }
 
   .briefIntro h3 {

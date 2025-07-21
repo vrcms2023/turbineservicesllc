@@ -506,10 +506,10 @@ const Home = () => {
                       linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                       linkLabel="Read More"
                       moreLink=""
-                      introTitleCss="text-center mb-4"
+                      introTitleCss="text-center"
                       introSubTitleCss="fw-medium text-muted text-center"
                       introDecTitleCss="fs-6 fw-normal mx-4 text-center"
-                      detailsContainerCss="col-md-12 py-3"
+                      detailsContainerCss="col-md-12"
                       anchorContainer="d-flex justify-content-center align-items-center mt-4"
                       anchersvgColor="#17427C"
                       pageType={"homeDynamciServicesBrief"}
@@ -573,12 +573,12 @@ const Home = () => {
           )}
           {showHideCompList?.homeservices?.visibility && (
             <HomeServiceStylesComponent>
-              <div className="homeServicesContainer">
+              {/* <div className="homeServicesContainer">
                 <div className="container py-5 homeServices">
-                  {/* <h2 className="mb-5">What We Do</h2> */}
-                  {/* <HomeServices /> */}
+                  <h2 className="mb-5">What We Do</h2>
+                  <HomeServices />
                 </div>
-              </div>
+              </div> */}
 
               <div className="container-fluid homeServicesBrief">
                 <div className="container">
@@ -598,10 +598,10 @@ const Home = () => {
                         linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                         linkLabel="Read More"
                         moreLink=""
-                        introTitleCss="fs-3 text-center mb-4"
-                        introSubTitleCss="fw-medium text-muted text-center"
+                        introTitleCss="text-center"
+                        introSubTitleCss="text-center"
                         introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                        detailsContainerCss="col-md-12 py-3"
+                        detailsContainerCss="col-md-12"
                         anchorContainer="d-flex justify-content-center align-items-center mt-4"
                         anchersvgColor="#17427C"
                         pageType="HomeserviceBrief"

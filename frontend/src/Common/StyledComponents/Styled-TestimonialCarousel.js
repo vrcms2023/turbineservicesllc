@@ -46,7 +46,7 @@ export const TestimonialCarouselPageStyled = styled.div`
         color:${({ theme }) => theme.testimonialsLinkColor};
 
         &:hover {
-            color:${({ theme }) => theme.testimonialsLinkHoverColor};
+            color: ${({ theme }) => theme.testimonialsLinkHoverColor};
         }
       }
 

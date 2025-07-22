@@ -11,7 +11,7 @@ const TitleWithDescripton = ({ list }) => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 5000,
     draggable: true,
     swipe: true,
@@ -32,15 +32,11 @@ const ItemSlide = (props) => {
   const { item, ...otherProps } = props;
   return (
     <div {...otherProps}>
-      <Title title={item?.intro_title} cssClass="text-start"/>
+      <Title title={item?.intro_title} cssClass="text-start" />
       <div className="quill ">
         <div className="ql-container ql-snow">
           <div className="ql-editor">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: item.intro_desc,
-              }}
-            ></div>
+            <RichTextView data={item.intro_desc} showMorelink={false} />
           </div>
         </div>
       </div>

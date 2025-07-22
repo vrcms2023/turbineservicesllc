@@ -117,12 +117,12 @@ export const getClinetLogsFields = () => {
 export const getCarouselFields = (category) => {
   return {
     carouse_title: {
-      label: "Carouse Title",
+      label: "Title",
       type: "text",
       fieldName: "carouse_title",
     },
     carouse_sub_title: {
-      label: "Carouse Sub Title",
+      label: "Sub Title",
       type: "text",
       fieldName: "carouse_sub_title",
     },

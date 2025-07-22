@@ -112,6 +112,7 @@ export const HomeCauroselComponentStyles = styled.div`
           font-size: 1.2rem !important;
           line-height: 1.4;
           font-weight: normal !important;
+          text-align: left;
         }
       }
     }

@@ -325,13 +325,13 @@ const Home = () => {
                   <AdminBanner
                     editHandler={editHandler}
                     componentType="carousel"
-                    popupTitle="Carousel Banners"
+                    popupTitle="Hero Carousel"
                     getImageListURL="carousel/createCarousel/carousel/"
                     deleteImageURL="carousel/updateCarousel/"
                     imagePostURL="carousel/createCarousel/carousel/"
                     imageUpdateURL="carousel/updateCarousel/"
                     imageIndexURL="carousel/updateCarouselindex/"
-                    imageLabel="Add Carousel Image"
+                    imageLabel="Add Image"
                     showDescription={false}
                     showExtraFormFields={getCarouselFields("carousel")}
                     dimensions={imageDimensionsJson("carousel")}
@@ -744,7 +744,7 @@ const Home = () => {
         </div>
         {/* END OF TESTIMONIAL COMPONENT =========================================================================================================== */}
 
-        {/* === CLIENTS - COMPONENTS DEVELOPER IN SAP DESIGNS START ===========================================================================  */}
+        {/* === CLIENTS - SCROLL START ===========================================================================  */}
         <div className={showHideCompList?.homeclient?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle

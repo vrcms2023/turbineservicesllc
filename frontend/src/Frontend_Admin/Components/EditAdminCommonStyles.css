@@ -15,7 +15,7 @@
 } */
 
 .adminEditTestmonial {
-  background-color: #ddd;
+  background-color: #e1e1e1;
   /* border: 2px dashed rgb(255, 193, 7); */
   position: fixed;
   top: 0;
@@ -32,9 +32,27 @@
   transform: translateX(100%);
   /* -webkit-transform: translateX(100%); */
 
+  input {
+    border: 0 !important;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 4px !important;
+  }
   label {
     text-align: left;
+    padding-bottom: 0px !important;
   }
+
+   .adminEditTestmonialHeader {
+    border-bottom: 1px solid rgba(68, 68, 68, .1);
+   }
+
+  .adminEditTestmonialHeader, #adminActionForm {
+
+  h5 {
+    font-size: 1.05rem !important;
+    font-weight: 600;
+  }
+}
 }
 
 .selected {
@@ -82,17 +100,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgba(0, 0, 0, .3);
 }
 
 .adminEditTestmonial a.close:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  color: rgba(0, 0, 0, 1);
   border-radius: 50%;
   color: #222222 !important;
 }
 
-.adminEditTestmonialHeader {
-  border-bottom: 1px solid #444;
-}
+
 
 /* @media (max-width: 768px) {
   .adminEditTestmonial {
@@ -100,6 +118,14 @@
     max-height: 650px;
   }
 } */
+
+.adminEditTestmonial  [data-rfd-droppable-context-id] {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.slideItem {
+  cursor:grab;
+}
 
 .slideItem .description {
   overflow: hidden;
@@ -109,14 +135,14 @@
 }
 
 .heightCtrl {
-  height: 280px;
+  max-height: 280px;
   overflow: auto;
   overflow-x: hidden;
   resize: vertical;
 }
 
 .fullHeightCtrl {
-  height: 80vh !important;
+  max-height: 80vh !important;
   overflow: auto;
   overflow-x: hidden;
   resize: vertical;
@@ -154,4 +180,27 @@
 .adminEditTestmonial::-webkit-scrollbar-thumb {
   /* border-radius: 10px; */
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+}
+
+.adminEditTestmonial  .quill {
+      background-color: rgba(255, 255, 255, .7) !important;
+
+      p, p span, .introDecTitleCss {
+        text-align: left;
+        padding: .5rem;
+      }
+
+      .ql-toolbar {
+        border-top: 0 !important;
+        border-right: 0 !important;
+        border-left: 0 !important;
+      }
+
+      .ql-editor {
+          * {text-align: left; }
+        }
+    }
+
+.filepond--root {
+  margin-bottom: .2rem !important;
 }

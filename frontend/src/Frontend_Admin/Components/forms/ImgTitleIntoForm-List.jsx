@@ -161,15 +161,15 @@ const AdminBanner = ({
     <div>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
 
-      <hr className="m-0" />
+      {/* <hr className="m-0" /> */}
 
       <div className="container mt-2">
-        <NoteComponent note="Drag to shuffle banners" />
+        <NoteComponent note="Shuffle order" />
 
         <div className="row mt-2 d-flex flex-row-reverse">
           {carousel?.length > 0 ? (
-            <div className="heightCtrl imglist">
-              <div className="container">
+            <div className="heightCtrl imglist p-0">
+              <div className="container p-0">
                 <DragDropContext onDragEnd={onDragEnd}>
                   {carousel?.map((item, index) => (
                     <Droppable key={index} droppableId={item.id}>
@@ -198,7 +198,7 @@ const AdminBanner = ({
           ) : (
             ""
           )}
-          <hr className="" />
+          {/* <hr className="" /> */}
 
           <div
             className={`mb-5 mb-md-0 px-0 ${
@@ -260,7 +260,7 @@ const AdminCarouselItem = ({
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className="row mb-2 p-2 slideItem" key={index}>
+          <div className="row mb-1 p-1 slideItem" key={index}>
             <div className="col-2 col-md-2">
               <i
                 className="fa fa-picture-o fs-2 d-lg-none"
@@ -272,8 +272,8 @@ const AdminCarouselItem = ({
                 className="w-100 d-none d-lg-block"
               />
             </div>
-            <div className="col col-md-8 ">
-              <h6 className="fw-bold m-0 fs-6">
+            <div className="col col-md-8 text-left ps-0">
+              <h6 className="fw-medium lc1 mb-1 lineClamp">
                 {getObjectTitle(componentType, item)}
               </h6>
               <small className="description text-muted d-none d-md-block">
@@ -297,10 +297,10 @@ const AdminCarouselItem = ({
                   /> */}
               </small>
             </div>
-            <div className="col-4 col-md-2 d-flex justify-content-around align-items-center flex-md-row gap-3">
+            <div className="col-4 col-md-2 d-flex justify-content-around align-items-center flex-md-row gap-1">
               <Link onClick={(event) => handleCarouselEdit(event, item)}>
                 <i
-                  className="fa fa-pencil fs-5 text-warning"
+                  className="fa fa-pencil fs-5 text-secondary"
                   aria-hidden="true"
                 ></i>
               </Link>
@@ -310,7 +310,7 @@ const AdminCarouselItem = ({
                 }
               >
                 <i
-                  className="fa fa-trash fs-5 text-danger"
+                  className="fa fa-trash fs-5 text-secondary"
                   aria-hidden="true"
                 ></i>
               </Link>

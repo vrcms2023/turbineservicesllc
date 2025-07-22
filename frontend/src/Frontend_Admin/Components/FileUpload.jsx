@@ -441,8 +441,7 @@ const FileUpload = ({
                 />
               </div>
               <div className="text-muted">
-                You can upload a maximum of {maxFiles ? maxFiles : 4} images at
-                once.
+                <small className="d-block text-center" style={{ fontSize: ".75rem" }}>You can upload a maximum of {maxFiles ? maxFiles : 4} images at a time.</small>
               </div>
               {error ? <Error>{error}</Error> : ""}
             </div>
@@ -482,9 +481,8 @@ const FileUpload = ({
               )}
             {dimensions && (
               <div className="col-12">
-                <small className="" style={{ fontSize: ".75rem" }}>
-                  Min. Width - {dimensions.w} & Height - {dimensions.h} will be
-                  the good for resolution.{" "}
+                <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
+                  Recommended size {dimensions.w} x {dimensions.h} 
                 </small>
               </div>
             )}
@@ -531,11 +529,11 @@ const FileUpload = ({
           </div>
         </div>
         <div className="row">
-          <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 my-3 px-5">
+          <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 mb-3 px-5">
             {!editImage?.id ? (
               <button
                 type="button"
-                className="btn btn-sm btn-secondary"
+                className="btn btn-sm btn-outline"
                 onClick={clearField}
               >
                 Clear
@@ -552,7 +550,7 @@ const FileUpload = ({
               cssClass="btn btn-outline"
               label={"Close"}
               handlerChange={closeHandler}
-            /> */}
+            /> */}clo
           </div>
         </div>
 

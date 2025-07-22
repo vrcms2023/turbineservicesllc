@@ -34,6 +34,7 @@ export const FooterStyled = styled.div`
       font-weight: 500;
       font-style: normal;
       font-size: 1.6rem !important;
+      color: ${({ theme }) => theme.black};
     }
 
     a {
@@ -102,7 +103,6 @@ export const FooterStyled = styled.div`
 
     
     i {
-      
       font-size: 2rem;
       margin: 0 8px 0;
       // color: ${({ theme }) => theme.footerLinkColor};

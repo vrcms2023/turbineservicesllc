@@ -21,6 +21,7 @@ import {
 } from "../../../util/menuUtil";
 import SEOForm from "./SEOForm";
 import { getServiceValues } from "../../../redux/services/serviceActions";
+import Title from "../../../Common/Title";
 
 const MenuForm = ({
   editHandler,
@@ -50,6 +51,7 @@ const MenuForm = ({
     }, [editMenu]),
   });
   const [error, setError] = useState(false);
+  const [show, setShow] = useState(false);
 
   const pageUrlValue = watch("page_url");
 
@@ -242,11 +244,15 @@ const MenuForm = ({
     setError("");
   };
 
+  const handleToggleSeoForm = () => {
+    setShow(!show);
+  }
+
   return (
     <>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
-      <hr className="my-2" />
-      <div className="container">
+      {/* <hr className="my-2" /> */}
+      <div className="container mt-2 p-0">
         <div className="row py-0 pb-md-5">
           <div className="col-md-12 mb-5 mb-md-0">
             {error && (
@@ -315,11 +321,20 @@ const MenuForm = ({
               )} */}
               {!isParentHasChilds && (
                 <>
-                  <hr className="mt-4" />
-                  <h5 className="mt-4">SEO</h5>
+                <hr className="mt-4 border-secondary" />
+               
+                <div className="d-flex justify-content-between align-items-center">
+                  
+                  <Title title="SEO" cssClass="m-0" />
+                   <span onClick={() =>handleToggleSeoForm()} style={{cursor: "pointer"}} className={`px-2 rounded-1 border border-1 ${show ? "text-secondary border-light" : "text-secondary border-light"}`}>
+                    <small><i className={`fa ${show ? "fa-chevron-down text-dark" : "fa-chevron-up text-secondary"}`} aria-hidden="true">
+                    </i> {show ? "CLOSE" : "OPEN" }</small>
+                    {/* <i className="fa fa-chevron-down" aria-hidden="true"></i> */}
+                  </span>
+                </div>
                 </>
               )}
-              {!isParentHasChilds && (
+              {!isParentHasChilds && show && (
                 <div
                   className="p-4 py-1 pb-3 seoform"
                   style={{ backgroundColor: "rgba(255, 255, 255, .4)" }}
@@ -330,8 +345,10 @@ const MenuForm = ({
                     Controller={Controller}
                     control={control}
                   />
+                  
                 </div>
               )}
+              {!show && <hr className="my-1 border-secondary" />}
               <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 mt-3">
                 <Button
                   type="submit"

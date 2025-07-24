@@ -550,7 +550,7 @@ const FileUpload = ({
               cssClass="btn btn-outline"
               label={"Close"}
               handlerChange={closeHandler}
-            /> */}clo
+            /> */}
           </div>
         </div>
 

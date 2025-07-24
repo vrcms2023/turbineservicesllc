@@ -25,6 +25,7 @@ import {
 import RadioButtonGroup from "../../Components/RadioButtonGroup";
 
 import "./adminSettingStyles.css";
+import { AdvertisementComponentStyles } from "../../../Common/StyledComponents/Styled-Advertisements-Component";
 
 const AdvertisementsAdminSettings = () => {
   const pageType = "advertisementsettings";
@@ -216,8 +217,8 @@ const AdvertisementsAdminSettings = () => {
   }, [componentEdit.advertisement]);
 
   return (
-    <>
-    <div className="container-fluid pt-5 contactsList">
+    <AdvertisementComponentStyles>
+    <div className="container-fluid pt-5 addAdvertisement">
       <div className="row px-2 px-lg-5">
         <div className="col-sm-12 col-md-7">
           <Title title={"Advertisements"} cssClass="fs-1 pageTitle" />
@@ -250,7 +251,7 @@ const AdvertisementsAdminSettings = () => {
 
       <div className="row px-3 px-lg-5 py-4 table-responsive">
         {advertisementList?.length > 0 ? (
-          <table className="table contacts">
+          <table className="table list">
             <thead>
               <tr>
                 <th className="align-middle">Title</th>
@@ -363,7 +364,7 @@ const AdvertisementsAdminSettings = () => {
       </div>
     </div>
     {show && <ModalBg />}
-    </>
+    </AdvertisementComponentStyles>
   );
 };
 

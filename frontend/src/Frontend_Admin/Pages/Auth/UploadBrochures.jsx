@@ -28,6 +28,7 @@ import RadioButtonGroup from "../../Components/RadioButtonGroup";
 
 import "./adminSettingStyles.css";
 import { getBaseURL } from "../../../util/ulrUtil";
+import { BrochureComponentStyles } from "../../../Common/StyledComponents/Styled-AddBrochure-Component";
 
 const UploadBrochures = () => {
   const pageType = "advertisementsettings";
@@ -115,13 +116,13 @@ const UploadBrochures = () => {
   };
 
   return (
-    <>
-    <div className="container-fluid pt-5 contactsList">
+    <BrochureComponentStyles>
+    <div className="container-fluid pt-5 addBrochure">
       <div className="row px-2 px-lg-5">
         <div className="col-sm-12 col-md-11">
-          <Title title={"Add Brochures"} cssClass="fs-1 pageTitle" />
+          <Title title={"Add Brochures"} cssClass="pageTitle" />
         </div>
-        <div className="col-6 col-sm-3 col-md-1  justify-content-center addAdvertisement">
+        <div className="col-6 col-sm-3 col-md-1  justify-content-center uploadBrochure">
           <Button
             type=""
             cssClass="btn btn-outline"
@@ -133,7 +134,7 @@ const UploadBrochures = () => {
 
       <div className="row px-3 px-lg-5 py-4 table-responsive">
         {brochuresList?.length > 0 ? (
-          <table className="table contacts">
+          <table className="table list">
             <thead>
               <tr>
                 <th className="align-middle">Title</th>
@@ -151,11 +152,13 @@ const UploadBrochures = () => {
                 <tr key={brochures.id}>
                   <td className="align-middle">{brochures.brochures_name}</td>
                   <td className="align-middle text-left">
+                    
                     <a
                       href="#!"
                       onClick={() => downloadPDF(`${baseURL}${brochures.path}`)}
                       className="mx-1 text-dark"
                     >
+                      <i class="fa fa-download me-1" aria-hidden="true"></i> 
                       {brochures.brochures_downloadName
                         ? brochures.brochures_downloadName
                         : brochures.originalname}
@@ -220,7 +223,7 @@ const UploadBrochures = () => {
       </div>
     </div>
     {show && <ModalBg />}
-    </>
+    </BrochureComponentStyles>
   );
 };
 

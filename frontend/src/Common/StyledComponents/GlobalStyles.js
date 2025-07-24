@@ -61,10 +61,12 @@ body, p {
   color: ${({ theme }) => theme.textColor};
 }
 
-
 .btn {
   font-family: ${({ theme }) => theme.headingFontFamily};
   font-weight: 400 !important;
+  padding: 8px 16px !important;
+  border: 0px !important;
+  border-radius: 0 !important;
   // transition: all .35s;
   // padding: .6rem 1.2rem !important;
   // font-family: Amarante;
@@ -489,6 +491,14 @@ body, p {
       }
     }
 
+// ADMIN STYLES
+
+.adminMenuTree {
+  th {
+    background: ${({ theme }) => theme.lightgray};
+    font-weight: 500
+  }
+}
     
 `;
 
@@ -535,3 +545,5 @@ body, p {
 //         margin-top: 1.2rem;
 //     }
 // }
+
+

@@ -24,6 +24,18 @@ export const FooterStyled = styled.div`
         color: ${({ theme }) => theme.gray444};
         font-size: 1.2rem;
       }
+
+      .footerLogo {
+        width: 100%;
+      }
+
+      .description {
+        .ql-editor {
+            p, p span, .introDecTitleCss {
+              text-align: left;
+            }
+        }
+      }
     }
 
     hr {

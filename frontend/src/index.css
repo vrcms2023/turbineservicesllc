@@ -244,13 +244,6 @@
 
 /* Buttons Styling */
 
-.btn {
-  border: 0px !important;
-  border-radius: 0 !important;
-  padding: 8px 35px !important;
-  font-size: 1.2rem;
-}
-
 .react-confirm-alert-overlay {
   z-index: 99999 !important;
 }

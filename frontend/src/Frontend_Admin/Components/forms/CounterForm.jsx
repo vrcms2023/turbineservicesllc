@@ -93,31 +93,16 @@ export default function CounterForm({
         closeHandler={closeHandler}
         title={componentTitle}
       />
-      <hr />
-      <div className="container">
+      {/* <hr /> */}
+      <div className="container mt-3 p-0">
         <div className="row">
-          <div className="col-md-12 px-5">
+          <div className="col-md-12">
             {error && (
               <div className="fw-bold">{error && <Error>{error}</Error>}</div>
             )}
             <form onSubmit={handleSubmit(saveForm)}>
               <div>
-                {counters.length < 5 && (
-                  <div className="text-end d-flex justify-content-between">
-                    <div className="text-end">
-                      <Link
-                        className="btn btn-primary"
-                        onClick={() =>
-                          append({ label: "", counter: 0, specialChar: "" })
-                        }
-                      >
-                        Add{" "}
-                        <i className="fa fa-plus mx-2" aria-hidden="true"></i>
-                      </Link>
-                      {/* <EditIcon editHandler={() => editHandler("menu", true)} /> */}
-                    </div>
-                  </div>
-                )}
+                
 
                 {/* Title input */}
                 <InputFields
@@ -129,14 +114,29 @@ export default function CounterForm({
                   validationObject={{ required: "Please enter Title" }}
                 />
 
+                {counters.length < 5 && (
+                  <div className="text-end d-flex justify-content-end mt-3">
+                      <Link
+                        className="btn btn-primary"
+                        onClick={() =>
+                          append({ label: "", counter: 0, specialChar: "" })
+                        }
+                      >
+                        Add
+                        {/* <i className="fa fa-plus mx-2" aria-hidden="true"></i> */}
+                      </Link>
+                      {/* <EditIcon editHandler={() => editHandler("menu", true)} /> */}
+                  </div>
+                )}
+
                 {/* Counter objects */}
                 {/* Counter objects */}
                 {fields.map((item, index) => (
-                  <div key={index} className="d-flex flex-wrap items-center">
-                    <div className="col-md-12">
+                  <div key={index} className="row mt-2">
+                    <div className="col-md-7">
                       <InputFields
                         key={index}
-                        label={"counters Title"}
+                        label={"Text"}
                         type={"text"}
                         error={errors?.[`counters.${index}.label`]?.message}
                         fieldName={`counters.${index}.label`}
@@ -151,10 +151,10 @@ export default function CounterForm({
                         </p>
                       )}
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-md-2">
                       <InputFields
                         key={index}
-                        label={"counters Title"}
+                        label={"Number"}
                         type={"number"}
                         error={errors?.[`counters.${index}.label`]?.counter}
                         fieldName={`counters.${index}.counter`}
@@ -164,7 +164,7 @@ export default function CounterForm({
                         }}
                       />
                     </div>
-                    <div className="col-md-5">
+                    <div className="col-md-2">
                       <InputFields
                         key={index}
                         label={"Symbol"}
@@ -174,10 +174,10 @@ export default function CounterForm({
                       />
                     </div>
 
-                    <div className="col-md-1">
+                    <div className="col-md-1 d-flex justify-content-center align-items-end">
                       <Link
                         to=""
-                        className=" ms-4"
+                        className=""
                         onClick={() => remove(index)}
                       >
                         <i
@@ -191,14 +191,14 @@ export default function CounterForm({
                 ))}
               </div>
 
-              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 gap-md-3 mt-5">
-                <button className="btn btn-primary mx-3">save</button>
+              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 gap-md-3 mt-4">
                 <Button
                   type="button"
-                  cssClass="btn btn-sm btn-secondary"
+                  cssClass="btn btn-sm btn-outline"
                   label={"Close"}
                   handlerChange={closeHandler}
                 />
+                <button className="btn btn-primary">save</button>
               </div>
             </form>
           </div>

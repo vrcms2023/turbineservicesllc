@@ -6,10 +6,15 @@ export const TitleSubTitleStyled = styled.div`
         font-weight: 500;
         color: ${({ theme }) => theme.gray444};
 
+        @media(max-width: 991px) {
+            line-height: 1.2rem;
+            margin-top: 1rem;
+        }
+
         span {
-            font-size: 1.4rem !important;
+            font-size: 1.2rem !important;
             font-weight: 400;
-            color:${({ theme }) => theme.gray555};
+            color:${({ theme }) => theme.gray666};
         }
     }
-`
+` 

@@ -8,6 +8,7 @@ import SkeletonImage from "../Skeltons/SkeletonImage";
 
 // Styles
 import { PageBannerStyled } from "../StyledComponents/Styled-PageBanner";
+import Ancher from "../Ancher";
 
 const Banner = ({
   getBannerAPIURL,
@@ -39,7 +40,7 @@ const Banner = ({
       getBannerData();
     }
   }, [bannerState, pageLoadServiceName, getBannerAPIURL]);
-
+  console.log(bannerdata)
   return (
     <PageBannerStyled>
       <div className="pageBanner">
@@ -57,7 +58,7 @@ const Banner = ({
               title={bannerdata.banner_title}
               cssClass={bannerTitleCss}
               // cssClass=""
-              mainTitleClassess="fs-1 fw-bold text-white "
+              mainTitleClassess=""
               subTitleClassess=""
             />
           )}
@@ -65,7 +66,7 @@ const Banner = ({
             <Title
               title={bannerdata.banner_subTitle}
               cssClass={bannerSubTitleCss}
-              mainTitleClassess="fs-6 mb-2 fw-medium text-white "
+              mainTitleClassess=""
             />
           )}
           {bannerdata.banner_descripiton !== "" && (
@@ -73,6 +74,22 @@ const Banner = ({
               {bannerdata.banner_descripiton}
             </small>
           )}
+
+          {bannerdata.moreLink &&  (
+              <div >
+                <Ancher
+                  AncherLabel={"Services"}
+                  Ancherpath={
+                    bannerdata.moreLink
+                      ? bannerdata.moreLink
+                      : moreLink
+                  }
+                  // Ancherpath={moreLink}
+                  AncherClass={"btn btn-primary btn-sm mt-2"}
+                  // AnchersvgColor={anchersvgColor}
+                />
+              </div>
+            )}
         </div>
         {bannerdata?.path ? (
           <img

@@ -11,6 +11,7 @@ import useAdminLoginStatus from "./customhook/useAdminLoginStatus";
 
 const BriefIntroFrontend = ({
   pageType,
+  border,
   introState,
   linkCss,
   linkLabel,
@@ -47,7 +48,7 @@ const BriefIntroFrontend = ({
   }, [introState, pageType]);
 
   return (
-    <div className="container-fluid">
+    <div className={`container-fluid ${border}`}>
       <BriefIntroStyled>
         <div className="row ">
           <div className={`${detailsContainerCss} briefIntro`}>

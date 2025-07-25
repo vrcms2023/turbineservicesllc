@@ -1,18 +1,21 @@
 import styled from "styled-components";
 
 export const AboutPageStyled = styled.div`
-  .title {
-    color: ${({ theme }) => theme.textColor};
-    font-weight: 600 !important;
+  .subTitle {
+    font-size: .9rem !important;
+    color: ${({ theme }) => theme.gray666};
+    font-weight: 500 !important;
   }
-
-  .subTitle { }
 
   .aboutPage {
       padding-bottom: 80px;
 
       .row {
         border-bottom: 1px solid ${({ theme }) => theme.grayddd};
+
+        @media(max-width: 991px) {
+          border: 0;
+        }
         // box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
         // box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
         // &:last-child {
@@ -26,6 +29,10 @@ export const AboutPageStyled = styled.div`
       .ql-editor {
         padding-left: 0;
         padding-right: 0;
+
+        p, p span {
+          text-align: left;
+        }
       }
 
       p {
@@ -103,6 +110,15 @@ export const AboutPageStyled = styled.div`
     .normalCSS, .flipCSS {
       // padding: 24px 10px;
       margin-top: 80px;
+
+      // @media(max-width: 991px) {
+      //   margin-top: 0px;
+      // }
+
+      @media (max-width: 991px) {
+        padding: 0;
+        margin: 0px;
+      }
     }
       
     .flipCSS {
@@ -110,9 +126,6 @@ export const AboutPageStyled = styled.div`
       background: #fbfbfb;
       // margin-bottom: 48px;
 
-      @media (max-width: 768px) {
-        padding: 0;
-        margin: 0px;
-      }
+      
     }
 `;

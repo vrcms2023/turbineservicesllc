@@ -6,11 +6,11 @@ import { CareersFormStyled } from "../../../Common/StyledComponents/Styled-Caree
 const ApplyForm = () => {
   return (
     <CareersFormStyled>
-      <div className="container">
+      <div className="container applyJob">
         <div className="row">
           <div className="col-md-12">
-            <Title title="Apply Now" cssClass={"fs-5 fw-medium text-center"} />
-            <hr />
+            <Title title="Apply Now" cssClass="text-center" />
+            <hr className="mt-2"/>
             <div className="mb-3">
               <label for="exampleFormControlInput1" className="form-label">
                 First Name *

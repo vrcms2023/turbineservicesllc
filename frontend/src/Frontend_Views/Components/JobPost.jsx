@@ -229,7 +229,7 @@ const JobPost = ({
               <div className="mt-0 mb-2">
                 <Title
                   title={item.job_title}
-                  cssClass="fs-5 jobTitle"
+                  cssClass="jobTitle"
                 />
               </div>
               <div className="mt-0 mb-2">

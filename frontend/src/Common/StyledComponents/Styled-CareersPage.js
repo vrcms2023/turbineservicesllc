@@ -109,6 +109,14 @@ export const CareersPageStyled = styled.div`
     p {
       font-size: .9rem
     }
+
+    .quill {
+      .ql-editor {
+        p, p span {
+          text-align: left;
+        }
+      }
+    }
     
 
     ul {

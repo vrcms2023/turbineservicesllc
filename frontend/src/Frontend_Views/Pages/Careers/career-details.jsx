@@ -162,13 +162,13 @@ const Careers = () => {
         )}
       </div>
 
-      <div className="container mb-3">
+      <div className="container mt-3">
         <div className="row">
           <div className="col-8 col-md-10">
             <Title title="Details" cssClass="fw-medium fs-4 pageTitle " />
           </div>
           <div className="col-4 col-md-2 text-end">
-            <Link to="/careers" className="btn btn-primary">
+            <Link to="/careers" className="btn btn-outline">
               <i className="fa fa-chevron-left me-2" aria-hidden="true"></i>
               <span className="">Back</span>
             </Link>

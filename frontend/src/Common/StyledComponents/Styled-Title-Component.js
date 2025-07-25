@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const TitleSubTitleStyled = styled.div`
     h5 {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
         font-weight: 500;
         color: ${({ theme }) => theme.gray444};
 

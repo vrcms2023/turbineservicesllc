@@ -6,14 +6,13 @@ export const CareersPageStyled = styled.div`
     font-size: 1.6rem !important;
   }
   .jobTitle {
-    color: ${({ theme }) => theme.textColor};
-    font-weight: 600;
+    font-size: 1.6rem !important
   }
 
-  .subTitle {
-    font-size: 1.2em !important;
-    fonw-weight: 500;
-  }
+  // .subTitle {
+  //   font-size: 1.2em !important;
+  //   fonw-weight: 500;
+  // }
 
   .title {
     color: ${({ theme }) => theme.pageTitleColor};
@@ -41,8 +40,18 @@ export const CareersPageStyled = styled.div`
       font-weight: 600;
     }
 
-    .ql-editor {
-      padding-top: .5rem !important;
+    .quill {
+      .ql-editor {
+        padding-top: .5rem !important;
+        
+        p, p span {
+          text-align: left;
+
+          @media(max-width: 480px) {
+            padding: 1rem !important;
+          }
+        }
+      }
     }
   }
 
@@ -67,8 +76,8 @@ export const CareersPageStyled = styled.div`
     .title {
       color: ${({ theme }) => theme.textColor};
       border-bottom: 1px solid ${({ theme }) => theme.grayddd};
-      padding-bottom: 8px;
-      text-align: center;
+      padding-bottom: 2px;
+      font-size: 1.2rem !important;
     }
 
     // background: ${({ theme }) => theme.secondaryColor};
@@ -114,6 +123,9 @@ export const CareersPageStyled = styled.div`
       .ql-editor {
         p, p span {
           text-align: left;
+          @media(max-width: 480px) {
+            padding: 0 1rem !important;
+          }
         }
       }
     }
@@ -137,4 +149,6 @@ export const CareersPageStyled = styled.div`
       }
     }
   }
+
+
 `;

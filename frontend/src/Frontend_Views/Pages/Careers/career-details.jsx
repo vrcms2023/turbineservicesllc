@@ -185,7 +185,7 @@ const Careers = () => {
       <CareersPageStyled>
         <div className="container py-4 mb-md-5 py-md-4">
           <div className="row d-flex flex-rowreverse">
-            <div className="col-md-9 p-0">
+            <div className="col-md-7 col-lg-9 p-0">
               <JobBriefDetails jobDetails={posts} />
               <div className="jobDescription mb-4">
                 {posts.description && (
@@ -210,7 +210,7 @@ const Careers = () => {
               </div>
               <JobCurrentOpenings />
             </div>
-            <div className="col-md-3 pe-0">
+            <div className="col-md-5 col-lg-3 pe-0">
               <ApplyForm />
             </div>
           </div>

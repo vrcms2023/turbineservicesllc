@@ -325,11 +325,11 @@ const MenuForm = ({
                
                 <div className="d-flex justify-content-between align-items-center">
                   
-                  <Title title="SEO" cssClass="m-0" />
-                   <span onClick={() =>handleToggleSeoForm()} style={{cursor: "pointer"}} className={`px-2 rounded-1 border border-1 ${show ? "text-secondary border-light" : "text-secondary border-light"}`}>
-                    <small><i className={`fa ${show ? "fa-chevron-down text-dark" : "fa-chevron-up text-secondary"}`} aria-hidden="true">
-                    </i> {show ? "CLOSE" : "OPEN" }</small>
-                    {/* <i className="fa fa-chevron-down" aria-hidden="true"></i> */}
+                  <h5 className="m-0">SEO</h5>
+                   <span onClick={() =>handleToggleSeoForm()} style={{cursor: "pointer"}} className={`px-2  ${show ? "text-dark border-light" : "text-dark border-light"}`}>
+                    <small>
+                      <i className={`fa me-1 ${show ? "fa-chevron-up text-dark" : "fa-chevron-down text-dark"}`} aria-hidden="true"></i> 
+                      {show ? "CLOSE" : "OPEN" }</small>
                   </span>
                 </div>
                 </>
@@ -349,14 +349,14 @@ const MenuForm = ({
                 </div>
               )}
               {!show && <hr className="my-1 border-secondary" />}
-              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 mt-3">
+              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 mt-3">
                 <Button
                   type="submit"
                   cssClass="btn btn-outline"
                   label={"Close"}
                   handlerChange={closeHandler}
                 />
-                <button className="btn btn-primary mx-3">Save</button>
+                <button className="btn btn-primary">Save</button>
               </div>
             </form>
           </div>

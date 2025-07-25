@@ -1,5 +1,6 @@
 import React from "react";
 import { InputFields, RichTextInputEditor_V2 } from "./FormFields";
+import Information from "../../../Common/info";
 
 function SEOForm({ Controller, control, register, onChangeHanlder }) {
   return (
@@ -12,6 +13,8 @@ function SEOForm({ Controller, control, register, onChangeHanlder }) {
         register={register}
         onChange={onChangeHanlder}
       />
+      <Information info="Meta title tags should be between 50 to 60 characters long" cssClass="text-secondary" />
+      
       <InputFields
         key={3}
         label={"Link"}
@@ -40,6 +43,7 @@ function SEOForm({ Controller, control, register, onChangeHanlder }) {
         label={"Description"}
         name={"seo_description"}
       />
+      <Information info="Meta description character limit between 150-160" cssClass="text-secondary" />
       {/* <InputFields
         key={5}
         label={"Keywords"}

@@ -499,7 +499,12 @@ body, p {
     font-weight: 500
   }
 }
-    
+
+
+    // UTIL CLASSESS
+// --------
+
+.cursor-pointer { cursor: pointer !important; }
 `;
 
 

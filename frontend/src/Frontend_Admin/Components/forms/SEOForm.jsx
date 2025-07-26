@@ -31,7 +31,7 @@ function SEOForm({ Controller, control, register, onChangeHanlder }) {
         register={register}
         onChange={onChangeHanlder}
       />
-      <RichTextInputEditor_V2
+      {/* <RichTextInputEditor_V2
         Controller={Controller}
         control={control}
         label={"Keywords"}
@@ -42,24 +42,24 @@ function SEOForm({ Controller, control, register, onChangeHanlder }) {
         control={control}
         label={"Description"}
         name={"seo_description"}
-      />
+      /> */}
       <Information info="Meta description character limit between 150-160" cssClass="text-secondary" />
-      {/* <InputFields
+      <InputFields
         key={5}
         label={"Keywords"}
         type={"textarea"}
         fieldName={"seo_keywords"}
         register={register}
         onChange={onChangeHanlder}
-      /> */}
-      {/* <InputFields
+      />
+      <InputFields
         key={6}
         label={"Description"}
         type={"textarea"}
         fieldName={"seo_description"}
         register={register}
         onChange={onChangeHanlder}
-      /> */}
+      />
     </>
   );
 }

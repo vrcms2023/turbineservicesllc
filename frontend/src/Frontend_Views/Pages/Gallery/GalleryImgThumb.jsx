@@ -15,10 +15,10 @@ const GalleryImgThumb = ({
     <>
       {imagesByDate !== null
         ? Object.keys(imagesByDate).map((dt) => (
-            <div key={dt} className="mb-5 galleryThumbs">
-              <h4 className="">
-                Work status as on date - <span>{dt}</span>
-              </h4>
+            <div key={dt} className="mb-4 galleryThumbs">
+              <h5 className="border-bottom">
+                Work status as on date - <small className="workStatusDate">{dt}</small>
+              </h5>
               <>
                 {imagesByDate[dt].map((img) => (
                   <img

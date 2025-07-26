@@ -13,6 +13,7 @@ import EditIcon from "../../../Common/AdminEditIcon";
 import HomeNews from "../../Components/HomeNews";
 import ImageInputsForm from "../../../Frontend_Admin/Components/forms/ImgTitleIntoForm";
 import AddEditAdminNews from "../../../Frontend_Admin/Components/News/index";
+import ShareButtons from "../../../Common/Share";
 
 import { removeActiveClass } from "../../../util/ulrUtil";
 import {
@@ -125,6 +126,7 @@ const NewsAndUpdates = () => {
 
   return (
     <>
+   
       <div
         className={
           showHideCompList?.newsandupdatesbanner?.visibility &&
@@ -226,8 +228,10 @@ const NewsAndUpdates = () => {
       </div>
 
       <div className="container my-4 newsAndUpdates">
+        
         {isAdmin && hasPermission && (
           <div className="text-end">
+            
             <Link
               to="#"
               className="btn btn-primary"
@@ -240,15 +244,15 @@ const NewsAndUpdates = () => {
         )}
 
         <div className="row mb-2 py-4">
-          <div className="col-md-8">
+          <div className="col-md-6 d-flex jusitfy-content-start align-items-center">
             <Title
               title="News"
               cssClass=""
               mainTitleClassess="fs-4 fw-medium"
               subTitleClassess=""
-            />
+            /> 
           </div>
-          <div className="col-md-4">
+          <div className="col-md-6">
             <Search
               setObject={setResponseData}
               clientSearchURL={"/appNews/searchAppNews/"}
@@ -261,6 +265,7 @@ const NewsAndUpdates = () => {
               addStateChanges={componentEdit.addNews}
               editStateChanges={editNews}
             />
+           <div className="d-flex justify-content-end align-items-end position-relative"><ShareButtons /></div>
           </div>
         </div>
         {/* {isAdmin && (

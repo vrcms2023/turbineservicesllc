@@ -6,10 +6,10 @@ export const AdvertisementComponentStyles = styled.div`
     }
 
     .list th {
-        border-top: 1px solid #ddd;
-        border-bottom: 2px solid #ddd;
+        // border-top: 1px solid #ddd;
+        // border-bottom: 2px solid #ddd;
         font-weight: 500;
-        background: #fafafa;
+        background: #f8f8f8;
     }
 
     tr:last-child td {

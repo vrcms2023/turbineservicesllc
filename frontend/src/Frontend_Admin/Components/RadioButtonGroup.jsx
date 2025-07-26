@@ -13,11 +13,11 @@ const RadioButtonGroup = ({ options, onChange, defaultOption }) => {
   }, [selectedValue]);
 
   return (
-    <div className="form-check">
+    <div className="form-check p-0">
       {options.map((option) => (
         <label key={option.value} className="form-check-label">
           <input
-            className="form-check-input mx-4 mx-md-3 mx-lg-2 rounded-circle"
+            className="form-check-input mx-2 rounded-circle"
             type="radio"
             name="radio-group"
             value={option.value}

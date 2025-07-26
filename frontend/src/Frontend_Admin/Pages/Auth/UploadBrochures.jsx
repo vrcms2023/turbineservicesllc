@@ -117,12 +117,10 @@ const UploadBrochures = () => {
 
   return (
     <BrochureComponentStyles>
-    <div className="container-fluid pt-5 addBrochure">
-      <div className="row px-2 px-lg-5">
-        <div className="col-sm-12 col-md-11">
-          <Title title={"Add Brochures"} cssClass="pageTitle" />
-        </div>
-        <div className="col-6 col-sm-3 col-md-1  justify-content-center uploadBrochure">
+    <div className="my-4 addBrochure border">
+      <div className="d-flex justify-content-between align-items-center p-3">
+        <Title title={"Add Brochures"} cssClass="pageTitle" />
+        <div className="uploadBrochure">
           <Button
             type=""
             cssClass="btn btn-outline"
@@ -132,16 +130,15 @@ const UploadBrochures = () => {
         </div>
       </div>
 
-      <div className="row px-3 px-lg-5 py-4 table-responsive">
+      <div className="row table-responsive px-3">
         {brochuresList?.length > 0 ? (
-          <table className="table list">
+          <table className="table">
             <thead>
-              <tr>
-                <th className="align-middle">Title</th>
-                <th className="align-middle">Download File</th>
+              <tr style={{background: "#f8f8f8"}}>
+                <th className="align-middle bg-secondary">Title</th>
+                <th className="align-middle bg-secondary">Download File</th>
                 <th
-                  className="align-middle text-end"
-                  style={{ width: "100px" }}
+                  className="align-middle text-end bg-secondary"
                 >
                   Action
                 </th>

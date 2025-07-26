@@ -1,13 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { StyledShareComponent } from "./StyledComponents/Styled-Share-Component";
+// uselocation
 
-const ShareButtons = () => {
-  const shareUrl = "https://yourwebsite.com/careers";
+const ShareButtons = ({name}) => {
+  const location = useLocation()
+  // const shareUrl = "https://yourwebsite.com/careers";
+  const shareUrl = `${window.location.origin}${location.pathname}`;
+  console.log(shareUrl, "shareUrl");
   const title = "Explore exciting career opportunities with us!";
   const emailSubject = "Career Opportunities at Our Company";
   const emailBody = `Hi,\n\nI thought you might be interested in this job opportunity:\n\n${shareUrl}`;
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +37,7 @@ const ShareButtons = () => {
         onMouseOver={() => setShow(true)}
       >
         <i className="fa fa-share-alt me-1" aria-hidden="true"></i> 
-        <span className="">SHARE</span>
+        <span className="">{name}</span>
       </div>
 
       {show && (

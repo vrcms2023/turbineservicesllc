@@ -501,7 +501,7 @@ body, p {
 }
 
 
-    // UTIL CLASSESS
+// UTIL BOOTSTRAP V 5+ CLASSESS
 // --------
 
 .cursor-pointer { cursor: pointer !important; }

@@ -28,19 +28,22 @@ const ProjectGalleryView = ({ projectImages, type }) => {
 
   // console.log("projectImages", projectImages)
   return (
-    <>
-      {projectImages?.length > 0 ? (
+     <>
+    <div className="container-fluid container-lg">
+      <div className="row">
+        <div className="col-md-12">
+          {projectImages?.length > 0 ? (
         projectImages.map((project) => (
           <div
             className={`gallery projectTabs ${
               type === "applicationgallery"
-                ? "px-5 py-3 border-bottom"
+                ? "p-3 p-md-5 border-bottom"
                 : "px-5"
             }`}
             key={project.id}
           >
             {type !== "" && type === "applicationgallery" ? (
-              <h3 className="text-start">{project.projectTitle}</h3>
+              <h4 className="">{project.projectTitle}</h4>
             ) : (
               ""
             )}
@@ -58,6 +61,11 @@ const ProjectGalleryView = ({ projectImages, type }) => {
       ) : (
         <div className="fs-2 p-5 text-warning text-center">No images found</div>
       )}
+        </div>
+      </div>
+    </div>
+   
+      
 
       {showModal && (
         <DynamicCarousel

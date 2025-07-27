@@ -1,5 +1,4 @@
 import React from "react";
-import "./AdminEditIcon.css";
 
 const ShowHideIcon = ({
   editHandler,

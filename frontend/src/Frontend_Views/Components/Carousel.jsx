@@ -6,7 +6,6 @@ import { axiosClientServiceApi } from "../../util/axiosUtil";
 import { getImagePath, sortByFieldName } from "../../util/commonUtil";
 
 // Styles
-import "./Carousel.css";
 import SkeletonImage from "../../Common/Skeltons/SkeletonImage";
 import { CarouselItem } from "./CarouselItem";
 

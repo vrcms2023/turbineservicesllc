@@ -3,20 +3,9 @@ import styled from "styled-components"
 export const HomeDynamicServiceStylesComponent = styled.div`
 
 .homeDynamciServicesIntro {
-  padding: 30px 0 0px;
+  // padding: 30px 0 0px;
   background-color:${({ theme }) => theme.lightWhiteF8}; 
   color: ${({ theme }) => theme.textColor};
-
-  .briefIntro {
-    .btn {
-      border: 0 !important;
-      text-decoration: underline;
-
-      &:hover {
-        background-color: transparent !important;
-      }
-    }
-  }
 
   .homeDynamciServices {
     padding: 24px 0;

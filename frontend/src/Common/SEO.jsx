@@ -56,7 +56,7 @@ const SEO = () => {
   }, [products, productID]);
 
   useEffect(() => {
-    console.log("seoObject?.seo_title", seoObject?.seo_title);
+    // console.log("seoObject?.seo_title", seoObject?.seo_title);
   }, [seoObject]);
   return (
     <>

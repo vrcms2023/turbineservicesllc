@@ -4,10 +4,6 @@ export const BriefIntroStyled = styled.div`
     background-color: ${({ theme }) => theme.transparent};
     padding: 24px 0;
 
-    @media(max-width: 768px) {
-      padding-bottom: 0;
-    }
-
   .briefIntro { 
     @media(max-width: 768px) {
       padding: 0 2rem

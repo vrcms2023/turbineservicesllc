@@ -8,9 +8,7 @@ export const BriefIntroStyled = styled.div`
       padding-bottom: 0;
     }
 
-  p {
-    color: ${({ theme }) => theme.textColor};
-  }
+
 
   .briefIntro { 
     // margin: 40px 0 0px;
@@ -18,14 +16,21 @@ export const BriefIntroStyled = styled.div`
     @media(max-width: 768px) {
       margin: 0px;
     }
+
+    p {
+      color: ${({ theme }) => theme.textColor};
+    }
   }
 
-  .briefIntro h5 {
-    // color: ${({ theme }) => theme.gray222};
-  }
 
   .briefIntro h3 {
     font-size: 2.5rem;
     color: ${({ theme }) => theme.briefIntroTitleColor};
+  }
+
+  .ql-editor {
+    p, p span, .introDecTitleCss {
+      text-align: center;
+    }
   }
 `;

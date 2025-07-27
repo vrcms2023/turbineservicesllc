@@ -158,7 +158,7 @@ const About = () => {
       <div
         className={
           showHideCompList?.aboutbanner?.visibility && isAdmin && hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -207,7 +207,7 @@ const About = () => {
           showHideCompList?.aboutbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

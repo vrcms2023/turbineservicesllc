@@ -117,7 +117,7 @@ const Careers = () => {
           showHideCompList?.careerdetailsbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

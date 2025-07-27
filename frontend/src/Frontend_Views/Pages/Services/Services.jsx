@@ -239,7 +239,7 @@ const Services = () => {
           showHideCompList?.servicebanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

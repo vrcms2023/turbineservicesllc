@@ -40,19 +40,19 @@ export const CareersPageStyled = styled.div`
       font-weight: 600;
     }
 
-    .quill {
-      .ql-editor {
-        padding-top: .5rem !important;
+    // .quill {
+    //   .ql-editor {
+    //     padding-top: .5rem !important;
         
-        p, p span {
-          text-align: left;
+    //     p, p span {
+    //       text-align: left;
 
-          @media(max-width: 480px) {
-            padding: 1rem !important;
-          }
-        }
-      }
-    }
+    //       @media(max-width: 480px) {
+    //         padding: 1rem !important;
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   .currentOpenings {
@@ -119,16 +119,16 @@ export const CareersPageStyled = styled.div`
       font-size: .9rem
     }
 
-    .quill {
-      .ql-editor {
-        p, p span {
-          text-align: left;
-          @media(max-width: 480px) {
-            padding: 0 1rem !important;
-          }
-        }
-      }
-    }
+    // .quill {
+    //   .ql-editor {
+    //     p, p span {
+    //       text-align: left;
+    //       @media(max-width: 480px) {
+    //         padding: 0 1rem !important;
+    //       }
+    //     }
+    //   }
+    // }
     
 
     ul {

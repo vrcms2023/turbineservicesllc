@@ -47,6 +47,7 @@ import {
   createShowHideComponent,
   updateShowHideComponent,
 } from "../../../redux/showHideComponent/showHideActions";
+import ShareButtons from "../../../Common/Share";
 
 const Services = () => {
   const editComponentObj = {
@@ -238,7 +239,7 @@ const Services = () => {
           showHideCompList?.servicebanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -388,7 +389,8 @@ const Services = () => {
                 ""
               )}
 
-              <div className="row ">
+              <div className="d-flex justify-content-end align-items-end position-relative"><ShareButtons /></div>
+              <div className="row">
                 <div className="col-12 col-md-8">
                   {/* <Title title={"Services"} cssClass="fs-3 mb-2 pageTitle" /> */}
                   {/* <Title
@@ -402,7 +404,7 @@ const Services = () => {
               {selectedServiceProject.page_url !== "/services/addservices" &&
                 selectedServiceList.map((item, index) => (
                   <div
-                    className={`row my-5 ${
+                    className={`row ${
                       isAdmin
                         ? "border border-warning mb-3 position-relative"
                         : ""

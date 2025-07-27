@@ -2,14 +2,17 @@ import styled from 'styled-components'
 
 export const TitleSubTitleStyled = styled.div`
     h5 {
-        font-size: 2rem !important;
-        font-weight: 500;
+        font-weight: 600;
         color: ${({ theme }) => theme.gray444};
-
-        span {
-            font-size: 1.4rem !important;
-            font-weight: 400;
-            color:${({ theme }) => theme.gray555};
-        }
+        line-height: 1.8rem !important;
+       
+        @media(max-width: 991px) {}
     }
-`
+
+    span {
+        font-size: 1rem !important;
+        line-height: .8rem !important;
+        font-weight: 500;
+        color:${({ theme }) => theme.clientPrimaryColor};
+    }
+` 

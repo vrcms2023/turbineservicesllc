@@ -2,10 +2,12 @@ import React from "react";
 
 import Title from "../../Common/Title";
 import { showPosteddate } from "../../util/commonUtil";
+import ShareButtons from "../../Common/Share";
 
 const JobBriefDetails = ({ jobDetails }) => {
   return (
-    <div className="jobBriefDetails">
+    <div className="jobBriefDetails position-relative">
+      <div className="d-flex justify-content-end align-items-end position-absolute" style={{right: 0}}><ShareButtons /></div>
       <div className="d-flex justify-content-start align-items-center gap-3">
       <Title
         title={jobDetails.job_title ? jobDetails.job_title : "Default Career"}

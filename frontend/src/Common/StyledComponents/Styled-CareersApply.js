@@ -1,8 +1,16 @@
 import styled from "styled-components";
 
 export const CareersFormStyled = styled.div`
-    border: 1px solid ${({theme}) => theme.verylightgray};
-    padding: 1rem .3rem;
+    // border: 1px solid ${({theme}) => theme.verylightgray};
+    // padding: 1rem .3rem;
+
+      .applyJob {
+        padding: 1rem;
+    background-color: ${({ theme }) => theme.lightWhiteF8};
+    h5 {
+      font-size: 1.4rem !important;
+    }
+  }
 
     .careers-or-text {
         padding: 20px 0 15px;

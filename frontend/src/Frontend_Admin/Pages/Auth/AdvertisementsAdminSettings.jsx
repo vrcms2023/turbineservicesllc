@@ -25,6 +25,7 @@ import {
 import RadioButtonGroup from "../../Components/RadioButtonGroup";
 
 import "./adminSettingStyles.css";
+import { AdvertisementComponentStyles } from "../../../Common/StyledComponents/Styled-Advertisements-Component";
 
 const AdvertisementsAdminSettings = () => {
   const pageType = "advertisementsettings";
@@ -216,29 +217,28 @@ const AdvertisementsAdminSettings = () => {
   }, [componentEdit.advertisement]);
 
   return (
-    <>
-      <div className="container-fluid pt-5 contactsList">
-        <div className="row px-2 px-lg-5">
-          <div className="col-sm-12 col-md-7">
-            <Title title={"Advertisements"} cssClass="fs-4 pageTitle" />
-          </div>
 
-        <div className="col-12 col-sm-6 col-md-3 d-flex align-items-center text-center bg-light my-3 my-md-0 py-3 py-md-0 advSizes">
+    <AdvertisementComponentStyles>
+    <div className="my-4 addAdvertisement border">
+      <div className="d-flex flex-column flex-md-row  justify-content-between align-items-center p-3">
+        <Title title={"Advertisements"} cssClass="fs-1 pageTitle" />
+
+      <div className="w-100 p-0 d-flex flex-column flex-md-row justify-content-end align-items-center gap-2">
+        <div className="w-100  d-flex justify-content-center align-items-center py-2 py-md-0 advSizes">
           <RadioButtonGroup
             options={radioOptions}
             onChange={handleOptionChange}
             defaultOption={selectedOption}
           />
         </div>
-        <div className="col-6 col-sm-3 col-md-1 d-flex align-items-center justify-content-center publishAdvertisement">
+        <div className="d-flex align-items-bet justify-content-between publishAdvertisement">
           <ShowHideToggle
             showhideStatus={showHideCompList?.advertisement?.visibility}
             title={""}
             componentName={"advertisement"}
             showHideHandler={showHideHandler}
           />
-        </div>
-        <div className="col-6 col-sm-3 col-md-1  justify-content-center addAdvertisement">
+
           <Button
             type=""
             cssClass="btn btn-outline"
@@ -247,10 +247,11 @@ const AdvertisementsAdminSettings = () => {
           />
         </div>
       </div>
+    </div>
 
-      <div className="row px-3 px-lg-5 py-4 table-responsive">
+      <div className=" table-responsive px-2">
         {advertisementList?.length > 0 ? (
-          <table className="table contacts">
+          <table className="table list">
             <thead>
               <tr>
                 <th className="align-middle">Title</th>
@@ -259,7 +260,7 @@ const AdvertisementsAdminSettings = () => {
                   Image
                 </th>
                 <th className="align-middle" style={{ width: "100px" }}>
-                  Show or Hide
+                  Toggle
                 </th>
                 <th
                   className="align-middle text-end"
@@ -363,7 +364,7 @@ const AdvertisementsAdminSettings = () => {
       </div>
     </div>
     {show && <ModalBg />}
-    </>
+    </AdvertisementComponentStyles>
   );
 };
 

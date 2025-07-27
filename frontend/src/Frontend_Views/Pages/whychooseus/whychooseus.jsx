@@ -95,7 +95,7 @@ const WhyChooseUs = () => {
           showHideCompList?.whychooseusbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -147,7 +147,7 @@ const WhyChooseUs = () => {
           showHideCompList?.whychooseusbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

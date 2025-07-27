@@ -83,7 +83,7 @@ export const BriefIntroAdmin = ({
     <>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
       <form className="" onSubmit={handleSubmit(saveandUpdateIntro)}>
-        <hr className="m-0" />
+        {/* <hr className="m-0" /> */}
         <div className="container my-3">
           {success ? (
             <>
@@ -125,15 +125,16 @@ export const BriefIntroAdmin = ({
               />
 
               <div className="d-flex justify-content-center flex-column flex-sm-row align-items-center gap-3 mt-4">
-                <button type="submit" className="btn btn-primary">
-                  {`${formValues?.id ? "Update" : "Save"}`}
-                </button>
+                
                 <Button
                   type="submit"
-                  cssClass="btn btn-more"
+                  cssClass="btn btn-outline"
                   label={"Close"}
                   handlerChange={closeHandler}
                 />
+                <button type="submit" className="btn btn-primary">
+                  {`${formValues?.id ? "Update" : "Save"}`}
+                </button>
               </div>
             </div>
           </div>

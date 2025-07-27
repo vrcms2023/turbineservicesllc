@@ -40,9 +40,6 @@ export const TeamStyled = styled.div`
   .aboutMe {
   }
   
-  .ql-editor {
-    padding: 0
-  }
 
   .memberCard {
     background-color: ${({ theme }) => theme.white};

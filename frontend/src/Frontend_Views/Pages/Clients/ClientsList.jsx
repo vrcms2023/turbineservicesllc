@@ -173,7 +173,7 @@ const ClientsList = () => {
           showHideCompList?.clientlistbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -222,7 +222,7 @@ const ClientsList = () => {
           showHideCompList?.clientsbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

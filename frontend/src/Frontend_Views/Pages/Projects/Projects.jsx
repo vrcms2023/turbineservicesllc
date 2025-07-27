@@ -98,7 +98,7 @@ const Projects = () => {
           showHideCompList?.projetstbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -146,7 +146,7 @@ const Projects = () => {
           showHideCompList?.projectsbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

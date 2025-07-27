@@ -199,7 +199,7 @@ const Team = () => {
       <div
         className={
           showHideCompList?.teamsbanner?.visibility && isAdmin && hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -247,7 +247,7 @@ const Team = () => {
           showHideCompList?.teambriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

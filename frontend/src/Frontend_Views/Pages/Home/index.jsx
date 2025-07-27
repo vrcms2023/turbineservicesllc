@@ -259,11 +259,11 @@ const Home = () => {
         </BrochureDownloadStyling>
         {/* ==== END ======================================== */}
         {/* BANNER COMPONENT START =========================================================================================================== */}
-        <div className={showHideCompList?.banner?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.banner?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.banner?.visibility}
-              title={"HERO Banner"}
+              title={"Hero Banner"}
               componentName={"banner"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.banner?.id}
@@ -297,11 +297,11 @@ const Home = () => {
         {/* BANNER COMPONENT END =========================================================================================================== */}
 
         {/* ==== CAROUSEL COMPONENT  ===================================== */}
-        <div className={showHideCompList?.carousel?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.carousel?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.carousel?.visibility}
-              title={"HERO Carousel"}
+              title={"Hero Carousel"}
               componentName={"carousel"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.carousel?.id}
@@ -344,11 +344,11 @@ const Home = () => {
         {/* ==== END CAROUSEL =============================== */}
 
         {/* BRIEF INTRODUCTION ========================================= */}
-        <div className={showHideCompList?.briefintro?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.briefintro?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.briefintro?.visibility}
-              title={"A Brief Introduction Component"}
+              title={"A Brief Introduction"}
               componentName={"briefintro"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.briefintro?.id}
@@ -367,8 +367,8 @@ const Home = () => {
                     linkLabel="Read More"
                     moreLink=""
                     introTitleCss="text-center"
-                    introSubTitleCss="mt-2 text-center"
-                    introDecTitleCss="fw-normal mx-4 text-center lh-6"
+                    introSubTitleCss="text-center"
+                    introDecTitleCss="fw-normal mx-4"
                     detailsContainerCss="col-md-10 offset-md-1"
                     anchorContainer="d-flex justify-content-center align-items-center mt-4"
                     anchersvgColor="#17427C"
@@ -389,12 +389,12 @@ const Home = () => {
 
         {/* ==== PROJECT + BRIEF INTRODUCTION START ===================================================================================================== */}
 
-        <div className={showHideCompList?.hprinfra?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.hprinfra?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           <div className="commonBg homeProjectsContainer">
             {isAdmin && hasPermission && (
               <ShowHideToggle
                 showhideStatus={showHideCompList?.hprinfra?.visibility}
-                title={"Projects coming form project dashboard - olny 3"}
+                title={"Projects data fetched from the Project Dashboard, [ LIMITED TO 3 ]"}
                 componentName={"hprinfra"}
                 showHideHandler={showHideHandler}
                 id={showHideCompList?.hprinfra?.id}
@@ -444,11 +444,11 @@ const Home = () => {
         {/* ==== PROJECT END ===================================================================================================== */}
 
         {/* Dynamic ALL SERVICES ============================ */}
-        <div className={showHideCompList?.homedynamciservicesbrief?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homedynamciservicesbrief?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homedynamciservicesbrief?.visibility}
-              title={"Services coming from service page - max 6 "}
+              title={"Services data fetched from the Services page [ LIMITED TO 6 ] "}
               componentName={"homedynamciservicesbrief"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homedynamciservicesbrief?.id}
@@ -503,11 +503,11 @@ const Home = () => {
         {/* END OF Dynamic ALL SERVICES */}
 
         {/* ======================= HOME List of Services ======================= */}
-        <div className={showHideCompList?.homeservices?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homeservices?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeservices?.visibility}
-              title={"Turbin Trainings"}
+              title={"Turbine Trainings – Brief Overview + Image with Text Description [ 2-Column ]"}
               componentName={"homeservices"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homeservices?.id}
@@ -571,11 +571,11 @@ const Home = () => {
         {/* DYNAMIC SERVICE END  ===================================== */}
 
         {/* ICONS HEILIGHT START ================================= */}
-        <div className={showHideCompList?.iconshelightsbrief?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.iconshelightsbrief?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.iconshelightsbrief?.visibility}
-              title={"Icons Brief"}
+              title={"Hilighted Brief with BG Image "}
               componentName={"iconshelightsbrief"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.iconshelightsbrief?.id}
@@ -621,11 +621,11 @@ const Home = () => {
         {/* END OF ICONS HEILIGHT ========================= */}
 
         {/* ==== HOME PROJECT CAROUSEL START ===================================================================================================== */}
-        <div className={showHideCompList?.homeprojectcarousel?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homeprojectcarousel?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeprojectcarousel?.visibility}
-              title={"Home Project Carousel"}
+              title={"2 Column Carousel dat fetched from Project Dashboard (Image | Content)"}
               componentName={"homeprojectcarousel"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homeprojectcarousel?.id}
@@ -637,11 +637,11 @@ const Home = () => {
         {/* END HOME PROJECT CAROUSEL ============================== */}
 
         {/* ==== Trainings COMPONENT START ====================================================================================================*/}
-        <div className={showHideCompList?.trainings?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.trainings?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.trainings?.visibility}
-              title={"Corporate Training"}
+              title={"Corporate Training [ TEXT SLIDER ]"}
               componentName={"trainings"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.trainings?.id}
@@ -684,11 +684,11 @@ const Home = () => {
         {/* END OF Trainings COMPONENT =========================================================================================================== */}
 
         {/* ==== TESTIMONIAL COMPONENT START ====================================================================================================*/}
-        <div className={showHideCompList?.testimonis?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.testimonis?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.testimonis?.visibility}
-              title={"Testimonials"}
+              title={"Testimonials Slider Showcase"}
               componentName={"testimonis"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.testimonis?.id}
@@ -745,11 +745,11 @@ const Home = () => {
         {/* END OF TESTIMONIAL COMPONENT =========================================================================================================== */}
 
         {/* === CLIENTS - SCROLL START ===========================================================================  */}
-        <div className={showHideCompList?.homeclient?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homeclient?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeclient?.visibility}
-              title={"Home Client"}
+              title={"Client Showcase"}
               componentName={"homeclient"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homeclient?.id}
@@ -765,11 +765,11 @@ const Home = () => {
         {/* === CLIENTS - COMPONENTS DEVELOPER IN SAP DESIGNS END ===========================================================================  */}
 
         {/* COUNTER COMPONENT START =========================================================================================================== */}
-        <div className={showHideCompList?.counterlist?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.counterlist?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.counterlist?.visibility}
-              title={"Counter Component"}
+              title={"Achievements Counter"}
               componentName={"counterlist"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.counterlist?.id}
@@ -805,11 +805,11 @@ const Home = () => {
         {/* === END COUNTER =========================================================================================================== */}
 
         {/* ==== INDUSTRIES WE SERVE - START ======================================================================================================= */}
-        <div className={showHideCompList?.industriesweserve?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.industriesweserve?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.industriesweserve?.visibility}
-              title={"Industries We Serve"}
+              title={"Industries We Serve [ CAROUSEL] "}
               componentName={"industriesweserve"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.industriesweserve?.id}
@@ -826,10 +826,10 @@ const Home = () => {
                     linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                     linkLabel="Read More"
                     moreLink=""
-                    introTitleCss="mb-0 text-center fw-medium"
-                    introSubTitleCss="fw-medium text-muted text-center"
-                    introDecTitleCss="fs-6 fw-normal mx-4 text-center"
-                    detailsContainerCss="col-md-12"
+                    introTitleCss="text-center"
+                    introSubTitleCss="text-center"
+                    introDecTitleCss="mx-4 text-center"
+                    detailsContainerCss="col-lg-8 offset-lg-2"
                     anchorContainer="d-flex justify-content-center align-items-center mt-4"
                     anchersvgColor="#17427C"
                     pageType={"industriesweserveBrief"}
@@ -915,13 +915,13 @@ const Home = () => {
 
         {/* LEON Pharma Products START =========================================================================================================== */}
         <div
-          className={showHideCompList?.producthilight?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}
+          className={showHideCompList?.producthilight?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}
           style={showHideCompList?.producthilight?.visibility ? { height: "160px" } : {}}
         >
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.producthilight?.visibility}
-              title={"Product highlight"}
+              title={"Key Highlight"}
               componentName={"producthilight"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.producthilight?.id}
@@ -1018,11 +1018,11 @@ const Home = () => {
         {/* LEON Pharma Products END =========================================================================================================== */}
 
         {/* === Random Hilights START =========================================================================================================== */}
-        <div className={showHideCompList?.services?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.services?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.services?.visibility}
-              title={"Image with Text description"}
+              title={"Image with Text Description – 2-Column"}
               componentName={"services"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.services?.id}
@@ -1073,7 +1073,7 @@ const Home = () => {
         {/* END OF Random Hilights =========================================================================================================== */}
 
         {/* ==== PRODUCTS CATEGORIES  START ===================================================================================================== */}
-        <div className={showHideCompList?.homeproducts?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homeproducts?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeproducts?.visibility}
@@ -1101,79 +1101,12 @@ const Home = () => {
         </div>
         {/* END OF PRODUCTS CATEGORIES =========================================================================================================== */}
 
-        {/* ==== Random Home Services START =================================================================================================*/}
-        <div className={showHideCompList?.productslist?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.productslist?.visibility}
-              title={"Product Details - static "}
-              componentName={"productslist"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.productslist?.id}
-            />
-          )}
-          {showHideCompList?.productslist?.visibility && (
-            <RandomHomeServicesStyled>
-              <div className="container py-5 randomServices">
-                <div className="row">
-                  <div className="col-md-6">
-                    <img src={imgOngoing} alt="" className="w-100 shadow" />
-                  </div>
-                  <div className="col-md-6 p-3 p-md-5 d-flex flex-column justify-content-center">
-                    <Title title="Product portfolio" cssClass="text-black fs-3 fw-medium" />
-                    <p>
-                      Through our relentless pursuit of quality and innovation, we have achieved several milestones that highlight our success in the
-                      healthcare industry.
-                    </p>
-                    <Link to="" className="moreLink">
-                      More...
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="row my-2 my-md-5 d-flex flex-row flex-md-row-reverse">
-                  <div className="col-md-6">
-                    <img src={imgCompleted} alt="" className="w-100 shadow" />
-                  </div>
-                  <div className="col-md-6 p-3 p-md-5 d-flex flex-column justify-content-center">
-                    <Title title="Promoting healt and well being" cssClass="text-black fs-3 fw-medium" />
-                    <p>
-                      Through our relentless pursuit of quality and innovation, we have achieved several milestones that highlight our success in the
-                      healthcare industry.
-                    </p>
-                    <Link to="" className="moreLink">
-                      More...
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <img src={imgFuture} alt="" className="w-100 shadow" />
-                  </div>
-                  <div className="col-md-6 p-3 p-md-5 d-flex flex-column justify-content-center">
-                    <Title title="What we do" cssClass="text-black fs-3 fw-medium" />
-                    <p>
-                      Through our relentless pursuit of quality and innovation, we have achieved several milestones that highlight our success in the
-                      healthcare industry.
-                    </p>
-                    <Link to="" className="moreLink">
-                      More...
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </RandomHomeServicesStyled>
-          )}
-        </div>
-        {/* ==== Random Home Services END =================================================================================================*/}
-
         {/* HOME NEWS START =================================================================================================*/}
-        <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.news?.visibility}
-              title={"News"}
+              title={"News | Latest Updates"}
               componentName={"news"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.news?.id}
@@ -1221,23 +1154,9 @@ const Home = () => {
         </div>
         {/* END OF HOME NEWS START =================================================================================================*/}
 
-        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS START ========================================================================== */}
-        <div className={showHideCompList?.features?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.features?.visibility}
-              title={"Features -  static"}
-              componentName={"features"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.features?.id}
-            />
-          )}
-          {showHideCompList?.features?.visibility && <Features />}
-        </div>
-        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS END ========================================================================== */}
-
+        
         {/* ===== HOME WHY CHOOSE RISHSYSTEMS START ============================================================================================ */}
-        <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.whoweare?.visibility}
@@ -1257,11 +1176,11 @@ const Home = () => {
 
         {/* ==== HOME Services SPECICALLY DEVELOPED FOR RISHISYSTEMS START ==================================================================== */}
 
-        <div className={showHideCompList?.homeservicedetails?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homeservicedetails?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeservicedetails?.visibility}
-              title={"Services Details - custom design"}
+              title={"Service Overview – Custom Layout"}
               componentName={"homeservicedetails"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homeservicedetails?.id}
@@ -1278,11 +1197,11 @@ const Home = () => {
         {/* ==== HOME Services SPECICALLY DEVELOPED FOR RISHISYSTEMS END ==================================================================== */}
 
         {/* ==== HOME Careers START ========================================================================================================== */}
-        <div className={showHideCompList?.homecareers?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.homecareers?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homecareers?.visibility}
-              title={"Careers"}
+              title={"Explore Careers"}
               componentName={"homecareers"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homecareers?.id}
@@ -1316,11 +1235,11 @@ const Home = () => {
         {/* ==== IMAGE GALLERY SPECIFICALLY DESIGNED FOR SAP DESIGN STUDIO START =============================================================== */}
 
         {/* It will be work only one carosel in the page */}
-        <div className={showHideCompList?.gallery?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.gallery?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.gallery?.visibility}
-              title={"Gallery"}
+              title={"Fetched from Images Gallery [ CAROUSEL ]"}
               componentName={"gallery"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.gallery?.id}
@@ -1328,31 +1247,26 @@ const Home = () => {
           )}
           {showHideCompList?.gallery?.visibility && (
             <ImageGalleryStyled>
-              <div className="text-center mb-5" style={{ marginTop: "100px" }}>
-                <span className="fs-1 px-4 py-2" style={{ borderBottom: "1px solid #444444" }}>
-                  View Gallery
-                </span>
-              </div>{" "}
+
               <>
                 <div className="container">
                   <div className="row">
-                    <div className="breiftopMargin">
+                      {/* <Title title="View Gallery" cssClass="text-center fs-3" /> */}
                       {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("weserve", true)} />}
 
                       <BriefIntroFrontend
-                        introState={componentEdit.weserve}
-                        linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
-                        linkLabel="Read More"
-                        moreLink=""
-                        introTitleCss="text-center mb-3"
-                        introSubTitleCss="fw-medium fs-5 text-center"
-                        introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                        detailsContainerCss="col-md-12 py-2 text-center"
-                        anchorContainer="d-flex justify-content-center align-items-center mt-4"
-                        anchersvgColor="#17427C"
                         pageType={pageType}
+                        introState={componentEdit.weserve}
+                        detailsContainerCss="col-md-10 offset-md-1 text-center"
+                        introTitleCss="fs-3"
+                        introSubTitleCss=""
+                        introDecTitleCss=""
+                        linkLabel="Read More"
+                        linkCss="btn btn-outline mb-2"
+                        moreLink=""
+                        anchorContainer=""
+                        anchersvgColor=""
                       />
-                    </div>
                   </div>
                 </div>
 
@@ -1375,7 +1289,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="text-center py-4 position-relative " style={{ marginTop: "200px" }}>
+              <div className="text-center py-4 position-relative ">
                 <Link to="/imageGallery" className="btn btn-outline">
                   View All
                 </Link>
@@ -1389,7 +1303,7 @@ const Home = () => {
         {/* == SAP DESIGN STUDIO START========================================================================================================== */}
 
         {/* SERVICES OFFERED COMPONENT -  DEVELOPED FOR SPECIFICALLY SAP DESIGNS */}
-        <div className={showHideCompList?.servicesoffered?.visibility && isAdmin && hasPermission ? "border border-info mb-2" : ""}>
+        <div className={showHideCompList?.servicesoffered?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.servicesoffered?.visibility}
@@ -1402,7 +1316,7 @@ const Home = () => {
           {showHideCompList?.servicesoffered?.visibility && (
             <>
               <div className="text-center mb-5" style={{ marginTop: "100px" }}>
-                <span className="fs-1 px-4 py-2" style={{ borderBottom: "1px solid #444444" }}>
+                <span className="fs-4 px-4 py-2" style={{ borderBottom: "1px solid rgba(68, 68, 68, 0.37)" }}>
                   Services Offered
                 </span>
               </div>
@@ -1436,9 +1350,21 @@ const Home = () => {
         </div>
         {/* == SAP DESIGN STUDIO END========================================================================================================== */}
 
-        {/* END OF SAP DESIGN STUDIO COMPONENTS */}
+        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS START ========================================================================== */}
+        <div className={showHideCompList?.features?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
+          {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.features?.visibility}
+              title={"Features – Static Version"}
+              componentName={"features"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.features?.id}
+            />
+          )}
+          {showHideCompList?.features?.visibility && <Features />}
+        </div>
+        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS END ========================================================================== */}
 
-        {/* Projects + brief intro  */}
 
         {/* {showEditPop && <ModelBg />} */}
 

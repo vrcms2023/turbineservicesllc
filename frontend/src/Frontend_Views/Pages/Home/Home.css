@@ -1,8 +1,8 @@
 .homeBriefIntroduction {
-  .ql-editor {
+  /* .ql-editor {
     padding: 0;
     margin-top: 1rem;
-  }
+  } */
 
   .container-fluid {
     border-bottom: 1px solid rgb(68, 68, 68, .3);

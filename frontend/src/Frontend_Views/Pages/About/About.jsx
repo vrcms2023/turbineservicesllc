@@ -158,7 +158,7 @@ const About = () => {
       <div
         className={
           showHideCompList?.aboutbanner?.visibility && isAdmin && hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -207,7 +207,7 @@ const About = () => {
           showHideCompList?.aboutbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -231,13 +231,14 @@ const About = () => {
 
             <BriefIntroFrontend
               introState={componentEdit.briefIntro}
+              border="border-light border-bottom border-5"
               linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
               linkLabel="Read More"
               moreLink=""
-              introTitleCss="fs-3 fw-medium text-md-center"
-              introSubTitleCss="fw-medium text-muted text-md-center"
-              introDecTitleCss="fs-6 fw-normal w-75 m-auto text-md-center"
-              detailsContainerCss="col-md-10 offset-md-1 py-3"
+              introTitleCss="text-center m-0"
+              introSubTitleCss="text-center mb-3"
+              introDecTitleCss="fw-normal m-auto text-center"
+              detailsContainerCss="col-lg-8 offset-lg-2 p-4 p-sm-3 px-sm-5"
               anchorContainer="d-flex justify-content-center align-items-center mt-4"
               anchersvgColor="#17427C"
               pageType={pageType}
@@ -262,11 +263,11 @@ const About = () => {
               <Title title="About Us" cssClass="fs-1 pageTitle" />
             </div> */}
             {isAdmin && hasPermission && (
-              <div className="col-12 text-end">
-                <span className="d-inline-block me-2">Add content</span>
+              <div className="col-12 text-end p-0">
+                <span className="me-2">Add Content</span>
                 <button
                   type="submit"
-                  className="btn btn-primary "
+                  className="btn btn-outline "
                   onClick={() => editHandler("addSection", true)}
                 >
                   <i className="fa fa-plus" aria-hidden="true"></i>
@@ -328,12 +329,12 @@ const About = () => {
                       </Link>
                     </>
                   )}
-                  <div className="col-12 col-lg-7 p-5 d-flex justify-content-center align-items-start flex-column leftColumn">
+                  <div className="col-12 col-lg-7 p-4 pb-0 p-sm-5 d-flex justify-content-center align-items-start flex-column leftColumn">
                     {item.aboutus_title ? (
                       <Title
                         title={item.aboutus_title}
                         cssClass=""
-                        mainTitleClassess="fs-3 mb-2 title"
+                        mainTitleClassess="mb-1 title"
                         subTitleClassess=""
                       />
                     ) : (
@@ -344,7 +345,7 @@ const About = () => {
                       <Title
                         title={item.aboutus_sub_title}
                         cssClass=""
-                        mainTitleClassess="fs-6 text-secondary mb-2 subTitle"
+                        mainTitleClassess=" mb-3 subTitle"
                         subTitleClassess=""
                       />
                     ) : (

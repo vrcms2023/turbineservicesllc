@@ -21,6 +21,7 @@ import {
 } from "../../../util/menuUtil";
 import SEOForm from "./SEOForm";
 import { getServiceValues } from "../../../redux/services/serviceActions";
+import Title from "../../../Common/Title";
 
 const MenuForm = ({
   editHandler,
@@ -50,6 +51,7 @@ const MenuForm = ({
     }, [editMenu]),
   });
   const [error, setError] = useState(false);
+  const [show, setShow] = useState(false);
 
   const pageUrlValue = watch("page_url");
 
@@ -242,11 +244,15 @@ const MenuForm = ({
     setError("");
   };
 
+  const handleToggleSeoForm = () => {
+    setShow(!show);
+  }
+
   return (
     <>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
-      <hr className="my-2" />
-      <div className="container">
+      {/* <hr className="my-2" /> */}
+      <div className="container mt-2 p-0">
         <div className="row py-0 pb-md-5">
           <div className="col-md-12 mb-5 mb-md-0">
             {error && (
@@ -315,11 +321,20 @@ const MenuForm = ({
               )} */}
               {!isParentHasChilds && (
                 <>
-                  <hr className="mt-4" />
-                  <h5 className="mt-4">SEO</h5>
+                <hr className="mt-4 border-secondary" />
+               
+                <div className="d-flex justify-content-between align-items-center">
+                  
+                  <h5 className="m-0">SEO</h5>
+                   <span onClick={() =>handleToggleSeoForm()} style={{cursor: "pointer"}} className={`px-2  ${show ? "text-dark border-light" : "text-dark border-light"}`}>
+                    <small>
+                      <i className={`fa me-1 ${show ? "fa-chevron-up text-dark" : "fa-chevron-down text-dark"}`} aria-hidden="true"></i> 
+                      {show ? "CLOSE" : "OPEN" }</small>
+                  </span>
+                </div>
                 </>
               )}
-              {!isParentHasChilds && (
+              {!isParentHasChilds && show && (
                 <div
                   className="p-4 py-1 pb-3 seoform"
                   style={{ backgroundColor: "rgba(255, 255, 255, .4)" }}
@@ -330,16 +345,18 @@ const MenuForm = ({
                     Controller={Controller}
                     control={control}
                   />
+                  
                 </div>
               )}
-              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 mt-3">
+              {!show && <hr className="my-1 border-secondary" />}
+              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 mt-3">
                 <Button
                   type="submit"
                   cssClass="btn btn-outline"
                   label={"Close"}
                   handlerChange={closeHandler}
                 />
-                <button className="btn btn-primary mx-3">Save</button>
+                <button className="btn btn-primary">Save</button>
               </div>
             </form>
           </div>

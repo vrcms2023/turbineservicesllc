@@ -330,7 +330,7 @@ const ProductsPage = () => {
             showHideCompList?.productsbriefintro?.visibility &&
             isAdmin &&
             hasPermission
-              ? "border border-info mb-2"
+              ? "componentOnBorder"
               : ""
           }
         >

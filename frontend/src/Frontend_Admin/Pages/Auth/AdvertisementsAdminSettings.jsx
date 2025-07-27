@@ -217,11 +217,11 @@ const AdvertisementsAdminSettings = () => {
 
   return (
     <>
-    <div className="container-fluid pt-5 contactsList">
-      <div className="row px-2 px-lg-5">
-        <div className="col-sm-12 col-md-7">
-          <Title title={"Advertisements"} cssClass="fs-1 pageTitle" />
-        </div>
+      <div className="container-fluid pt-5 contactsList">
+        <div className="row px-2 px-lg-5">
+          <div className="col-sm-12 col-md-7">
+            <Title title={"Advertisements"} cssClass="fs-4 pageTitle" />
+          </div>
 
         <div className="col-12 col-sm-6 col-md-3 d-flex align-items-center text-center bg-light my-3 my-md-0 py-3 py-md-0 advSizes">
           <RadioButtonGroup

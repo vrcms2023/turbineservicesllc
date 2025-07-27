@@ -13,12 +13,14 @@ const AdminSettings = () => {
     <div className="container-fluid pt-5 contactsList">
       <div className="row px-2 px-lg-5">
         <div className="col-sm-12 col-md-7">
-          <Title title={"Settings"} cssClass="fs-1 pageTitle" />
+          <Title title={"Settings"} cssClass="fs-3 pageTitle" />
         </div>
       </div>
       <>
-        <AdvertisementsAdminSettings />
         <UploadBrochures />
+        <hr />
+        <AdvertisementsAdminSettings />
+        <hr />
       </>
     </div>
   );

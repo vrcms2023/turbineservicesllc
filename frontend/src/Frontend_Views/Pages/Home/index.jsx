@@ -1333,7 +1333,6 @@ const Home = () => {
                   View Gallery
                 </span>
               </div>{" "}
-              */}
               <>
                 <div className="container">
                   <div className="row">

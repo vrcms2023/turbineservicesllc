@@ -110,7 +110,7 @@ const Careers = () => {
       <div
         className={
           showHideCompList?.careerbanner?.visibility && isAdmin && hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -160,7 +160,7 @@ const Careers = () => {
           showHideCompList?.careerbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

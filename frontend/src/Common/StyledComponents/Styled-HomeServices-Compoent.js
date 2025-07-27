@@ -62,9 +62,9 @@ export const HomeServiceStylesComponent = styled.div`
             margin-bottom: 1rem;
         }
 
-        .ql-editor {
-            padding: 0 !important;
-        }
+        // .ql-editor {
+        //     padding: 0 !important;
+        // }
 
         .homeServiceImg {
             padding: 0 !important;
@@ -76,9 +76,9 @@ export const HomeServiceStylesComponent = styled.div`
             align-items: start;
             justify-content: center;
 
-            .ql-editor .description > *:not(p:first-of-type) {
-                display: none;
-            }
+            // .ql-editor .description > *:not(p:first-of-type) {
+            //     display: none;
+            // }
 
         }
     }

@@ -167,7 +167,7 @@ const CaseStudies = () => {
           showHideCompList?.casestudiesbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -217,7 +217,7 @@ const CaseStudies = () => {
           showHideCompList?.casestudiesbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

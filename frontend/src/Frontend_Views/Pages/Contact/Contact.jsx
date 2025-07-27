@@ -169,7 +169,7 @@ const Contact = () => {
           showHideCompList?.contactusbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -219,7 +219,7 @@ const Contact = () => {
           showHideCompList?.contactbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

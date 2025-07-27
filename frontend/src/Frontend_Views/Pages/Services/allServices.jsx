@@ -88,7 +88,7 @@ const AllServices = () => {
           showHideCompList?.allservicesbrief?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

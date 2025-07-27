@@ -154,18 +154,18 @@ export const HomeClientsStyled = styled.div`
   }
 }
 
-.ql-editor {
-  padding: 10px !imporrant;
-  text-align: center;
-  max-width: 240px;
+// .ql-editor {
+//   padding: 10px !imporrant;
+//   text-align: center;
+//   max-width: 240px;
 
-  p {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  }
-}
+//   p {
+//   display: -webkit-box;
+//   -webkit-line-clamp: 2;
+//   -webkit-box-orient: vertical;
+//   overflow: hidden;
+//   }
+// }
 
     
  

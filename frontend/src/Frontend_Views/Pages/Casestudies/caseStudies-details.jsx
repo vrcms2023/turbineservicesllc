@@ -98,7 +98,7 @@ const CaseStudiesDetails = () => {
           showHideCompList?.casestudiesdetailsbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

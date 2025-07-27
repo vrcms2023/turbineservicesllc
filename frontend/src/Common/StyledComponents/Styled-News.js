@@ -10,9 +10,9 @@ export const NewsStyled = styled.div`
     border: 1px solid ${({ theme }) => theme.grayddd};
     overflow: hidden;
 
-    .ql-editor {
-      padding: 0 !important;
-    }
+    // .ql-editor {
+    //   padding: 0 !important;
+    // }
 
     .cardInfo {
       h5 {

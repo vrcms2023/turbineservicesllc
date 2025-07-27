@@ -132,7 +132,7 @@ const NewsAndUpdates = () => {
           showHideCompList?.newsandupdatesbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -182,7 +182,7 @@ const NewsAndUpdates = () => {
           showHideCompList?.newsbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

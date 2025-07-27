@@ -60,12 +60,12 @@ export const ServicesStyled = styled.div`
         color: ${({ theme }) => theme.gray444} !important;
       }
 
-      .quill {
-        background: none !important;
-      }
-      .ql-editor {
-        padding: 1rem 0 0 !important;
-      }
+      // .quill {
+      //   background: none !important;
+      // }
+      // .ql-editor {
+      //   padding: 1rem 0 0 !important;
+      // }
     }
       .viewAllServices {
         padding: 8px !important;

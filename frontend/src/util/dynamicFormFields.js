@@ -670,8 +670,8 @@ export const imageDimensionsJson = (component) => {
       h: "200px",
     },
     banner: {
-      w: "1500px",
-      h: "400px",
+      w: "2000px",
+      h: "600px",
     },
     teams: {
       w: "300px",

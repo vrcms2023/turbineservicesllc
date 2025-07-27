@@ -124,7 +124,7 @@ export const BriefIntroAdmin = ({
                 register={register}
               />
 
-              <div className="d-flex justify-content-center flex-column flex-sm-row align-items-center gap-3 mt-4">
+              <div className="d-flex justify-content-center align-items-center gap-2 mt-3">
                 
                 <Button
                   type="submit"

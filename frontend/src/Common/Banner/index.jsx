@@ -14,11 +14,11 @@ const Banner = ({
   getBannerAPIURL,
   bannerState,
   pageLoadServiceName,
-  bannerTitleCss = "title text-end fs-2",
+  bannerTitleCss = "title text-center fs-3",
   bannerSubTitleCss = "subTitle text-end fw-normal",
-  bannerDescriptionCss = "description text-end d-block mt-2 fs-6",
+  bannerDescriptionCss = "description",
   imageCss = "w-100",
-  bannerContainerCss = "titleCaption d-flex align-items-end justify-content-end flex-column",
+  bannerContainerCss = "titleCaption d-flex align-items-center justify-content-end flex-column",
 }) => {
   const [bannerdata, setBannerData] = useState([]);
 
@@ -40,7 +40,6 @@ const Banner = ({
       getBannerData();
     }
   }, [bannerState, pageLoadServiceName, getBannerAPIURL]);
-  console.log(bannerdata)
   return (
     <PageBannerStyled>
       <div className="pageBanner">

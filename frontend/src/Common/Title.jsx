@@ -12,14 +12,17 @@ const Title = ({
   
   return (
     <TitleSubTitleStyled>
-      <h5 className={`${cssClass} ${mainTitleClassess}`}>
+      {title ? (
+        <h5 className={`${cssClass} ${mainTitleClassess}`}>
         {title}
-        {subTitle ? (
-          <span className={`${subTitleClassess}`}> {subTitle}</span>
+      </h5>
+      ) : ""}
+      
+      {subTitle ? (
+          <span className={`${subTitleClassess}`}>{subTitle}</span>
         ) : (
           ""
         )}
-      </h5>
     </TitleSubTitleStyled>
   );
 };

@@ -348,7 +348,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.briefintro?.visibility}
-              title={"A Brief Introductory Component"}
+              title={"A Brief Introduction"}
               componentName={"briefintro"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.briefintro?.id}
@@ -394,7 +394,7 @@ const Home = () => {
             {isAdmin && hasPermission && (
               <ShowHideToggle
                 showhideStatus={showHideCompList?.hprinfra?.visibility}
-                title={"Projects are fetched from the Project Dashboard, limited to 3."}
+                title={"Projects data fetched from the Project Dashboard, [ LIMITED TO 3 ]"}
                 componentName={"hprinfra"}
                 showHideHandler={showHideHandler}
                 id={showHideCompList?.hprinfra?.id}
@@ -448,7 +448,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homedynamciservicesbrief?.visibility}
-              title={"Services are fetched from the Services page, limited to 6."}
+              title={"Services data fetched from the Services page [ LIMITED TO 6 ] "}
               componentName={"homedynamciservicesbrief"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homedynamciservicesbrief?.id}
@@ -507,7 +507,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeservices?.visibility}
-              title={"Turbine Trainings – Brief Overview"}
+              title={"Turbine Trainings – Brief Overview + Image with Text Description [ 2-Column ]"}
               componentName={"homeservices"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homeservices?.id}
@@ -575,7 +575,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.iconshelightsbrief?.visibility}
-              title={"Icons Brief"}
+              title={"Hilighted Brief with BG Image "}
               componentName={"iconshelightsbrief"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.iconshelightsbrief?.id}
@@ -625,7 +625,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.homeprojectcarousel?.visibility}
-              title={"Home Carousel – from Dashboard (Image | Content)"}
+              title={"2 Column Carousel dat fetched from Project Dashboard (Image | Content)"}
               componentName={"homeprojectcarousel"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.homeprojectcarousel?.id}
@@ -641,7 +641,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.trainings?.visibility}
-              title={"Corporate Training (Text Slider)"}
+              title={"Corporate Training [ TEXT SLIDER ]"}
               componentName={"trainings"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.trainings?.id}
@@ -809,7 +809,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.industriesweserve?.visibility}
-              title={"Industries We Serve"}
+              title={"Industries We Serve [ CAROUSEL] "}
               componentName={"industriesweserve"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.industriesweserve?.id}
@@ -826,10 +826,10 @@ const Home = () => {
                     linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                     linkLabel="Read More"
                     moreLink=""
-                    introTitleCss="mb-0 text-center fw-medium"
-                    introSubTitleCss="fw-medium text-muted text-center"
-                    introDecTitleCss="fs-6 fw-normal mx-4 text-center"
-                    detailsContainerCss="col-md-12"
+                    introTitleCss="text-center"
+                    introSubTitleCss="text-center"
+                    introDecTitleCss="mx-4 text-center"
+                    detailsContainerCss="col-lg-8 offset-lg-2"
                     anchorContainer="d-flex justify-content-center align-items-center mt-4"
                     anchersvgColor="#17427C"
                     pageType={"industriesweserveBrief"}
@@ -1101,73 +1101,6 @@ const Home = () => {
         </div>
         {/* END OF PRODUCTS CATEGORIES =========================================================================================================== */}
 
-        {/* ==== Random Home Services START =================================================================================================*/}
-        <div className={showHideCompList?.productslist?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.productslist?.visibility}
-              title={"Product Info – Static Version"}
-              componentName={"productslist"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.productslist?.id}
-            />
-          )}
-          {showHideCompList?.productslist?.visibility && (
-            <RandomHomeServicesStyled>
-              <div className="container py-5 randomServices">
-                <div className="row">
-                  <div className="col-md-6">
-                    <img src={imgOngoing} alt="" className="w-100 shadow" />
-                  </div>
-                  <div className="col-md-6 p-3 p-md-5 d-flex flex-column justify-content-center">
-                    <Title title="Product portfolio" cssClass="text-black fs-3 fw-medium" />
-                    <p>
-                      Through our relentless pursuit of quality and innovation, we have achieved several milestones that highlight our success in the
-                      healthcare industry.
-                    </p>
-                    <Link to="" className="moreLink">
-                      More...
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="row my-2 my-md-5 d-flex flex-row flex-md-row-reverse">
-                  <div className="col-md-6">
-                    <img src={imgCompleted} alt="" className="w-100 shadow" />
-                  </div>
-                  <div className="col-md-6 p-3 p-md-5 d-flex flex-column justify-content-center">
-                    <Title title="Promoting healt and well being" cssClass="text-black fs-3 fw-medium" />
-                    <p>
-                      Through our relentless pursuit of quality and innovation, we have achieved several milestones that highlight our success in the
-                      healthcare industry.
-                    </p>
-                    <Link to="" className="moreLink">
-                      More...
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-md-6">
-                    <img src={imgFuture} alt="" className="w-100 shadow" />
-                  </div>
-                  <div className="col-md-6 p-3 p-md-5 d-flex flex-column justify-content-center">
-                    <Title title="What we do" cssClass="text-black fs-3 fw-medium" />
-                    <p>
-                      Through our relentless pursuit of quality and innovation, we have achieved several milestones that highlight our success in the
-                      healthcare industry.
-                    </p>
-                    <Link to="" className="moreLink">
-                      More...
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </RandomHomeServicesStyled>
-          )}
-        </div>
-        {/* ==== Random Home Services END =================================================================================================*/}
-
         {/* HOME NEWS START =================================================================================================*/}
         <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
@@ -1221,21 +1154,7 @@ const Home = () => {
         </div>
         {/* END OF HOME NEWS START =================================================================================================*/}
 
-        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS START ========================================================================== */}
-        <div className={showHideCompList?.features?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
-          {isAdmin && hasPermission && (
-            <ShowHideToggle
-              showhideStatus={showHideCompList?.features?.visibility}
-              title={"Features – Static Version"}
-              componentName={"features"}
-              showHideHandler={showHideHandler}
-              id={showHideCompList?.features?.id}
-            />
-          )}
-          {showHideCompList?.features?.visibility && <Features />}
-        </div>
-        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS END ========================================================================== */}
-
+        
         {/* ===== HOME WHY CHOOSE RISHSYSTEMS START ============================================================================================ */}
         <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
@@ -1320,7 +1239,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.gallery?.visibility}
-              title={"Gallery"}
+              title={"Fetched from Images Gallery [ CAROUSEL ]"}
               componentName={"gallery"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.gallery?.id}
@@ -1328,31 +1247,26 @@ const Home = () => {
           )}
           {showHideCompList?.gallery?.visibility && (
             <ImageGalleryStyled>
-              <div className="text-center mb-5" style={{ marginTop: "100px" }}>
-                <span className="fs-1 px-4 py-2" style={{ borderBottom: "1px solid #444444" }}>
-                  View Gallery
-                </span>
-              </div>{" "}
+
               <>
                 <div className="container">
                   <div className="row">
-                    <div className="breiftopMargin">
+                      {/* <Title title="View Gallery" cssClass="text-center fs-3" /> */}
                       {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("weserve", true)} />}
 
                       <BriefIntroFrontend
-                        introState={componentEdit.weserve}
-                        linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
-                        linkLabel="Read More"
-                        moreLink=""
-                        introTitleCss="text-center mb-3"
-                        introSubTitleCss="fw-medium fs-5 text-center"
-                        introDecTitleCss="fs-6 fw-normal mx-4 text-center lh-6"
-                        detailsContainerCss="col-md-12 py-2 text-center"
-                        anchorContainer="d-flex justify-content-center align-items-center mt-4"
-                        anchersvgColor="#17427C"
                         pageType={pageType}
+                        introState={componentEdit.weserve}
+                        detailsContainerCss="col-md-10 offset-md-1 text-center"
+                        introTitleCss="fs-3"
+                        introSubTitleCss=""
+                        introDecTitleCss=""
+                        linkLabel="Read More"
+                        linkCss="btn btn-outline mb-2"
+                        moreLink=""
+                        anchorContainer=""
+                        anchersvgColor=""
                       />
-                    </div>
                   </div>
                 </div>
 
@@ -1375,7 +1289,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="text-center py-4 position-relative " style={{ marginTop: "200px" }}>
+              <div className="text-center py-4 position-relative ">
                 <Link to="/imageGallery" className="btn btn-outline">
                   View All
                 </Link>
@@ -1402,7 +1316,7 @@ const Home = () => {
           {showHideCompList?.servicesoffered?.visibility && (
             <>
               <div className="text-center mb-5" style={{ marginTop: "100px" }}>
-                <span className="fs-1 px-4 py-2" style={{ borderBottom: "1px solid #444444" }}>
+                <span className="fs-4 px-4 py-2" style={{ borderBottom: "1px solid rgba(68, 68, 68, 0.37)" }}>
                   Services Offered
                 </span>
               </div>
@@ -1436,9 +1350,21 @@ const Home = () => {
         </div>
         {/* == SAP DESIGN STUDIO END========================================================================================================== */}
 
-        {/* END OF SAP DESIGN STUDIO COMPONENTS */}
+        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS START ========================================================================== */}
+        <div className={showHideCompList?.features?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
+          {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.features?.visibility}
+              title={"Features – Static Version"}
+              componentName={"features"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.features?.id}
+            />
+          )}
+          {showHideCompList?.features?.visibility && <Features />}
+        </div>
+        {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS END ========================================================================== */}
 
-        {/* Projects + brief intro  */}
 
         {/* {showEditPop && <ModelBg />} */}
 

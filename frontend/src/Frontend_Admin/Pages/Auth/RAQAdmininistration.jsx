@@ -118,7 +118,7 @@ const RAQAdmininistration = () => {
     <div className="container-fluid pt-5 contactsList">
       <div className="row px-2 px-lg-5">
         <div className="col-md-3">
-          <Title title={"RAQ Form list"} cssClass="fs-1 pageTitle" />
+          <Title title={"RAQ Contacts"} cssClass="fs-1 pageTitle" />
         </div>
         {userDetails?.length > 0 && (
           <>
@@ -140,7 +140,7 @@ const RAQAdmininistration = () => {
                 label={"RAQ Contacts"}
                 handlerChange={downloadExcelfile}
                 cssClass="btn btn-outline float-end"
-                icon="fa-download"
+                icon="fa-download  me-2 d-inline-block"
               />
             </div>
           </>
@@ -164,16 +164,18 @@ const RAQAdmininistration = () => {
               {userDetails?.map((user) => (
                 <tr key={user.id}>
                   <td class="align-middle">{user.name}</td>
-                  <td class="align-middle">{user.email}</td>
-                  <td class="align-middle">{user.phoneNumber}</td>
+                  <td class="align-middle">
+                    <i class="fa fs-6 me-2 text-primary fa-envelope" aria-hidden="true"></i>
+                    <a href={`mailto:${user.email}`}>{user.email}</a>
+                  </td>
+                  <td class="align-middle">
+                    <i class="fa fs-4 me-2 fa-mobile" aria-hidden="true"></i>
+                    <a href={`tel:${user.phoneNumber}`}>{user.phoneNumber}</a>
+                  </td>
                   <td class="align-middle">{user.description} </td>
                   <td class="align-middle">
                     {getDateAndTimeValue(user.created_at)}
-                    {getTodayDate(user.created_at) && (
-                      <span className="badge bg-warning text-dark px-2 ms-2">
-                        NEW
-                      </span>
-                    )}
+                    {getTodayDate(user.created_at) && <span className="badge bg-warning text-dark px-2 ms-2">NEW</span>}
                   </td>
                   {/* <td class="align-middle"> */}
                   {/* <Button

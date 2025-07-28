@@ -1259,6 +1259,7 @@ const Home = () => {
           )}
           {showHideCompList?.gallery?.visibility && (
             <ImageGalleryStyled>
+
               <>
                 <div className="container">
                   <div className="row">

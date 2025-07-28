@@ -48,20 +48,9 @@ const DownloadBrochures = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // const downloadPDF = (url) => {
-  //   window.open(
-  //     url,
-  //     "_blank",
-  //     "location=yes,height=800,width=600 ,scrollbars=yes,status=yes"
-  //   );
-  // };
-
   const downloadPDF = () => {
-    const link = document.createElement("a");
-    link.download = fileName;
-    link.href = baseURL + pathName;
-    link.target = "_blank";
-    link.click();
+    const url = baseURL + pathName;
+    window.open(url, "_blank", "location=yes,height=800,width=600 ,scrollbars=yes,status=yes");
   };
 
   const checkClientInfoAndDownload = (path, name) => {

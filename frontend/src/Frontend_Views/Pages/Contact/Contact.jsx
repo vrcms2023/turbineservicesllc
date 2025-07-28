@@ -46,6 +46,7 @@ import {
   updateShowHideComponent,
 } from "../../../redux/showHideComponent/showHideActions";
 import { getObjectsByKey } from "../../../util/showHideComponentUtil";
+import RaqUseForm from "../../Components/RaqUseForm";
 
 const Contact = () => {
   const editComponentObj = {
@@ -427,7 +428,7 @@ const Contact = () => {
                         cssClass={`alert text-white w-50 mx-auto mt-3 p-2 text-center bg-success`}
                       />
                     )}
-                    <ContactForm />
+                    <RaqUseForm />
                   </div>
                 </>
               </div>

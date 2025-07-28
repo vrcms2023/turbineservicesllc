@@ -81,9 +81,9 @@ export const HomeDynamicServiceStylesComponent = styled.div`
             }
           }
 
-          .ql-editor {
-            padding: 0.3rem 0 0px;
-          }
+          // .ql-editor {
+          //   padding: 0.3rem 0 0px;
+          // }
         }
     }
 

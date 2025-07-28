@@ -139,7 +139,7 @@ const ContactUSAdmin = () => {
                 label={"Contacts"}
                 handlerChange={downloadExcelfile}
                 cssClass="btn btn-outline float-end"
-                icon="fa-download"
+                icon="fa-download me-1"
               />
             </div>
           </>
@@ -156,7 +156,7 @@ const ContactUSAdmin = () => {
                 <th class="align-middle">phoneNumber</th>
                 <th class="align-middle">description</th>
                 <th class="align-middle">Date | Time</th>
-                <th className="text-end align-middle">Send Request</th>
+                <th className="text-end align-middle">Request</th>
               </tr>
             </thead>
             <tbody>
@@ -164,12 +164,12 @@ const ContactUSAdmin = () => {
                 <tr key={user.id}>
                   <td class="align-middle">{user.firstName}</td>
                   <td class="align-middle">{user.email}</td>
-                  <td class="align-middle">{user.phoneNumber}</td>
+                  <td class="align-middle"><a href={`tel:${user.phoneNumber}`}>{user.phoneNumber}</a></td>
                   <td class="align-middle">{user.description} </td>
                   <td class="align-middle">
                     {getDateAndTimeValue(user.created_at)}
                     {getTodayDate(user.created_at) && (
-                      <span className="badge bg-warning text-dark px-2 ms-2">
+                      <span className="badge bg-warning text-white px-2 ms-2">
                         NEW
                       </span>
                     )}
@@ -181,8 +181,8 @@ const ContactUSAdmin = () => {
                         //sendRequest(user);
                         showModel(user);
                       }}
-                      cssClass="btn btn-outline px-3 float-end"
-                      icon="fa-paper-plane"
+                      cssClass="btn btn-sm btn-primary px-3 float-end"
+                      icon="fa-paper-plane me-1"
                     />
                     {/* <Ancher
                       AncherClass="btn btn-outline px-3 float-end"

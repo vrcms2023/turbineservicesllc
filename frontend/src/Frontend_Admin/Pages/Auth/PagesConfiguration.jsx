@@ -179,7 +179,7 @@ const PagesConfiguration = () => {
 
   const tableHeader = () => {
     return (
-      <thead>
+      <thead className="">
         <tr>
           <th>Menu Lable</th>
           <th>URL</th>
@@ -307,8 +307,8 @@ const PagesConfiguration = () => {
             )}
             {showChildren && node.childMenu.length > 0 && (
               <tr className="p-0" id={`${node.id}-page`}>
-                <td colSpan="8" className="p-0 ">
-                  <table className="table mt-4 mb-4  w-100 border">
+                <td colSpan="8" className="p-3">
+                  <table className="table border">
                     {tableHeader()}
                     <Treeview treeData={node.childMenu} />
                   </table>
@@ -426,7 +426,7 @@ const PagesConfiguration = () => {
       </div>
       <div className="row px-3 px-lg-5">
         <div className="text-end d-flex justify-content-between">
-          <Title title={"Menu / SEO"} cssClass="fs-2 pageTitle" />
+          <Title title={"Menu / SEO"} cssClass="pageTitle" />
 
           <div className="text-end">
             <Link
@@ -440,7 +440,7 @@ const PagesConfiguration = () => {
         </div>
       </div>
 
-      <div className="row px-3 px-lg-5 py-4 table-responsive">
+      <div className="row px-3 px-lg-5 py-4 table-responsive adminMenuTree">
         {showContentPerRole(userInfo, hasPermission) ? (
           <table className="table table-striped">
             {tableHeader()}

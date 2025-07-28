@@ -218,7 +218,7 @@ const TestimonialsList = () => {
           showHideCompList?.testimonialbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -267,7 +267,7 @@ const TestimonialsList = () => {
           showHideCompList?.testimonialbriefintro?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >

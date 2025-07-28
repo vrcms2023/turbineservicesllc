@@ -117,7 +117,7 @@ const Careers = () => {
           showHideCompList?.careerdetailsbanner?.visibility &&
           isAdmin &&
           hasPermission
-            ? "border border-info mb-2"
+            ? "componentOnBorder"
             : ""
         }
       >
@@ -162,13 +162,13 @@ const Careers = () => {
         )}
       </div>
 
-      <div className="container mb-3">
+      <div className="container mt-3">
         <div className="row">
           <div className="col-8 col-md-10">
             <Title title="Details" cssClass="fw-medium fs-4 pageTitle " />
           </div>
           <div className="col-4 col-md-2 text-end">
-            <Link to="/careers" className="btn btn-primary">
+            <Link to="/careers" className="btn btn-outline">
               <i className="fa fa-chevron-left me-2" aria-hidden="true"></i>
               <span className="">Back</span>
             </Link>
@@ -185,7 +185,7 @@ const Careers = () => {
       <CareersPageStyled>
         <div className="container py-4 mb-md-5 py-md-4">
           <div className="row d-flex flex-rowreverse">
-            <div className="col-md-9 p-0">
+            <div className="col-md-7 col-lg-9 p-0">
               <JobBriefDetails jobDetails={posts} />
               <div className="jobDescription mb-4">
                 {posts.description && (
@@ -210,7 +210,7 @@ const Careers = () => {
               </div>
               <JobCurrentOpenings />
             </div>
-            <div className="col-md-3 pe-0">
+            <div className="col-md-5 col-lg-3 pe-0">
               <ApplyForm />
             </div>
           </div>

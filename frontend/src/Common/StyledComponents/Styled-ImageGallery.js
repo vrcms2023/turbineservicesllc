@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const ImageGalleryStyled = styled.div`
+  padding: 0 0 80px;
 
+   @media(max-width: 480px) {
+    padding: 0 0 30px;
+   }
   .gallery img {
     cursor: pointer;
     border: 3px solid ${({ theme }) => theme.grayddd};
@@ -22,29 +26,77 @@ export const ImageGalleryStyled = styled.div`
   }
 
   .homeGalleryCarousel {
-    background: ${({ theme }) => theme.black};
+    background: ${({ theme }) => theme.verylightgray};
+    // box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
     border-radius: 30px;
     height: 350px;
 
-    .container {
-        margin-top: 130px;
+    .homeCarousel {
+        margin-top: 0px;
+
+        @media(max-width: 480px) {
+          img {
+            height: 290px !important;
+          }
+        }
     }
 
     .carousel-item, carousel-inner {
         border-radius: 30px;
+        overflow:hidden;
+    }
+
+    .carousel-item::before {
+      position: absolute;
+      content: " ";
+      background: linear-gradient(178deg,rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9;
+      
+    }
+
+    .carousel-caption {
+      z-index: 11;
+
+      @media(max-width: 480px) { 
+        bottom: 0;
+        padding-bottom: 0
+      }
     }
     .carousel-item img {
-        height: 400px !important;
+        height: 400px;
         border-radius: 30px;
+        object-fit: cover;
     }
 
     .carousel-control-prev, .carousel-control-next {
-        right: -14%;
+        // right: -14%;
         top: -40%;
+        opacity: 1;
+        z-index: 99;
+
+        @media(max-width: 480px) { 
+           right: -10%;
+        }
+
+        @media(max-width: 1024px) { 
+           right: 0%;
+        }
     }
 
     .carousel-control-prev {
-        left: -14%;
+        // left: -14%;
+
+        @media(max-width: 480px) { 
+           left: -10%;
+        }
+
+        @media(max-width: 1024px) { 
+           left: 0%;
+        }
     }
 
     .carousel-control-prev span, .carousel-control-next span {

@@ -42,13 +42,13 @@ export const TestimonialCarouselPageStyled = styled.div`
         box-shadow: 0 5px 5px rgba(0,0,0, .5) !important
       }
 
-      i.fa {
-        color:${({ theme }) => theme.testimonialsLinkColor};
+      // i.fa {
+      //   color:${({ theme }) => theme.testimonialsLinkColor};
 
-        &:hover {
-            color: ${({ theme }) => theme.testimonialsLinkHoverColor};
-        }
-      }
+      //   &:hover {
+      //       color: ${({ theme }) => theme.testimonialsLinkHoverColor};
+      //   }
+      // }
 
     .title {color:${({ theme }) => theme.testimonialsTextColor}; text-align: left;}
     p {color:${({ theme }) => theme.testimonialsTextColor}; text-align: left;}

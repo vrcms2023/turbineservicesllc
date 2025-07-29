@@ -96,7 +96,7 @@ const ImageInputsForm = ({
     // {editCarousel.id ? (
     <div className="">
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
-      <hr className="m-0 text-black" />
+      {/* <hr className="m-0 text-black" /> */}
       <div className="container my-3">
         <div className="row py-0">
           <div className="col-md-12">

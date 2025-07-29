@@ -9,6 +9,8 @@ import SkeletonImage from "../Skeltons/SkeletonImage";
 // Styles
 import { PageBannerStyled } from "../StyledComponents/Styled-PageBanner";
 import Ancher from "../Ancher";
+import RichTextView from "../RichTextView";
+import useAdminLoginStatus from "../../Common/customhook/useAdminLoginStatus";
 
 const Banner = ({
   getBannerAPIURL,
@@ -21,6 +23,7 @@ const Banner = ({
   bannerContainerCss = "titleCaption d-flex align-items-center justify-content-end flex-column",
 }) => {
   const [bannerdata, setBannerData] = useState([]);
+  const { isAdmin, hasPermission } = useAdminLoginStatus();
 
   useEffect(() => {
     const getBannerData = async () => {
@@ -69,10 +72,23 @@ const Banner = ({
             />
           )}
           {bannerdata.banner_descripiton !== "" && (
+          <RichTextView 
+          data={
+              bannerdata?.banner_descripiton
+                ? bannerdata?.banner_descripiton
+                : isAdmin
+                  ? "Please Update Brief Intro"
+                  : ""
+              }
+              className={"introDecTitleCss bannerDescriptionCss"}
+              showMorelink={false}
+          />
+          )}
+          {/* {bannerdata.banner_descripiton !== "" && (
             <small className={bannerDescriptionCss}>
               {bannerdata.banner_descripiton}
             </small>
-          )}
+          )} */}
 
           {bannerdata.moreLink &&  (
               <div >

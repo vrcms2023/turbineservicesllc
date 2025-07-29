@@ -41,7 +41,16 @@ export const ProductStyled = styled.div`
     }
 }
 .productsList, .productDetails {
-    margin-top: 60px;
+    // margin-top: 24px;
+}
+
+.productsList {
+    // padding-top: 24px;
+    background: #f8f8f8;
+}
+
+.productsList .productFilters .perPage{
+    width: 80px !important;
 }
 `;
 

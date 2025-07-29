@@ -58,17 +58,20 @@ const BriefIntroFrontend = ({
             {introValue?.subTitle !== "" && (
               <Title subTitle={introValue?.subTitle} cssClass={introSubTitleCss} />
             )}
-            <RichTextView
-              data={
-                introValue?.intro_desc
-                  ? introValue?.intro_desc
-                  : isAdmin
-                    ? "Please Update Brief Intro"
-                    : ""
-              }
-              className={"introDecTitleCss"}
-              showMorelink={false}
-            />
+            {introValue?.intro_desc !== "" ? (
+              <RichTextView
+                data={
+                  introValue?.intro_desc
+                    ? introValue?.intro_desc
+                    : isAdmin
+                      ? "Please Update Brief Intro"
+                      : ""
+                }
+                className={"introDecTitleCss"}
+                showMorelink={false}
+              />
+            ) : ""}
+            
             {/* {introValue?.intro_desc ? (
               <p className={introDecTitleCss}>
                 {introValue?.intro_desc

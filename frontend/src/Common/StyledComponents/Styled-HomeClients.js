@@ -3,7 +3,7 @@ import bgImage from "../../Images/background-styling-image.png";
 
 export const HomeClientsStyled = styled.div`
   background-color: ${({ theme }) => theme.white};
-  margin: 64px 0;
+  // margin: 64px 0;
   background-attachment: fixed;
   // background-image: url(${bgImage});
   background-position: center;

@@ -14,11 +14,11 @@ export const EditStyled = styled.div`
 }
 
 .editIcon i {
-    color: rgba(255, 193, 7, 1);
+    color: rgba(255, 193, 7, 1) !important;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 .editIcon i:hover {
-  color: #000;
+  color:${({ theme }) => theme.black} !important;
   transform: rotate(-180deg);
 }
 

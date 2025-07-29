@@ -110,6 +110,8 @@ const Home = () => {
     homeDynamciServicesBrief: false,
     counterlist: false,
     trainings: false,
+    clientBrief: false,
+    countBrief: false
   };
 
   const productComp = {
@@ -277,7 +279,9 @@ const Home = () => {
               <div className="row">
                 <div className="col-md-12 p-0 position-relative homePage">
                   {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner" />}
-                  <Banner getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`} bannerState={componentEdit.banner} />
+                  <Banner 
+                    getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`} 
+                    bannerState={componentEdit.banner} />
                 </div>
               </div>
               {componentEdit.banner && (
@@ -673,7 +677,7 @@ const Home = () => {
                 </div> */}
                 <div className="row">
                   <div className="col-md-12 col-lg-8 offset-lg-2 testimonials text-center">
-                    {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("trainings", true)} editlabel="" />}
+                    {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("trainings", true)} editlabel="Trainings" />}
 
                     {homeIntroList.length > 0 && <TitleWithDescripton list={homeIntroList} />}
                   </div>
@@ -792,7 +796,7 @@ const Home = () => {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-md-12 p-0 ">
-                  {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("counterlist", true)} />}
+                  {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("counterlist", true)} editlabel="Counter"  />}
                   <CounterComponentStyles>
                     <CounterCompnentView getDataAPIURL={`counter/getClientCounterSet/`} componentState={componentEdit.counterlist} />
                   </CounterComponentStyles>
@@ -814,9 +818,9 @@ const Home = () => {
             </div>
           )}
         </div>
-        {/* === END COUNTER =========================================================================================================== */}
+{/* === END COUNTER ======================================== */}
 
-        {/* ==== INDUSTRIES WE SERVE - START ======================================================================================================= */}
+        {/* ==== INDUSTRIES WE SERVE - START ============================================== */}
         <div className={showHideCompList?.industriesweserve?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
             <ShowHideToggle
@@ -829,32 +833,40 @@ const Home = () => {
           )}
           {showHideCompList?.industriesweserve?.visibility && (
             <>
-              <div className="container pt-5">
+              <div className="container pt-0">
                 <div className="breiftopMargin">
-                  {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("industriesweserveBrief", true)} />}
+                  {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("industriesweserveBrief", true)} editlabel="Brief" />}
 
                   <BriefIntroFrontend
+                    pageType={"industriesweserveBrief"}
                     introState={componentEdit.industriesweserveBrief}
-                    linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
+                    detailsContainerCss="col-lg-10 offset-lg-1 text-center"
+                    linkCss="btn-outline"
                     linkLabel="Read More"
                     moreLink=""
-                    introTitleCss="text-center"
-                    introSubTitleCss="text-center"
-                    introDecTitleCss="mx-4 text-center"
-                    detailsContainerCss="col-lg-8 offset-lg-2"
-                    anchorContainer="d-flex justify-content-center align-items-center mt-4"
-                    anchersvgColor="#17427C"
-                    pageType={"industriesweserveBrief"}
+                    introTitleCss=""
+                    introSubTitleCss=""
+                    introDecTitleCss=""
+                    anchorContainer=""
+                    anchersvgColor=""
                     maxHeight="300"
                   />
 
                   {componentEdit.industriesweserveBrief && (
                     <div className={`adminEditTestmonial selected `}>
-                      <BriefIntroAdmin
+                      <AdminBanner
                         editHandler={editHandler}
-                        componentType="industriesweserveBrief"
-                        popupTitle="Brief Intro Banner"
-                        pageType="industriesweserveBrief"
+                        componentType="industriesweserve"
+                        popupTitle="Industries We Serve"
+                        getImageListURL="carousel/createCarousel/industriesweserve/"
+                        deleteImageURL="carousel/updateCarousel/"
+                        imagePostURL="carousel/createCarousel/industriesweserve/"
+                        imageUpdateURL="carousel/updateCarousel/"
+                        imageIndexURL="carousel/updateCarouselindex/"
+                        imageLabel="industries we serve"
+                        showDescription={false}
+                        showExtraFormFields={getCarouselFields("industriesweserve")}
+                        dimensions={imageDimensionsJson("carousel")}
                       />
                     </div>
                   )}
@@ -863,7 +875,7 @@ const Home = () => {
               <div className="container-fluid">
                 <div className="row">
                   <div className="col-md-12 p-0 carousel">
-                    {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("industriesweserve", true)} />}
+                    {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("industriesweserve", true)} editlabel="Carousel" />}
 
                     {/* <Carousel
                       carouselState={componentEdit.industriesweserve}

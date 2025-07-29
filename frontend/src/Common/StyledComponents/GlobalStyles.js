@@ -423,7 +423,7 @@ body, p {
 
 .requiredField:after {
   content: " *";
-  color: background: ${({ theme }) => theme.error};
+  color: ${({ theme }) => theme.error};
 }
 
 

@@ -36,14 +36,14 @@ export const HomeClientList = ({ clientsList }) => {
   };
   return (
     <>
-      <div className="text-center">
+      {/* <div className="text-center">
         <span
           className="fs-1 pb-4 d-block"
-          // style={{ borderBottom: "1px solid #444444" }}
+          style={{ borderBottom: "1px solid #444444" }}
         >
           Our Clients We Proudly Served
         </span>
-      </div>
+      </div> */}
 
       <div className="slider-container">
         <Slider {...settings}>

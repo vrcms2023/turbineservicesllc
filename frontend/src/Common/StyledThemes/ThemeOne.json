@@ -75,8 +75,8 @@
   "testimonialsBg": "#0D75BA",
   "testimonialsHeadingColor": "#ffffff",
   "testimonialsTextColor": "#ffffff",
-  "testimonialsLinkColor": "#ffffff",
-  "testimonialsLinkHoverColor": "#ffffff",
+  "testimonialsLinkColor": "#ffc107",
+  "testimonialsLinkHoverColor": "#000000",
 
   "teamBg": "#ffffff",
   "teamTitleColor": "#000000",

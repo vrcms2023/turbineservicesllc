@@ -53,6 +53,18 @@ export const PageBannerStyled = styled.div`
       .description {
         // width: 50%;
       }
+
+      .quill {
+        width: 70%;
+        margin: 0 auto;
+
+        .ql-editor {
+          p, p span, .introDecTitleCss  {
+            color: ${({ theme }) => theme.white};
+            text-align: center !important;
+          }
+        }
+      }
     }
 
     @media (max-width: 991px) {

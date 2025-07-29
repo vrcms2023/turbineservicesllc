@@ -1,11 +1,6 @@
 .homeBriefIntroduction {
-  /* .ql-editor {
-    padding: 0;
-    margin-top: 1rem;
-  } */
-
   .container-fluid {
-    border-bottom: 1px solid rgb(68, 68, 68, .3);
+    /* border-bottom: 1px solid rgb(68, 68, 68, .3); */
   }
 }
 
@@ -54,21 +49,8 @@
 }
 
 .homePage .pageBanner img {
-  height: calc(100vh - 100px);
-  object-fit: cover;
+  height: calc(60vh - 100px);
 }
-
-.homePage .pageBanner .titleCaption {
-  padding: 10px 120px 150px !important;
-}
-
-@media (max-width: 576px) {
-  .homePage .pageBanner .titleCaption {
-    padding: 10px 50px 120px !important;
-  }
-}
-
-/*  End of Eight Blocks */
 
 .homeProjectsInfo .breiftopMargin {
   margin-top: 0px !important;
@@ -83,22 +65,32 @@
   background-image: url("../../../Images/homeBriefHilghtBg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  color: #fff;
-  padding: 48px 0;
-  margin: 30px 0;
+  padding: 24px 0;
 
-  h5 {
-    color: #fff !important;
-    font-weight: normal !important;
+  h5, .btn  {
+    color: #ffffff;
   }
 
   p {
     color: #f8f8f8;
-    font-weight: 300 !important;
+  }
+
+  
+
+  .adminEditTestmonial  {
+    color: #444444;
+
+    h5 {
+      color: #444444;
+    }
+
+    .ql-editor {
+      p, p span {
+        color: #444444 !important;
+      }
+    }
   }
 }
-
-
 
 /* Home Page Projects Carousel CSS */
 .slick-list {

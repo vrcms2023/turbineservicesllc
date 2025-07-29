@@ -84,25 +84,25 @@ const DownloadBrochures = () => {
         />
       )}
       {brochuresList.length > 1 && (
-        <div class="dropdown">
+        <div className="dropdown">
           <button
-            class="btn btn-primary mb-1 dropdown-toggle px-3"
+            className="btn btn-primary mb-1 dropdown-toggle px-3"
             type="button"
             id="dropdownMenuButton1"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <i
-              class="fa fa-download cursor-pointer fs-4"
+              className="fa fa-download cursor-pointer fs-4"
               aria-hidden="true"
             ></i>
             <span className=""> Pdfs</span>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {brochuresList?.map((brochures) => (
-              <li>
+              <li key={brochures.id}>
                 <i
-                  class="fa fa-file-pdf-o cursor-pointer fs-4 me-2"
+                  className="fa fa-file-pdf-o cursor-pointer fs-4 me-2"
                   aria-hidden="true"
                 ></i>
                 <a

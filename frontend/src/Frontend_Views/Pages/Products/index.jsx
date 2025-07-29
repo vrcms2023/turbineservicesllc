@@ -221,47 +221,6 @@ const ProductsPage = () => {
 
   return (
     <>
-      {isAdmin && hasPermission && (
-        <div className="container py-4">
-          <div className="row ">
-            <div className="col-md-12 d-flex justify-content-end align-items-center gap-2">
-              <span>
-                <Title title="CATEGORY - " cssClass={"fw-medium fs-6"} />
-              </span>
-              <Button
-                type="button"
-                cssClass="btn btn-secondary w-auto"
-                label={"Create"}
-                icon="fa-plus fs-5"
-                isMobile={isMobile}
-                handlerChange={() => {
-                  editHandler("category", true);
-                }}
-              />
-              {selectedCategory?.id && (
-                <Button
-                  type="button"
-                  cssClass="btn btn-more w-auto"
-                  label={"Edit"}
-                  icon="fa-pencil fs-5"
-                  isMobile={isMobile}
-                  handlerChange={categoryEditHandler}
-                />
-              )}
-              {selectedCategory?.id && (
-                <Button
-                  type="button"
-                  cssClass="btn bg-danger text-white w-auto"
-                  label={"Delete"}
-                  icon="fa-trash-o fs-5"
-                  isMobile={isMobile}
-                  handlerChange={categoryDeleteHandler}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      )}
       {componentEdit.category && (
         <div className={`adminEditTestmonial selected `}>
           <DynamicFormwithFileUplod
@@ -283,7 +242,7 @@ const ProductsPage = () => {
           {/* Page Banner Component */}
           <div className="position-relative">
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("banner", true)} />
+              <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner"/>
             )}
 
             <Banner
@@ -297,9 +256,9 @@ const ProductsPage = () => {
               <ImageInputsForm
                 editHandler={editHandler}
                 componentType="banner"
-                popupTitle="Products Banner"
+                popupTitle="Products - Banner Image"
                 pageType={`${pageType}-banner`}
-                imageLabel="Category Banner Image"
+                imageLabel="Upload Image"
                 showDescription={false}
                 showExtraFormFields={getProductCategoryBannerFormFields(
                   `${pageType}-banner`
@@ -349,17 +308,21 @@ const ProductsPage = () => {
             <div>
               {/* Introduction */}
               {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("briefIntro", true)} />
+                <EditIcon editHandler={() => editHandler("briefIntro", true)} editlabel="Brief" />
               )}
 
               <BriefIntroFrontend
-                introState={componentEdit.briefIntro}
                 pageType={pageType}
-                introTitleCss="fs-3 fw-medium text-md-center"
-                introSubTitleCss="fw-medium text-muted text-md-center"
-                introDecTitleCss="fs-6 fw-normal w-75 m-auto text-md-center"
-                anchorContainer="text-center my-4"
-                linkLabel="More.."
+                introState={componentEdit.briefIntro}
+                detailsContainerCss="col-lg-8 offset-lg-2 text-center"
+                introTitleCss=""
+                introSubTitleCss=""
+                introDecTitleCss=""
+                linkLabel="Read More"
+                linkCss="btn btn-outline"
+                moreLink=""
+                anchorContainer=""
+                anchersvgColor=""
                 showLink={"True"}
               />
               {componentEdit.briefIntro && (
@@ -368,6 +331,7 @@ const ProductsPage = () => {
                     editHandler={editHandler}
                     componentType="briefIntro"
                     pageType={pageType}
+                    popupTitle={"Banner"}
                   />
                 </div>
               )}
@@ -375,38 +339,58 @@ const ProductsPage = () => {
           )}
         </div>
 
-        <div className="container productsList pt-5">
-          <div className="row mb-4">
-            <div className="col-md-12 col-lg-6 d-flex justify-content-center justify-content-md-start mb-3 mb-md-0 align-items-center">
+          {/* {isAdmin && hasPermission && (
+        
+      )} */}
+
+        <div className="container productsList">
+          <div className="row mb-4 py-2 shadow-lg d-flex justify-content-between align-items-center bg-white">
+            {/* <div className="col-md-12 col-lg-6">
               <Title
-                title={`CATEGORY -> ${selectedCategory?.category_name}`}
-                cssClass={"fw-medium fs-4"}
-              />{" "}
-            </div>
-            <div className="col-md-12 col-lg-6 d-flex flex-column flex-sm-row justify-content-end align-items-center gap-3">
+                title={`CATEGORY:  ${selectedCategory?.category_name}`}
+                cssClass={""}
+                icon=""
+              />
+            </div> */}
+            <div className="col-md-4 d-flex flex-column flex-sm-row justify-content-start align-items-center gap-3 ">
+              
+              <div className="d-flex justify-content-end align-items-center gap-1">
+                 <Title
+                title={`${selectedCategory?.category_name} - Category`}
+                cssClass={"text-primary"}
+                icon=""
+              />
+              
               {selectedCategory?.id && isAdmin && hasPermission && (
                 <Button
                   type="button"
-                  cssClass="btn btn-secondary w-auto"
-                  label={" Add Product"}
-                  icon="fa-plus"
-                  handlerChange={() => {
-                    editHandler("product", true);
-                  }}
+                  cssClass="btn "
+                  label={""}
+                  icon="fa-pencil fs-5 text-warning"
+                  isMobile={isMobile}
+                  handlerChange={categoryEditHandler}
                 />
-                // <EditIcon editHandler={() => editHandler("product", true)} />
               )}
-              <div>
-                {/* Showing 1 –  */}
-                {productsList?.length} of{" "}
-                <strong>{productsList?.length}</strong>
-                {/* results */}
+              {selectedCategory?.id && isAdmin && hasPermission && (
+                <Button
+                  type="button"
+                  cssClass="btn"
+                  label={""}
+                  icon="fa-trash-o fs-5 text-danger"
+                  isMobile={isMobile}
+                  handlerChange={categoryDeleteHandler}
+                />
+              )}
               </div>
-              <span className="d-none d-md-block"> | </span>
-              <div className="d-flex justify-content-end align-items-center gap-1">
+              
+              
+            </div>
+            <div className={`${isAdmin && hasPermission ? "col-md-4 justify-content-center" : "col-md-6 justify-content-end" } d-flex flex-column flex-sm-row  align-items-center gap-3 productFilters`}>
+              
+              <div>
                 {/* <span>Show </span> */}
                 <select
-                  className="form-select"
+                  className="form-select perPage"
                   aria-label="Default select example"
                 >
                   <option selected>show</option>
@@ -419,7 +403,14 @@ const ProductsPage = () => {
                 </select>
                 {/* <span>entries</span> */}
               </div>
+              <div>
+                {/* Showing 1 –  */}
+                {productsList?.length} of
+                <strong className="text-primary fw-medium"> {productsList?.length}</strong>
+                {/* results */}
+              </div>
               <span className="d-none d-md-block"> | </span>
+              
               <div>
                 <Link
                   className="moreLink "
@@ -427,12 +418,41 @@ const ProductsPage = () => {
                 >
                   File
                   <i
-                    className="fa fa-download ms-1 fs-5 rounded-2 p-1 border border-1 border-info bg-white"
+                    className="fa fa-download p-1 "
                     aria-hidden="true"
                   ></i>
                 </Link>
               </div>
             </div>
+
+            {isAdmin && hasPermission && (
+            <div className="col-md-4 d-flex flex-column flex-sm-row justify-content-end align-items-center gap-3">
+                 
+              <Button
+                type="button"
+                cssClass="btn btn-outline"
+                label={"New Category"}
+                icon="fa-plus  me-2"
+                isMobile={isMobile}
+                handlerChange={() => {
+                  editHandler("category", true);
+                }}
+              />
+
+              {selectedCategory?.id &&  (
+                <Button
+                  type="button"
+                  cssClass="btn btn-outline w-auto"
+                  label={"Product"}
+                  icon="fa-plus  me-2"
+                  handlerChange={() => {
+                    editHandler("product", true);
+                  }}
+                />
+                // <EditIcon editHandler={() => editHandler("product", true)} />
+              )}
+            </div>
+            )}
           </div>
 
           {selectedCategory?.id && (

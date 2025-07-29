@@ -421,6 +421,11 @@ body, p {
   }
 }
 
+.requiredField:after {
+  content: " *";
+  color: ${({ theme }) => theme.error};
+}
+
 
 // UTIL BOOTSTRAP V 5+ CLASSESS
 // --------

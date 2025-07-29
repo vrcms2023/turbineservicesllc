@@ -22,7 +22,7 @@ export const CarouselItem = ({ item, index }) => {
         )}
         
         {item.carouse_title ? (
-          <h1 className="fw-bold my-4">{item.carouse_title}</h1>
+          <h1 className="fw-bold">{item.carouse_title}</h1>
         ) : (
           ""
         )}

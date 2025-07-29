@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const HomeProjectCauroselComponentStyles = styled.div`
-    
+export const TwoColumnCarouselStyles = styled.div`
 .homeMultyPurposeCarousel {
+  background-color: rgba(34, 34, 34, .1);
   position: relative;
 
-  .container-fluid {
+  .container {
     background-color: rgba(34, 34, 34, 0.1);
   }
 
@@ -18,63 +18,54 @@ export const HomeProjectCauroselComponentStyles = styled.div`
 
   .carousel-control-prev,
   .carousel-control-next {
-    top: 24px !important;
-    right: 24px;
+    top: 1rem !important;
     align-items: start;
     opacity: 0.7 !important;
     width: auto !important;
-
-    @media (max-width: 480px) {
-      top: -16px !important;
-    }
+    height: 0 !important;
+    bottom: auto !important;
   }
 
   .carousel-control-prev {
+    left: 92% !important;
 
-    @media (min-width: 992px) {
+    @media (min-width: 421px) and (max-width: 1024px) {
       left: 85% !important;
     }
 
-    @media (max-width: 991px) {
-      left: 80% !important;
+    @media (max-width: 480px) {
+      left: 74% !important;
     }
+  }
+
+  .carousel-control-next {
+    right: 48px;
 
     @media (max-width: 480px) {
-      left: 60% !important;
+       right: 24px;
     }
-
-    
   }
 
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     padding: 12px;
     background-color: #222;
-    // display: none;
     border-radius: 4px;
-    // display: inline-block;
+    display: inline-block;
     background-size: 60%;
   }
 
   .carouselImg,
   .carouselDescription {
-    height: 100vh;
-
-    > div {
-      height: 100%;
-    }
+    height: 500px;
 
     @media (max-width: 480px) {
       height: auto;
     }
   }
-  .carouselImg {
-    // padding: 8px !important;
-    img {
-        height: 100%;
-        object-fit: cover;
-        box-shadow: 10px 0 20px 15px rgba(0, 0, 0, 0.2);
-    }
+  .carouselImg img {
+    height: 100%;
+    object-fit: cover;
   }
 
   .carouselDescription {

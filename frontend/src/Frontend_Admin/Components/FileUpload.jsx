@@ -21,7 +21,6 @@ import { getImageFileFromUrl, getImagePath } from "../../util/commonUtil";
 
 // CSS
 import "filepond/dist/filepond.min.css";
-import "./componentsCommonStyes.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { toast } from "react-toastify";
 
@@ -415,8 +414,9 @@ const FileUpload = ({
         >
           <div className="mb-2 row">
             {title && (
-              <label className="col-sm-12 col-form-label">
-                <Title title={title} cssClass="requiredField" />
+              <label className="col-sm-12 col-form-label requiredField">
+                {title}
+                {/* <Title title={title} cssClass="requiredField" /> */}
               </label>
             )}
 
@@ -481,11 +481,10 @@ const FileUpload = ({
               )}
             {dimensions && (
               <div className="col-12">
-                <small className="text-center d-block" style={{ fontSize: ".75rem" }}>
-                  {/* Min. Width - {dimensions.w} & Height - {dimensions.h} will be
-                  the good for resolution.{" "} */}
 
-                  Min. size: <strong>{dimensions.w} - {dimensions.h}</strong> for best resolution.
+                <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
+                  Recommended size <strong>{dimensions.w}</strong> - <strong>{dimensions.h}</strong> 
+
                 </small>
               </div>
             )}
@@ -532,7 +531,7 @@ const FileUpload = ({
           </div>
         </div>
         <div className="row">
-          <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 mb-3 px-5">
+          <div className="d-flex justify-content-center align-items-center gap-2">
             {!editImage?.id ? (
               <button
                 type="button"

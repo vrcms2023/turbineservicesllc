@@ -8,14 +8,15 @@ const Title = ({
   subTitle = "", 
   cssClass,
   mainTitleClassess="",
-  subTitleClassess=""
+  subTitleClassess="",
+  icon
 }) => {
   
   return (
     <TitleSubTitleStyled>
       {title ? (
         <h5 className={`${cssClass} ${mainTitleClassess}`}>
-        {title}
+        {icon ? <i class={`fa ${icon}`} aria-hidden="true"></i> : ""} {title} 
       </h5>
       ) : ""}
       

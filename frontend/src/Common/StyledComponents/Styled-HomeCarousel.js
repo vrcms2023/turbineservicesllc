@@ -108,114 +108,43 @@ export const HomeCauroselComponentStyles = styled.div`
       .ql-editor {
         padding: 0;
         p, p span {
-          color: #fff;
-          font-size: 1.2rem !important;
-          line-height: 1.4;
-          font-weight: normal !important;
+          color: ${({ theme }) => theme.white};
           text-align: left;
+          letter-spacing: .05rem;
         }
       }
     }
   
-// .noImg {
-//   min-height: 300px;
-// }
+.noImg {
+  min-height: 300px;
+}
+
+.homeCarousel::after {
+  content: "";
+  display: block;
+  /* background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(22, 93, 61, 0.95) 95%
+  ); */
+  position: absolute;
+  height: 60vh;
+  width: 100%;
+  top: 0;
+}
 
 
 @media (max-width: 768px) {
 
   
-// .banner {
-//     height: 200px !important;
-//   }
+.banner {
+    height: 200px !important;
+  }
 
-//   .homeCarousel::after {
-//     content: "";
-//     display: block;
-//     position: absolute;
-//     height: 60vh; 
-//     width: 100%;
-//     top: 0;
-//   }
-
-// HOME MULTI PURPOSE CAROUSEL
-
-// .homeMultyPurposeCarousel {
-//   background-color: rgba(34, 34, 34, .1);
-//   position: relative;
-
-//   .container {
-//     background-color: rgba(34, 34, 34, 0.1);
-//   }
-
-//   .carousel-indicators {
-//     display: none;
-//     button {
-//       width: 16px;
-//     }
-//   }
-
-//   .carousel-control-prev,
-//   .carousel-control-next {
-//     top: 24px !important;
-//     align-items: start;
-//     opacity: 0.7 !important;
-
-//     @media (max-width: 480px) {
-//       top: -16px !important;
-//     }
-//   }
-
-//   .carousel-control-prev {
-//     left: 88% !important;
-
-//     @media (min-width: 421px) and (max-width: 991px) {
-//       left: 78% !important;
-//     }
-
-//     @media (max-width: 480px) {
-//       left: 65% !important;
-//     }
-//   }
-
-//   .carousel-control-prev-icon,
-//   .carousel-control-next-icon {
-//     padding: 12px;
-//     background-color: #222;
-//     border-radius: 4px;
-//     display: inline-block;
-//     background-size: 60%;
-//   }
-
-//   .carouselImg,
-//   .carouselDescription {
-//     height: 500px;
-
-//     @media (max-width: 480px) {
-//       height: auto;
-//     }
-//   }
-//   .carouselImg img {
-//     height: 100%;
-//     object-fit: cover;
-//   }
-
-//   .carouselDescription {
-//     padding: 0 80px;
-
-//     @media (max-width: 820px) {
-//       padding: 32px;
-//     }
-
-//     h1 {
-//       font-size: 32px;
-//       color: #222;
-//     }
-//     span {
-//       color: #6d2f9b;
-//     }
-//   }
-// }
+  .carousel-item img,
+  .homeCarousel::after {
+    height: 50vh; 
+  }
 }
 
 `

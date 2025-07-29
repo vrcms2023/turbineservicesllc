@@ -1,59 +1,9 @@
-
-.headerBottomMargin .editIcon {
-  margin-top: 50px;
-}
-
-
-.noImg {
-  object-fit: cover;
-}
-.homeCarousel::after {
-  content: "";
-  display: block;
-  /* background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(22, 93, 61, 0.95) 95%
-  ); */
-  position: absolute;
-  height: 65vh;
-  width: 100%;
-  top: 0;
-}
-
-.carousel-caption {
-  position: absolute;
-  z-index: 999;
-}
-
-.carousel-caption h1 {
-  letter-spacing: 0.3rem;
-}
-
-@media (max-width: 768px) {
-  .banner {
-    height: 200px !important;
-  }
-
-  .carousel-item img,
-  .homeCarousel::after {
-    height: 50vh;
-  }
-}
-
-
-.react-confirm-alert-overlay {
+/* .react-confirm-alert-overlay {
   z-index: 99999 !important;
-}
+} */
 
 .modal {
   position: fixed !important;
-
-  /* .quill {
-    .ql-editor {
-        padding: 0 !important
-      }
-  } */
 }
 
 .modal-body {

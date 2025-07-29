@@ -33,7 +33,8 @@ const DynamicKeyPoints = ({ editHandler, objectstatus, pageType }) => {
             editHandler={editHandler}
             componentType={pageType}
             pageType={pageType}
-            imageLabel="Key Points"
+            imageLabel="Upload Image"
+            popupTitle="Key Points"
             showDescription={false}
             showExtraFormFields={getKeyPointsDynamicFields(pageType)}
             dimensions={imageDimensionsJson("banner")}

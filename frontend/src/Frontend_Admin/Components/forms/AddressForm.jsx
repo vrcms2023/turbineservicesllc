@@ -315,12 +315,12 @@ const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
               <button type="submit" className="btn btn-primary">
                 Save
               </button>
-              <Button
+              {/* <Button
                 type="submit"
                 cssClass="btn btn-more"
                 label={"Close"}
                 handlerChange={closeHandler}
-              />
+              /> */}
             </div>
           </div>
         </div>

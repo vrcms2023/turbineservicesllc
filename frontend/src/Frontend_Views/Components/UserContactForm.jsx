@@ -29,7 +29,7 @@ const UserContactForm = ({ closeModel, downloadPDF }) => {
     setFormerror(errors);
     if (Object.keys(errors).length > 0) return;
     try {
-      const response = await axiosClientServiceApi.post(`/contactus/`, {
+      const response = await axiosClientServiceApi.post(`/contactus/listcreate/`, {
         ...formData,
       });
       if (response.status === 201) {

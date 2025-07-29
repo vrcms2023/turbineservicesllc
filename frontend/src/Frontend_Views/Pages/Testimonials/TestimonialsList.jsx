@@ -305,11 +305,12 @@ const TestimonialsList = () => {
 
             {componentEdit.briefIntro && (
               <div className="adminEditTestmonial selected">
-                <AdminBriefIntro
-                  editHandler={editHandler}
-                  componentType="briefIntro"
-                  pageType={pageType}
-                />
+                <AdminBriefIntro 
+                  editHandler={editHandler} 
+                  componentType="briefIntro" 
+                  pageType={pageType} 
+                  popupTitle="Testinonial - Brief Info"
+                  />
               </div>
             )}
           </div>

@@ -481,8 +481,11 @@ const FileUpload = ({
               )}
             {dimensions && (
               <div className="col-12">
-                <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
-                  Recommended size {dimensions.w} x {dimensions.h} 
+                <small className="text-center d-block" style={{ fontSize: ".75rem" }}>
+                  {/* Min. Width - {dimensions.w} & Height - {dimensions.h} will be
+                  the good for resolution.{" "} */}
+
+                  Min. size: <strong>{dimensions.w} - {dimensions.h}</strong> for best resolution.
                 </small>
               </div>
             )}

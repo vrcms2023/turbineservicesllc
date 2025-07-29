@@ -78,4 +78,18 @@ export const fieldValidation = {
   country: {
     required: "Please select Country",
   },
+  path: [
+    {
+      type: "required",
+      message: "Please upload the file",
+    },
+    {
+      type: "maxSize",
+      message: "File size must be ≤ 5MB",
+    },
+    {
+      type: "allowedTypes",
+      message: "Only PDF, DOCX, and RTF files are allowed",
+    },
+  ],
 };

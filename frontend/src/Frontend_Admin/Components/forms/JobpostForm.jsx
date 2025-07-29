@@ -78,7 +78,7 @@ const JobPost = ({
     <>
       <EditAdminPopupHeader
         closeHandler={closeHandler}
-        title={popupTitle}
+        title={"Edit Career"}
         type={type}
       />
       <hr className="m-0" />

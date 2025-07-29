@@ -1,5 +1,6 @@
 import React from "react";
 
+import './Title.css'
 import { TitleSubTitleStyled } from "./StyledComponents/Styled-Title-Component";
 
 const Title = ({ 

@@ -2,26 +2,16 @@ import React from "react";
 import RichTextEditor from "../../../Frontend_Views/Components/RichTextEditor";
 import RichTextEditor_V2 from "../../../Frontend_Views/Components/RichTextEditor_v2";
 
-export const InputFields = ({
-  label,
-  type = "text",
-  fieldName,
-  register,
-  value,
-  onChange,
-  error,
-  validationObject,
-  ...rest
-}) => {
+export const InputFields = ({ label, type = "text", fieldName, register, isRequired = false, value, onChange, error, validationObject, ...rest }) => {
   switch (type) {
     case "text":
       return (
         <div className="mb-1 row">
-          <label
-            htmlFor=""
-            className="col-sm-12 col-form-label text-capitalize text-start"
-          >
-            <small className="">{label}</small>
+          <label htmlFor="" className="col-sm-12 col-form-label text-capitalize text-start">
+            <small className="">
+              {label}
+              {isRequired && <span className="error">&nbsp; *</span>}
+            </small>
           </label>
           <div className="col-sm-12">
             <input
@@ -40,11 +30,9 @@ export const InputFields = ({
     case "number":
       return (
         <div className="mb-1 row">
-          <label
-            htmlFor=""
-            className="col-sm-12 col-form-label text-capitalize text-start"
-          >
+          <label htmlFor="" className="col-sm-12 col-form-label text-capitalize text-start">
             <small className="">{label}</small>
+            {isRequired && <span className="error">&nbsp; *</span>}
           </label>
           <div className="col-sm-12">
             <input
@@ -55,6 +43,7 @@ export const InputFields = ({
               onChange={onChange}
               disabled={rest.disabled}
               className="form-control p-2"
+              {...rest}
             />
             <span className="error">{error}</span>
           </div>
@@ -63,23 +52,14 @@ export const InputFields = ({
     case "dropdown":
       return (
         <div className="mb-2 row">
-          <label
-            htmlFor=""
-            className="col-sm-12 col-form-label text-capitalize"
-          >
+          <label htmlFor="" className="col-sm-12 col-form-label text-capitalize">
             <small>{label}</small>
+            {isRequired && <span className="error">&nbsp; *</span>}
           </label>
           <div className="col-sm-12">
-            <select
-              className="custom-select custom-select-lg form-control p-2"
-              {...register(fieldName, validationObject)}
-            >
+            <select className="custom-select custom-select-lg form-control p-2" {...register(fieldName, validationObject)}>
               {rest.options.map((option, index) => (
-                <option
-                  key={index}
-                  value={option.value}
-                  selected={option.value === rest?.selectedValue}
-                >
+                <option key={index} value={option.value} defaultValue={rest?.selectedValue} selected={option.value === rest?.selectedValue} {...rest}>
                   {option.label}
                 </option>
               ))}
@@ -93,6 +73,7 @@ export const InputFields = ({
         <div className="mb-2 row">
           <label htmlFor="" className="col-sm-12 col-form-label">
             <small>{label}</small>
+            {isRequired && <span className="error">&nbsp; *</span>}
           </label>
           <div className="col-sm-12">
             <textarea
@@ -101,6 +82,7 @@ export const InputFields = ({
               value={value}
               rows="3"
               onChange={onChange}
+              {...rest}
             ></textarea>
             <span className="error">{error}</span>
           </div>
@@ -117,34 +99,65 @@ export const InputFields = ({
               defaultChecked={rest.defaultChecked}
               type={type}
               className="form-check-input"
+              {...rest}
             />
-            <label
-              htmlFor=""
-              className="form-check-label ms-2 pt-0 col-form-label text-start text-md-end text-capitalize"
-            >
+            <label htmlFor="" className="form-check-label ms-2 pt-0 col-form-label text-start text-md-end text-capitalize">
               <small>{label}</small>
+              {isRequired && <span className="error">&nbsp; *</span>}
             </label>
             <span className="error">{error}</span>
           </div>
         </div>
       );
     case "file":
+      const buildValidation = () => {
+        const rules = {};
+        const validate = {};
+
+        validationObject.forEach((rule) => {
+          const { type: ruleType, message } = rule;
+
+          if (ruleType === "required") {
+            rules.required = message || "This field is required";
+          }
+
+          if (ruleType === "maxSize" && rest.maxSize) {
+            validate.fileSize = (files) => {
+              const file = files?.[0];
+              return (file && file.size <= rest.maxSize) || message || `Max file size: ${rest.maxSize / (1024 * 1024)}MB`;
+            };
+          }
+
+          if (ruleType === "allowedTypes" && rest.allowedTypes) {
+            validate.fileType = (files) => {
+              const file = files?.[0];
+              return (file && rest.allowedTypes.includes(file.type)) || message || "Invalid file type";
+            };
+          }
+        });
+
+        if (Object.keys(validate).length > 0) {
+          rules.validate = validate;
+        }
+
+        return rules;
+      };
+      const validationRules = buildValidation();
       return (
         <div className="mb-2 row">
-          <label
-            htmlFor=""
-            className="col-sm-12 col-form-label text-capitalize"
-          >
+          <label htmlFor="" className="col-sm-12 col-form-label text-capitalize">
             <small>{label}</small>
+            {isRequired && <span className="error">&nbsp; *</span>}
           </label>
           <div className="col-sm-12">
             <input
-              {...register(fieldName, validationObject)}
+              {...register(fieldName, validationRules)}
               value={value}
               type={type}
               onChange={onChange}
               accept={rest.accept}
               className="form-control p-2"
+              {...rest}
             />
 
             <span className="error">{error}</span>
@@ -162,6 +175,7 @@ export const InputFields = ({
             onChange={onChange}
             disabled={rest.disabled}
             className="form-control p-2"
+            {...rest}
           />
         </div>
       );
@@ -170,28 +184,21 @@ export const InputFields = ({
   }
 };
 
-export const RichTextInputEditor = ({ label, editorSetState, initialText }) => {
+export const RichTextInputEditor = ({ label, editorSetState, initialText, isRequired = false }) => {
   return (
     <div className="mb-2 row">
       <div className="col-sm-12">
         <p className="fs-6 pt-3 py-md-0">
           <small>{label}</small>
+          {isRequired && <span className="error">&nbsp; *</span>}
         </p>
-        <RichTextEditor
-          initialText={initialText ? initialText : ""}
-          RichEditorState={editorSetState}
-        />
+        <RichTextEditor initialText={initialText ? initialText : ""} RichEditorState={editorSetState} />
       </div>
     </div>
   );
 };
 
-export const RichTextInputEditor_V2 = ({
-  label,
-  Controller,
-  name,
-  control,
-}) => {
+export const RichTextInputEditor_V2 = ({ label, Controller, name, control }) => {
   return (
     <div className="mb-2 row">
       <div className="col-sm-12">
@@ -201,45 +208,22 @@ export const RichTextInputEditor_V2 = ({
         <Controller
           name={name}
           control={control}
-          render={({ field }) => (
-            <RichTextEditor_V2
-              field={field}
-              onChange={field.onChange}
-              value={field.value}
-            />
-          )}
+          render={({ field }) => <RichTextEditor_V2 field={field} onChange={field.onChange} value={field.value} />}
         />
       </div>
     </div>
   );
 };
 
-export const InputField = ({
-  label,
-  type = "text",
-  fieldName,
-  register,
-  cssClass,
-  validationObject,
-  error,
-  isRequired,
-}) => {
+export const InputField = ({ label, type = "text", fieldName, register, cssClass, validationObject, error, isRequired }) => {
   return (
     <div className="mb-2 row">
-      <label
-        htmlFor=""
-        className={`col-sm-12 col-form-label text-capitalize ${
-          cssClass ? cssClass : ""
-        }`}
-      >
-        <small>{label}</small> {isRequired && <span className="error">*</span>}
+      <label htmlFor="" className={`col-sm-12 col-form-label text-capitalize ${cssClass ? cssClass : ""}`}>
+        <small>{label} </small> 
+        {/* {isRequired && <span className="error">*</span>} */}
       </label>
       <div className="col-sm-12">
-        <input
-          {...register(fieldName, validationObject)}
-          type={type}
-          className="form-control p-2"
-        />
+        <input {...register(fieldName, validationObject)} type={type} className="form-control p-2" />
 
         <span className="error">{error}</span>
       </div>
@@ -247,33 +231,16 @@ export const InputField = ({
   );
 };
 
-export const SelectField = ({
-  label,
-  fieldName,
-  register,
-  options,
-  ...rest
-}) => {
+export const SelectField = ({ label, fieldName, register, options, ...rest }) => {
   return (
     <div className="mb-2 row">
-      <label
-        htmlFor=""
-        className="col-sm-12 col-form-label text-start text-capitalize"
-      >
+      <label htmlFor="" className="col-sm-12 col-form-label text-start text-capitalize">
         <small>{label}</small>
       </label>
       <div className="col-sm-12">
-        <select
-          defaultValue={rest?.value}
-          className="custom-select custom-select-lg form-control p-2"
-          {...register(fieldName)}
-        >
+        <select defaultValue={rest?.value} className="custom-select custom-select-lg form-control p-2" {...register(fieldName)}>
           {options.map((option, index) => (
-            <option
-              key={index}
-              value={option.value}
-              selected={option.value === rest?.value}
-            >
+            <option key={index} value={option.value} selected={option.value === rest?.value}>
               {option.label}
             </option>
           ))}
@@ -283,38 +250,21 @@ export const SelectField = ({
   );
 };
 
-export const TextAreaField = ({
-  label,
-  fieldName,
-  register,
-  validationObject,
-  error,
-}) => {
+export const TextAreaField = ({ label, fieldName, register, validationObject, error }) => {
   return (
     <div className="mb-2 row">
       <label htmlFor="" className="col-sm-12 col-form-label text-start">
         <small>{label}</small>
       </label>
       <div className="col-sm-12">
-        <textarea
-          className="form-control"
-          {...register(fieldName, validationObject)}
-          rows="3"
-        ></textarea>
+        <textarea className="form-control" {...register(fieldName, validationObject)} rows="3"></textarea>
         <span className="error">{error}</span>
       </div>
     </div>
   );
 };
 
-export const CheckboxField = ({
-  label,
-  fieldName,
-  register,
-  validationObject,
-  error,
-  ...rest
-}) => {
+export const CheckboxField = ({ label, fieldName, register, validationObject, error, ...rest }) => {
   return (
     <div className="mb-2 row">
       <div className="form-check d-flex align-items-center">
@@ -326,10 +276,7 @@ export const CheckboxField = ({
           checked={rest.isChecked}
           className="form-check-input mx-1 rounded-1"
         />
-        <label
-          className="form-check-label col-form-label text-start text-md-end text-capitalize"
-          htmlFor="flexCheckDefault"
-        >
+        <label className="form-check-label col-form-label text-start text-md-end text-capitalize" htmlFor="flexCheckDefault">
           <small>{label}</small>
         </label>
       </div>

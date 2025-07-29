@@ -257,7 +257,7 @@ const Services = () => {
             {/* Page Banner Component */}
             <div className="position-relative">
               {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("banner", true)} />
+                <EditIcon editHandler={() => editHandler("banner", true)} editlabel={"Banner"}/>
               )}
               <Banner
                 getBannerAPIURL={`banner/clientBannerIntro/${pageType}-${pageLoadServiceName}-banner/`}
@@ -371,7 +371,8 @@ const Services = () => {
                     imagePostURL="services/createServiceFeatures/"
                     imageUpdateURL="services/updateFeatureService/"
                     imageDeleteURL="services/updateFeatureService/"
-                    imageLabel="Add Service Banner"
+                    imageLabel="Upload Image"
+                    popupTitle={`Add Content ${pageLoadServiceName ? " - " +  pageLoadServiceName : ""} `}
                     showDescription={false}
                     showExtraFormFields={getServiceFormFields(
                       selectedServiceProject ? selectedServiceProject?.id : "",

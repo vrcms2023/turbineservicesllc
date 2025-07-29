@@ -82,7 +82,11 @@ const UploadBrochures = () => {
   }, []);
 
   const downloadPDF = (url) => {
-    window.open(url, "_blank", "location=yes,height=800,width=600 ,scrollbars=yes,status=yes");
+    window.open(
+      url,
+      "_blank",
+      "location=yes,height=800,width=600 ,scrollbars=yes,status=yes"
+    );
   };
 
   const handleBrochuresDelete = (brochures) => {

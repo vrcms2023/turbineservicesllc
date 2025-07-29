@@ -156,7 +156,7 @@ const Footer = () => {
                             editHandler={() =>
                               editHandler("footerAboutBrief", true)
                             }
-                            editlabel="Footer"
+                            editlabel={"Company Brief"}
                           />
                         )}
 
@@ -427,8 +427,7 @@ const Footer = () => {
                 >
                   {isAdmin && (
                     <EditIcon
-                      editHandler={() => editHandler("address", true)}
-                      editlabel="Media"
+                      editHandler={() => editHandler("address", true)} editlabel={"Social Media"}
                     />
                   )}
 
@@ -586,6 +585,7 @@ const Footer = () => {
         </div>
       )}
       {modelShow && <ModelBg closeModel={closeModel} />}
+      {show && <ModelBg />}
     </FooterStyled>
   );
 };

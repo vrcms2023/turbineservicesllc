@@ -150,7 +150,7 @@ const NewsAndUpdates = () => {
             {/* Page Banner Component */}
             <div className="position-relative">
               {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("banner", true)} />
+                <EditIcon editHandler={() => editHandler("banner", true)} editlabel={"Banner"}/>
               )}
 
               <Banner
@@ -201,7 +201,7 @@ const NewsAndUpdates = () => {
           <div>
             {/* Introduction */}
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("briefIntro", true)} />
+              <EditIcon editHandler={() => editHandler("briefIntro", true)} editlabel={"Brief"}/>
             )}
 
             <BriefIntroFrontend
@@ -219,6 +219,7 @@ const NewsAndUpdates = () => {
                 <BriefIntroAdmin
                   editHandler={editHandler}
                   componentType="briefIntro"
+                  popupTitle="News - Brief Intro"
                   pageType={pageType}
                 />
               </div>

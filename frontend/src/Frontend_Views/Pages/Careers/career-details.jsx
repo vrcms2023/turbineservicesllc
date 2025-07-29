@@ -210,8 +210,8 @@ const Careers = () => {
               </div>
               <JobCurrentOpenings />
             </div>
-            <div className="col-md-5 col-lg-3 pe-0">
-              <ApplyForm />
+            <div className="col-md-3 pe-0">
+              <ApplyForm jobDetails={posts} />
             </div>
           </div>
         </div>

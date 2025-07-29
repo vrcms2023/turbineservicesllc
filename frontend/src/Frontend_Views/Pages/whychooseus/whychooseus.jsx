@@ -114,7 +114,7 @@ const WhyChooseUs = () => {
             <div className="position-relative">
               {isAdmin && hasPermission && (
                 <EditIcon
-                  editHandler={() => editHandler("whychooseus", true)}
+                  editHandler={() => editHandler("whychooseus", true)} editlabel={"Banner"}
                 />
               )}
 
@@ -166,7 +166,7 @@ const WhyChooseUs = () => {
           <div className="breiftopMargin">
             {/* Brief Introduction  */}
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("briefIntro", true)} />
+              <EditIcon editHandler={() => editHandler("briefIntro", true)} editlabel={"Brief"} />
             )}
 
             <BriefIntroFrontend

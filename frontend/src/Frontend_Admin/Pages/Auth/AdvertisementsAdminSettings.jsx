@@ -18,7 +18,8 @@ import { getAdvertisementFormDynamicFields, imageDimensionsJson } from "../../..
 import RadioButtonGroup from "../../Components/RadioButtonGroup";
 
 import "./adminSettingStyles.css";
-import { AdvertisementComponentStyles } from "../../../Common/StyledComponents/Styled-Advertisements-Component";
+import { AdvertisementComponentStyles } from "../../../Common/Styled-Advertisements-Component";
+import { getObjectsByKey } from "../../../util/showHideComponentUtil";
 
 const AdvertisementsAdminSettings = () => {
   const pageType = "advertisementsettings";
@@ -43,29 +44,32 @@ const AdvertisementsAdminSettings = () => {
     { label: "large", value: "large" },
   ];
 
-  const { error, success, showHideCompPageList } = useSelector((state) => state.showHide);
+  const { error, success, showHideList } = useSelector((state) => state.showHide);
 
+  // useEffect(() => {
+  //   if (showHideCompPageList && showHideCompPageList[pageType]) {
+  //     setShowHideCompList(showHideCompPageList[[pageType]]);
+  //   }
+  // }, [showHideCompPageList]);
   useEffect(() => {
-    if (showHideCompPageList && showHideCompPageList[pageType]) {
-      setShowHideCompList(showHideCompPageList[[pageType]]);
+    if (showHideList.length > 0) {
+      setShowHideCompList(getObjectsByKey(showHideList));
     }
-  }, [showHideCompPageList]);
+  }, [showHideList]);
 
   useEffect(() => {
     dispatch(getShowHideComponentsListByPage(pageType));
   }, [pageType]);
 
-  const showHideHandler = async (name) => {
-    const selectedItem = showHideCompList[name];
-    if (selectedItem) {
-      const id = selectedItem?.id;
-      dispatch(updateShowHideComponent({ id, showHideCompPageList }));
+  const showHideHandler = async (id, compName) => {
+    if (id) {
+      dispatch(updateShowHideComponent(id));
     } else {
       const newData = {
-        componentName: name.toLowerCase(),
+        componentName: compName.toLowerCase(),
         pageType: pageType,
       };
-      dispatch(createShowHideComponent({ newData, showHideCompPageList }));
+      dispatch(createShowHideComponent(newData));
     }
   };
 
@@ -209,6 +213,7 @@ const AdvertisementsAdminSettings = () => {
                 title={""}
                 componentName={"advertisement"}
                 showHideHandler={showHideHandler}
+                id={showHideCompList?.advertisement?.id}
               />
 
               <Button type="" cssClass="btn btn-outline" label="Add" handlerChange={() => addNewAdvertisement("advertisement", true)} />

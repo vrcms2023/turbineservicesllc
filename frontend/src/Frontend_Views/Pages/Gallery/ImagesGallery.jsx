@@ -12,6 +12,7 @@ import { axiosClientServiceApi } from "../../../util/axiosUtil";
 import { ImageGalleryStyled } from "../../../Common/StyledComponents/Styled-ImageGallery";
 import ImageGalleryComponent from "../../Components/ImageGalleryComponent";
 import CustomPagination from "../../../Common/CustomPagination";
+import ModelBg from "../../../Common/ModelBg";
 
 const ImagesGallery = () => {
   const editComponentObj = {
@@ -31,7 +32,8 @@ const ImagesGallery = () => {
 
   const editHandler = (name, value) => {
     SetComponentEdit((prevFormData) => ({ ...prevFormData, [name]: value }));
-    //setShow(value);
+    // setShow(value);
+    setShow(!show);
     document.body.style.overflow = "hidden";
   };
 
@@ -134,6 +136,7 @@ const ImagesGallery = () => {
           />
         )}
       </div>
+      {show && <ModelBg />}
     </>
   );
 };

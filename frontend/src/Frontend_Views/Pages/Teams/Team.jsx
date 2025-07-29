@@ -216,7 +216,7 @@ const Team = () => {
           <>
             <div className="position-relative">
               {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("banner", true)} />
+                <EditIcon editHandler={() => editHandler("banner", true)} editlabel={"Banner Image"}/>
               )}
               <Banner
                 getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
@@ -266,7 +266,7 @@ const Team = () => {
           <div>
             {/* Brief Introduction */}
             {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("briefIntro", true)} />
+              <EditIcon editHandler={() => editHandler("briefIntro", true)} editlabel={"Brief Info"}/>
             )}
 
             <BriefIntroFrontend
@@ -454,7 +454,7 @@ const TeamItem = ({ item, index, deleteAboutSection, editHandler }) => {
             {isAdmin && hasPermission && (
               <>
                 <EditIcon
-                  editHandler={() => editHandler("editSection", true, item)}
+                  editHandler={() => editHandler("editSection", true, item)} editlabel={"Profile"}
                 />
                 <Link
                   className="deleteSection"

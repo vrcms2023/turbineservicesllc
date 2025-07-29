@@ -13,25 +13,12 @@ import { axiosServiceApi } from "../../../util/axiosUtil";
 import { getCookie } from "../../../util/cookieUtil";
 import { getMenu } from "../../../redux/auth/authActions";
 
-import {
-  createServiceChildFromMenu,
-  getMenuPosition,
-  updatedMenu,
-  updateServiceMmenuID,
-} from "../../../util/menuUtil";
+import { createServiceChildFromMenu, updatedMenu, updateServiceMmenuID } from "../../../util/menuUtil";
 import SEOForm from "./SEOForm";
 import { getServiceValues } from "../../../redux/services/serviceActions";
 import Title from "../../../Common/Title";
 
-const MenuForm = ({
-  editHandler,
-  menuList,
-  editMenu,
-  componentType,
-  popupTitle,
-  selectedServiceMenu,
-  rootServiceMenu,
-}) => {
+const MenuForm = ({ editHandler, menuList, editMenu, componentType, popupTitle, selectedServiceMenu, rootServiceMenu }) => {
   const dispatch = useDispatch();
   const closeHandler = () => {
     editHandler(componentType, false);
@@ -52,6 +39,9 @@ const MenuForm = ({
   });
   const [error, setError] = useState(false);
   const [show, setShow] = useState(false);
+
+  const [seoLink, setSEOLink] = useState("");
+  const [seoAuthor, setSeoAuthor] = useState("");
 
   const pageUrlValue = watch("page_url");
 
@@ -88,6 +78,14 @@ const MenuForm = ({
     });
     setMenuIndexValues(menuIndexValues);
   };
+
+  useEffect(() => {
+    if (editMenu) {
+      const seolink = `${window.location.origin}${editMenu.page_url}`;
+      setSEOLink(seolink);
+      setSeoAuthor(window.location.origin);
+    }
+  }, [editMenu]);
 
   useEffect(() => {
     let menuOptinList = [];
@@ -344,18 +342,16 @@ const MenuForm = ({
                     onChangeHanlder={onChangeHanlder}
                     Controller={Controller}
                     control={control}
+                    seoLink={seoLink}
+                    seoAuthor={seoAuthor}
+                    setValue={setValue}
                   />
                   
                 </div>
               )}
               {!show && <hr className="my-1 border-secondary" />}
               <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 mt-3">
-                <Button
-                  type="submit"
-                  cssClass="btn btn-outline"
-                  label={"Close"}
-                  handlerChange={closeHandler}
-                />
+                <Button type="submit" cssClass="btn btn-outline" label={"Close"} handlerChange={closeHandler} />
                 <button className="btn btn-primary">Save</button>
               </div>
             </form>

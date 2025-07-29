@@ -428,7 +428,7 @@ const Contact = () => {
                         cssClass={`alert text-white w-50 mx-auto mt-3 p-2 text-center bg-success`}
                       />
                     )}
-                    <RaqUseForm />
+                    <RaqUseForm buttonLabel="SEND REQUEST" />
                   </div>
                 </>
               </div>

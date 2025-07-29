@@ -19,7 +19,7 @@ const RaqFormModel = ({ closeModel, downloadPDF }) => {
           </div>
           <div className="modal-body px-4 py-3">
             {/* User Contact Form */}
-            <RaqUseForm closeModel={closeModel} downloadPDF={downloadPDF} />
+            <RaqUseForm closeModel={closeModel} downloadPDF={downloadPDF} buttonLabel="DOWNLOAD" />
           </div>
         </div>
       </div>

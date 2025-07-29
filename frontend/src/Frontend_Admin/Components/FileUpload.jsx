@@ -481,8 +481,10 @@ const FileUpload = ({
               )}
             {dimensions && (
               <div className="col-12">
+
                 <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
                   Recommended size <strong>{dimensions.w}</strong> - <strong>{dimensions.h}</strong> 
+
                 </small>
               </div>
             )}

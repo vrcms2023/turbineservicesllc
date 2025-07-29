@@ -43,6 +43,7 @@ const Banner = ({
       getBannerData();
     }
   }, [bannerState, pageLoadServiceName, getBannerAPIURL]);
+
   return (
     <PageBannerStyled>
       <div className="pageBanner">

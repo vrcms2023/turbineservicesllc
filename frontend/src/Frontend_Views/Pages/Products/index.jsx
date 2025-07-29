@@ -237,53 +237,60 @@ const ProductsPage = () => {
         </div>
       )}
 
-      {selectedCategory?.id && (
-        <>
-          {/* Page Banner Component */}
-          <div className="position-relative">
-            {isAdmin && hasPermission && (
-              <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner"/>
-            )}
-
-            <Banner
-              getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
-              bannerState={componentEdit.banner}
-              bannerContainerCss="titleCaption d-flex align-items-end justify-content-center flex-column"
+      <div
+          className={
+            showHideCompList?.banner?.visibility &&
+            isAdmin &&
+            hasPermission
+              ? "componentOnBorder"
+              : ""
+          }
+        >
+        {isAdmin && hasPermission && (
+            <ShowHideToggle
+              showhideStatus={showHideCompList?.banner?.visibility}
+              title={"Banner"}
+              componentName={"banner"}
+              showHideHandler={showHideHandler}
+              id={showHideCompList?.banner?.id}
             />
-          </div>
-          {componentEdit.banner && (
-            <div className={`adminEditTestmonial selected `}>
-              <ImageInputsForm
-                editHandler={editHandler}
-                componentType="banner"
-                popupTitle="Products - Banner Image"
-                pageType={`${pageType}-banner`}
-                imageLabel="Upload Image"
-                showDescription={false}
-                showExtraFormFields={getProductCategoryBannerFormFields(
-                  `${pageType}-banner`
-                )}
-                dimensions={imageDimensionsJson("banner")}
+          )}
+
+        {selectedCategory?.id && (
+          <>
+            {/* Page Banner Component */}
+            <div className="position-relative">
+              {isAdmin && hasPermission && (
+                <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner"/>
+              )}
+
+              <Banner
+                getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`}
+                bannerState={componentEdit.banner}
+                bannerContainerCss="titleCaption d-flex align-items-end justify-content-center flex-column"
               />
             </div>
-          )}
-        </>
-      )}
-
+            
+            {componentEdit.banner && (
+              <div className={`adminEditTestmonial selected `}>
+                <ImageInputsForm
+                  editHandler={editHandler}
+                  componentType="banner"
+                  popupTitle="Products - Banner Image"
+                  pageType={`${pageType}-banner`}
+                  imageLabel="Upload Image"
+                  showDescription={false}
+                  showExtraFormFields={getProductCategoryBannerFormFields(
+                    `${pageType}-banner`
+                  )}
+                  dimensions={imageDimensionsJson("banner")}
+                />
+              </div>
+            )}
+          </>
+        )}
+      </div>
       <ProductStyled>
-        <SearchFilter
-          category={category}
-          selectedCategory={selectedCategory}
-          setResponseData={setResponseData}
-          setSelectedCategory={setSelectedCategory}
-          setPageloadResults={setPageloadResults}
-          setSearchquery={setSearchquery}
-          searchQuery={searchQuery}
-          searchBy={"Search By Product Name"}
-          hideSearchBy={false}
-        />
-        <div />
-
         <div
           className={
             showHideCompList?.productsbriefintro?.visibility &&
@@ -339,9 +346,19 @@ const ProductsPage = () => {
           )}
         </div>
 
-          {/* {isAdmin && hasPermission && (
-        
-      )} */}
+        <div>
+          <SearchFilter
+          category={category}
+          selectedCategory={selectedCategory}
+          setResponseData={setResponseData}
+          setSelectedCategory={setSelectedCategory}
+          setPageloadResults={setPageloadResults}
+          setSearchquery={setSearchquery}
+          searchQuery={searchQuery}
+          searchBy={"Search By Product Name"}
+          hideSearchBy={false}
+        />
+        </div>
 
         <div className="container productsList">
           <div className="row mb-4 py-2 shadow-lg d-flex justify-content-between align-items-center bg-white">
@@ -354,10 +371,10 @@ const ProductsPage = () => {
             </div> */}
             <div className="col-md-4 d-flex flex-column flex-sm-row justify-content-start align-items-center gap-3 ">
               
-              <div className="d-flex justify-content-end align-items-center gap-1">
+              <div className="d-flex justify-content-end align-items-center">
                  <Title
-                title={`${selectedCategory?.category_name} - Category`}
-                cssClass={"text-primary"}
+                title={`${selectedCategory?.category_name}`}
+                cssClass={"m-0"}
                 icon=""
               />
               
@@ -366,7 +383,7 @@ const ProductsPage = () => {
                   type="button"
                   cssClass="btn "
                   label={""}
-                  icon="fa-pencil fs-5 text-warning"
+                  icon="fa-pencil fs-6 text-warning"
                   isMobile={isMobile}
                   handlerChange={categoryEditHandler}
                 />
@@ -376,7 +393,7 @@ const ProductsPage = () => {
                   type="button"
                   cssClass="btn"
                   label={""}
-                  icon="fa-trash-o fs-5 text-danger"
+                  icon="fa-trash-o fs-6 text-danger"
                   isMobile={isMobile}
                   handlerChange={categoryDeleteHandler}
                 />
@@ -387,7 +404,18 @@ const ProductsPage = () => {
             </div>
             <div className={`${isAdmin && hasPermission ? "col-md-4 justify-content-center" : "col-md-6 justify-content-end" } d-flex flex-column flex-sm-row  align-items-center gap-3 productFilters`}>
               
-              <div>
+              
+              {productsList?.length > 0  ? (
+                <div>
+                {/* Showing 1 –  */}
+                {productsList?.length} of
+                <strong className="text-primary fw-medium"> {productsList?.length}</strong>
+                {/* results */}
+              </div>
+              ) : "" }
+              
+              {productsList?.length > 5  ? (
+                <div>
                 {/* <span>Show </span> */}
                 <select
                   className="form-select perPage"
@@ -403,18 +431,13 @@ const ProductsPage = () => {
                 </select>
                 {/* <span>entries</span> */}
               </div>
-              <div>
-                {/* Showing 1 –  */}
-                {productsList?.length} of
-                <strong className="text-primary fw-medium"> {productsList?.length}</strong>
-                {/* results */}
-              </div>
-              <span className="d-none d-md-block"> | </span>
+              ) : "" }
               
+
               <div>
                 <Link
                   className="moreLink "
-                  // onClick={() => downloadFile(editObject?.category_fileuplod)}
+                  onClick={() => downloadFile(editObject?.category_fileuplod)}
                 >
                   File
                   <i

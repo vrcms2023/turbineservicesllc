@@ -19,6 +19,7 @@ const Search = ({
   searchBy = " Search ",
   addStateChanges,
   editStateChanges,
+  cssClass
 }) => {
   const userCookie = getCookie("access");
 
@@ -74,7 +75,7 @@ const Search = ({
   }, [editStateChanges]);
 
   return (
-    <div className="d-flex justify-conent-start align-items-start flex-column">
+    <div className={`${cssClass} d-flex justify-conent-start align-items-start flex-column`}>
       <div className="input-group mb-1 search my-2 my-md-0 ">
         <input
           type="text"

@@ -136,10 +136,10 @@ export default function DynamicFormwithFileUplod({
         closeHandler={closeHandler}
         title={componentTitle}
       />
-      <hr />
+      {/* <hr /> */}
       <div className="container">
         <div className="row">
-          <div className="col-md-12 px-5">
+          <div className="col-md-12">
             {error && (
               <div className="fw-bold">{error && <Error>{error}</Error>}</div>
             )}
@@ -175,16 +175,11 @@ export default function DynamicFormwithFileUplod({
               })}
 
               {editObject?.category_fileuplod ? (
-                <div className="text-end">
-                  <Link
-                    className="moreLink "
+                <div className="d-flex justify-content-between align-items-center border border-white p-2">
+                  <Link to=""
                     onClick={() => downloadFile(editObject?.category_fileuplod)}
                   >
-                    Download File{" "}
-                    <i
-                      className="fa fa-download ms-1 fs-5 rounded-2 p-2 border border-1 border-info bg-white"
-                      aria-hidden="true"
-                    ></i>
+                    <i className="fa fa-download ms-1 fs-5 rounded-2 p-2" aria-hidden="true" ></i> Download File
                   </Link>
                   <Link to="" onClick={() => deleteFileHandler(editObject)}>
                     <i
@@ -196,19 +191,18 @@ export default function DynamicFormwithFileUplod({
               ) : (
                 ""
               )}
-              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 gap-md-3 mt-5">
-                <button className="btn btn-secondary mx-3">save</button>
-                {/* <Button
-                  type="button"
-                  cssClass="btn btn-secondary"
-                  label={"Save"}
-                  handlerChange={()=> {}}
-                /> */}
-                <Button
+              <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-2 mt-3">
+                 <Button
                   type="submit"
                   cssClass="btn btn-outline"
                   label={"Close"}
                   handlerChange={closeHandler}
+                />
+                 <Button
+                  type="submit"
+                  cssClass="btn btn-primary mx-3"
+                  label={"Save"}
+                  handlerChange={()=> {}}
                 />
               </div>
             </form>

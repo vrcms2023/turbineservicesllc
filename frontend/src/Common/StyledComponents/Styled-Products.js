@@ -2,51 +2,51 @@ import styled from "styled-components";
 
 export const ProductStyled = styled.div`
 
-.productCategorySearch {
-    width: 35%;
-    min-width: 500px;
-    right: 25px; 
-    top: -130px; 
-    z-index: 999;
-    background: rgb(0,132,207);
+// .productCategorySearch {
+//     width: 35%;
+//     min-width: 500px;
+//     right: 25px; 
+//     top: -130px; 
+//     z-index: 999;
+//     background: rgb(0,132,207);
 
-    .productCategory {
-        background: rgb(225,242,253,1);
-        height: 70px;
-    }
+//     .productCategory {
+//         background: rgb(225,242,253,1);
+//         height: 70px;
+//     }
 
-    .productSearch {
-        background: rgb(0,132,207, 1);
-        height: 70px;
+//     .productSearch {
+//         background: rgb(0,132,207, 1);
+//         height: 70px;
 
-        .search, .form-select {
-            width: 400px
-        }
-    }
+//         .search, .form-select {
+//             width: 400px
+//         }
+//     }
     
-    @media (max-width:991px) {
-        right: 2.5%;
-        min-width: 95%;
-        margin: 0 auto;
+//     @media (max-width:991px) {
+//         right: 2.5%;
+//         min-width: 95%;
+//         margin: 0 auto;
 
-        .search, .form-select {
-            width: 400px
-        }
-    }
+//         .search, .form-select {
+//             width: 400px
+//         }
+//     }
 
-    @media (min-width: 300px) and (max-width: 480px) {
-        .search, .form-select {
-            width: 300px !important;
-        }
-    }
-}
+//     @media (min-width: 300px) and (max-width: 480px) {
+//         .search, .form-select {
+//             width: 300px !important;
+//         }
+//     }
+// }
 .productsList, .productDetails {
     // margin-top: 24px;
 }
 
 .productsList {
     // padding-top: 24px;
-    background: #f8f8f8;
+    // background: #f8f8f8;
 }
 
 .productsList .productFilters .perPage{

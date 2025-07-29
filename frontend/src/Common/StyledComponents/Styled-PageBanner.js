@@ -17,6 +17,7 @@ export const PageBannerStyled = styled.div`
 
     img {
       object-fit: cover;
+      height: 300px;
     }
 
     .titleCaption {
@@ -102,8 +103,10 @@ export const PageBannerStyled = styled.div`
     }
 
      @media (max-width: 480px) {
+      
       .description {
         display: none !important;
     }
   }
+}
 `;

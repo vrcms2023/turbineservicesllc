@@ -68,7 +68,7 @@ const Product = ({
             alt={item.alternitivetext}
             className="w-75 rounded-1 shadow object-fit-cover productImage"
           />
-        </Link>
+       
 
         <Title
           title={
@@ -78,6 +78,7 @@ const Product = ({
           }
           cssClass="productName mt-1 fs-6 fw-medium"
         />
+         </Link>
         {/* <p>{item.description}</p> */}
       </ProductItemStyled>
     </div>

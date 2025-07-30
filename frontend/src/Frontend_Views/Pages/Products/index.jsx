@@ -218,7 +218,7 @@ const ProductsPage = () => {
       dispatch(createShowHideComponent(newData));
     }
   };
-
+// console.log(productsList, "productsList")
   return (
     <>
       {componentEdit.category && (
@@ -374,7 +374,7 @@ const ProductsPage = () => {
               <div className="d-flex justify-content-end align-items-center">
                  <Title
                 title={`${selectedCategory?.category_name}`}
-                cssClass={"m-0"}
+                cssClass={"m-0 fs-5"}
                 icon=""
               />
               
@@ -421,7 +421,7 @@ const ProductsPage = () => {
                   className="form-select perPage"
                   aria-label="Default select example"
                 >
-                  <option selected>show</option>
+                  <option selected>Show</option>
                   <option value="1">5</option>
                   <option value="2">10</option>
                   <option value="3">25</option>
@@ -573,11 +573,12 @@ const ProductsPage = () => {
         )} */}
 
         {/* Feed back form for client to send product list back */}
-        {selectedCategory?.id && (
+
+        {selectedCategory?.id && productsList?.length > 0 ? (
           <>
             <ABriefIntroStyled>
               <div className="container-lg px-0  productForm">
-                <div className="row py-4">
+                <div className="row pb-4">
                   <ABriefAbout
                     col1="col-md-5 p-lg-5 ps-lg-0 d-none d-md-block"
                     col2="col-md-7 px-4 p-lg-5 d-flex justify-content-center align-items-start flex-column"
@@ -593,7 +594,7 @@ const ProductsPage = () => {
               </div>
             </ABriefIntroStyled>
           </>
-        )}
+        ) : ""}
       </ProductStyled>
 
       {show && <ModelBg />}

@@ -13,6 +13,9 @@ import { getBaseURL } from "../../../util/ulrUtil";
 import Model from "../../../Common/Model";
 import ModelBg from "../../../Common/ModelBg";
 import ContactsendRequstModel from "../../Components/contactsendRequstModel";
+import { confirmAlert } from "react-confirm-alert";
+import DeleteDialog from "../../../Common/DeleteDialog";
+import { Link } from "react-router-dom";
 
 const AppliedJobAdministration = () => {
   const [userDetails, setUserDetails] = useState([]);
@@ -27,20 +30,18 @@ const AppliedJobAdministration = () => {
   /**
    * get User details
    */
-
-  useEffect(() => {
-    const getAllJobDetails = async () => {
-      try {
-        const response = await axiosServiceApi.get(`/careers/applyJob/`);
-        if (response?.status === 200) {
-          setResponseData(response.data);
-          setPageloadResults(true);
-        }
-      } catch (error) {
-        toast.error("Unable to load contactus details");
+  const getAllJobDetails = async () => {
+    try {
+      const response = await axiosServiceApi.get(`/careers/applyJob/`);
+      if (response?.status === 200) {
+        setResponseData(response.data);
+        setPageloadResults(true);
       }
-    };
-
+    } catch (error) {
+      toast.error("Unable to load contactus details");
+    }
+  };
+  useEffect(() => {
     getAllJobDetails();
   }, []);
 
@@ -75,6 +76,33 @@ const AppliedJobAdministration = () => {
 
   const downloadPDF = (url) => {
     window.open(url, "_blank", "location=yes,height=800,width=600 ,scrollbars=yes,status=yes");
+  };
+
+  const handleApplicantdetailsDelete = (user) => {
+    const title = user.firstName;
+    const deleteRAQDetailsByID = async () => {
+      const response = await axiosServiceApi.delete(`/careers/applyJob/${user.id}/`);
+      if (response.status === 204) {
+        toast.success(`${title} User details is delete successfully `);
+        getAllJobDetails();
+      }
+    };
+
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <DeleteDialog
+            onClose={onClose}
+            callback={deleteRAQDetailsByID}
+            message={
+              <>
+                Confirm deletion of <span>{title}</span> user details?
+              </>
+            }
+          />
+        );
+      },
+    });
   };
 
   return (
@@ -122,6 +150,7 @@ const AppliedJobAdministration = () => {
                 <th class="align-middle">Job ID</th>
                 <th class="align-middle">Date</th>
                 <th class="align-middle">Resume</th>
+                <th class="align-middle">Action</th>
                 {/* <th className="text-end align-middle">Send Request</th> */}
               </tr>
             </thead>
@@ -148,6 +177,11 @@ const AppliedJobAdministration = () => {
                       <i class="fa fs-6 me-2 text-secondary fa-download" aria-hidden="true"></i>
                       {user.original_name ? user.original_name : "Resume"}
                     </a>
+                  </td>
+                  <td>
+                    <Link to="" className=" ms-4" onClick={() => handleApplicantdetailsDelete(user)}>
+                      <i className="fa fa-trash-o fs-4 text-danger" aria-hidden="true" title="Delete"></i>
+                    </Link>
                   </td>
                 </tr>
               ))}

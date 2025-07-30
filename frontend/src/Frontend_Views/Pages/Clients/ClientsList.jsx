@@ -267,27 +267,39 @@ const ClientsList = () => {
 
       {/* Add Clients */}
       <div className="container-fluid container-lg my-md-5 ">
-        <div className="row">
+        {/* <div className="row">
           {isAdmin && hasPermission && (
             <div className="col-md-12">
               <div className="d-flex justify-content-end align-items-center mb-3">
-                {/* <span className="fw-bold me-2">Add content </span> */}
                 <button
                   type="submit"
-                  className="btn btn-primary px-3"
+                  className="btn btn-outline px-3"
                   onClick={() => editHandler("addSection", true, {})}
                 >
-                  Add New Client{" "}
+                  New Client
                   <i className="fa fa-plus ms-2" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
         <div className="row">
-          <div className="col-md-6 fs-3 mt-4 mt-md-0">
-            <Title title="Clients" cssClass="fs-1 pageTitle" />
+          <div className="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start">
+            <Title title="Clients" cssClass="pageTitle fs-4" />
+
+            {isAdmin && hasPermission && (
+            <div className="">
+              <button
+                  type="submit"
+                  className="btn btn-outline px-3 ms-3"
+                  onClick={() => editHandler("addSection", true, {})}
+                >
+                  New
+                  <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+                </button>
+            </div>
+          )}
           </div>
 
           <div className="col-md-6">
@@ -333,7 +345,7 @@ const ClientsList = () => {
 
         <br />
         {isAdmin && (
-          <NoteComponent note="Use drag option to shuffle the Items" />
+          <NoteComponent note="Use drag option to shuffle the Items" cssClass="bg-warning" />
         )}
         <ClientStyled>
           <ClientListComponent

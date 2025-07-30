@@ -230,7 +230,7 @@ const NewsAndUpdates = () => {
 
       <div className="container my-4 newsAndUpdates">
         
-        {isAdmin && hasPermission && (
+        {/* {isAdmin && hasPermission && (
           <div className="text-end">
             
             <Link
@@ -242,16 +242,30 @@ const NewsAndUpdates = () => {
               <i className="fa fa-plus ms-2" aria-hidden="true"></i>
             </Link>
           </div>
-        )}
+        )} */}
 
         <div className="row mb-2 py-4">
           <div className="col-md-6 d-flex jusitfy-content-start align-items-center">
             <Title
               title="News"
-              cssClass=""
-              mainTitleClassess="fs-4 fw-medium"
+              cssClass="pageTitle fs-4"
+              mainTitleClassess=""
               subTitleClassess=""
             /> 
+
+            {isAdmin && hasPermission && (
+          <div className="text-end">
+            
+            <Link
+              to="#"
+              className="btn btn-outline ms-2"
+              onClick={() => editHandler("addNews", true)}
+            >
+              New
+              <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+            </Link>
+          </div>
+        )}
           </div>
           <div className="col-md-6">
             <Search
@@ -285,7 +299,7 @@ const NewsAndUpdates = () => {
                 imagePostURL="appNews/createAppNews/"
                 imageUpdateURL="appNews/updateAppNews/"
                 imageDeleteURL="appNews/updateAppNews/"
-                imageLabel="Add News Image"
+                imageLabel="Upload Image"
                 showDescription={false}
                 showExtraFormFields={getNewslFields("addNews")}
                 dimensions={imageDimensionsJson("addNews")}

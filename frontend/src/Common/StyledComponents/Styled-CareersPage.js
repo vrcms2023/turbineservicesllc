@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CareersPageStyled = styled.div`
-
+  
   .jobBriefDetails h5 {
     font-size: 1.6rem !important;
   }
@@ -150,5 +150,9 @@ export const CareersPageStyled = styled.div`
     }
   }
 
+  .contactForm {
+    background-color: ${({ theme }) => theme.verylightgray};
+    padding: 24px
+  }
 
 `;

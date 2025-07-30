@@ -174,7 +174,7 @@ export const StyledMenu = styled.menu`
           background: ${({ theme }) => theme.navbarLinkHoverColor};
           
           a {
-            color: ${({ theme }) => theme.gray333} !important;
+            color: ${({ theme }) => theme.white} !important;
             font-weight: 600;
 
             &::before {

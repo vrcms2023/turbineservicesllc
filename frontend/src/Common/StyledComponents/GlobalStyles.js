@@ -259,7 +259,7 @@ body, p {
 
     .deleteSection {
       position: absolute;
-      top: 55px;
+      top: 72px;
       right: 0px;
       z-index: 999;
       cursor: pointer;

@@ -167,15 +167,20 @@ const CaseStudiesDetails = () => {
       )} */}
 
       {selectedCaseStudieDetails && (
-        <div className="container">
-          <div className="d-flex flex-column flex-column-reverse flex-sm-row justify-content justify-content-between align-items-center gap-3 mt-4">
-            <h1 className="">{selectedCaseStudieDetails.case_studies_title}</h1>
+        <div className="container mt-3">
+          <div className="row">
+            <div className="col-md-12 text-end">
             <Ancher
               AncherLabel="Back"
-              AncherClass="btn btn-secondary d-flex gap-2 justify-content-center align-items-center float-end fw-bold"
+              AncherClass="btn btn-outline"
               Ancherpath={`/casestudies/`}
               AnchersvgColor=""
+              icon="fa-chevron-left"
             />
+            </div>
+          </div>
+          <div className="d-flex flex-column flex-column-reverse flex-sm-row justify-content justify-content-between align-items-center gap-3 mt-4">
+            <h1 className="">{selectedCaseStudieDetails.case_studies_title}</h1>
           </div>
           <div className="row">
             <div className="col-md-12 py-3 caseStudieDetails">

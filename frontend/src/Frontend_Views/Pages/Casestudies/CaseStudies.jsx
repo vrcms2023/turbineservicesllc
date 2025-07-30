@@ -262,27 +262,37 @@ const CaseStudies = () => {
 
       {/* Add Clients */}
       <div className="container-fluid container-lg my-md-5 ">
-        {isAdmin && hasPermission && (
+        {/* {isAdmin && hasPermission && (
           <div className="row">
             <div className="col-md-12">
               <div className="d-flex justify-content-end align-items-center mb-3">
-                {/* <span className="fw-bold me-2">Add New </span> */}
                 <button
                   type="submit"
-                  className="btn btn-primary px-3"
+                  className="btn btn-outline"
                   onClick={() => editHandler("addSection", true)}
                 >
-                  Add New Casestudy
+                 New
                   <i className="fa fa-plus ms-2" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
           </div>
-        )}
+        )} */}
 
         <div className="row">
-          <div className="col-md-6 fs-3 mt-4 mt-md-0">
-            <Title title="Case Studies" cssClass="fs-1 pageTitle" />
+          <div className="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start">
+            <Title title="Case Studies" cssClass="pageTitle fs-4" />
+            {isAdmin && hasPermission && (
+              <button
+                type="submit"
+                className="btn btn-outline ms-2"
+                onClick={() => editHandler("addSection", true)}
+              >
+              New
+                <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+              </button>
+            )}
+
           </div>
 
           <div className="col-md-6">
@@ -314,7 +324,8 @@ const CaseStudies = () => {
               imagePostURL="/caseStudies/createCaseStudies/"
               imageUpdateURL="/caseStudies/updateCaseStudies/"
               imageDeleteURL="/caseStudies/updateCaseStudies/"
-              imageLabel="Image"
+              imageLabel="Upload Image"
+              popupTitle={"Case Studie"}
               showDescription={false}
               showExtraFormFields={getCaseStudiesFields()}
               dimensions={imageDimensionsJson("aboutus")}

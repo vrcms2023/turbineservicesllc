@@ -301,7 +301,7 @@ const handlerHeightSetting = () => {
 
   return (
     <div className="pb-3 border border-0">
-      <Title title="Create New Service Page" cssClass="p-3 fs-6 text-dark" />
+      <Title title="Create New Service Page" cssClass="py-3 fs-5 text-center text-uppercase m-0" />
       <hr className="m-0 mb-5" />
       {/* <h3 className={`text-center ${selectedServiceProject && selectedServiceProject.publish ? 'border border-success' : ''} `}>Add New Service </h3> */}
 
@@ -333,16 +333,16 @@ const handlerHeightSetting = () => {
                 type="submit"
                 // cssClass="btn btn-primary mt-2"
                 cssClass={
-                  isFocused || serviceName
-                    ? "btn btn-primary mt-2"
-                    : "btn btn-secondary mt-2"
+                  isFocused || serviceName 
+                    ? "btn btn-primary btn-sm mt-2"
+                    : "btn btn-secondary mt-2 disabled"
                 }
                 handlerChange={submitHandler}
                 label={editServiceObject?.id ? "Change Name" : "SAVE"}
               />
               {editServiceObject?.id ? (
                 <Button
-                  cssClass="btn btn-outline mt-2"
+                  cssClass="btn btn-outline btn-sm mt-2"
                   handlerChange={CancelServiceNameChange}
                   label="Cancel"
                 />
@@ -358,6 +358,7 @@ const handlerHeightSetting = () => {
               style={{
                 height: `${serviceLinksBoxHeight}px`,
                 maxHeight: "320px",
+                padding: 0,
                 overflowY: isExpanded && ulRef.current && ulRef.current.scrollHeight > 320 && "auto",
                 transition: "height 0.3s ease"
               }}

@@ -21,6 +21,7 @@ import {
   updateArrIndex,
 } from "../../../util/commonUtil";
 import NoteComponent from "../../../Common/NoteComponent";
+import Title from "../../../Common/Title";
 
 const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
   const { addressList } = useSelector((state) => state.addressList);
@@ -158,11 +159,11 @@ const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
   return (
     <div className="">
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
-      <hr className="m-0 text-dark" />
+      {/* <hr className="m-0 text-dark" /> */}
       <form className="" onSubmit={handleSubmit(onSubmit)}>
         <div className="container my-3">
           <div className="row">
-            <div className="col-md-12 mb-md-0  ">
+            <div className="col-md-12 mb-md-0  p-0">
               <NoteComponent note="Use drag option to shuffle the addresses" />
               <div className={listofAddress.length > 0 && "heightCtrl"}>
                 <DragDropContext onDragEnd={dragEnded}>
@@ -201,12 +202,12 @@ const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
               </div>
             </div>
 
-            <div className="col-md-12">
-              <p className="text-dark fw-bold mt-3">Address Form</p>
-              <hr className="mb-3 text-dark" />
+            <div className="col-md-12 border-bottom border-secondary mt-3">
+              <Title title="Address Form" cssClass="fs-5" />
+              {/* <hr className="mb-3 text-dark" /> */}
             </div>
-            <div className="col-md-12 mb-md-0">
-              <div className="heightCtrl">
+            <div className="col-md-12 mb-md-0 mt-3">
+              <div className="text-dark">
                 <InputField
                   label="Company Name"
                   fieldName="company_name"
@@ -308,7 +309,7 @@ const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
             </div>
           </div>
           <div className="row">
-            <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-1 gap-md-3 my-3">
+            <div className="d-flex justify-content-center flex-wrap flex-column flex-sm-row align-items-center gap-3 my-3">
               <button type="reset" className="btn btn-secondary">
                 Clear
               </button>

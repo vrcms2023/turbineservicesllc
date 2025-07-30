@@ -243,13 +243,17 @@ const Contact = () => {
             )}
 
             <BriefIntroFrontend
-              introState={componentEdit.briefIntro}
               pageType={pageType}
-              introTitleCss="fs-3 fw-medium text-md-center"
-              introSubTitleCss="fw-medium text-muted text-md-center"
-              introDecTitleCss="fs-6 fw-normal w-75 m-auto text-md-center"
-              anchorContainer="text-center my-4"
-              linkLabel="More.."
+              introState={componentEdit.briefIntro}
+              detailsContainerCss="col-md-8 offset-md-2 text-center"
+              introTitleCss=""
+              introSubTitleCss=""
+              introDecTitleCss=""
+              linkLabel="Read More"
+              linkCss="btn btn-outline"
+              moreLink=""
+              anchorContainer=""
+              anchersvgColor=""
               showLink={"True"}
             />
             {componentEdit.briefIntro && (
@@ -421,14 +425,16 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="col-md-12 col-lg-4 p-1 px-3 p-md-5 mb-md-5 quickContact">
+                  <div className="col-md-12 col-lg-4 ">
                     {success && (
                       <Alert
                         mesg={"Thank you for contact us"}
                         cssClass={`alert text-white w-50 mx-auto mt-3 p-2 text-center bg-success`}
                       />
                     )}
-                    <RaqUseForm buttonLabel="SEND REQUEST" />
+                    <div className="p-3 quickContact">
+                      <RaqUseForm buttonLabel="SEND REQUEST" />
+                    </div>
                   </div>
                 </>
               </div>

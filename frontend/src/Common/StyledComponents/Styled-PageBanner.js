@@ -56,7 +56,7 @@ export const PageBannerStyled = styled.div`
       }
 
       .quill {
-        width: 70%;
+        // width: 70%;
         margin: 0 auto;
 
         .ql-editor {

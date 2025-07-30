@@ -156,7 +156,7 @@ const Footer = () => {
                             editHandler={() =>
                               editHandler("footerAboutBrief", true)
                             }
-                            editlabel={"Company Brief"}
+                            editlabel={"Breif"}
                           />
                         )}
 
@@ -427,7 +427,7 @@ const Footer = () => {
                 >
                   {isAdmin && (
                     <EditIcon
-                      editHandler={() => editHandler("address", true)} editlabel={"Social Media"}
+                      editHandler={() => editHandler("address", true)} editlabel={"Social"}
                     />
                   )}
 

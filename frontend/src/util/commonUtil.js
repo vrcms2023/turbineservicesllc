@@ -103,8 +103,7 @@ export const getObjectTitle = (type, item) => {
   const carouse_Field = "carouse_title";
   const testimonial_Field = "testimonial_title";
   const imageGallery_Field = "image_title";
-  if (type === "carousel" || type === "serviceOffered")
-    return item[carouse_Field];
+  if (type === "carousel" || type === "serviceOffered") return item[carouse_Field];
   if (type === "testmonial") return item[testimonial_Field];
   if (type === "gallery") return item[imageGallery_Field];
 };
@@ -197,10 +196,7 @@ export const getPublishedSericeMenu = (menuList, publishedMenuList) => {
   let selectedMenu = [];
   childMenu?.forEach((item) => {
     publishedMenuList.forEach((publishedMenu) => {
-      if (
-        item.page_label.toLowerCase() ===
-        publishedMenu.services_page_title.toLowerCase()
-      ) {
+      if (item.page_label.toLowerCase() === publishedMenu.services_page_title.toLowerCase()) {
         selectedMenu.push(item);
       }
     });
@@ -269,16 +265,9 @@ export const NO_FOOTER_ROUTES = [
   "/userpermission",
   "/contactuslist",
   "/change_password",
+  "/appliedjobsadministration",
 ];
-export const NO_HEADER_ROUTES = [
-  "/login",
-  "/register",
-  "/unauthorized",
-  "/activate/",
-  "/reset_password",
-  "/authForm",
-  "/resend_activation",
-];
+export const NO_HEADER_ROUTES = ["/login", "/register", "/unauthorized", "/activate/", "/reset_password", "/authForm", "/resend_activation"];
 
 export const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -380,10 +369,7 @@ export const getParentObject = (rawData, id, formatedMenu) => {
   const dragObject = getFilterObjectByID(rawData, id)[0];
 
   if (dragObject.page_parent_ID) {
-    parentMenuObject = getFilterObjectByID(
-      formatedMenu,
-      dragObject.page_parent_ID
-    )[0];
+    parentMenuObject = getFilterObjectByID(formatedMenu, dragObject.page_parent_ID)[0];
   }
   return parentMenuObject;
 };

@@ -143,12 +143,9 @@ const AdminSettings = lazy(
   () => import("./Frontend_Admin/Pages/Auth/AdminSettings")
 );
 
-const RAQAdmininistration = lazy(
-  () => import("./Frontend_Admin/Pages/Auth/RAQAdmininistration")
-);
-const HomeServices = lazy(
-  () => import("./Frontend_Views/Components/HomeServices")
-);
+const RAQAdmininistration = lazy(() => import("./Frontend_Admin/Pages/Auth/RAQAdmininistration"));
+const AppliedJobAdministration = lazy(() => import("./Frontend_Admin/Pages/Auth/AppliedJobAdministration"));
+const HomeServices = lazy(() => import("./Frontend_Views/Components/HomeServices"));
 
 function App() {
   const { isLoading } = useSelector((state) => state.loader);
@@ -251,6 +248,7 @@ function App() {
                 path="/raqformAdministration"
                 element={<RAQAdmininistration />}
               />
+	      <Route path="/appliedJobsAdministration" element={<AppliedJobAdministration />} />
               <Route path="/settings" element={<AdminSettings />} />
               <Route path="/editproject/:id" element={<AddProject />} />
               <Route

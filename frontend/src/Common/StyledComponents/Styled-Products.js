@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const ProductStyled = styled.div`
 
-// .productCategorySearch {
+.productCategorySearch {
+    input, select {
+        border-color: ${({theme}) =>  theme.lightgray} !important;
+    }
 //     width: 35%;
 //     min-width: 500px;
 //     right: 25px; 
@@ -39,7 +42,7 @@ export const ProductStyled = styled.div`
 //             width: 300px !important;
 //         }
 //     }
-// }
+}
 .productsList, .productDetails {
     // margin-top: 24px;
 }
@@ -51,6 +54,7 @@ export const ProductStyled = styled.div`
 
 .productsList .productFilters .perPage{
     width: 80px !important;
+    border: 0 !important;
 }
 `;
 
@@ -59,10 +63,10 @@ export const ProductItemStyled = styled.div`
 
 .productDetails {
     .imgSelected {
-        padding-left: 100px;
-        padding-right: 100px;
+        // padding-left: 100px;
+        // padding-right: 100px;
         img {
-            height: 250px;
+            height: 320px;
             object-fit: cover;
     
             @media (max-width: 480px) {
@@ -121,7 +125,6 @@ export const ProductItemStyled = styled.div`
 
 .allProducts.bottomPositioned {
     .product {
-        
         img {
             @media (max-width: 480px) {
                 height: 150px;

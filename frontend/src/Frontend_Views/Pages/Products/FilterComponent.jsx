@@ -28,7 +28,7 @@ const FilterComponent = ({
       <div className="row productCategorySearch">
         <div className="col-md-12 px-md-5 productCategory d-flex justify-content-center align-items-center gap-3">
           <div className="w-50">
-            <Title title="Category Filter" cssClass="fs-6 mb-0" />
+            <Title title="Select Category" cssClass="fs-6 mb-0" />
             <select
             className="form-select "
             aria-label="Default select example"

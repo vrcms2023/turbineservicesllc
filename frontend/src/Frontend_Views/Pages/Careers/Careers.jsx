@@ -217,14 +217,14 @@ const Careers = () => {
       </CareerFilterStyled> */}
 
       <div className="container mt-4 my-md-5 careerItems">
-        {isAdmin && hasPermission && (
+        {/* {isAdmin && hasPermission && (
           <div className="text-end mb-4">
             <Link
               to="#"
               className="btn btn-primary"
               onClick={() => editHandler("addjob", true)}
             >
-              Add New Career{" "}
+              New
               <i className="fa fa-plus ms-2" aria-hidden="true"></i>
             </Link>
           </div>
@@ -238,13 +238,36 @@ const Careers = () => {
               type="add"
             />
           </div>
-        )}
+        )} */}
 
         <div>
           <CareersPageStyled>
             <div className="row mb-4 pb-4">
-              <div className="col-md-6">
-                <Title title="Careers" cssClass="fs-3 pageTitle" />
+              <div className="col-md-6 d-flex aling-items-center justify-content-between justify-content-md-start">
+                <Title title="Careers" cssClass="pageTitle fs-4" />
+
+                {isAdmin && hasPermission && (
+                  <div className="">
+                    <Link
+                      to="#"
+                      className="btn btn-outline ms-2"
+                      onClick={() => editHandler("addjob", true)}
+                    >
+                      New
+                      <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+                    </Link>
+                  </div>
+                )}
+                {componentEdit.addjob && (
+                  <div className={`adminEditTestmonial selected `}>
+                    <JobPostFrom
+                      editHandler={editHandler}
+                      componentType="addjob"
+                      popupTitle="Add Career Details"
+                      type="add"
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="col-md-6">

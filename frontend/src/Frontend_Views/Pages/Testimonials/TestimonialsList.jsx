@@ -319,26 +319,32 @@ const TestimonialsList = () => {
 
       {/* Add Clients */}
       <div className="container-fluid container-lg my-md-5 ">
-        <div className="row">
-          {isAdmin && hasPermission && (
-            <div className="col-md-12">
+          {/* {isAdmin && hasPermission && (
               <div className="d-flex justify-content-end align-items-center mb-3">
-                {/* <span className="fw-bold me-2">Add Testimonials </span> */}
+                <span className="fw-bold me-2">Add Testimonials </span>
                 <button
                   type="submit"
-                  className="btn btn-primary px-3"
+                  className="btn btn-outline"
                   onClick={() => editHandler("addSection", true, {})}
                 >
-                  Add New Testimonials{" "}
+                  New
                   <i className="fa fa-plus ms-2" aria-hidden="true"></i>
                 </button>
               </div>
-            </div>
-          )}
-        </div>
+          )} */}
         <div className="row">
-          <div className="col-md-6 d-flex align-items-center">
-            <Title title="Testimonials" cssClass="fw-medium pageTitle" />
+          <div className="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start">
+            <Title title="Testimonials" cssClass="pageTitle fs-4" />
+            {isAdmin && hasPermission && (
+              <button
+                  type="submit"
+                  className="btn btn-outline ms-2"
+                  onClick={() => editHandler("addSection", true, {})}
+                >
+                  New
+                  <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+              </button>
+              )}
           </div>
 
           <div className="col-md-6">
@@ -371,7 +377,7 @@ const TestimonialsList = () => {
               deleteImageURL="testimonials/updateTestimonials/"
               imagePostURL="testimonials/createTestimonials/"
               imageUpdateURL="testimonials/updateTestimonials/"
-              imageLabel="Image"
+              imageLabel="Upload Image"
               showDescription={false}
               showExtraFormFields={getTestimonialsFields("testmonial")}
               dimensions={imageDimensionsJson("testimonial")}
@@ -382,7 +388,7 @@ const TestimonialsList = () => {
         )}
 
         <TestimonialsListPageStyled>
-          <div className="testimonialsPage my-5">
+          <div className="testimonialsPage my-3">
             {isLoading ? (
               <div className="row">
                 {[1, 2, 3, 4].map((item, index) => (
@@ -460,7 +466,7 @@ const TestimonialsList = () => {
                                   {item.testimonial_title ? (
                                     <Title
                                       title={item.testimonial_title}
-                                      cssClass="fs-3 mb-1"
+                                      cssClass="fs-5 mb-1"
                                     />
                                   ) : (
                                     ""
@@ -468,6 +474,7 @@ const TestimonialsList = () => {
                                   <RichTextView
                                     data={item?.testimonial_description}
                                     className=""
+                                    showMorelink={false}
                                   />
                                   {/* <div
                                     dangerouslySetInnerHTML={{

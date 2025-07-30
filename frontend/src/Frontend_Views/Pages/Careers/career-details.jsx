@@ -35,6 +35,7 @@ import {
   createShowHideComponent,
   updateShowHideComponent,
 } from "../../../redux/showHideComponent/showHideActions";
+import Ancher from "../../../Common/Ancher";
 
 const Careers = () => {
   const editComponentObj = {
@@ -164,15 +165,22 @@ const Careers = () => {
 
       <div className="container mt-3">
         <div className="row">
-          <div className="col-8 col-md-10">
+          <div className="col-md-12 d-flex justify-content-between align-items-center">
             <Title title="Details" cssClass="fw-medium fs-4 pageTitle " />
+            <Ancher
+              AncherLabel="Back"
+              AncherClass="btn btn-outline"
+              Ancherpath={`/careers/`}
+              AnchersvgColor=""
+              icon="fa-chevron-left"
+            />
           </div>
-          <div className="col-4 col-md-2 text-end">
+          {/* <div className="col-4 col-md-2 text-end">
             <Link to="/careers" className="btn btn-outline">
               <i className="fa fa-chevron-left me-2" aria-hidden="true"></i>
               <span className="">Back</span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -183,7 +191,7 @@ const Careers = () => {
       </CareerFilterStyled> */}
 
       <CareersPageStyled>
-        <div className="container py-4 mb-md-5 py-md-4">
+        <div className="container mb-md-5 py-md-4">
           <div className="row d-flex flex-rowreverse">
             <div className="col-md-7 col-lg-9 p-0">
               <JobBriefDetails jobDetails={posts} />

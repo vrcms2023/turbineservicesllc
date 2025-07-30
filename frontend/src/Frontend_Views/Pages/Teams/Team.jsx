@@ -298,26 +298,37 @@ const Team = () => {
       </div>
 
       <div className="container">
-        <div className="row">
+        {/* <div className="row">
           <div className="col-md-12 mt-4">
             {isAdmin && hasPermission && (
               <div className="text-end mb-4">
                 <Link
                   to="#"
-                  className="btn btn-primary"
+                  className="btn btn-outline"
                   onClick={() => editHandler("addSection", true)}
                 >
-                  Add team
-                  <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+                  <i className="fa fa-plus" aria-hidden="true"></i>
                 </Link>
               </div>
             )}
           </div>
-        </div>
+        </div> */}
 
-        <div className="row mb-0 py-2 py-md-4">
-          <div className="col-md-6 fs-3 mt-4 mt-md-0">
-            <Title title="Our Team" cssClass="fs-1 pageTitle" />
+        <div className="row mb-0 mt-4">
+          <div className="col-md-6 d-flex align-items-center justify-content-between justify-content-md-start">
+            <Title title="Our Team" cssClass="pageTitle fs-4" />
+            
+            {isAdmin && hasPermission && (
+              <div className="text-end">
+                <Link
+                  to="#"
+                  className="btn btn-outline ms-2"
+                  onClick={() => editHandler("addSection", true)}
+                > New
+                  <i className="fa fa-plus ms-2" aria-hidden="true"></i>
+                </Link>
+              </div>
+            )}
           </div>
 
           <div className="col-md-6 mb-4">

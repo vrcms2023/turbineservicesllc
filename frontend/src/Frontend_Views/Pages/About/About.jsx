@@ -230,18 +230,18 @@ const About = () => {
             )}
 
             <BriefIntroFrontend
-              introState={componentEdit.briefIntro}
-              border="border-light border-bottom border-5"
-              linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
-              linkLabel="Read More"
-              moreLink=""
-              introTitleCss="text-center m-0"
-              introSubTitleCss="text-center mb-3"
-              introDecTitleCss="fw-normal m-auto text-center"
-              detailsContainerCss="col-lg-8 offset-lg-2 p-4 p-sm-3 px-sm-5"
-              anchorContainer="d-flex justify-content-center align-items-center mt-4"
-              anchersvgColor="#17427C"
               pageType={pageType}
+              introState={componentEdit.briefIntro}
+              detailsContainerCss="col-lg-8 offset-lg-2 text-center"
+              // border="border-light border-bottom border-5"
+              introTitleCss=""
+              introSubTitleCss=""
+              introDecTitleCss=""
+              linkLabel="Read More"
+              linkCss="btn btn-outline"
+              moreLink=""
+              anchorContainer=""
+              anchersvgColor=""
             />
             {componentEdit.briefIntro && (
               <div className={`adminEditTestmonial selected `}>
@@ -290,7 +290,7 @@ const About = () => {
                 imagePostURL="aboutus/createAboutus/"
                 imageUpdateURL="aboutus/updateAboutus/"
                 imageDeleteURL="aboutus/updateAboutus/"
-                imageLabel="Add About us Banner"
+                imageLabel="Upload Image"
                 showDescription={false}
                 showExtraFormFields={getAboutUSSectionFields()}
                 dimensions={imageDimensionsJson("aboutus")}

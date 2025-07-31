@@ -154,23 +154,23 @@ const ProjectTabs = () => {
       <div className="container">
         <div className="row p-0 pt-4 projectTabs">
           <div className="col-md-12">
-            <div className="d-flex justify-content-end">
+            {/* <div className="d-flex justify-content-end">
               <Button
                 type=""
-                cssClass={"btn btn-primary"}
-                label="Go To All Projects"
+                cssClass={"btn btn-outline"}
+                label="All Projects"
                 handlerChange={() => {
                   navigate("/projects");
                 }}
               />
-            </div>
+            </div> */}
 
             <div className="d-flex justify-content-between align-items-center mt-3 mb-3">
-              <div className="w-50">
+              <div className="w-50 d-flex">
                 <Title
-                  title={projectHome.projectCategoryName}
-                  subTitle={projectTitle}
-                  cssClass="fs-6 breadCrumb"
+                  title={projectHome.projectCategoryName + " " + " / " + projectTitle}
+                  // subTitle={projectTitle}
+                  cssClass="fs-5 breadCrumb "
                 />
               </div>
 
@@ -194,13 +194,24 @@ const ProjectTabs = () => {
                 {isAdmin && hasPermission && (
                   <Button
                     type=""
+                    icon="fa-pencil me-2 text-warning"
                     cssClass={"btn btn-outline"}
                     label="Edit"
                     handlerChange={() => {
                       navigate(`/editproject/${projectid}`);
                     }}
                   />
+                  
                 )}
+                <Button
+                type=""
+                icon="fa-chevron-left me-2"
+                cssClass={"btn btn-outline"}
+                label="Projects"
+                handlerChange={() => {
+                  navigate("/projects");
+                }}
+              />
               </div>
             </div>
 

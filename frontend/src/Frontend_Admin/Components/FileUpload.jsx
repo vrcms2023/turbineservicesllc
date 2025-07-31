@@ -530,7 +530,7 @@ const FileUpload = ({
             })}
           </div>
         </div>
-        <div className="row">
+        <div className="row my-3">
           <div className="d-flex justify-content-center align-items-center gap-2">
             {!editImage?.id ? (
               <button

@@ -24,18 +24,27 @@ const ProjectItem = ({ projectList, projectType }) => {
         <div className="row">
           {projectList.length > 0
             ? projectList.map((project) => (
-                <div className="col-md-3 mb-3" key={project.id}>
+                <div className="col-md-3 col-lg-2 mb-5 cursor-pointer" key={project.id}
+                  onClick={() =>
+                    navigate("/project-details", {
+                      state: {
+                        selectedPorject: projectType,
+                        projectid: project.id,
+                      },
+                    })
+                  }
+                >
                   <div className="position-relative box">
                     <div className="infoStrip">
                       <Title
                         title={project.projectTitle}
-                        cssClass="text-white fs-5"
+                        cssClass="text-white fs-5 fw-normal"
                       />
                       {/* <Link to="" className="blue-900">
                       more details
                     </Link> */}
-                      <button
-                        className="btn btn-primary btn-sm"
+                      {/* <button
+                        className="btn btn-sm"
                         onClick={() =>
                           navigate("/project-details", {
                             state: {
@@ -46,14 +55,14 @@ const ProjectItem = ({ projectList, projectType }) => {
                         }
                       >
                         more details
-                      </button>
+                      </button> */}
                     </div>
                     {project.imgs.length > 0 ? (
-                      <img src={`${baseURL}${project.imgs[0].path}`} alt="" />
+                      <img src={`${baseURL}${project.imgs[0].path}`} alt={project.projectTitle} />
                     ) : (
                       <img
                         src={`${baseURL}/media/images/dummy-image-square.png`}
-                        alt=""
+                        alt={`${projectList[0].projectCategoryName} Projects`}
                       />
                     )}
                   </div>

@@ -21,7 +21,7 @@ const ImagesGallery = () => {
 
   const pageType = "imageGallery";
   const { isAdmin, hasPermission } = useAdminLoginStatus();
-  //const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const [componentEdit, SetComponentEdit] = useState(editComponentObj);
   const [imageGallery, setImageGallery] = useState([]);
   //const [showModal, setShowModal] = useState(false);

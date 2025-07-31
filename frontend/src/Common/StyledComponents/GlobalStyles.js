@@ -294,7 +294,8 @@ body, p {
       background-color: ${({ theme }) => theme.clientPrimaryColor} !important;
     }
 
-    .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief, .projectsList {
+    // .projectsList
+    .commonBg, .homeDynamciServicesIntro, .homeServicesContainer, .homeServicesBrief,  {
       background-image:url(${commonBgImg});
       background-attachment: fixed;
       background-size: 100%;

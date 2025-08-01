@@ -98,7 +98,7 @@ const ImagesGallery = () => {
                     imagePostURL="imgGallery/createImageVidoeGallery/"
                     imageUpdateURL="imgGallery/updateImageVidoeGallery/"
                     imageIndexURL="imgGallery/updateNewsIndex/"
-                    imageLabel="Add Image"
+                    imageLabel="Upload Image"
                     showDescription={false}
                     showExtraFormFields={getImageGalleryFields("imageGallery")}
                     dimensions={imageDimensionsJson("imageGallery")}
@@ -112,6 +112,7 @@ const ImagesGallery = () => {
             pageType={pageType}
             componentEdit={componentEdit}
             imageGallery={imageGallery}
+            
           />
         </div>
       </ImageGalleryStyled>

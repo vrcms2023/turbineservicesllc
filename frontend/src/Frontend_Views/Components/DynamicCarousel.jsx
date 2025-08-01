@@ -4,12 +4,18 @@ import { getImagePath } from "../../util/commonUtil";
 import RichTextView from "../../Common/RichTextView";
 
 const DCarousel = ({ obj, all, closeCarousel }) => {
+
+  // contentType, category, path, image_title, image_description
+  
+
   const findImg = all.find((item) => item.id === obj.id);
   const imgs = [findImg, ...all];
-
+    
   const uniqueImgsArray = imgs.filter(function (item, pos) {
     return imgs.indexOf(item) === pos;
   });
+
+  console.log(uniqueImgsArray, "Video Obj")
 
   return (
     <div
@@ -28,15 +34,30 @@ const DCarousel = ({ obj, all, closeCarousel }) => {
         {uniqueImgsArray.length > 0
           ? uniqueImgsArray.map((item, index) => (
               <div
-                className={`carousel-item ${index === 0 ? "active" : ""}`}
+                className={`carousel-item ${index === 0 ? "active" : ""} ${item.contentType == ".mp4" ||  item.category == "VideosGallery" ? "videoGallery" : "imageGallery"}`}
                 key={item.id}
               >
-                <div className="imgContainer">
-                  <img
+                <div className="imgContainer d-flex justify-content-center align-items-center">
+                  {item.contentType == ".mp4" ||  item.category == "VideosGallery" ? (
+                    <video
+                      width="100%"
+                      height="740"
+                      controls
+                      className="d-block w-75"
+                    >
+                      <source
+                        src={getImagePath(item.path)}
+                        type={`video/${item.contentType
+                          .replace(".", "")
+                          .toUpperCase()}`}
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (<img
                     src={getImagePath(item?.path)}
                     alt={item.alternitivetext}
                     className="d-block img-fluid"
-                  />
+                  />)}
                 </div>
                 <div className="imgInfo">
                   {item?.image_title ||

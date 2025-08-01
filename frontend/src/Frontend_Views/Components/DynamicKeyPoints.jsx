@@ -19,7 +19,7 @@ const DynamicKeyPoints = ({ editHandler, objectstatus, pageType }) => {
   return (
     <div className="position-relative">
       {isAdmin && hasPermission && (
-        <EditIcon editHandler={() => editHandler(pageType, true)} editlabel="Key Points" />
+        <EditIcon editHandler={() => editHandler(pageType, true)} editlabel="Key" />
       )}
 
       <DynamicKeyPoint

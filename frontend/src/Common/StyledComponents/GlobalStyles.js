@@ -500,6 +500,14 @@ body, p {
   color: #2F2F2F;
   font-size: .9rem;
 }
+
+.videoGallery .imgInfo {
+        background: ${({ theme }) => theme.gray444};
+        color: ${({ theme }) => theme.white};
+        padding: 16px 24px;
+        width: 100%;
+        text-align: center;
+      }
 `;
 
 

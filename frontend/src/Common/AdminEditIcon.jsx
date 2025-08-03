@@ -14,8 +14,10 @@ const EditIcon = ({
       <span className={`${cssClasses} editIcon`}>
         {editlabel && <span className="componentType">{editlabel}</span>}
         <i
+          role="button"
+          tabIndex={0}
           className={`fa ${icon} ${iconCss}`}
-          aria-hidden="true"
+          aria-label={`Edit ${editlabel || 'component'}`}
           onClick={editHandler}
         ></i>
       </span>

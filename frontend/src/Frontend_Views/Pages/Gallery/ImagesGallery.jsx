@@ -84,7 +84,7 @@ const ImagesGallery = () => {
               {isAdmin && hasPermission && (
                 <EditIcon
                   editHandler={() => editHandler("gallery", true)}
-                  editlabel={"Image gallery"}
+                  editlabel={"Gallery"}
                 />
               )}
               {componentEdit.gallery && (

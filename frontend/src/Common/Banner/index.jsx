@@ -60,16 +60,14 @@ const Banner = ({
             <Title
               title={bannerdata.banner_title}
               cssClass={bannerTitleCss}
-              // cssClass=""
               mainTitleClassess=""
-              subTitleClassess=""
             />
           )}
           {bannerdata.banner_subTitle !== "" && (
             <Title
-              title={bannerdata.banner_subTitle}
+              subTitle={bannerdata.banner_subTitle}
               cssClass={bannerSubTitleCss}
-              mainTitleClassess=""
+              subTitleClassess=""
             />
           )}
           {bannerdata.banner_descripiton !== "" && (

@@ -402,6 +402,7 @@ const FileUpload = ({
     }
   };
 
+
   return (
     <>
       <form
@@ -440,9 +441,12 @@ const FileUpload = ({
                   instantUpload={false}
                 />
               </div>
-              <div className="text-muted">
+              {maxFiles !== 1 ? (
+                <div className="text-muted">
                 <small className="d-block text-center" style={{ fontSize: ".75rem" }}>You can upload a maximum of {maxFiles ? maxFiles : 4} images at a time.</small>
               </div>
+              ) : "" }
+              
               {error ? <Error>{error}</Error> : ""}
             </div>
             {editImage?.id &&

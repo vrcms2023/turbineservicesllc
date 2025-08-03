@@ -324,9 +324,9 @@ const Header = () => {
           <ImageInputsForm
             editHandler={editHandler}
             componentType="menu"
-            popupTitle="Application Logo"
+            popupTitle="Logo"
             pageType={`${pageType}-logo`}
-            imageLabel="Application Logo"
+            imageLabel="Upload Logo"
             category="Logo"
             showDescription={false}
             validTypes={"image/svg+xml"}

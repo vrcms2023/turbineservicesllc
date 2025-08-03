@@ -13,16 +13,16 @@ export const FooterStyled = styled.div`
   // background-size: 40%;
   // background: linear-gradient(360deg, ${({ theme }) => theme.white} 0%, ${({ theme }) => theme.black} 100%);
   background: ${({ theme }) => theme.footerBgColor};
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.gray444};
     // border-top: 1px solid ${({ theme }) => theme.grayccc};
-    font-size: .8rem;
+    // font-size: .8rem;
 
     .footerCompanyBrief {
       background: ${({ theme }) => theme.grayddd};
 
       p {
         color: ${({ theme }) => theme.gray444};
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
 
       .footerLogo {
@@ -42,17 +42,7 @@ export const FooterStyled = styled.div`
       border-color: ${({ theme }) => theme.white};
     }
 
-    h5 {
-      font-weight: 500;
-      font-style: normal;
-      font-size: 1.6rem !important;
-      color: ${({ theme }) => theme.black};
-    }
-
-    a {
-      font-size: .8rem;
-      color: ${({ theme }) => theme.lightWhiteF8};
-    }
+    
 
   .footerDetails {
     position: relative;
@@ -63,6 +53,26 @@ export const FooterStyled = styled.div`
     //     color: ${({ theme }) => theme.footerLinkHoverColor};
     //   }
     // }
+
+    h5 {
+      font-weight: 500;
+      font-style: normal;
+      font-size: 1.6rem !important;
+      color: ${({ theme }) => theme.black};
+    }
+
+    h4 {
+      color: ${({ theme }) => theme.white};
+    }
+
+    p {
+      font-size: .9rem;
+    }
+
+    a {
+      font-size: .9rem;
+      color: ${({ theme }) => theme.lightWhiteF8};
+    }
   
     ul {
       list-style: none;

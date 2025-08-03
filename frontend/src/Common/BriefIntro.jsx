@@ -24,6 +24,8 @@ const BriefIntroFrontend = ({
   anchersvgColor,
   showLink = true,
   maxHeight,
+  seoTitle,
+  mainTitleClassess
 }) => {
   const [introValue, setIntroValues] = useState([]);
   const { isAdmin, hasPermission } = useAdminLoginStatus();
@@ -53,7 +55,7 @@ const BriefIntroFrontend = ({
         <div className="row ">
           <div className={`${detailsContainerCss} briefIntro`}>
             {introValue?.intro_title !== "" && (
-              <Title title={introValue?.intro_title} cssClass={introTitleCss} />
+              <Title title={introValue?.intro_title} cssClass={introTitleCss} mainTitleClassess={mainTitleClassess} seoTitle/>
             )}
             {introValue?.subTitle !== "" && (
               <Title subTitle={introValue?.subTitle} cssClass={introSubTitleCss} />

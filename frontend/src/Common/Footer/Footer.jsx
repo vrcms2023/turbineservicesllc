@@ -444,16 +444,17 @@ const Footer = () => {
                   )}
 
                   {footerValues.facebook_url && (
-                    <Link to={footerValues.facebook_url} target="_blank">
+                    <Link to={footerValues.facebook_url} target="_blank" aria-label="Facebook Profile">
                       <i
                         className="fa fa-facebook-square"
                         aria-hidden="true"
+                        
                       ></i>
                     </Link>
                   )}
 
                   {footerValues.twitter_url && (
-                    <Link to={footerValues.twitter_url} target="_blank">
+                    <Link to={footerValues.twitter_url} target="_blank" aria-label="Twitter Profile">
                       <i
                         className="fa fa-twitter-square"
                         aria-hidden="true"
@@ -462,7 +463,7 @@ const Footer = () => {
                   )}
 
                   {footerValues.youtube_url ? (
-                    <Link to={footerValues.youtube_url} target="_blank">
+                    <Link to={footerValues.youtube_url} target="_blank" aria-label="Youtube Channel">
                       <i className="fa fa-youtube-play" aria-hidden="true"></i>
                     </Link>
                   ) : (
@@ -470,7 +471,7 @@ const Footer = () => {
                   )}
 
                   {footerValues.linkedIn_url && (
-                    <Link to={footerValues.linkedIn_url} target="_blank">
+                    <Link to={footerValues.linkedIn_url} target="_blank" aria-label="Linked In Profile">
                       <i
                         className="fa fa-linkedin-square"
                         aria-hidden="true"
@@ -479,19 +480,19 @@ const Footer = () => {
                   )}
 
                   {footerValues.instagram_url && (
-                    <Link to={footerValues.instagram_url} target="_blank">
+                    <Link to={footerValues.instagram_url} target="_blank" aria-label="Instagram Profile">
                       <i className="fa fa-instagram" aria-hidden="true"></i>
                     </Link>
                   )}
 
                   {footerValues.vimeo_url && (
-                    <Link to={footerValues.vimeo_url} target="_blank">
+                    <Link to={footerValues.vimeo_url} target="_blank" aria-label="Vimeo Profile">
                       <i className="fa fa-vimeo" aria-hidden="true"></i>
                     </Link>
                   )}
 
                   {footerValues.pinterest_url && (
-                    <Link to={footerValues.pinterest_url} target="_blank">
+                    <Link to={footerValues.pinterest_url} target="_blank" aria-label="Pinterest Profile">
                       <i className="fa fa-pinterest" aria-hidden="true"></i>
                     </Link>
                   )}
@@ -534,13 +535,52 @@ const Footer = () => {
                     </Link>
                   </div>
                 </div>
-                <span className="d-block mt-2 ">
-                  Designed & developed by{" "}
-                  <a href="http://www.varadesigns.com" className="dby">
-                    <small className="p-1 fw-bold d-inline-block">
-                      VARA-DESIGNS
-                    </small>
-                  </a>
+                
+                  {/* Designed & developed by{" "}
+                  <a href="http://www.vitsols.com" className="dby fw-medium" aria-label="Custom CMS developed by VITSOLS for small businesses" >
+                      VITSOLS
+                  </a> */}
+                  <span className="d-block mt-2">
+                    Designed & developed by {" "}
+                    <a
+                      href="https://www.vitsols.com"
+                      className="dby fw-medium"
+                      aria-label=" VITSOLS web design and digital solutions company"
+                    >
+                      VITSOLS – Web Design & Digital Solutions
+                    </a>
+
+                    {/* Variation 1 – Web Design Keyword (low–medium competition)
+                      <a 
+                          href="https://www.vitsols.com"
+                          className="dby fw-medium"
+                          aria-label="VITSOLS responsive web design company in India"
+                        >
+                          VITSOLS – Responsive Web Design
+                        </a>
+                    */}
+
+                    {/* Variation 2 – CMS Keyword (low competition) 
+
+                    <a 
+                        href="https://www.vitsols.com"
+                        className="dby fw-medium"
+                        aria-label="VITSOLS custom CMS development services for small businesses"
+                      >
+                        VITSOLS – Custom CMS Development
+                    </a>
+                    */}
+
+                    {/* Variation 3 – Digital Marketing Keyword (medium competition) 
+                    
+                    <a 
+                      href="https://www.vitsols.com"
+                      className="dby fw-medium"
+                      aria-label="VITSOLS digital marketing and website design services"
+                    >
+                      VITSOLS – Digital Marketing & Web Design
+                    </a>
+                    */}
                 </span>
               </div>
             </div>

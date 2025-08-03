@@ -188,9 +188,9 @@ const About = () => {
                 <ImageInputsForm
                   editHandler={editHandler}
                   componentType="banner"
-                  popupTitle="About Banner"
+                  popupTitle="About - Banner Image"
                   pageType={`${pageType}-banner`}
-                  imageLabel="Banner Image"
+                  imageLabel="Upload Image"
                   showDescription={false}
                   showExtraFormFields={getFormDynamicFields(
                     `${pageType}-banner`
@@ -235,13 +235,15 @@ const About = () => {
               detailsContainerCss="col-lg-8 offset-lg-2 text-center"
               // border="border-light border-bottom border-5"
               introTitleCss=""
-              introSubTitleCss=""
+              introSubTitleCss="py-3 d-inline-block"
               introDecTitleCss=""
               linkLabel="Read More"
               linkCss="btn btn-outline"
               moreLink=""
               anchorContainer=""
               anchersvgColor=""
+              mainTitleClassess={"fs-3"}
+              seoTitle={true}
             />
             {componentEdit.briefIntro && (
               <div className={`adminEditTestmonial selected `}>
@@ -371,7 +373,7 @@ const About = () => {
                         /> */}
                     <img
                       src={getImagePath(item.path)}
-                      alt=""
+                      alt={item.alternitivetext}
                       className="object-fit-cover shadow m-auto"
                     />
                   </div>

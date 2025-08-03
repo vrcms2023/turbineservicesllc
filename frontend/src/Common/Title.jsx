@@ -9,16 +9,26 @@ const Title = ({
   cssClass,
   mainTitleClassess="",
   subTitleClassess="",
-  icon
+  icon,
+  seoTitle=false
 }) => {
   
   return (
     <TitleSubTitleStyled>
-      {title ? (
+      {seoTitle ? (
+        <h1 className={`${mainTitleClassess}`}>
+          {icon ? <i class={`fa ${icon}`} aria-hidden="true"></i> : ""} {title} 
+        </h1>
+      ) : title ? (
+        <h5 className={`${cssClass}`}>
+          {icon ? <i class={`fa ${icon}`} aria-hidden="true"></i> : ""} {title} 
+        </h5>
+      ) : ""}
+      {/* {title ? (
         <h5 className={`${cssClass} ${mainTitleClassess}`}>
         {icon ? <i class={`fa ${icon}`} aria-hidden="true"></i> : ""} {title} 
       </h5>
-      ) : ""}
+      ) : ""} */}
       
       {subTitle ? (
           <span className={`${subTitleClassess}`}>{subTitle}</span>

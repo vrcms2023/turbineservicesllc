@@ -1,6 +1,10 @@
-/* .react-confirm-alert-overlay {
-  z-index: 99999 !important;
-} */
+ .react-confirm-alert-overlay {
+  z-index: 999998 !important;
+} 
+
+.Toastify__toast-container {
+  z-index: 999999 !important;
+}
 
 .modal {
   position: fixed !important;

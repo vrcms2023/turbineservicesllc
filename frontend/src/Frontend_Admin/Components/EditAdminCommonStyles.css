@@ -141,10 +141,31 @@
 
 .imglist  {
   margin-bottom: 1rem;
+
+  .slideItem {
+
+    .col-md-8 {
+      padding: 1rem;
+    
+      .pl-editor {
+        padding: 0 !important;
+      }
+
+      p, p span, .introDecTitleCss, div {
+        text-align: left;
+        padding: 0 !important;
+        line-clamp: 1;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
 }
 
 .heightCtrl {
-  max-height: 280px;
+  max-height: 200px;
   overflow: auto;
   overflow-x: hidden;
   resize: vertical;
@@ -195,7 +216,11 @@
 .adminEditTestmonial  .quill {
       background-color: rgba(255, 255, 255, .7) !important;
 
-      p, p span, .introDecTitleCss {
+      .pl-editor {
+        padding: 0 !important;
+      }
+
+      p, p span, .introDecTitleCss, div {
         text-align: left;
         padding: .5rem;
       }

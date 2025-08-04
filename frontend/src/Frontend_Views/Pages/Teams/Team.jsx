@@ -362,7 +362,7 @@ const Team = () => {
               deleteImageURL="ourteam/UpdateOurteamDetail/"
               imagePostURL="ourteam/createteam/"
               imageUpdateURL="ourteam/UpdateOurteamDetail/"
-              imageLabel="Add Profile Image"
+              imageLabel="Upload Image"
               showDescription={false}
               showExtraFormFields={getTeamMemberFields(
                 editCarousel?.team_member_position

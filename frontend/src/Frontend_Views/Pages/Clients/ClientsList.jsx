@@ -332,7 +332,7 @@ const ClientsList = () => {
               imagePostURL="client/createClientLogo/"
               imageUpdateURL="client/updateClientLogo/"
               imageDeleteURL="client/updateClientLogo/"
-              imageLabel="Add Client Logo"
+              imageLabel="Upload Image"
               showDescription={false}
               showExtraFormFields={getClinetLogsFields()}
               dimensions={imageDimensionsJson("aboutus")}

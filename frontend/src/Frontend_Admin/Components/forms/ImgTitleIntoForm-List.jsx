@@ -148,6 +148,7 @@ const AdminBanner = ({
     }
   };
 
+  console.log(Object.keys(editCarousel).length, "editCarousel")
   return (
     <div>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
@@ -185,9 +186,17 @@ const AdminBanner = ({
           ) : (
             ""
           )}
-          {/* <hr className="" /> */}
+          
 
-          <div className={`mb-5 mb-md-0 px-0 ${carousel?.length > 0 ? "col-md-12" : "col-md-12"}`}>
+        <small className={`text-center py-1 fw-medium text-white ${Object.keys(editCarousel).length > 0 ? "bg-warning " : "bg-secondary"}`}>
+          {Object.keys(editCarousel).length > 0 ? "EDIT" : "ADD NEW"}
+        </small>
+        {/* <hr className="border-1 border-white" /> */}
+          <div
+            className={`mb-5 mb-md-0 border border-2 p-2 ${
+              Object.keys(editCarousel).length > 0  ? " border-warning" : "border-secondary"
+            }`}
+          >
             <FileUpload
               title={imageLabel}
               project={project}

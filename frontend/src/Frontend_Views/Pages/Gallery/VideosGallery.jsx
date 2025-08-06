@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import EditIcon from "../../../Common/AdminEditIcon";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 import AdminBanner from "../../../Frontend_Admin/Components/forms/ImgTitleIntoForm-List";
-import {
-  getImageGalleryFields,
-  imageDimensionsJson,
-} from "../../../util/dynamicFormFields";
+import { getImageGalleryFields, getVideoGalleryFields, imageDimensionsJson } from "../../../util/dynamicFormFields";
 import ModelBg from "../../../Common/ModelBg";
 import DynamicCarousel from "../../Components/DynamicCarousel";
-import { getImagePath } from "../../../util/commonUtil";
+import { getImagePath, getImageURL } from "../../../util/commonUtil";
 import { axiosClientServiceApi } from "../../../util/axiosUtil";
 import RichTextView from "../../../Common/RichTextView";
 import Title from "../../../Common/Title";
@@ -35,9 +32,7 @@ const VideosGallery = () => {
   useEffect(() => {
     const getGalleryImages = async () => {
       try {
-        const response = await axiosClientServiceApi.get(
-          `imgGallery/clientImageVidoeGallery/${pageType}/`
-        );
+        const response = await axiosClientServiceApi.get(`appGallery/clientVidoeGallery/${pageType}/`);
 
         if (response?.status === 200) {
           let key = Object.keys(response.data);
@@ -52,7 +47,6 @@ const VideosGallery = () => {
       getGalleryImages();
     }
   }, [componentEdit.gallery]);
-
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -70,31 +64,26 @@ const VideosGallery = () => {
 
   return (
     <div className="container">
-
       <div className="row">
         <div className="col-md-12 py-5">
-          {isAdmin && hasPermission && (
-            <EditIcon
-              editHandler={() => editHandler("gallery", true)}
-              editlabel={"Video's"}
-            />
-          )}
+          {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("gallery", true)} editlabel={"Video's"} />}
           {componentEdit.gallery && (
             <div className={`adminEditTestmonial selected `}>
               <AdminBanner
                 editHandler={editHandler}
                 componentType="gallery"
                 popupTitle="Video Gallery"
-                getImageListURL={`imgGallery/createImageVidoeGallery/${pageType}/`}
-                deleteImageURL="imgGallery/updateImageVidoeGallery/"
-                imagePostURL="imgGallery/createImageVidoeGallery/"
-                imageUpdateURL="imgGallery/updateImageVidoeGallery/"
-                imageIndexURL=""
-                imageLabel="Upload Video"
+                getImageListURL={`appGallery/createVidoeGallery/${pageType}/`}
+                deleteImageURL="appGallery/updateVidoeGallery/"
+                imagePostURL="appGallery/createVidoeGallery/"
+                imageUpdateURL="appGallery/updateVidoeGallery/"
+                imageIndexURL="appGallery/updateVideoIndex/"
+                imageLabel="Upload Video - OR - YouTube URL "
                 showDescription={false}
-                showExtraFormFields={getImageGalleryFields("VideosGallery")}
+                showExtraFormFields={getVideoGalleryFields("VideosGallery")}
                 dimensions={imageDimensionsJson("VideosGallery")}
                 validTypes={"video/quicktime,video/mp4,video/avi"}
+                sideDeck="videopopup"
               />
             </div>
           )}
@@ -106,42 +95,22 @@ const VideosGallery = () => {
           imageGallery?.map((item, index) => (
             <div className="col-md-4 mb-4 border p-0  d-flex flex-column justify-content-center align-items-center " key={item.id}>
               <div className="bg-light w-100 d-flex justify-content-center align-items-center py-2">
-                <video
-                  width="100%"
-                  height="200"
-                  controls
-                  className="d-block w-75"
-                  onClick={() => findThumbHandler(item.id)}
-                >
-                  <source
-                    src={getImagePath(item.path)}
-                    type={`video/${item.contentType
-                      .replace(".", "")
-                      .toUpperCase()}`}
-                  />
+                <img src={getImageURL(item)} className="d-block w-75" onClick={() => findThumbHandler(item.id)} />
+                {/* <video width="100%" height="200" controls className="d-block w-75" onClick={() => findThumbHandler(item.id)}>
+                  <source src={getImagePath(item?.path)} type={`video/${item?.content_type?.replace(".", "").toUpperCase()}`} />
                   Your browser does not support the video tag.
-                </video>
+                </video> */}
               </div>
               <div className="p-2 py-3 w-100">
-              {item.image_title && (
-                  <Title title={item.image_title} cssClass="fs-5"/>
-                )}
+                {item.image_title && <Title title={item.image_title} cssClass="fs-5" />}
                 {item.image_description && (
-                  <RichTextView
-                    data={
-                      item.image_description
-                        ? item.image_description
-                        : isAdmin
-                          ? ""
-                          : ""
-                    }
-                  />
-                  
+                  <RichTextView data={item.image_description ? item.image_description : isAdmin ? "" : ""} />
+
                   // <p className="fw-normal description fs-5">
                   //   {item.image_description}
                   // </p>
                 )}
-                </div>
+              </div>
               {/* <img
                 src={getImagePath(item.path)}
                 alt={item.alternitivetext}
@@ -163,14 +132,8 @@ const VideosGallery = () => {
             </div>
           ))}
       </div>
-      {show && <ModelBg />}
-      {showModal && (
-        <DynamicCarousel
-          obj={img}
-          all={imageGallery}
-          closeCarousel={closeModel}
-        />
-      )}
+      {/* {show && <ModelBg />} */}
+      {showModal && <DynamicCarousel obj={img} all={imageGallery} closeCarousel={closeModel} />}
       {showModal && <ModelBg closeModel={closeModel} />}
     </div>
   );

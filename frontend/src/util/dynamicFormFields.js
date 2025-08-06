@@ -331,9 +331,35 @@ export const getImageGalleryFields = (category) => {
     image_WebURL: {
       label: "Image URL",
       type: "text",
-      id: "image_WebURL",
+      id: "image_video_WebURL",
       fieldName: "image_WebURL",
-      onchange: "handleImageURLChange",
+    },
+    image_title: {
+      label: "Image Title",
+      type: "text",
+      fieldName: "image_title",
+    },
+    image_description: {
+      label: "Description",
+      type: "richText",
+      fieldName: "image_description",
+    },
+    category: {
+      label: "News Title",
+      readonly: true,
+      type: "hidden",
+      value: category ? category : "",
+      fieldName: "category",
+    },
+  };
+};
+export const getVideoGalleryFields = (category) => {
+  return {
+    video_WebURL: {
+      label: "YouTube URL",
+      type: "text",
+      id: "image_video_WebURL",
+      fieldName: "video_WebURL",
     },
     image_title: {
       label: "Image Title",
@@ -378,8 +404,7 @@ export const getCategoryFormDynamicFields = () => {
     category_fileuplod: {
       label: "Upload File",
       type: "file",
-      accept:
-        "application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      accept: "application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       fieldName: "category_fileuplod",
     },
     company_id: {

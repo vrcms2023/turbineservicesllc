@@ -49,10 +49,10 @@ class ImageModel(BaseModel):
         abstract = True 
 
 class FileUpload(BaseModel):
-    path = models.FileField(upload_to=file_upload_path,  blank=True, null=True, validators=[validate_file_extension])
+    path = models.FileField(upload_to=file_upload_path,  blank=True, null=True )
     original_name = models.CharField(max_length=255, blank=True, editable=False)
     content_type = models.CharField(max_length=100, blank=True, editable=False)
-    alternative_text = models.CharField(max_length=255, blank=True)
+    alternitivetext = models.CharField(max_length=255, blank=True)
 
     def save(self, *args, **kwargs):
         if self.path and not self.original_name:

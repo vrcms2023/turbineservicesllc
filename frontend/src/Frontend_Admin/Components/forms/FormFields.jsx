@@ -114,7 +114,7 @@ export const InputFields = ({ label, type = "text", fieldName, register, isRequi
         const rules = {};
         const validate = {};
 
-        validationObject.forEach((rule) => {
+        validationObject?.forEach((rule) => {
           const { type: ruleType, message } = rule;
 
           if (ruleType === "required") {
@@ -219,7 +219,7 @@ export const InputField = ({ label, type = "text", fieldName, register, cssClass
   return (
     <div className="mb-2 row">
       <label htmlFor="" className={`col-sm-12 col-form-label text-capitalize ${cssClass ? cssClass : ""}`}>
-        <small>{label} </small> 
+        <small>{label} </small>
         {/* {isRequired && <span className="error">*</span>} */}
       </label>
       <div className="col-sm-12">

@@ -127,11 +127,9 @@ body, p {
     background-color:${({ theme }) => theme.verylightgray}; 
     color:${({ theme }) => theme.ABriefTextColor};
 }
-.ABrief h3, .ABrief .title {border-color: ${({ theme }) =>
-  theme.ABriefTitleBorderColor}; }
+.ABrief h3, .ABrief .title {border-color: ${({ theme }) => theme.ABriefTitleBorderColor}; }
 
-  .ABrief h3::before, .ABrief .title::before {border-color: ${({ theme }) =>
-    theme.ABriefTitleBorderColor}; }
+  .ABrief h3::before, .ABrief .title::before {border-color: ${({ theme }) => theme.ABriefTitleBorderColor}; }
 
   // .ABriefAbout {
 //     background: rgb(225,242,253);
@@ -422,10 +420,10 @@ body, p {
   }
 }
 
-.requiredField:after {
-  content: " *";
-  color: ${({ theme }) => theme.error};
-}
+// .requiredField:after {
+//   content: " *";
+//   color: ${({ theme }) => theme.error};
+// }
 
 
 // UTIL BOOTSTRAP V 5+ CLASSESS
@@ -510,16 +508,15 @@ body, p {
       }
 `;
 
-
 // .homeServices {
-//     color:${({ theme }) => theme.secondaryColor}; 
+//     color:${({ theme }) => theme.secondaryColor};
 //     h2 {
-//         color:${({ theme }) => theme.secondaryColor}; 
-//         border-color: ${({ theme }) => theme.primaryColor}; 
+//         color:${({ theme }) => theme.secondaryColor};
+//         border-color: ${({ theme }) => theme.primaryColor};
 //     }
 
 //     h3 {
-//         color:${({ theme }) => theme.secondaryColor}; 
+//         color:${({ theme }) => theme.secondaryColor};
 //     }
 
 //     a.btn {
@@ -531,7 +528,6 @@ body, p {
 //     }
 // }
 
-
 // .btn.moreLink {
 //     float: left !important;
 //     font-size: .8rem;
@@ -542,7 +538,7 @@ body, p {
 //     text-underline-offset: 4px;
 //     text-decoration-style: dashed;
 //     text-decoration-color: rgba(109, 47, 155, .3) !important;
-//     transition: 
+//     transition:
 //         color 0.3s ease,
 //         text-decoration-color 0.3s ease,
 //         margin-top 0.3s ease;
@@ -553,5 +549,3 @@ body, p {
 //         margin-top: 1.2rem;
 //     }
 // }
-
-

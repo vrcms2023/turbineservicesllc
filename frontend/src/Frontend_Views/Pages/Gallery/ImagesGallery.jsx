@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import EditIcon from "../../../Common/AdminEditIcon";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 import AdminBanner from "../../../Frontend_Admin/Components/forms/ImgTitleIntoForm-List";
-import {
-  getImageGalleryFields,
-  imageDimensionsJson,
-} from "../../../util/dynamicFormFields";
+import { getImageGalleryFields, imageDimensionsJson } from "../../../util/dynamicFormFields";
 
 import { paginationDataFormat } from "../../../util/commonUtil";
 import { axiosClientServiceApi } from "../../../util/axiosUtil";
@@ -40,9 +37,7 @@ const ImagesGallery = () => {
   useEffect(() => {
     const getGalleryImages = async () => {
       try {
-        const response = await axiosClientServiceApi.get(
-          `imgGallery/clientImageVidoeGallery/${pageType}/`
-        );
+        const response = await axiosClientServiceApi.get(`appGallery/clientImageGallery/${pageType}/`);
 
         if (response?.status === 200) {
           setResponseData(response?.data);
@@ -81,23 +76,18 @@ const ImagesGallery = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 py-5">
-              {isAdmin && hasPermission && (
-                <EditIcon
-                  editHandler={() => editHandler("gallery", true)}
-                  editlabel={"Gallery"}
-                />
-              )}
+              {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("gallery", true)} editlabel={"Gallery"} />}
               {componentEdit.gallery && (
                 <div className={`adminEditTestmonial selected `}>
                   <AdminBanner
                     editHandler={editHandler}
                     componentType="gallery"
                     popupTitle="Image Gallery"
-                    getImageListURL={`imgGallery/createImageVidoeGallery/${pageType}/`}
-                    deleteImageURL="imgGallery/updateImageVidoeGallery/"
-                    imagePostURL="imgGallery/createImageVidoeGallery/"
-                    imageUpdateURL="imgGallery/updateImageVidoeGallery/"
-                    imageIndexURL="imgGallery/updateNewsIndex/"
+                    getImageListURL={`appGallery/createImageGallery/${pageType}/`}
+                    deleteImageURL="appGallery/updateImageGallery/"
+                    imagePostURL="appGallery/createImageGallery/"
+                    imageUpdateURL="appGallery/updateImageGallery/"
+                    imageIndexURL="appGallery/updateImageIndex/"
                     imageLabel="Upload Image"
                     showDescription={false}
                     showExtraFormFields={getImageGalleryFields("imageGallery")}
@@ -108,28 +98,15 @@ const ImagesGallery = () => {
             </div>
           </div>
 
-          <ImageGalleryComponent
-            pageType={pageType}
-            componentEdit={componentEdit}
-            imageGallery={imageGallery}
-            
-          />
+          <ImageGalleryComponent pageType={pageType} componentEdit={componentEdit} imageGallery={imageGallery} />
         </div>
       </ImageGalleryStyled>
       <div className="row my-5">
         {paginationData?.total_count && (
           <CustomPagination
             paginationData={paginationData}
-            paginationURL={
-              isAdmin
-                ? `imgGallery/createImageVidoeGallery/${pageType}/`
-                : `imgGallery/clientImageVidoeGallery/${pageType}/`
-            }
-            paginationSearchURL={
-              isAdmin
-                ? `imgGallery/createImageVidoeGallery/${pageType}/`
-                : `imgGallery/clientImageVidoeGallery/${pageType}/`
-            }
+            paginationURL={isAdmin ? `appGallery/createImageGallery/${pageType}/` : `appGallery/clientImageGallery/${pageType}/`}
+            paginationSearchURL={isAdmin ? `appGallery/createImageGallery/${pageType}/` : `appGallery/clientImageGallery/${pageType}/`}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
             setResponseData={setResponseData}

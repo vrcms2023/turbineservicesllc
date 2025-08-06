@@ -12,23 +12,15 @@ import Error from "./Error";
 import { getBaseURL } from "../../util/ulrUtil";
 import { getCookie } from "../../util/cookieUtil";
 import { axiosFileUploadServiceApi } from "../../util/axiosUtil";
-import {
-  InputField,
-  InputFields,
-  RichTextInputEditor_V2,
-} from "./forms/FormFields";
-import { getImageFileFromUrl, getImagePath } from "../../util/commonUtil";
+import { InputField, InputFields, RichTextInputEditor_V2 } from "./forms/FormFields";
+import { getImageFileFromUrl, getImagePath, getImageURL } from "../../util/commonUtil";
 
 // CSS
 import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { toast } from "react-toastify";
 
-registerPlugin(
-  FilePondPluginFileValidateType,
-  FilePondPluginImagePreview,
-  FilePondPluginImageExifOrientation
-);
+registerPlugin(FilePondPluginFileValidateType, FilePondPluginImagePreview, FilePondPluginImageExifOrientation);
 
 const FileUpload = ({
   title,
@@ -57,6 +49,7 @@ const FileUpload = ({
   closeHandler,
   scrollEnable = false,
   isclosePopup = true,
+  sideDeck = "",
 }) => {
   const [files, setFiles] = useState([]);
   const [extTypes, setExtTypes] = useState([]);
@@ -67,6 +60,7 @@ const FileUpload = ({
 
   const [error, setError] = useState("");
   const timeoutRef = useRef(null);
+  const [hideFileFound, sethideFileFound] = useState(true);
 
   const {
     control,
@@ -85,6 +79,16 @@ const FileUpload = ({
   useEffect(() => {
     if (!editImage?.id) {
       reset({});
+    }
+  }, [editImage]);
+
+  useEffect(() => {
+    if (editImage?.video_WebURL) {
+      sethideFileFound(false);
+      showImageVideoInput();
+    } else if (editImage?.path) {
+      sethideFileFound(true);
+      hideImageVideoInput();
     }
   }, [editImage]);
 
@@ -128,11 +132,7 @@ const FileUpload = ({
   };
 
   useEffect(() => {
-    if (
-      files.length > 0 &&
-      !showDescription &&
-      showExtraFormFields.length > 0
-    ) {
+    if (files.length > 0 && !showDescription && showExtraFormFields.length > 0) {
       uploadFile();
     }
   }, [files, showDescription, showExtraFormFields]);
@@ -148,10 +148,7 @@ const FileUpload = ({
 
     if (showExtraFormFields) {
       for (const key in showExtraFormFields) {
-        if (
-          showExtraFormFields.hasOwnProperty(key) &&
-          showExtraFormFields[key].type !== "hidden"
-        ) {
+        if (showExtraFormFields.hasOwnProperty(key) && showExtraFormFields[key].type !== "hidden") {
           formData.append(key, data[key]);
         }
         if (showExtraFormFields[key].type === "hidden") {
@@ -178,10 +175,7 @@ const FileUpload = ({
    */
   const creteFileObj = async () => {
     let imageURL = "";
-    if (
-      editImage.path.split("/")[0] === "http:" ||
-      editImage.path.split("/")[0] === "https:"
-    ) {
+    if (editImage.path.split("/")[0] === "http:" || editImage.path.split("/")[0] === "https:") {
       imageURL = editImage.path;
     } else {
       imageURL = `${baseURL}${editImage.path}`;
@@ -193,11 +187,7 @@ const FileUpload = ({
       metadata = {
         type: `image/${editImage.contentType.replace(".", "")}`,
       };
-      return new File(
-        [data],
-        `'${editImage.originalname}${editImage.contentType}'`,
-        metadata
-      );
+      return new File([data], `'${editImage.originalname}${editImage.contentType}'`, metadata);
     } else {
       return new File([data], editImage.originalname);
     }
@@ -210,20 +200,23 @@ const FileUpload = ({
       let formData = new FormData();
       if (files.length > 0) {
         formData.append("path", files[0].file);
-      } else if (editImage.path) {
-        let file = await creteFileObj();
-        formData.append("path", "");
-      } else if (!editImage.path) {
-        setError("Please add an image ");
-        return true;
+      } else if (typeof data.path === "string" && data.path.startsWith("http")) {
+        //let file = await creteFileObj();
+        //formData.append("path", editImage.path);
+        formData.delete("path");
       }
+      // else if (!data.path) {
+      //   setError("Please add an image ");
+      //   return true;
+      // }
+
+      // if (typeof data.path === "string" && path.startsWith("http")) {
+      //   formData.delete("path"); // Don’t send string path
+      // }
 
       formData.append("id", editImage.id);
       formData = setFormData(formData, data);
-      const response = await axiosFileUploadServiceApi.patch(
-        `${imageUpdateURL}${editImage.id}/`,
-        formData
-      );
+      const response = await axiosFileUploadServiceApi.patch(`${imageUpdateURL}${editImage.id}/`, formData);
       if (response?.status === 200) {
         updatedFileChnages([response]);
         closePopupWindow();
@@ -245,7 +238,7 @@ const FileUpload = ({
   };
 
   const getImageWebURL = () => {
-    return document.getElementById("image_WebURL");
+    return document.getElementById("image_video_WebURL");
   };
 
   useEffect(() => {
@@ -255,21 +248,43 @@ const FileUpload = ({
     }
   }, []);
 
-  const handleImageUpload = async () => {
+  const handleImageUpload = () => {
+    const FilePondDiv = document.getElementById("FilePondDiv");
     const imageURL = getImageWebURL().value;
-    const tempFile = await getImageFileFromUrl(imageURL);
-    setFiles([tempFile]);
+    if (imageURL) {
+      FilePondDiv.style.display = "none";
+    }
   };
 
+  const hideImageVideoInput = () => {
+    const imageURL = getImageWebURL();
+    if (imageURL) {
+      imageURL.parentNode.parentNode.style.display = "none";
+    }
+  };
+
+  const showImageVideoInput = () => {
+    const imageURL = getImageWebURL();
+    if (imageURL) {
+      imageURL.parentNode.parentNode.style.display = "block";
+    }
+  };
+
+  const showImageUpload = () => {
+    const FilePondDiv = document.getElementById("FilePondDiv");
+    if (FilePondDiv) {
+      FilePondDiv.style.display = "block";
+    }
+  };
   /**
    * Post new images
    */
   const postImages = async (data) => {
     const arrURL = [];
-    if (files.length === 0) {
-      setError("Please add an image ");
-      return true;
-    }
+    // if (files.length === 0) {
+    //   setError("Please add an image ");
+    //   return true;
+    // }
     data = getFormDataonSubmit(data);
 
     if (files.length > 0) {
@@ -291,6 +306,7 @@ const FileUpload = ({
     try {
       await Promise.all(arrURL).then(function (values) {
         updatedFileChnages(values);
+        resetFileUploadForm();
         closePopupWindow();
       });
     } catch (error) {
@@ -353,6 +369,7 @@ const FileUpload = ({
     });
 
     gallerysetState([...galleryState, ...imgarr]);
+    //setEditCarousel([...galleryState, ...items]);
     resetFileUploadForm();
   };
 
@@ -364,6 +381,9 @@ const FileUpload = ({
    * Reset form
    */
   const resetFileUploadForm = () => {
+    sethideFileFound(true);
+    showImageUpload();
+    showImageVideoInput();
     reset();
     saveState(false);
     setFiles([]);
@@ -383,14 +403,11 @@ const FileUpload = ({
   const onUpdateFiles = (files) => {
     setError("");
     setFiles(files);
+    hideImageVideoInput();
   };
 
   const downloadPDF = (url) => {
-    window.open(
-      url,
-      "_blank",
-      "location=yes,height=800,width=600 ,scrollbars=yes,status=yes"
-    );
+    window.open(url, "_blank", "location=yes,height=800,width=600 ,scrollbars=yes,status=yes");
   };
 
   const closePopupWindow = () => {
@@ -402,17 +419,10 @@ const FileUpload = ({
     }
   };
 
-
   return (
     <>
-      <form
-        className=""
-        onSubmit={handleSubmit(uploadFile)}
-        id="adminActionForm"
-      >
-        <div
-          className={`px-0 ${scrollEnable ? "heightCtrl" : "fullHeightCtrl"}`}
-        >
+      <form className="" onSubmit={handleSubmit(uploadFile)} id="adminActionForm">
+        <div className={`px-0 ${scrollEnable ? "heightCtrl" : "fullHeightCtrl"} ${sideDeck}`}>
           <div className="mb-2 row">
             {title && (
               <label className="col-sm-12 col-form-label requiredField">
@@ -420,57 +430,51 @@ const FileUpload = ({
                 {/* <Title title={title} cssClass="requiredField" /> */}
               </label>
             )}
+            <div id="FilePondDiv">
+              <div className={`${editImage?.id && editImage.path ? "col-6 col-md-6 pe-0" : "col-12"}`}>
+                <div className={`mb-0 ${!hideFileFound ? "d-none" : ""}`}>
+                  <FilePond
+                    labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
+                    labelInvalidField="invalid files"
+                    name="path"
+                    files={files}
+                    onerror={onerror}
+                    onupdatefiles={onUpdateFiles}
+                    allowMultiple={true}
+                    maxFiles={maxFiles ? maxFiles : 4}
+                    maxParallelUploads={4}
+                    disabled={disabledFile}
+                    credits={false}
+                    acceptedFileTypes={extTypes}
+                    instantUpload={false}
+                  />
+                </div>
+                {maxFiles !== 1 ? (
+                  <div className="text-muted">
+                    <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
+                      You can upload a maximum of {maxFiles ? maxFiles : 4} images at a time.
+                    </small>
+                  </div>
+                ) : (
+                  ""
+                )}
 
-            <div
-              className={`${editImage?.id && editImage.path ? "col-6 col-md-6 pe-0" : "col-12"}`}
-            >
-              <div className="mb-0">
-                <FilePond
-                  labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
-                  labelInvalidField="invalid files"
-                  name="path"
-                  files={files}
-                  onerror={onerror}
-                  onupdatefiles={onUpdateFiles}
-                  allowMultiple={true}
-                  maxFiles={maxFiles ? maxFiles : 4}
-                  maxParallelUploads={4}
-                  disabled={disabledFile}
-                  credits={false}
-                  acceptedFileTypes={extTypes}
-                  instantUpload={false}
-                />
+                {error ? <Error>{error}</Error> : ""}
               </div>
-              {maxFiles !== 1 ? (
-                <div className="text-muted">
-                <small className="d-block text-center" style={{ fontSize: ".75rem" }}>You can upload a maximum of {maxFiles ? maxFiles : 4} images at a time.</small>
-              </div>
-              ) : "" }
-              
-              {error ? <Error>{error}</Error> : ""}
-            </div>
-            {editImage?.id &&
-              editImage.path &&
-              editImage.contentType === ".pdf" && (
+              {editImage?.id && editImage.path && editImage.contentType === ".pdf" && (
                 <div className="col-6">
                   <div style={{ marginTop: "30px" }}>
                     <b>File name -</b>{" "}
-                    <a
-                      href="#!"
-                      onClick={() => downloadPDF(`${baseURL}${editImage.path}`)}
-                      className="mx-1 text-dark"
-                    >
+                    <a href="#!" onClick={() => downloadPDF(`${baseURL}${editImage.path}`)} className="mx-1 text-dark">
                       {editImage.originalname}
                     </a>
                   </div>
                 </div>
               )}
-            {editImage?.id &&
-              editImage?.path &&
-              editImage?.contentType !== ".pdf" && (
+              {editImage?.id && (editImage?.path || editImage?.thumbnail_url) && editImage?.contentType !== ".pdf" && (
                 <div className="col-6">
                   <img
-                    src={getImagePath(editImage.path, editImage.contentType)}
+                    src={getImageURL(editImage)}
                     alt={editImage?.alternitivetext}
                     className=""
                     style={{
@@ -483,40 +487,25 @@ const FileUpload = ({
                   />
                 </div>
               )}
-            {dimensions && (
-              <div className="col-12">
-
-                <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
-                  Recommended size <strong>{dimensions.w}</strong> - <strong>{dimensions.h}</strong> 
-
-                </small>
+              {dimensions && (
+                <div className="col-12">
+                  <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
+                    Recommended size <strong>{dimensions.w}</strong> - <strong>{dimensions.h}</strong>
+                  </small>
+                </div>
+              )}
+              <div className={`${!hideFileFound ? "d-none" : ""}`}>
+                <InputFields label={alternitivetextTitle} type="text" fieldName={altTitleFieldName} register={register} />
               </div>
-            )}
+            </div>
           </div>
 
           <div>
-            <InputFields
-              label={alternitivetextTitle}
-              type="text"
-              fieldName={altTitleFieldName}
-              register={register}
-            />
-
             {Object.keys(showExtraFormFields).map((e, index) => {
               const { label, type, fieldName, value } = showExtraFormFields[e];
 
               if (type == "richText") {
-                return (
-                  
-                  <RichTextInputEditor_V2
-                    Controller={Controller}
-                    control={control}
-                    key={index}
-                    label={label}
-                    name={fieldName}
-                    value={value}
-                  />
-                );
+                return <RichTextInputEditor_V2 Controller={Controller} control={control} key={index} label={label} name={fieldName} value={value} />;
               } else {
                 return (
                   <InputFields
@@ -537,11 +526,7 @@ const FileUpload = ({
         <div className="row my-3">
           <div className="d-flex justify-content-center align-items-center gap-2">
             {!editImage?.id ? (
-              <button
-                type="button"
-                className="btn btn-sm btn-outline"
-                onClick={clearField}
-              >
+              <button type="button" className="btn btn-sm btn-outline" onClick={clearField}>
                 Clear
               </button>
             ) : (
@@ -562,14 +547,8 @@ const FileUpload = ({
 
         {showDescription ? (
           <>
-            <div
-              className={`${scrollEnable ? "heightCtrl" : "fullHeightCtrl"}`}
-            >
-              <InputField
-                label={titleTitle}
-                fieldName={imageTitleFieldName}
-                register={register}
-              />
+            <div className={`${scrollEnable ? "heightCtrl" : "fullHeightCtrl"}`}>
+              <InputField label={titleTitle} fieldName={imageTitleFieldName} register={register} />
               <RichTextInputEditor_V2
                 Controller={Controller}
                 control={control}
@@ -583,25 +562,13 @@ const FileUpload = ({
                   let key = Object.keys(item);
                   let field = item[key];
                   if (field.readonly) return "";
-                  return (
-                    <InputField
-                      key={index}
-                      label={field.label}
-                      type={field.type}
-                      fieldName={field.fieldName}
-                      register={register}
-                    />
-                  );
+                  return <InputField key={index} label={field.label} type={field.type} fieldName={field.fieldName} register={register} />;
                 })}
               </>
             </div>
             <div className="row">
               <div className="d-flex gap-2 justify-content-center flex-wrap flex-column flex-sm-row align-items-center my-3">
-                <button
-                  type="button"
-                  className="btn btn-secondary mx-3"
-                  onClick={clearField}
-                >
+                <button type="button" className="btn btn-secondary mx-3" onClick={clearField}>
                   Clear
                 </button>
                 <button type="submit" className="btn btn-primary">

@@ -29,17 +29,17 @@ class Careers(BaseModel):
         mode_of_work =      models.CharField(max_length=100, null=True, blank=True )
         about_company  =    models.CharField(max_length=100, null=True, blank=True )
         
-def validate_file_extension(value):
-    ext = os.path.splitext(value.name)[1]  
-    valid_extensions = settings.JOB_ACCEPT_FILE_TYPE
-    if ext.lower() not in valid_extensions:
-        raise ValidationError('Unsupported file extension. Only .docx, .rtf, and .pdf are allowed.')
+# def validate_file_extension(value):
+#     ext = os.path.splitext(value.name)[1]  
+#     valid_extensions = settings.JOB_ACCEPT_FILE_TYPE
+#     if ext.lower() not in valid_extensions:
+#         raise ValidationError('Unsupported file extension. Only .docx, .rtf, and .pdf are allowed.')
 
-def image_upload_path(instance, filename):
-    now = timezone.now()
-    base, extension = os.path.splitext(filename.lower())
-    milliseconds = now.microsecond // 1000
-    return f"resumes/{now:%Y%m%d%H%M%S}{milliseconds}{extension}"
+# def image_upload_path(instance, filename):
+#     now = timezone.now()
+#     base, extension = os.path.splitext(filename.lower())
+#     milliseconds = now.microsecond // 1000
+#     return f"resumes/{now:%Y%m%d%H%M%S}{milliseconds}{extension}"
 
 
 class appledJob(FileUpload):

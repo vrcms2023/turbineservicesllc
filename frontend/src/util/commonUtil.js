@@ -85,6 +85,18 @@ export const getTodayDate = (dt) => {
   }
 };
 
+export const getImageURL = (item) => {
+  if (item?.video_thumbnail_url) {
+    return getImagePath(item?.video_thumbnail_url);
+  } else if (item?.image_WebURL) {
+    return getImagePath(item?.image_WebURL);
+  } else if (item?.path) {
+    return getImagePath(item?.path);
+  } else {
+    return getDummyImage();
+  }
+};
+
 export const getImagePath = (path) => {
   if (!path) return null;
   const baseURL = getBaseURL();
@@ -342,7 +354,7 @@ export const genereateCategoryProducts = (data, categories) => {
 
 export const getImageFileFromUrl = async (imageUrl) => {
   try {
-    const response = await fetch(imageUrl);
+    const response = await fetch(imageUrl, { mode: "cors" });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

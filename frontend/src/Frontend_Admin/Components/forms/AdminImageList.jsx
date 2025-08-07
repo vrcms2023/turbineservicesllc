@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
-import FileUpload from "../../Components/FileUpload";
 import DeleteDialog from "../../../Common/DeleteDialog";
 
 import EditAdminPopupHeader from "../EditAdminPopupHeader";
@@ -9,8 +8,6 @@ import { getCookie } from "../../../util/cookieUtil";
 import {
   getObjectTitle,
   getObjectDescription,
-  getImagePath,
-  getDummyImage,
   getListStyle,
   reorder,
   updateArrIndex,
@@ -23,8 +20,9 @@ import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";
 import NoteComponent from "../../../Common/NoteComponent";
 import RichTextView from "../../../Common/RichTextView";
+import ImageUploadForm from "../ImageUploadForm";
 
-const AdminBanner = ({
+const AdminImageList = ({
   editHandler,
   componentType,
   popupTitle,
@@ -148,7 +146,7 @@ const AdminBanner = ({
     }
   };
 
-  console.log(Object.keys(editCarousel).length, "editCarousel")
+  console.log(Object.keys(editCarousel).length, "editCarousel");
   return (
     <div>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
@@ -186,18 +184,13 @@ const AdminBanner = ({
           ) : (
             ""
           )}
-          
 
-        <small className={`text-center py-1 fw-medium text-white ${Object.keys(editCarousel).length > 0 ? "bg-warning " : "bg-secondary"}`}>
-          {Object.keys(editCarousel).length > 0 ? "EDIT" : "ADD NEW"}
-        </small>
-        {/* <hr className="border-1 border-white" /> */}
-          <div
-            className={`mb-5 mb-md-0 border border-2 p-2 ${
-              Object.keys(editCarousel).length > 0  ? " border-warning" : "border-secondary"
-            }`}
-          >
-            <FileUpload
+          <small className={`text-center py-1 fw-medium text-white ${Object.keys(editCarousel).length > 0 ? "bg-warning " : "bg-secondary"}`}>
+            {Object.keys(editCarousel).length > 0 ? "EDIT" : "ADD NEW"}
+          </small>
+          {/* <hr className="border-1 border-white" /> */}
+          <div className={`mb-5 mb-md-0 border border-2 p-2 ${Object.keys(editCarousel).length > 0 ? " border-warning" : "border-secondary"}`}>
+            <ImageUploadForm
               title={imageLabel}
               project={project}
               updated_by={userName}
@@ -278,4 +271,4 @@ const AdminCarouselItem = ({ item, index, componentType, handleCarouselEdit, thu
   );
 };
 
-export default AdminBanner;
+export default AdminImageList;

@@ -88,6 +88,7 @@ def get_imageAndVidoe_data_From_request_Object(request):
         requestObj = get_image_data_from_request(request)
         requestObj['image_title'] = request.data["image_title"]
         requestObj['image_description'] = request.data["image_description"]
+        requestObj['image_WebURL'] = request.data["image_WebURL"]
         return requestObj
 
 def get_Team_data_From_request_Object(request):

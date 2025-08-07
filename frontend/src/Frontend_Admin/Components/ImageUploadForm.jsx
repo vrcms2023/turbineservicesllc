@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 
 registerPlugin(FilePondPluginFileValidateType, FilePondPluginImagePreview, FilePondPluginImageExifOrientation);
 
-const FileUpload = ({
+const ImageUploadForm = ({
   title,
   project,
   category,
@@ -200,13 +200,19 @@ const FileUpload = ({
       let formData = new FormData();
       if (files.length > 0) {
         formData.append("path", files[0].file);
-      } else if (editImage.path) {
-        let file = await creteFileObj();
-        formData.append("path", "");
-      } else if (!editImage.path) {
-        setError("Please add an image ");
-        return true;
+      } else if (typeof data.path === "string" && data.path.startsWith("http")) {
+        //let file = await creteFileObj();
+        //formData.append("path", editImage.path);
+        formData.delete("path");
       }
+      // else if (!data.path) {
+      //   setError("Please add an image ");
+      //   return true;
+      // }
+
+      // if (typeof data.path === "string" && path.startsWith("http")) {
+      //   formData.delete("path"); // Don’t send string path
+      // }
 
       formData.append("id", editImage.id);
       formData = setFormData(formData, data);
@@ -579,4 +585,4 @@ const FileUpload = ({
   );
 };
 
-export default FileUpload;
+export default ImageUploadForm;

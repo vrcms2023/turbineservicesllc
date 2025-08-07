@@ -10,6 +10,7 @@ import { ImageGalleryStyled } from "../../../Common/StyledComponents/Styled-Imag
 import ImageGalleryComponent from "../../Components/ImageGalleryComponent";
 import CustomPagination from "../../../Common/CustomPagination";
 import ModelBg from "../../../Common/ModelBg";
+import AdminImageList from "../../../Frontend_Admin/Components/forms/AdminImageList";
 
 const ImagesGallery = () => {
   const editComponentObj = {
@@ -79,7 +80,7 @@ const ImagesGallery = () => {
               {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("gallery", true)} editlabel={"Gallery"} />}
               {componentEdit.gallery && (
                 <div className={`adminEditTestmonial selected `}>
-                  <AdminBanner
+                  <AdminImageList
                     editHandler={editHandler}
                     componentType="gallery"
                     popupTitle="Image Gallery"

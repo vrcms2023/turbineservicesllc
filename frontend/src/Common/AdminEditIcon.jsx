@@ -1,5 +1,4 @@
 import React from "react";
-import "./AdminEditIcon.css";
 import { EditStyled } from "./StyledComponents/Styled-Edit-Component";
 
 const EditIcon = ({

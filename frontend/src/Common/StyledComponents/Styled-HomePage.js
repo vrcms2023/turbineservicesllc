@@ -1,8 +1,6 @@
-.homeBriefIntroduction {
-  .container-fluid {
-    /* border-bottom: 1px solid rgb(68, 68, 68, .3); */
-  }
-}
+import styled from "styled-components";
+
+export const HomePageStyles = styled.div`
 
 .ourCulture {
   background: #017db9;
@@ -45,7 +43,7 @@
 }
 
 .borderBottom {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid ${({ theme }) => theme.grayddd};
 }
 
 .homePage .pageBanner img {
@@ -67,26 +65,22 @@
   background-size: cover;
   padding: 24px 0;
 
-  h5, .btn  {
-    color: #ffffff;
-  }
-
-  p {
-    color: #f8f8f8;
+  h5, .btn, p  {
+    color: ${({ theme }) => theme.white};
   }
 
   
 
   .adminEditTestmonial  {
-    color: #444444;
+    color: ${({ theme }) => theme.gray444};
 
     h5 {
-      color: #444444;
+      color: ${({ theme }) => theme.gray444};
     }
 
     .ql-editor {
       p, p span {
-        color: #444444 !important;
+        color: ${({ theme }) => theme.gray444} !important;
       }
     }
   }
@@ -96,3 +90,5 @@
 .slick-list {
   width: 800px;
 }
+
+`

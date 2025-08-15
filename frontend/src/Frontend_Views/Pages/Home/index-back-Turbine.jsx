@@ -10,7 +10,7 @@ import Carousel from "../../Components/Carousel";
 import Testimonials from "../../Components/Testimonials";
 import ModelBg from "../../../Common/ModelBg";
 import AdminBanner from "../../../Frontend_Admin/Components/forms/ImgTitleIntoForm-List";
-import BriefIntroAdmin from "../../../Frontend_Admin/Components/BriefIntro/";
+import BriefIntroAdmin from "../../../Frontend_Admin/Components/BriefIntro";
 import EditIcon from "../../../Common/AdminEditIcon";
 import ABrief from "../../Components/ABrief";
 import ABriefAbout from "../../Components/ABriefAbout";
@@ -83,8 +83,6 @@ import CounterCompnentView from "../../../Common/CounterCompnentView";
 import { CounterComponentStyles } from "../../../Common/StyledComponents/Styled-Count-Component";
 import { HomeCauroselComponentStyles } from "../../../Common/StyledComponents/Styled-HomeCarousel";
 import { TwoColumnCarouselStyles } from "../../../Common/StyledComponents/Styled-2-Column-Carousel";
-
-// Styles
 import { HomePageStyles } from "../../../Common/StyledComponents/Styled-HomePage";
 
 const Home = () => {

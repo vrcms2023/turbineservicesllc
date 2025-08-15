@@ -135,6 +135,7 @@ const VideosGallery = () => {
       {/* {show && <ModelBg />} */}
       {showModal && <DynamicCarousel obj={img} all={imageGallery} closeCarousel={closeModel} />}
       {showModal && <ModelBg closeModel={closeModel} />}
+      {show && <ModelBg />}
     </div>
   );
 };

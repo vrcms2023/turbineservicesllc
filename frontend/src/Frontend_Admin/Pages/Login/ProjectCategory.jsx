@@ -15,10 +15,7 @@ import {
 } from "../../../util/commonUtil";
 import DeleteDialog from "../../../Common/DeleteDialog";
 import SingleImageUlploadWithForm from "../../Components/forms/SingleImageUlploadWithForm";
-import {
-  getProjectCategoryFormDynamicFields,
-  imageDimensionsJson,
-} from "../../../util/dynamicFormFields";
+import { getProjectCategoryFormDynamicFields, imageDimensionsJson } from "../../../util/dynamicFormFields";
 import { toast } from "react-toastify";
 import { confirmAlert } from "react-confirm-alert";
 import { getDashBoardProjects } from "../../../redux/project/projectActions";
@@ -113,7 +110,11 @@ const ProjectCategory = () => {
               showConfirmButotns={false}
               onClose={onClose}
               // message={`category has ${isProjectsAvailable.length} projects, cannot delete`}
-              message={<>Category has <span>{isProjectsAvailable.length}</span> projects, cannot delete</>}
+              message={
+                <>
+                  Category has <span>{isProjectsAvailable.length}</span> projects, cannot delete
+                </>
+              }
             />
           );
         },
@@ -121,9 +122,7 @@ const ProjectCategory = () => {
       return true;
     }
     const deleteMenuItemByID = async () => {
-      const response = await axiosServiceApi.delete(
-        `/project/updateCategory/${category.id}/`
-      );
+      const response = await axiosServiceApi.delete(`/project/updateCategory/${category.id}/`);
       if (response.status === 204) {
         toast.success(`${title} category is delete successfully `);
         getPorjectCategory();
@@ -137,7 +136,11 @@ const ProjectCategory = () => {
             onClose={onClose}
             callback={deleteMenuItemByID}
             // message={`you want to delete the ${title} category`}
-            message={<>Do you wish to delete the <span>{title}</span> category?</>}
+            message={
+              <>
+                Do you wish to delete the <span>{title}</span> category?
+              </>
+            }
           />
         );
       },
@@ -147,11 +150,7 @@ const ProjectCategory = () => {
   const getAvailableCategoryList = (data) => {
     const list = [];
     categoryOptionList.forEach((element) => {
-      const isoptionExit = getFilterObjectLabel(
-        data,
-        "category_Value",
-        element.value
-      );
+      const isoptionExit = getFilterObjectLabel(data, "category_Value", element.value);
       if (!isoptionExit) {
         list.push({
           label: element.label,
@@ -167,37 +166,22 @@ const ProjectCategory = () => {
       <div className="row px-2 px-lg-5">
         <div className="text-end d-flex justify-content-between align-items-center flex-column flex-md-row">
           <CSRFToken />
-          <Title
-            title={"Add Project Categories"}
-            cssClass="text-center blue-500 fs-5 mb-3 mb-md-0"
-          />
+          <Title title={"Add Project Categories"} cssClass="text-center blue-500 fs-5 mb-3 mb-md-0" />
 
           <div className="d-flex gap-1 justify-content-between align-items-center">
             {categoryOptionList.length > 1 && (
-              <Button
-                type=""
-                cssClass="btn btn-outline"
-                label="Add"
-                handlerChange={() => addNewCategories("category", true)}
-              />
+              <Button type="" cssClass="btn btn-outline" label="Add" handlerChange={() => addNewCategories("category", true)} />
             )}
 
-            <Button
-              type=""
-              cssClass="btn btn-outline"
-              label="Dashboard"
-              handlerChange={() => navigate("/dashboard")}
-            />
+            <Button type="" cssClass="btn btn-outline" label="Dashboard" handlerChange={() => navigate("/dashboard")} />
           </div>
         </div>
         <div className="mt-5">
           {/* Project category should be */}
           <h4 className="text-center">Category Types</h4>
           <ul className="d-flex justify-content-center align-items-center gap-3 mb-3 list-unstyled">
-            <li className="border-success  p-1 px-3">Ongoing </li>{" "}
-            <span className="text-muted">|</span>
-            <li className="border-warning  p-1 px-3">Upcoming </li>{" "}
-            <span className="text-muted">|</span>
+            <li className="border-success  p-1 px-3">Ongoing </li> <span className="text-muted">|</span>
+            <li className="border-warning  p-1 px-3">Upcoming </li> <span className="text-muted">|</span>
             <li className="border-primary  p-1 px-3">Completed </li>
           </ul>
         </div>
@@ -211,14 +195,9 @@ const ProjectCategory = () => {
                 <tr>
                   <th className="align-middle fw-bold text-muted">Category</th>
                   {/* <th className="align-middle fw-bold  text-muted">Value</th> */}
-                  <th className="align-middle fw-bold  text-muted">
-                    Description
-                  </th>
+                  <th className="align-middle fw-bold  text-muted">Description</th>
                   <th className="align-middle fw-bold  text-muted">Image</th>
-                  <th
-                    className="align-middle text-end fw-bold text-muted"
-                    style={{ width: "100px " }}
-                  >
+                  <th className="align-middle text-end fw-bold text-muted" style={{ width: "100px " }}>
                     Action
                   </th>
                 </tr>
@@ -238,16 +217,10 @@ const ProjectCategory = () => {
                     >
                       {category.category_Value}
                     </td>
-                    <td className="align-middle">
-                      {category?.category_description}
-                    </td>
+                    <td className="align-middle">{category?.category_description}</td>
                     <td className="align-middle text-center">
                       <img
-                        src={
-                          category?.path
-                            ? getImagePath(category.path)
-                            : getDummyImage()
-                        }
+                        src={category?.path ? getImagePath(category.path) : getDummyImage()}
                         alt={category?.alternitivetext}
                         className="thumb75 d-lg-block rounded-1"
                         style={{
@@ -259,27 +232,12 @@ const ProjectCategory = () => {
                     </td>
 
                     <td className="align-middle text-end">
-                      <Link
-                        to=""
-                        onClick={() => editHandler("category", true, category)}
-                        className="p-0 p-md-2"
-                      >
-                        <i
-                          className="fa fa-pencil text-warning cursor-pointer fs-5"
-                          aria-hidden="true"
-                        ></i>
+                      <Link to="" onClick={() => editHandler("category", true, category)} className="p-0 p-md-2">
+                        <i className="fa fa-pencil text-warning cursor-pointer fs-5" aria-hidden="true"></i>
                       </Link>
 
-                      <Link
-                        to=""
-                        className=" ms-4"
-                        onClick={() => handleCategoryDelete(category)}
-                      >
-                        <i
-                          className="fa fa-trash-o fs-4 text-danger"
-                          aria-hidden="true"
-                          title="Delete"
-                        ></i>
+                      <Link to="" className=" ms-4" onClick={() => handleCategoryDelete(category)}>
+                        <i className="fa fa-trash-o fs-4 text-danger" aria-hidden="true" title="Delete"></i>
                       </Link>
                     </td>
                   </tr>
@@ -305,10 +263,7 @@ const ProjectCategory = () => {
                   imageDeleteURL="/project/updateCategory/"
                   imageLabel="Project Image"
                   showDescription={false}
-                  showExtraFormFields={getProjectCategoryFormDynamicFields(
-                    editCategory,
-                    categoryOptionList
-                  )}
+                  showExtraFormFields={getProjectCategoryFormDynamicFields(editCategory, categoryOptionList, editCategory?.id ? true : false)}
                   dimensions={imageDimensionsJson("advertisement")}
                 />
               </div>

@@ -34,7 +34,7 @@
 
   input {
     border: 0 !important;
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 4px !important;
   }
   label {
@@ -44,20 +44,22 @@
 
   p {
     margin: 0;
-    small {color: #444444 !important;}
+    small {
+      color: #444444 !important;
+    }
   }
 
-   .adminEditTestmonialHeader {
-    border-bottom: 1px solid rgba(68, 68, 68, .1);
-   }
-
-  .adminEditTestmonialHeader, #adminActionForm {
-
-  h5 {
-    font-size: 1.05rem !important;
-    font-weight: 600;
+  .adminEditTestmonialHeader {
+    border-bottom: 1px solid rgba(68, 68, 68, 0.1);
   }
-}
+
+  .adminEditTestmonialHeader,
+  #adminActionForm {
+    h5 {
+      font-size: 1.05rem !important;
+      font-weight: 600;
+    }
+  }
 }
 
 .selected {
@@ -105,7 +107,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(0, 0, 0, .3);
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .adminEditTestmonial a.close:hover {
@@ -115,8 +117,6 @@
   color: #222222 !important;
 }
 
-
-
 /* @media (max-width: 768px) {
   .adminEditTestmonial {
     overflow: auto;
@@ -124,12 +124,12 @@
   }
 } */
 
-.adminEditTestmonial  [data-rfd-droppable-context-id] {
+.adminEditTestmonial [data-rfd-droppable-context-id] {
   background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .slideItem {
-  cursor:grab;
+  cursor: grab;
 }
 
 .slideItem .description {
@@ -139,19 +139,21 @@
   -webkit-line-clamp: 2;
 }
 
-.imglist  {
+.imglist {
   margin-bottom: 1rem;
 
   .slideItem {
-
     .col-md-8 {
       padding: 1rem;
-    
+
       .pl-editor {
         padding: 0 !important;
       }
 
-      p, p span, .introDecTitleCss, div {
+      p,
+      p span,
+      .introDecTitleCss,
+      div {
         text-align: left;
         padding: 0 !important;
         line-clamp: 1;
@@ -212,30 +214,35 @@
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
 }
 
-.slideItem .description .quill { background: none !important }
-.adminEditTestmonial  .quill {
-      background-color: rgba(255, 255, 255, .7) !important;
+.slideItem .description .quill {
+  background: none !important;
+}
+.adminEditTestmonial .quill {
+  background-color: rgba(255, 255, 255, 0.7) !important;
 
-      .pl-editor {
-        padding: 0 !important;
-      }
+  .pl-editor {
+    padding: 0 !important;
+  }
 
-      p, p span, .introDecTitleCss, div {
-        text-align: left;
-        padding: .5rem;
-      }
+  p,
+  p span,
+  .introDecTitleCss,
+  div {
+    text-align: left;
+    padding: 0.5rem;
+  }
 
-      .ql-toolbar {
-        border-top: 0 !important;
-        border-right: 0 !important;
-        border-left: 0 !important;
-      }
+  .ql-toolbar {
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+  }
 
-      /* .ql-editor {
+  /* .ql-editor {
           * {text-align: left; }
         } */
-    }
+}
 
 .filepond--root {
-  margin-bottom: .2rem !important;
+  margin-bottom: 0.2rem !important;
 }

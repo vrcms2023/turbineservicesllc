@@ -111,7 +111,7 @@ const Home = () => {
     counterlist: false,
     trainings: false,
     clientBrief: false,
-    countBrief: false
+    countBrief: false,
   };
 
   const productComp = {
@@ -260,7 +260,7 @@ const Home = () => {
             <DownloadBrochures />
           </div>
         </BrochureDownloadStyling>
-{/* ==== END ======================================== */}
+        {/* ==== END ======================================== */}
 
         {/* BANNER COMPONENT START ======================================== */}
         <div className={showHideCompList?.banner?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
@@ -279,9 +279,7 @@ const Home = () => {
               <div className="row">
                 <div className="col-md-12 p-0 position-relative homePage">
                   {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("banner", true)} editlabel="Banner" />}
-                  <Banner 
-                    getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`} 
-                    bannerState={componentEdit.banner} />
+                  <Banner getBannerAPIURL={`banner/clientBannerIntro/${pageType}-banner/`} bannerState={componentEdit.banner} />
                 </div>
               </div>
               {componentEdit.banner && (
@@ -301,7 +299,7 @@ const Home = () => {
             </div>
           )}
         </div>
-{/* ==== END ======================================== */}
+        {/* ==== END ======================================== */}
 
         {/* ==== CAROUSEL COMPONENT  ===================================== */}
         <div className={showHideCompList?.carousel?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
@@ -500,18 +498,14 @@ const Home = () => {
                   <div className="container">
                     <div className="row">
                       <HomeServices />
-                      <div className="text-end">
-                        <Ancher Ancherpath="/services/all-services" AncherLabel="All Services" AncherClass="text-white me-2"/>
-                      </div>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </HomeDynamicServiceStylesComponent>
           )}
         </div>
-{/* ==== END ======================= */}
+        {/* ==== END ======================= */}
 
         {/* ======================= HOME List of Services ======================= */}
         <div className={showHideCompList?.homeservices?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
@@ -545,7 +539,6 @@ const Home = () => {
                         anchorContainer=""
                         anchersvgColor=""
                       />
-
                     </div>
                   </div>
                 </div>
@@ -630,7 +623,7 @@ const Home = () => {
             </div>
           )}
         </div>
-{/* ==== END ========================= */}
+        {/* ==== END ========================= */}
 
         {/* ==== HOME PROJECT CAROUSEL START ======================================= */}
         <div className={showHideCompList?.homeprojectcarousel?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
@@ -644,13 +637,13 @@ const Home = () => {
             />
           )}
           {showHideCompList?.homeprojectcarousel?.visibility && (
-              <TwoColumnCarouselStyles>
-                <HomeProjectCarousel />
-              </TwoColumnCarouselStyles>
+            <TwoColumnCarouselStyles>
+              <HomeProjectCarousel />
+            </TwoColumnCarouselStyles>
           )}
         </div>
 
-{/* ==== END ============================== */}
+        {/* ==== END ============================== */}
 
         {/* ==== Trainings COMPONENT START ====================================================================================================*/}
         <div className={showHideCompList?.trainings?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
@@ -681,7 +674,7 @@ const Home = () => {
 
                     {homeIntroList.length > 0 && <TitleWithDescripton list={homeIntroList} />}
                   </div>
-                  {componentEdit.testmonial && (
+                  {componentEdit.trainings && (
                     <div className={`adminEditTestmonial selected `}>
                       <ListofTitleandDescription
                         editHandler={editHandler}
@@ -796,7 +789,7 @@ const Home = () => {
             <div className="container-fluid">
               <div className="row">
                 <div className="col-md-12 p-0 ">
-                  {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("counterlist", true)} editlabel="Counter"  />}
+                  {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("counterlist", true)} editlabel="Counter" />}
                   <CounterComponentStyles>
                     <CounterCompnentView getDataAPIURL={`counter/getClientCounterSet/`} componentState={componentEdit.counterlist} />
                   </CounterComponentStyles>
@@ -818,7 +811,7 @@ const Home = () => {
             </div>
           )}
         </div>
-{/* === END COUNTER ======================================== */}
+        {/* === END COUNTER ======================================== */}
 
         {/* ==== INDUSTRIES WE SERVE - START ============================================== */}
         <div className={showHideCompList?.industriesweserve?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
@@ -1178,7 +1171,6 @@ const Home = () => {
         </div>
         {/* END OF HOME NEWS START =================================================================================================*/}
 
-        
         {/* ===== HOME WHY CHOOSE RISHSYSTEMS START ============================================================================================ */}
         <div className={showHideCompList?.news?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
           {isAdmin && hasPermission && (
@@ -1271,26 +1263,25 @@ const Home = () => {
           )}
           {showHideCompList?.gallery?.visibility && (
             <ImageGalleryStyled>
-
               <>
                 <div className="container">
                   <div className="row">
-                      {/* <Title title="View Gallery" cssClass="text-center fs-3" /> */}
-                      {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("weserve", true)} />}
+                    {/* <Title title="View Gallery" cssClass="text-center fs-3" /> */}
+                    {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("weserve", true)} />}
 
-                      <BriefIntroFrontend
-                        pageType={pageType}
-                        introState={componentEdit.weserve}
-                        detailsContainerCss="col-md-10 offset-md-1 text-center"
-                        introTitleCss="fs-3"
-                        introSubTitleCss=""
-                        introDecTitleCss=""
-                        linkLabel="Read More"
-                        linkCss="btn btn-outline mb-2"
-                        moreLink=""
-                        anchorContainer=""
-                        anchersvgColor=""
-                      />
+                    <BriefIntroFrontend
+                      pageType={pageType}
+                      introState={componentEdit.weserve}
+                      detailsContainerCss="col-md-10 offset-md-1 text-center"
+                      introTitleCss="fs-3"
+                      introSubTitleCss=""
+                      introDecTitleCss=""
+                      linkLabel="Read More"
+                      linkCss="btn btn-outline mb-2"
+                      moreLink=""
+                      anchorContainer=""
+                      anchersvgColor=""
+                    />
                   </div>
                 </div>
 
@@ -1388,7 +1379,6 @@ const Home = () => {
           {showHideCompList?.features?.visibility && <Features />}
         </div>
         {/* ==== FEATURES SPECICALLY DEVELOPED FOR RISHISYSTEMS END ========================================================================== */}
-
 
         {/* {showEditPop && <ModelBg />} */}
 

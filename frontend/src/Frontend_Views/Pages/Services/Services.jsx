@@ -19,21 +19,9 @@ import DeleteDialog from "../../../Common/DeleteDialog";
 import AddService from "../../../Frontend_Admin/Components/Services";
 import AddEditAdminNews from "../../../Frontend_Admin/Components/News";
 import { getReactHostDetils, removeActiveClass } from "../../../util/ulrUtil";
-import {
-  getFormDynamicFields,
-  getServiceFormFields,
-  imageDimensionsJson,
-} from "../../../util/dynamicFormFields";
-import {
-  axiosClientServiceApi,
-  axiosServiceApi,
-} from "../../../util/axiosUtil";
-import {
-  getImagePath,
-  sortByFieldName,
-  storeServiceMenuValueinCookie,
-  urlStringFormat,
-} from "../../../util/commonUtil";
+import { getFormDynamicFields, getServiceFormFields, imageDimensionsJson } from "../../../util/dynamicFormFields";
+import { axiosClientServiceApi, axiosServiceApi } from "../../../util/axiosUtil";
+import { getImagePath, sortByFieldName, storeServiceMenuValueinCookie, urlStringFormat } from "../../../util/commonUtil";
 import { sortByCreatedDate } from "../../../util/dataFormatUtil";
 import { getCookie } from "../../../util/cookieUtil";
 
@@ -43,10 +31,7 @@ import { ServicesStyled } from "../../../Common/StyledComponents/Styled-Services
 import RichTextView from "../../../Common/RichTextView";
 import ShowHideToggle from "../../../Common/ShowHideToggle";
 import { getObjectsByKey } from "../../../util/showHideComponentUtil";
-import {
-  createShowHideComponent,
-  updateShowHideComponent,
-} from "../../../redux/showHideComponent/showHideActions";
+import { createShowHideComponent, updateShowHideComponent } from "../../../redux/showHideComponent/showHideActions";
 import ShareButtons from "../../../Common/Share";
 
 const Services = () => {
@@ -72,9 +57,7 @@ const Services = () => {
   const pageLoadServiceURL = getCookie("pageLoadServiceURL");
   const location = useLocation();
   const isNewServiceCreated = useRef(false);
-  const { serviceMenu, serviceerror } = useSelector(
-    (state) => state.serviceMenu
-  );
+  const { serviceMenu, serviceerror } = useSelector((state) => state.serviceMenu);
 
   useEffect(() => {
     const pageURL = location.pathname;
@@ -125,13 +108,9 @@ const Services = () => {
     if (selectedServiceProject?.id) {
       setEditCarousel({
         serviceID: selectedServiceProject ? selectedServiceProject?.id : "",
-        services_page_title: selectedServiceProject
-          ? selectedServiceProject?.services_page_title
-          : "",
+        services_page_title: selectedServiceProject ? selectedServiceProject?.services_page_title : "",
       });
-      setSelectedServiceName(
-        urlStringFormat(selectedServiceProject?.services_page_title)
-      );
+      setSelectedServiceName(urlStringFormat(selectedServiceProject?.services_page_title));
       getSelectedServiceObject(selectedServiceProject.id);
     }
   }, [selectedServiceProject]);
@@ -142,9 +121,7 @@ const Services = () => {
       return;
     }
     try {
-      let response = await axiosClientServiceApi.get(
-        `/services/getSelectedClientService/${id}/`
-      );
+      let response = await axiosClientServiceApi.get(`/services/getSelectedClientService/${id}/`);
       const createdDate = sortByCreatedDate(response.data.servicesFeatures);
       setSelectedServiceList(createdDate);
     } catch (error) {
@@ -157,9 +134,7 @@ const Services = () => {
     const name = item.feature_title;
 
     const deleteSelectedSection = async () => {
-      const response = await axiosServiceApi.delete(
-        `/services/updateFeatureService/${id}/`
-      );
+      const response = await axiosServiceApi.delete(`/services/updateFeatureService/${id}/`);
       if (response.status === 204) {
         const list = selectedServiceList.filter((list) => list.id !== id);
         setSelectedServiceList(list);
@@ -186,11 +161,7 @@ const Services = () => {
   };
 
   useEffect(() => {
-    if (
-      !componentEdit.editSection &&
-      !componentEdit.addSection &&
-      selectedServiceProject?.id !== undefined
-    ) {
+    if (!componentEdit.editSection && !componentEdit.addSection && selectedServiceProject?.id !== undefined) {
       getSelectedServiceObject(selectedServiceProject.id);
     }
   }, [componentEdit.editSection, componentEdit.addSection]);
@@ -210,9 +181,7 @@ const Services = () => {
 
   const [showHideCompList, setShowHideCompList] = useState([]);
   const dispatch = useDispatch();
-  const { error, success, showHideList } = useSelector(
-    (state) => state.showHide
-  );
+  const { error, success, showHideList } = useSelector((state) => state.showHide);
 
   useEffect(() => {
     if (showHideList.length > 0) {
@@ -234,15 +203,7 @@ const Services = () => {
 
   return (
     <>
-      <div
-        className={
-          showHideCompList?.servicebanner?.visibility &&
-          isAdmin &&
-          hasPermission
-            ? "componentOnBorder"
-            : ""
-        }
-      >
+      <div className={showHideCompList?.servicebanner?.visibility && isAdmin && hasPermission ? "componentOnBorder" : ""}>
         {isAdmin && hasPermission && (
           <ShowHideToggle
             showhideStatus={showHideCompList?.servicebanner?.visibility}
@@ -256,9 +217,7 @@ const Services = () => {
           <>
             {/* Page Banner Component */}
             <div className="position-relative">
-              {isAdmin && hasPermission && (
-                <EditIcon editHandler={() => editHandler("banner", true)} editlabel={"Banner"}/>
-              )}
+              {isAdmin && hasPermission && <EditIcon editHandler={() => editHandler("banner", true)} editlabel={"Banner"} />}
               <Banner
                 getBannerAPIURL={`banner/clientBannerIntro/${pageType}-${pageLoadServiceName}-banner/`}
                 bannerState={componentEdit.banner}
@@ -274,9 +233,7 @@ const Services = () => {
                   pageType={`${pageType}-${pageLoadServiceName}-banner`}
                   imageLabel="Banner Image"
                   showDescription={false}
-                  showExtraFormFields={getFormDynamicFields(
-                    `${pageType}-${selectedServiceName}-banner`
-                  )}
+                  showExtraFormFields={getFormDynamicFields(`${pageType}-${selectedServiceName}-banner`)}
                   dimensions={imageDimensionsJson("banner")}
                 />
               </div>
@@ -321,42 +278,28 @@ const Services = () => {
         )}
         {/* End of Add Service Page */}
 
-        <div
-          className={
-            isAdmin && hasPermission
-              ? "container-fluid my-md-3 servicesPage"
-              : "container my-md-3 servicesPage"
-          }
-          id="servicesPage"
-        >
+        <div className={isAdmin && hasPermission ? "container-fluid my-md-3 servicesPage" : "container my-md-3 servicesPage"} id="servicesPage">
           <div className="row">
-            <div
-              className={isAdmin && hasPermission ? "col-md-12" : "col-md-12"}
-            >
-              {isAdmin &&
-                hasPermission &&
-                selectedServiceProject?.id &&
-                selectedServiceProject.page_url !== "/services/addservices" && (
-                  <div className="d-flex justify-content-center align-items-center my-4 p-2 border border-info">
-                    <span className="mx-2 text-dark">
-                      {" "}
-                      Add new section in
-                      <span className="text-dark fw-bold mx-1">
-                        {selectedServiceProject.services_page_title}
-                      </span>
-                      page
-                    </span>
-                    <button
-                      type="submit"
-                      className="btn btn-outline px-3"
-                      onClick={() => editHandler("addSection", true)}
-                      // style={{ position: "absolute", right: "60px" }}
-                    >
-                      {/* Add data */}
-                      <i className="fa fa-plus" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                )}
+            <div className={isAdmin && hasPermission ? "col-md-12" : "col-md-12"}>
+              {isAdmin && hasPermission && selectedServiceProject?.id && selectedServiceProject.page_url !== "/services/addservices" && (
+                <div className="d-flex justify-content-center align-items-center my-4 p-2 border border-info">
+                  <span className="mx-2 text-dark">
+                    {" "}
+                    Add new section in
+                    <span className="text-dark fw-bold mx-1">{selectedServiceProject.services_page_title}</span>
+                    page
+                  </span>
+                  <button
+                    type="submit"
+                    className="btn btn-outline px-3"
+                    onClick={() => editHandler("addSection", true)}
+                    // style={{ position: "absolute", right: "60px" }}
+                  >
+                    {/* Add data */}
+                    <i className="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              )}
               {componentEdit.editSection || componentEdit.addSection ? (
                 <div className={`adminEditTestmonial selected`}>
                   <AddEditAdminNews
@@ -364,24 +307,18 @@ const Services = () => {
                     category="services"
                     editCarousel={editCarousel}
                     setEditCarousel={setEditCarousel}
-                    componentType={`${
-                      componentEdit.editSection ? "editSection" : "addSection"
-                    }`}
+                    componentType={`${componentEdit.editSection ? "editSection" : "addSection"}`}
                     imageGetURL="services/createServiceFeatures/"
                     imagePostURL="services/createServiceFeatures/"
                     imageUpdateURL="services/updateFeatureService/"
                     imageDeleteURL="services/updateFeatureService/"
                     imageLabel="Upload Image"
-                    popupTitle={`Add Content ${pageLoadServiceName ? " - " +  pageLoadServiceName : ""} `}
+                    popupTitle={`Add Content ${pageLoadServiceName ? " - " + pageLoadServiceName : ""} `}
                     showDescription={false}
                     showExtraFormFields={getServiceFormFields(
                       selectedServiceProject ? selectedServiceProject?.id : "",
-                      selectedServiceProject
-                        ? selectedServiceProject?.services_page_title
-                        : "",
-                      selectedServiceProject
-                        ? selectedServiceProject?.page_url
-                        : ""
+                      selectedServiceProject ? selectedServiceProject?.services_page_title : "",
+                      selectedServiceProject ? selectedServiceProject?.page_url : ""
                     )}
                     dimensions={imageDimensionsJson("addService")}
                   />
@@ -390,7 +327,9 @@ const Services = () => {
                 ""
               )}
 
-              <div className="d-flex justify-content-end align-items-end position-relative"><ShareButtons /></div>
+              <div className="d-flex justify-content-end align-items-end position-relative">
+                <ShareButtons />
+              </div>
               <div className="row">
                 <div className="col-12 col-md-8">
                   {/* <Title title={"Services"} cssClass="fs-3 mb-2 pageTitle" /> */}
@@ -405,61 +344,30 @@ const Services = () => {
               {selectedServiceProject.page_url !== "/services/addservices" &&
                 selectedServiceList.map((item, index) => (
                   <div
-                    className={`row ${
-                      isAdmin
-                        ? "border border-warning mb-3 position-relative"
-                        : ""
-                    } ${index % 2 === 0 ? "normalCSS" : "flipCSS"}`}
+                    className={`row ${isAdmin ? "border border-warning mb-3 position-relative" : ""} ${index % 2 === 0 ? "normalCSS" : "flipCSS"}`}
                     key={item.id}
                   >
                     {isAdmin && hasPermission && (
                       <>
-                        <EditIcon
-                          editHandler={() =>
-                            editHandler("editSection", true, item)
-                          }
-                        />
-                        <Link
-                          className="deleteSection"
-                          onClick={() => deleteSelectedSectionInPage(item)}
-                        >
-                          <i
-                            className="fa fa-trash-o text-danger fs-4"
-                            aria-hidden="true"
-                          ></i>
+                        <EditIcon editHandler={() => editHandler("editSection", true, item)} />
+                        <Link className="deleteSection" onClick={() => deleteSelectedSectionInPage(item)}>
+                          <i className="fa fa-trash-o text-danger fs-4" aria-hidden="true"></i>
                         </Link>
                       </>
                     )}
                     <div className="col-md-8 p-4 p-5">
                       {item.feature_title && (
-                        <Title
-                          title={
-                            item.feature_title
-                              ? item.feature_title
-                              : "Update Feature title"
-                          }
-                          cssClass="fs-3 mb-2 title"
-                        />
+                        <Title title={item.feature_title ? item.feature_title : "Update Feature title"} cssClass="fs-3 mb-2 title" />
                       )}
 
                       {item.feature_sub_title && (
                         <Title
-                          title={
-                            item.feature_sub_title
-                              ? item.feature_sub_title
-                              : "Update Feature sub title"
-                          }
+                          title={item.feature_sub_title ? item.feature_sub_title : "Update Feature sub title"}
                           cssClass="fs-5 text-secondary mb-2"
                         />
                       )}
 
-                      {item.feature_description && (
-                        <RichTextView
-                          data={item.feature_description}
-                          className={""}
-                          showMorelink={false}
-                        />
-                      )}
+                      {item.feature_description && <RichTextView data={item.feature_description} className={""} showMorelink={false} />}
                       {/*                  
                     <div
                       dangerouslySetInnerHTML={{

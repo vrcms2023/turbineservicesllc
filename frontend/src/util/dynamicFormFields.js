@@ -46,7 +46,7 @@ export const getFormDynamicFields = (pageType) => {
     },
     banner_descripiton: {
       label: "Description",
-      type: "textarea",
+      type: "richText",
       fieldName: "banner_descripiton",
     },
     moreLink: {
@@ -404,7 +404,8 @@ export const getCategoryFormDynamicFields = () => {
     category_fileuplod: {
       label: "Upload File",
       type: "file",
-      accept: "application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      accept:
+        "application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       fieldName: "category_fileuplod",
     },
     company_id: {

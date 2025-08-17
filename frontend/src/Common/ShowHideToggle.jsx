@@ -10,7 +10,7 @@ const ShowHideToggle = ({
 }) => {
   return (
     <div
-      className={`randomServices p-2 py-1 ${
+      className={`randomServices p-2 py-1 d-flex aling-items-center justify-content-center ${
         showhideStatus ? " componentOn" : " componentOff border-bottom"
       }`}
     >

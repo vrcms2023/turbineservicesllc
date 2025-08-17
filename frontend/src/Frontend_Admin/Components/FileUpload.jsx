@@ -458,9 +458,10 @@ const FileUpload = ({
               {editImage?.id && editImage.path && editImage.contentType === ".pdf" && (
                 <div className="col-6">
                   <div style={{ marginTop: "30px" }}>
-                    <b>File name -</b>{" "}
+                    <b>File name -</b>
                     <a href="#!" onClick={() => downloadPDF(`${baseURL}${editImage.path}`)} className="mx-1 text-dark">
                       {editImage.originalname}
+                      <i class="fa fa-file-pdf-o cursor-pointer fs-4 ms-2" aria-hidden="true"></i> 
                     </a>
                   </div>
                 </div>

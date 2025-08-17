@@ -241,7 +241,8 @@ body, p {
     .error {
       color: ${({ theme }) => theme.error};
       text-align: center;
-      margin: 0.5rem 0
+      margin: 0.5rem 0;
+      font-size: .8rem;
     }
 
 

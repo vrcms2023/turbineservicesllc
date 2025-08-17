@@ -30,10 +30,21 @@ export const FooterStyled = styled.div`
       }
 
       .description {
+
+        @media(max-width: 480px) {
+          .briefIntro {
+            padding: 0 !important;
+          }
+        }
+        
         .ql-editor {
             p, p span, .introDecTitleCss {
               text-align: left;
             }
+
+          @media(max-width: 480px) {
+            margin: 0 !important;
+          }
         }
       }
     }
@@ -146,6 +157,10 @@ export const FooterStyled = styled.div`
         margin-top: 24px;
         width: 100%;
         text-align: right; 
+
+        @media (max-width: 480px) {
+          text-align: center;
+        }
         .editIcon  {
           top: -48px;
           right: 0px;

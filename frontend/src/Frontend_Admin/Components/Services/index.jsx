@@ -305,7 +305,9 @@ const AddService = ({ setSelectedServiceProject, selectedServiceProject, pageTyp
                   height: `${serviceLinksBoxHeight}px`,
                   maxHeight: "320px",
                   padding: 0,
-                  overflowY: isExpanded && ulRef.current && ulRef.current.scrollHeight > 320 && "auto",
+                  border: "1px solid #ddd",
+                  // overflowY: isExpanded && ulRef.current && ulRef.current.scrollHeight > 320 && "auto",
+                  overflowY: "auto",
                   transition: "height 0.3s ease",
                 }}
               >

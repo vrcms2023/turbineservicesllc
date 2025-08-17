@@ -129,8 +129,8 @@ const Footer = () => {
 
   return (
     <FooterStyled>
-      <div className="container-fluid footerCompanyBrief py-5">
-        <div className="container">
+      <div className="container-fluid footerCompanyBrief py-5 py-md-0">
+        <div className="container p-0">
           <div className="row">
             <div className="col-md-4 col-lg-3 d-flex align-items-center">
               <ApplicationLogo
@@ -146,7 +146,7 @@ const Footer = () => {
               /> */}
             </div>
             <div className="col-md-8 col-lg-9 d-flex align-items-center">
-              <div className="description m-0 text-center text-md-start p-4 pb-0 p-md-0">
+              <div className="description m-0 text-center text-md-start p-0 p-md-0 p-md-4 ">
                 <div>
                   <div className="container">
                     <div className="row">
@@ -219,7 +219,7 @@ const Footer = () => {
             </div>
           </div> */}
           {/* <hr className="my-4" /> */}
-          <div className="row py-5">
+          <div className="row py-5 pb-3">
             <div className="col-md-4 text-center text-md-start">
               <Title title="Company" />
 
@@ -399,7 +399,7 @@ const Footer = () => {
               <div
                 // align-items-center justify-content-md-center justify-content-lg-end align-items-md-end align-items-end justify-content-md-end
                 // ${ isAdmin ? "border border-warning mb-3 position-relative" : "" }
-                className={`col-md-4 col-lg-4 pb-md-0 socialMedia d-flex flex-column gap-5 gap-md-0 align-items-center align-items-md-start justify-content-between pb-4 pb-md-0`}
+                className={`col-md-4 col-lg-4 pb-md-0 socialMedia d-flex flex-column gap-4 gap-md-0 align-items-center align-items-md-start justify-content-between pb-4 pb-md-0`}
               >
                 <div className="FooterAddress">
                   <Title title="We Are At" />
@@ -513,7 +513,7 @@ const Footer = () => {
           <div className="container">
             <div className="row">
               <div className="">
-                <div className="d-flex flex-column flex-md-row justify-content-between align-items-center  gap-2">
+                <div className="d-flex text-center text-md-start flex-column flex-md-row justify-content-center justify-content-md-between align-items-center  gap-2">
                   &copy; {fullYear} - {addressList[0]?.company_name}. All rights
                   reserved
                   {/* <span className="d-inline-block  d-none d-md-block">|</span> */}
@@ -540,8 +540,8 @@ const Footer = () => {
                   <a href="http://www.vitsols.com" className="dby fw-medium" aria-label="Custom CMS developed by VITSOLS for small businesses" >
                       VITSOLS
                   </a> */}
-                  <span className="d-block mt-2">
-                    Designed & developed by {" "}
+                  <div className="d-block mt-2 d-flex flex-column flex-md-row justify-content-center justify-content-md-start  align-items-center ">
+                    <span>Designed & developed by </span>
                     <a
                       href="https://www.vitsols.com"
                       className="dby fw-medium"
@@ -581,7 +581,7 @@ const Footer = () => {
                       VITSOLS – Digital Marketing & Web Design
                     </a>
                     */}
-                </span>
+                </div>
               </div>
             </div>
           </div>

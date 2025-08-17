@@ -14,7 +14,7 @@ export const CarouselItem = ({ item, index }) => {
         className="d-block w-100"
       />
 
-      <div className="carousel-caption ">
+      <div className="carousel-caption d-flex flex-column gap-4">
         {item.carouse_sub_title ? (
           <span className="subtitle">{item.carouse_sub_title}</span>
         ) : (

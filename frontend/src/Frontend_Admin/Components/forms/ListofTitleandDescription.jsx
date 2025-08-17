@@ -229,7 +229,7 @@ const ListofTitleandDescription = ({
               <hr className="mb-3 text-dark" />
             </div>
             <div className="col-md-12 mb-md-0">
-              <div className="heightCtrl">
+              <div className="">
                 <InputField
                   label="Title"
                   fieldName="intro_title"

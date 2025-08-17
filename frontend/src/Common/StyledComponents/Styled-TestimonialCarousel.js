@@ -102,19 +102,19 @@ export const TestimonialCarouselPageStyled = styled.div`
 .slick-list {
   
   @media(max-width: 1500px) {
-    width: 600px;
+    width: 600px !important;
   }
 
   @media(max-width: 1300px) {
-    width: 500px;
+    width: 500px !important;
   }
 
   @media(max-width: 1024px) {
-    width: 400px;
+    width: 400px !important;
   }
 
   @media(max-width: 480px) {
-    width: 300px;
+    width: 320px !important;
   }
 }
 

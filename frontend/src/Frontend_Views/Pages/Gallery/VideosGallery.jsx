@@ -90,7 +90,7 @@ const VideosGallery = () => {
         </div>
       </div>
 
-      <div className="row gallery">
+      <div className="row videoGallery">
         {imageGallery?.length > 0 &&
           imageGallery?.map((item, index) => (
             <div className="col-md-4 mb-4 border p-0  d-flex flex-column justify-content-center align-items-center " key={item.id}>

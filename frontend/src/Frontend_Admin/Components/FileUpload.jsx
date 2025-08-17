@@ -425,6 +425,7 @@ const FileUpload = ({
               </label>
             )}
             <div id="FilePondDiv">
+              <div className="row">
               <div className={`${editImage?.id && editImage.path ? "col-6 col-md-6 pe-0" : "col-12"}`}>
                 <div className={`mb-0 ${!hideFileFound ? "d-none" : ""}`}>
                   <FilePond
@@ -456,9 +457,9 @@ const FileUpload = ({
                 {error ? <Error>{error}</Error> : ""}
               </div>
               {editImage?.id && editImage.path && editImage.contentType === ".pdf" && (
-                <div className="col-6">
-                  <div style={{ marginTop: "30px" }}>
-                    <b>File name -</b>
+                <div className="col-6 col-md-6">
+                  <div className="text-center">
+                    <b className="d-block">File name</b>
                     <a href="#!" onClick={() => downloadPDF(`${baseURL}${editImage.path}`)} className="mx-1 text-dark">
                       {editImage.originalname}
                       <i class="fa fa-file-pdf-o cursor-pointer fs-4 ms-2" aria-hidden="true"></i> 
@@ -467,7 +468,7 @@ const FileUpload = ({
                 </div>
               )}
               {editImage?.id && (editImage?.path || editImage?.thumbnail_url) && editImage?.contentType !== ".pdf" && (
-                <div className="col-6">
+                <div className="col-6 col-md-6">
                   <img
                     src={getImageURL(editImage)}
                     alt={editImage?.alternitivetext}
@@ -492,6 +493,8 @@ const FileUpload = ({
               <div className={`${!hideFileFound ? "d-none" : ""}`}>
                 <InputFields label={alternitivetextTitle} type="text" fieldName={altTitleFieldName} register={register} />
               </div>
+</div>
+
             </div>
           </div>
 

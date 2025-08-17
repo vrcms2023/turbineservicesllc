@@ -1,5 +1,4 @@
 import React from "react";
-import "./AdminEditIcon.css";
 import { EditStyled } from "./StyledComponents/Styled-Edit-Component";
 
 const EditIcon = ({ editHandler, icon = "fa-pencil", iconCss = "cursor-pointer fs-5", cssClasses = "position-absolute ", editlabel }) => {

@@ -25,7 +25,6 @@ import {
 } from "../../../util/dynamicFormFields";
 
 // Styles
-import "./Contact.css";
 import { ContactPageStyled } from "../../../Common/StyledComponents/Styled-ContactPage";
 
 // images

@@ -21,6 +21,7 @@ import AdminProtectedRoute from "./Frontend_Views/Routes/AdminProtectedRoute";
 
 // Themes
 import ThemeOne from "./Common/StyledThemes/ThemeOne.json";
+import ThemeTwo from "./Common/StyledThemes/ThemeTwo.json";
 import { GlobalStyles } from "./Common/StyledComponents/GlobalStyles";
 
 // CSS
@@ -219,7 +220,7 @@ function App() {
 
       {flashAdd && <Advertisement setFlashAdd={setFlashAdd} />}
 
-      <ThemeProvider theme={ThemeOne}>
+      <ThemeProvider theme={ThemeTwo}>
         <GlobalStyles />
 
         {isLoading ? <LoadingSpinner /> : ""}

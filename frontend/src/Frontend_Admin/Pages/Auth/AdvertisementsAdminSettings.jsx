@@ -39,9 +39,9 @@ const AdvertisementsAdminSettings = () => {
   const dispatch = useDispatch();
 
   const radioOptions = [
-    { label: "small", value: "small" },
-    { label: "medium", value: "medium" },
-    { label: "large", value: "large" },
+    { label: "600 * 600", value: "small" },
+    { label: "800 * 800", value: "medium" },
+    { label: "1000 * 1000", value: "large" },
   ];
 
   const { error, success, showHideList } = useSelector((state) => state.showHide);
@@ -200,8 +200,8 @@ const AdvertisementsAdminSettings = () => {
   return (
     <AdvertisementComponentStyles>
       <div className="my-4 addAdvertisement border">
-        <div className="d-flex flex-column flex-md-row  justify-content-between align-items-center p-3">
-          <Title title={"Advertisements"} cssClass="fs-1 pageTitle" />
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center p-3">
+          <Title title={"Advertisements"} cssClass="fs-1 pageTitle m-0" />
 
           <div className="w-100 p-0 d-flex flex-column flex-md-row justify-content-end align-items-center gap-2">
             <div className="w-100  d-flex justify-content-center align-items-center py-2 py-md-0 advSizes">

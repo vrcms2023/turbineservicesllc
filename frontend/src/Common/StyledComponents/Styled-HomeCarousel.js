@@ -33,26 +33,31 @@ export const HomeCauroselComponentStyles = styled.div`
     .carousel-caption {
       position: absolute;
       z-index: 999;
-      position: absolute;
-      z-index: 999;
       text-align: left !important;
-      bottom: 10%;
-      right: 10%;
-      width: 50%;
+      // bottom: 10%;
+      // right: 10%;
+      // width: 50%;
+      transform: translate(0%, -50%);
+      padding: 0 !important;
+      bottom: 0 !important;
+
+       @media(min-width: 1024px) {
+        width: 50%;
+      }
 
       @media(max-width: 1280px) {
-        width: 60%;
-        bottom: 10%;
+        // width: 60%;
+        // bottom: 10%;
       }
 
       @media(max-width: 1024px) {
-        width: 70%;
-        bottom: 15%;
+        // width: 70%;
+        // bottom: 15%;
       }
 
-      @media(max-width: 480px) {
+      @media(max-width: 1024px) {
+        transform: translate(0%, -100%);
         padding: 0px !important;
-        bottom: 5%;
       }
 
       h1 {
@@ -64,7 +69,7 @@ export const HomeCauroselComponentStyles = styled.div`
         color:${({ theme }) => theme.carouselSlideTitleColor};
         word-wrap: break-word;
         hyphens: auto;
-        line-height: 1.4;
+        line-height: 1.2;
 
         @media(max-width: 480px) {
           font-size: 2rem !important;

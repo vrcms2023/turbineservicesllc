@@ -53,6 +53,10 @@
     border-bottom: 1px solid rgba(68, 68, 68, 0.1);
   }
 
+  .addresslist {
+    padding: 0;
+  }
+
   .adminEditTestmonialHeader,
   #adminActionForm {
     h5 {

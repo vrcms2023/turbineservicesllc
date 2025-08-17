@@ -1332,42 +1332,40 @@ const Home = () => {
             />
           )}
           {showHideCompList?.news?.visibility && (
-            <div className="row py-5 homeNews">
-              <div className="col-md-12 d-flex justify-content-center align-items-center">
-                <div className="container">
-                  <Title
-                    title="News"
-                    cssClass="fs-1 fw-bold text-center my-5 pt-0 pt-md-5 text-uppercase"
+            <div className="container">
+              <div className="row py-5 homeNews">
+                <div className="col-md-12 d-flex justify-content-center align-items-center">
+                  <div className="container">
+                    <Title title="News" cssClass="fs-1 fw-bold text-center my-5 pt-0 pt-md-5 text-uppercase" />
+                    <HomeNews news={news} setNews={setResponseData} pagetype={pageType} />
+
+                    <div className="d-flex justify-content-center align-items-center mt-4">
+                      {/* <Ancher
+                    AncherLabel="Read more"
+                    Ancherpath="/news"
+                    AncherClass="btn btn-primary d-flex justify-content-center align-items-center "
+                    AnchersvgColor="#17427C"
                   />
-                  <HomeNews news={news} setNews={setResponseData} pagetype={pageType} />
+                  <Ancher
+                    AncherLabel="Read more"
+                    Ancherpath="/news"
+                    AncherClass="btn btn-secondary d-flex justify-content-center align-items-center "
+                    AnchersvgColor="#17427C"
+                  /> */}
 
-                  <div className="d-flex justify-content-center align-items-center mt-4">
-                    {/* <Ancher
-                  AncherLabel="Read more"
-                  Ancherpath="/news"
-                  AncherClass="btn btn-primary d-flex justify-content-center align-items-center "
-                  AnchersvgColor="#17427C"
-                />
-                <Ancher
-                  AncherLabel="Read more"
-                  Ancherpath="/news"
-                  AncherClass="btn btn-secondary d-flex justify-content-center align-items-center "
-                  AnchersvgColor="#17427C"
-                /> */}
-
-                    <Ancher
-                      AncherLabel="More Articles"
-                      Ancherpath="/news"
-                      AncherClass="btn btn-outline d-flex justify-content-center align-items-center "
-                      AnchersvgColor="#17427C"
-                    />
-
-                    {/* <Ancher
-                  AncherLabel="Read more"
-                  Ancherpath="/news"
-                  AncherClass="btn moreLink d-flex justify-content-center align-items-center "
-                  AnchersvgColor="#17427C"
-                /> */}
+                      <Ancher
+                        AncherLabel="More Articles"
+                        Ancherpath="/news"
+                        AncherClass="btn btn-outline d-flex justify-content-center align-items-center "
+                        AnchersvgColor="#17427C"
+                      />
+                      {/* <Ancher
+                    AncherLabel="Read more"
+                    Ancherpath="/news"
+                    AncherClass="btn moreLink d-flex justify-content-center align-items-center "
+                    AnchersvgColor="#17427C"
+                  /> */}
+                    </div>
                   </div>
                 </div>
               </div>

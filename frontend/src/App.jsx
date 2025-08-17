@@ -168,7 +168,7 @@ function App() {
     if (showHideList.length > 0 && !isAdmin) {
       const showHideCompList = getObjectsByKey(showHideList);
       if (showHideCompList?.advertisement?.visibility) {
-        setFlashAdd(false);
+        setFlashAdd(true);
       }
     }
   }, [showHideList]);

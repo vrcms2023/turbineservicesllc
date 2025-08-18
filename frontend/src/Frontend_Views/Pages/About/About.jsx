@@ -232,7 +232,7 @@ const About = () => {
             <BriefIntroFrontend
               pageType={pageType}
               introState={componentEdit.briefIntro}
-              detailsContainerCss="col-lg-8 offset-lg-2 text-center"
+              detailsContainerCss="col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center"
               // border="border-light border-bottom border-5"
               introTitleCss=""
               introSubTitleCss="py-3 d-inline-block"

@@ -38,7 +38,7 @@ const ProjectGalleryView = ({ projectImages, type }) => {
             className={`gallery projectTabs ${
               type === "applicationgallery"
                 ? "p-3 p-md-5 border-bottom"
-                : "px-5"
+                : "px-2"
             }`}
             key={project.id}
           >

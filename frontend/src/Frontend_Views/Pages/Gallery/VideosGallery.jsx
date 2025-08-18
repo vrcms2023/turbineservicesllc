@@ -10,6 +10,8 @@ import { axiosClientServiceApi } from "../../../util/axiosUtil";
 import RichTextView from "../../../Common/RichTextView";
 import Title from "../../../Common/Title";
 
+import { VideoGalleryStyled } from "../../../Common/StyledComponents/Styled-VideoGallery";
+
 const VideosGallery = () => {
   const editComponentObj = {
     gallery: false,
@@ -89,49 +91,51 @@ const VideosGallery = () => {
           )}
         </div>
       </div>
+      
+      <VideoGalleryStyled>
+        <div className="row videoGallery">
+          {imageGallery?.length > 0 &&
+            imageGallery?.map((item, index) => (
+              <div className="col-md-4 mb-4 d-flex flex-column justify-content-center align-items-center " key={item.id}>
+                <div className="bg-light w-100 d-flex justify-content-center align-items-center py-2">
+                  <img src={getImageURL(item)} className="d-block thumb" onClick={() => findThumbHandler(item.id)} />
+                  {/* <video width="100%" height="200" controls className="d-block w-75" onClick={() => findThumbHandler(item.id)}>
+                    <source src={getImagePath(item?.path)} type={`video/${item?.content_type?.replace(".", "").toUpperCase()}`} />
+                    Your browser does not support the video tag.
+                  </video> */}
+                </div>
+                <div className="p-3 w-100 border border-light ">
+                  {item.image_title && <Title title={item.image_title} cssClass="fs-5" />}
+                  {item.image_description && (
+                    <RichTextView data={item.image_description ? item.image_description : isAdmin ? "" : ""} />
 
-      <div className="row videoGallery">
-        {imageGallery?.length > 0 &&
-          imageGallery?.map((item, index) => (
-            <div className="col-md-4 mb-4 border p-0  d-flex flex-column justify-content-center align-items-center " key={item.id}>
-              <div className="bg-light w-100 d-flex justify-content-center align-items-center py-2">
-                <img src={getImageURL(item)} className="d-block w-75" onClick={() => findThumbHandler(item.id)} />
-                {/* <video width="100%" height="200" controls className="d-block w-75" onClick={() => findThumbHandler(item.id)}>
-                  <source src={getImagePath(item?.path)} type={`video/${item?.content_type?.replace(".", "").toUpperCase()}`} />
-                  Your browser does not support the video tag.
-                </video> */}
+                    // <p className="fw-normal description fs-5">
+                    //   {item.image_description}
+                    // </p>
+                  )}
+                </div>
+                {/* <img
+                  src={getImagePath(item.path)}
+                  alt={item.alternitivetext}
+                  className="d-block w-75"
+                  onClick={() => findThumbHandler(item.id)}
+                /> */}
+
+                {/* <div className="carousel-caption ">
+                  {item.image_title && (
+                    <h1 className="fw-bold">{item.image_title}</h1>
+                  )}
+
+                  {item.image_description && (
+                    <p className="fw-normal description fs-5">
+                      {item.image_description}
+                    </p>
+                  )}
+                </div> */}
               </div>
-              <div className="p-2 py-3 w-100">
-                {item.image_title && <Title title={item.image_title} cssClass="fs-5" />}
-                {item.image_description && (
-                  <RichTextView data={item.image_description ? item.image_description : isAdmin ? "" : ""} />
-
-                  // <p className="fw-normal description fs-5">
-                  //   {item.image_description}
-                  // </p>
-                )}
-              </div>
-              {/* <img
-                src={getImagePath(item.path)}
-                alt={item.alternitivetext}
-                className="d-block w-75"
-                onClick={() => findThumbHandler(item.id)}
-              /> */}
-
-              {/* <div className="carousel-caption ">
-                {item.image_title && (
-                  <h1 className="fw-bold">{item.image_title}</h1>
-                )}
-
-                {item.image_description && (
-                  <p className="fw-normal description fs-5">
-                    {item.image_description}
-                  </p>
-                )}
-              </div> */}
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
+      </VideoGalleryStyled>
       {/* {show && <ModelBg />} */}
       {showModal && <DynamicCarousel obj={img} all={imageGallery} closeCarousel={closeModel} />}
       {showModal && <ModelBg closeModel={closeModel} />}

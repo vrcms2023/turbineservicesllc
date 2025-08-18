@@ -17,8 +17,8 @@ export const ServicesStyled = styled.div`
   .normalCSS img,
   .flipCSS img {
     width: 100%;
-    height: 100%;
-    // max-height: 280px;
+    // height: 100%;
+    max-height: 280px;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   }
 

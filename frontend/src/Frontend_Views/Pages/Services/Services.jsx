@@ -278,7 +278,7 @@ const Services = () => {
         )}
         {/* End of Add Service Page */}
 
-        <div className={isAdmin && hasPermission ? "container-fluid my-md-3 servicesPage" : "container my-md-3 servicesPage"} id="servicesPage">
+        <div className={isAdmin && hasPermission && "container my-md-3 servicesPage" } id="servicesPage">
           <div className="row">
             <div className={isAdmin && hasPermission ? "col-md-12" : "col-md-12"}>
               {isAdmin && hasPermission && selectedServiceProject?.id && selectedServiceProject.page_url !== "/services/addservices" && (
@@ -355,7 +355,7 @@ const Services = () => {
                         </Link>
                       </>
                     )}
-                    <div className="col-md-8 p-4 p-5">
+                    <div className="col-lg-8 p-4 px-lg-5 d-flex flex-column jusity-content-center">
                       {item.feature_title && (
                         <Title title={item.feature_title ? item.feature_title : "Update Feature title"} cssClass="fs-3 mb-2 title" />
                       )}
@@ -375,7 +375,7 @@ const Services = () => {
                       }}
                     /> */}
                     </div>
-                    <div className="col-md-4 px-0">
+                    <div className="col-lg-4 px-0 d-flex align-items-center justify-content-center">
                       <img src={getImagePath(item.path)} alt="" />
                     </div>
                   </div>

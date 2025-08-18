@@ -182,7 +182,7 @@ const Client = ({
                 <img
                   src={getImagePath(item.path)}
                   alt=""
-                  className="img-fluid  mb-3"
+                  className="img-fluid"
                   onClick={() => clientThumbHandler(item)}
                 />
               </div>

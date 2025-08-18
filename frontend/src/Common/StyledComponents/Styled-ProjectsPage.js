@@ -217,8 +217,8 @@ export const ProjectsPageStyled = styled.div`
 
     .planThumbs {
         > div {
-            width: 200px;
-            height: 200px;
+            width: 140px;
+            height: 140px;
             border-radius: 4px;
 
             img {

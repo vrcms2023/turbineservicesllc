@@ -12,7 +12,7 @@ import {
   getFormDynamicFields,
   imageDimensionsJson,
 } from "../../../util/dynamicFormFields";
-import "./Projects.css";
+// import "./Projects.css";
 import ImageInputsForm from "../../../Frontend_Admin/Components/forms/ImgTitleIntoForm";
 import { removeActiveClass } from "../../../util/ulrUtil";
 import useAdminLoginStatus from "../../../Common/customhook/useAdminLoginStatus";

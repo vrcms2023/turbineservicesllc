@@ -38,7 +38,7 @@ const MenuForm = ({ editHandler, menuList, editMenu, componentType, popupTitle, 
     }, [editMenu]),
   });
   const [error, setError] = useState(false);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const [seoLink, setSEOLink] = useState("");
   const [seoAuthor, setSeoAuthor] = useState("");

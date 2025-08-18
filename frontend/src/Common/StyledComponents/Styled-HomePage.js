@@ -65,9 +65,9 @@ export const HomePageStyles = styled.div`
   background-size: cover;
   padding: 24px 0;
 
-  h5, .btn, p  {
-    color: ${({ theme }) => theme.white};
-  }
+  // h5, .btn, p  {
+  //   color: ${({ theme }) => theme.white};
+  // }
 
   
 

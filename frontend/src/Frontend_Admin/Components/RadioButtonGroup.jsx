@@ -13,9 +13,9 @@ const RadioButtonGroup = ({ options, onChange, defaultOption }) => {
   }, [selectedValue]);
 
   return (
-    <div className="form-check p-0">
+    <div className="form-check p-0 d-flex">
       {options.map((option) => (
-        <label key={option.value} className="form-check-label">
+        <label key={option.value} className="form-check-label d-flex flex-row align-items-center">
           <input
             className="form-check-input mx-2 rounded-circle"
             type="radio"
@@ -24,7 +24,7 @@ const RadioButtonGroup = ({ options, onChange, defaultOption }) => {
             checked={defaultOption === option.value}
             onChange={handleRadioChange}
           />
-          {option.label}
+          <small style={{fontSize: ".72rem", fontWeight: "500"}}>{option.label}</small>
         </label>
       ))}
     </div>

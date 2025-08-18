@@ -310,7 +310,7 @@ const About = () => {
                   className={`row ${
                     isAdmin
                       ? "border border-warning mb-4 position-relative"
-                      : ""
+                      : "border"
                   } ${index % 2 === 0 ? "normalCSS" : "flipCSS"}`}
                 >
                   {isAdmin && hasPermission && (

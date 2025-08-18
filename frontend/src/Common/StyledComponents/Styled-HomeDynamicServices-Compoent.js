@@ -13,7 +13,7 @@ export const HomeDynamicServiceStylesComponent = styled.div`
     .briefIntro {
         height: 320px;
         max-height: 100%;
-        padding: 32px;
+        padding: 24px 32px;
         /* border-bottom: 20px solid rgba(1, 32, 96, .2); */
         background-color: #f8f8f8;
         cursor: pointer;

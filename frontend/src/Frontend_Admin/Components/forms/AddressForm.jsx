@@ -164,8 +164,8 @@ const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
         <div className="container my-3">
           <div className="row">
             <div className="col-md-12 mb-md-0  p-0">
-              <NoteComponent note="Use drag option to shuffle the addresses" />
-              <div className={listofAddress.length > 0 && "heightCtrl"}>
+              <NoteComponent note="Use drag to shuffle" />
+              <div className={listofAddress.length > 0 && ""}>
                 <DragDropContext onDragEnd={dragEnded}>
                   <Droppable droppableId="address-wrapper">
                     {(provided, snapshot) => (

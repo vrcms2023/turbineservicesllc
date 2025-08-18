@@ -9,8 +9,15 @@ export const ProjectsPageStyled = styled.div`
             text-transform: capitalize;
         }
 
+        .infoStrip {
+            h5 {
+                font-size: 1rem !important;
+            }
+        }
+
         h5:first-letter {
             color: ${({ theme }) => theme.clientSecondaryColor};
+            
         }
 
         .box {

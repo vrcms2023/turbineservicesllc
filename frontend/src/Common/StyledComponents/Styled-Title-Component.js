@@ -4,7 +4,7 @@ export const TitleSubTitleStyled = styled.div`
     h5 {
         font-weight: 600;
         color: ${({ theme }) => theme.gray444};
-        line-height: 1.8rem !important;
+        line-height: auto;
        
         @media(max-width: 991px) {}
     }

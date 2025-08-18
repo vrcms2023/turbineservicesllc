@@ -91,3 +91,7 @@
 /* .dcarousel .carousel-item {
     display: block;
 } */
+
+.videoGallery button.carousel-control-next, .videoGallery button.carousel-control-prev {
+  width: 8% !important;
+}

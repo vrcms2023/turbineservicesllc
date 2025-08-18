@@ -186,7 +186,7 @@ const ListofTitleandDescription = ({
         <div className="container my-3">
           <div className="row">
             <div className="col-md-12 mb-md-0  ">
-              <NoteComponent note="Use drag option to shuffle the addresses" />
+              <NoteComponent note="Use drag to shuffle" />
               <div className={listofHomeIntros.length > 0 && "heightCtrl"}>
                 <DragDropContext onDragEnd={dragEnded}>
                   <Droppable droppableId="address-wrapper">
@@ -229,7 +229,7 @@ const ListofTitleandDescription = ({
               <hr className="mb-3 text-dark" />
             </div>
             <div className="col-md-12 mb-md-0">
-              <div className="heightCtrl">
+              <div className="">
                 <InputField
                   label="Title"
                   fieldName="intro_title"

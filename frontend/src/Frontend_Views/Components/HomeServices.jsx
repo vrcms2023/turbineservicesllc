@@ -60,7 +60,7 @@ const HomeServices = ({ title }) => {
               // }}
             >
               <Link to={`${item.services_page_url}`} className="m-0 text-decoration-none titleLink">
-                <Title title={item.feature_title} cssClass="serviceTitle lc1 lineClamp" />
+                <Title title={item.feature_title} cssClass="serviceTitle lc2 lineClamp" />
               </Link>
 
               {item.feature_description && (
@@ -75,7 +75,7 @@ const HomeServices = ({ title }) => {
                 //   dangerouslySetInnerHTML={{ __html: item.feature_description }}
                 // />
               )}
-              <Link to={`${item.services_page_url}`} className="mt-4 d-block">
+              <Link to={`${item.services_page_url}`} className="mt-3 d-block">
                 Know More
               </Link>
             </div>
@@ -84,7 +84,7 @@ const HomeServices = ({ title }) => {
       )}
       {clientServiceList.length > 0 && (
         <div className="text-end">
-          <Ancher Ancherpath="/services/all-services" AncherLabel="All Services" AncherClass="text-white me-2" />
+          <Ancher Ancherpath="/services/all-services" AncherLabel="All Services" AncherClass="text-white me-2 mt-3 d-flex justify-content-center justify-content-md-end" />
         </div>
       )}
 

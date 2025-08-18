@@ -195,29 +195,6 @@ const Footer = () => {
       </div>
       <footer className="pt-0">
         <div className="container footerDetails">
-          {/* <div className="logo text-center text-md-start">
-            <img src={Logo} alt="SAP Design Studio" className="footerLogo" />
-          </div> */}
-          {/* <hr className="d-block d-md-none my-4" /> */}
-          {/* <div className="row">
-            <div className="col-md-4 col-lg-3 d-flex align-items-center">
-              <img
-                src={svgLogo}
-                width="90%"
-                alt="ICONS ENGINEERING WITH EXCELLENCE"
-                className="footerLogo"
-              />
-            </div>
-            <div className="col-md-8 col-lg-9 d-flex align-items-center">
-              <p className="description m-0 text-center text-md-start p-4 pb-0 p-md-0">
-                ICONS has Integrated Management System in accordance to ISO ,
-                focused mainly on continuous improvement and learning based on
-                the successes and failures that occur during our day-to-day
-                activities. This system is a fundamental element in the
-                innovation process and encompasses the entire value chain.
-              </p>
-            </div>
-          </div> */}
           {/* <hr className="my-4" /> */}
           <div className="row py-5 pb-3">
             <div className="col-md-4 text-center text-md-start">
@@ -227,74 +204,9 @@ const Footer = () => {
                 {menuList?.map((menu) => {
                   return <ChildMenuContent menu={menu} key={menu.id} />;
                 })}
-
-                {/* <li>
-                  <Link to="/" className="ms-0">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about">About Us</Link>
-                </li>
-                <li>
-                  <Link
-                    to={`/${urlStringFormat(
-                      getCookie("pageLoadServiceName")
-                    )}/`}
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/careers">Careers</Link>
-                </li>
-                <li>
-                  <Link to="/news">News & Updates</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact Us</Link>
-                </li> */}
-                {/* <li>
-                  <Link to="" onClick={showModel}>
-                    Privacy Policy
-                  </Link>
-                </li> */}
               </ul>
             </div>
             <hr className="d-block d-md-none my-4" />
-
-            {/* <div 
-              className={`col-md-3 text-center text-md-start ${
-                isAdmin
-                  ? "border border-warning mb-3 position-relative"
-                  : ""
-              }`}
-            >
-               {isAdmin && (
-                  <Ancher 
-                    Ancherpath="/contact"
-                    AncherClass="btn btn-warning float-end"
-                    handleModel=""
-                    AncherLabel="Edit"
-                    icon=""
-                    // icon="fa-arrow-right"
-                    iconCss="ms-2 m-auto"
-                  />
-                )}
-              {address && (
-                <>
-                  <Title title="Address"  />
-
-                  <p className="m-0 fw-bold">{address.company_name}</p>
-                  <p className="m-0">{address.address_dr_no}</p>
-                  <p className="m-0">{address.street} </p>
-                  <p className="m-0">{address.location} </p>
-                  <p className="m-0">{address.city} </p>
-                  <p className="m-0">{address.state}</p>
-                  <p className="mb-4">{address.location_title}</p>
-                </>
-              )}              
-            </div> */}
 
             <div
               className={`col-md-4 col-lg-4 text-center text-md-start reachUs ${
@@ -397,18 +309,10 @@ const Footer = () => {
             <hr className="d-block d-md-none my-4" />
             {
               <div
-                // align-items-center justify-content-md-center justify-content-lg-end align-items-md-end align-items-end justify-content-md-end
-                // ${ isAdmin ? "border border-warning mb-3 position-relative" : "" }
                 className={`col-md-4 col-lg-4 pb-md-0 socialMedia d-flex flex-column gap-4 gap-md-0 align-items-center align-items-md-start justify-content-between pb-4 pb-md-0`}
               >
                 <div className="FooterAddress">
                   <Title title="We Are At" />
-                  {/* <img
-                  src={Logo}
-                  alt="SAP Design Studio"
-                  className="footerLogo"
-                />  */}
-
                   <h4 className="mb-3 ">{address?.company_name}</h4>
                   <p className="m-0 ">{address?.address_dr_no}</p>
                   <p className="m-0 ">{address?.city}</p>
@@ -512,34 +416,9 @@ const Footer = () => {
 
           <div className="container">
             <div className="row">
-              <div className="">
-                <div className="d-flex text-center text-md-start flex-column flex-md-row justify-content-center justify-content-md-between align-items-center  gap-2">
-                  &copy; {fullYear} - {addressList[0]?.company_name}. All rights
-                  reserved
-                  {/* <span className="d-inline-block  d-none d-md-block">|</span> */}
-                  <div className="d-flex gap-2">
-                    <Link
-                      to="#"
-                      className="text-decoration-underline"
-                      onClick={() => showModel("TC")}
-                    >
-                      Terms & Conditions
-                    </Link>{" "}
-                    <span className="d-inline-block d-none d-md-block">|</span>
-                    <Link
-                      to="#"
-                      className="text-decoration-underline"
-                      onClick={() => showModel("PP")}
-                    >
-                      Privacy Policy
-                    </Link>
-                  </div>
-                </div>
-                
-                  {/* Designed & developed by{" "}
-                  <a href="http://www.vitsols.com" className="dby fw-medium" aria-label="Custom CMS developed by VITSOLS for small businesses" >
-                      VITSOLS
-                  </a> */}
+              <div className="col-md-12 d-flex flex-column flex-md-row justify-content-center justify-content-md-between">
+                <div className="d-flex flex-column gap-1 text-center text-md-start">
+                  <div> &copy; {fullYear} - {addressList[0]?.company_name}. All rights reserved </div>
                   <div className="d-block mt-2 d-flex flex-column flex-md-row justify-content-center justify-content-md-start  align-items-center ">
                     <span>Designed & developed by </span>
                     <a
@@ -582,6 +461,26 @@ const Footer = () => {
                     </a>
                     */}
                 </div>
+                  
+                </div>
+              <div className="d-flex gap-2 my-3 justify-content-center">
+                    <Link
+                      to="#"
+                      className="text-decoration-underline"
+                      onClick={() => showModel("TC")}
+                    >
+                      Terms & Conditions
+                    </Link>
+                    <span className="d-inline-block ">|</span>
+                    <Link
+                      to="#"
+                      className="text-decoration-underline"
+                      onClick={() => showModel("PP")}
+                    >
+                      Privacy Policy
+                    </Link>
+                  </div>
+                  
               </div>
             </div>
           </div>

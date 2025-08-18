@@ -36,15 +36,15 @@ const DCarousel = ({ obj, all, closeCarousel }) => {
                     item.video_id ? (
                       <iframe
                         width="100%"
-                        height="740"
+                        height="600"
                         src={`https://www.youtube.com/embed/${extractYouTubeEmbed(item.video_WebURL)}?autoplay=1`}
                         frameBorder="0"
                         allowFullScreen
                         title="YouTube video player"
-                        className="d-block w-75"
+                        className="d-block"
                       />
                     ) : (
-                      <video width="100%" height="740" className="d-block w-75" controls src={obj.path} />
+                      <video width="100%" height="740" className="d-block" controls src={obj.path} />
                     )
                   ) : (
                     // <video width="100%" height="740" controls className="d-block w-75">
@@ -83,7 +83,9 @@ const DCarousel = ({ obj, all, closeCarousel }) => {
             ))
           : null}
       </div>
-      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      {obj.category === "VideosGallery" ? "" : (
+        <>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Previous</span>
       </button>
@@ -91,6 +93,9 @@ const DCarousel = ({ obj, all, closeCarousel }) => {
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Next</span>
       </button>
+      </>
+      )}
+      
     </div>
   );
 };

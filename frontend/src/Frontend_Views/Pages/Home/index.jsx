@@ -1332,6 +1332,7 @@ const Home = () => {
             />
           )}
           {showHideCompList?.news?.visibility && (
+
             <div className="container">
               <div className="row py-5 homeNews">
                 <div className="col-md-12 d-flex justify-content-center align-items-center">
@@ -1366,6 +1367,7 @@ const Home = () => {
                     AnchersvgColor="#17427C"
                   /> */}
                     </div>
+
                   </div>
                 </div>
               </div>

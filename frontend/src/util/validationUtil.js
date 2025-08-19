@@ -5,6 +5,20 @@ export const fieldValidation = {
   firstName: {
     required: "Please enter First Name.",
   },
+  password: {
+    required: "Please enter Password.",
+    minLength: {
+      value: 6,
+      message: "Password must be at least 6 characters long.",
+    },
+  },
+  confirmPassword: {
+    validate: (value, formData) => {
+      if (value !== (formData.password || formData.new_password)) {
+        return "Passwords do not match.";
+      }
+    },
+  },
   location_title: {
     required: "Please enter Country name.",
   },
@@ -98,4 +112,8 @@ export const fieldValidation = {
       message: "Please enter valid URL format",
     },
   },
+};
+
+const getValues = (formData, fieldName) => {
+  return formData[fieldName];
 };

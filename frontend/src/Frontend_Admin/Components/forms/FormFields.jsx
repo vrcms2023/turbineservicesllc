@@ -1,8 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import RichTextEditor from "../../../Frontend_Views/Components/RichTextEditor";
 import RichTextEditor_V2 from "../../../Frontend_Views/Components/RichTextEditor_v2";
 
-export const InputFields = ({ label, type = "text", fieldName, register, isRequired = false, value, onChange, error, validationObject, ...rest }) => {
+export const InputFields = ({
+  label,
+  type = "text",
+  fieldName,
+  register,
+  isRequired = false,
+  value,
+  onChange,
+  error,
+  validationObject,
+  ...rest
+}) => {
   switch (type) {
     case "text":
       return (
@@ -24,6 +36,44 @@ export const InputFields = ({ label, type = "text", fieldName, register, isRequi
               className="form-control p-2"
             />
             <span className="error">{error}</span>
+          </div>
+        </div>
+      );
+    case "password":
+      const [show, setShow] = useState(false);
+      return (
+        <div className="mb-1 row">
+          <label htmlFor="" className="col-sm-12 col-form-label text-capitalize text-start">
+            <small className="">
+              {label}
+              {isRequired && <span className="error">&nbsp; *</span>}
+            </small>
+          </label>
+          <div className="col-sm-12">
+            <div className="position-relative">
+              <input
+                {...register(fieldName, validationObject)}
+                value={value}
+                type={show ? "text" : "password"}
+                id={rest?.id}
+                onChange={onChange}
+                disabled={rest.disabled}
+                className="form-control p-2"
+              />
+              <i
+                className={`fa ${show ? "fa-eye" : "fa-eye-slash"} position-absolute`}
+                onClick={() => setShow(!show)}
+                style={{
+                  top: "50%",
+                  right: "12px",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                  color: "#6c757d",
+                }}
+              ></i>
+            </div>
+            <span className="error">{error}</span>
+            {/* <small className="text-muted">Passwords must be at least 6 characters.</small> */}
           </div>
         </div>
       );
@@ -57,9 +107,18 @@ export const InputFields = ({ label, type = "text", fieldName, register, isRequi
             {isRequired && <span className="error">&nbsp; *</span>}
           </label>
           <div className="col-sm-12">
-            <select className="custom-select custom-select-lg form-control p-2" {...register(fieldName, validationObject)}>
+            <select
+              className="custom-select custom-select-lg form-control p-2"
+              {...register(fieldName, validationObject)}
+            >
               {rest.options.map((option, index) => (
-                <option key={index} value={option.value} defaultValue={rest?.selectedValue} selected={option.value === rest?.selectedValue} {...rest}>
+                <option
+                  key={index}
+                  value={option.value}
+                  defaultValue={rest?.selectedValue}
+                  selected={option.value === rest?.selectedValue}
+                  {...rest}
+                >
                   {option.label}
                 </option>
               ))}
@@ -101,7 +160,10 @@ export const InputFields = ({ label, type = "text", fieldName, register, isRequi
               className="form-check-input"
               {...rest}
             />
-            <label htmlFor="" className="form-check-label ms-2 pt-0 col-form-label text-start text-md-end text-capitalize">
+            <label
+              htmlFor=""
+              className="form-check-label ms-2 pt-0 col-form-label text-start text-md-end text-capitalize"
+            >
               <small>{label}</small>
               {isRequired && <span className="error">&nbsp; *</span>}
             </label>
@@ -124,14 +186,20 @@ export const InputFields = ({ label, type = "text", fieldName, register, isRequi
           if (ruleType === "maxSize" && rest.maxSize) {
             validate.fileSize = (files) => {
               const file = files?.[0];
-              return (file && file.size <= rest.maxSize) || message || `Max file size: ${rest.maxSize / (1024 * 1024)}MB`;
+              return (
+                (file && file.size <= rest.maxSize) ||
+                message ||
+                `Max file size: ${rest.maxSize / (1024 * 1024)}MB`
+              );
             };
           }
 
           if (ruleType === "allowedTypes" && rest.allowedTypes) {
             validate.fileType = (files) => {
               const file = files?.[0];
-              return (file && rest.allowedTypes.includes(file.type)) || message || "Invalid file type";
+              return (
+                (file && rest.allowedTypes.includes(file.type)) || message || "Invalid file type"
+              );
             };
           }
         });
@@ -192,7 +260,10 @@ export const RichTextInputEditor = ({ label, editorSetState, initialText, isRequ
           <small>{label}</small>
           {isRequired && <span className="error">&nbsp; *</span>}
         </p>
-        <RichTextEditor initialText={initialText ? initialText : ""} RichEditorState={editorSetState} />
+        <RichTextEditor
+          initialText={initialText ? initialText : ""}
+          RichEditorState={editorSetState}
+        />
       </div>
     </div>
   );
@@ -208,22 +279,40 @@ export const RichTextInputEditor_V2 = ({ label, Controller, name, control }) => 
         <Controller
           name={name}
           control={control}
-          render={({ field }) => <RichTextEditor_V2 field={field} onChange={field.onChange} value={field.value} />}
+          render={({ field }) => (
+            <RichTextEditor_V2 field={field} onChange={field.onChange} value={field.value} />
+          )}
         />
       </div>
     </div>
   );
 };
 
-export const InputField = ({ label, type = "text", fieldName, register, cssClass, validationObject, error, isRequired }) => {
+export const InputField = ({
+  label,
+  type = "text",
+  fieldName,
+  register,
+  cssClass,
+  validationObject,
+  error,
+  isRequired,
+}) => {
   return (
     <div className="mb-2 row">
-      <label htmlFor="" className={`col-sm-12 col-form-label text-capitalize ${cssClass ? cssClass : ""}`}>
+      <label
+        htmlFor=""
+        className={`col-sm-12 col-form-label text-capitalize ${cssClass ? cssClass : ""}`}
+      >
         <small>{label} </small>
         {/* {isRequired && <span className="error">*</span>} */}
       </label>
       <div className="col-sm-12">
-        <input {...register(fieldName, validationObject)} type={type} className="form-control p-2" />
+        <input
+          {...register(fieldName, validationObject)}
+          type={type}
+          className="form-control p-2"
+        />
 
         <span className="error">{error}</span>
       </div>
@@ -238,7 +327,11 @@ export const SelectField = ({ label, fieldName, register, options, ...rest }) =>
         <small>{label}</small>
       </label>
       <div className="col-sm-12">
-        <select defaultValue={rest?.value} className="custom-select custom-select-lg form-control p-2" {...register(fieldName)}>
+        <select
+          defaultValue={rest?.value}
+          className="custom-select custom-select-lg form-control p-2"
+          {...register(fieldName)}
+        >
           {options.map((option, index) => (
             <option key={index} value={option.value} selected={option.value === rest?.value}>
               {option.label}
@@ -257,7 +350,11 @@ export const TextAreaField = ({ label, fieldName, register, validationObject, er
         <small>{label}</small>
       </label>
       <div className="col-sm-12">
-        <textarea className="form-control" {...register(fieldName, validationObject)} rows="3"></textarea>
+        <textarea
+          className="form-control"
+          {...register(fieldName, validationObject)}
+          rows="3"
+        ></textarea>
         <span className="error">{error}</span>
       </div>
     </div>
@@ -276,7 +373,10 @@ export const CheckboxField = ({ label, fieldName, register, validationObject, er
           checked={rest.isChecked}
           className="form-check-input mx-1 rounded-1"
         />
-        <label className="form-check-label col-form-label text-start text-md-end text-capitalize" htmlFor="flexCheckDefault">
+        <label
+          className="form-check-label col-form-label text-start text-md-end text-capitalize"
+          htmlFor="flexCheckDefault"
+        >
           <small>{label}</small>
         </label>
       </div>

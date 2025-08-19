@@ -85,6 +85,7 @@ export const CareersPageStyled = styled.div`
 
     ul {
       list-style: none;
+      padding: 0;
 
       li a {
         color: ${({ theme }) => theme.primaryColor};
@@ -105,15 +106,18 @@ export const CareersPageStyled = styled.div`
   }
 
   .jobBriefDetails {
-    background: linear-gradient(-15deg, rgba(225,242,253,0) 0%, ${({ theme }) => theme.white} 50%, rgba(225,242,253,.8) 100%);
+    // background: linear-gradient(-15deg, rgba(225,242,253,0) 0%, ${({ theme }) => theme.white} 50%, rgba(225,242,253,.8) 100%);
     // background-color: rgba(255,255,255, .3);
-    // border-bottom: 1px solid ${({ theme }) => theme.grayddd};
-    padding: .8rem;
+    border: 1px solid ${({ theme }) => theme.graye6};
+  // box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    padding: 1rem;
+    border-radius: .6rem;
+    margin-bottom: 1.5rem;
   }
 
   .jobDescription {
-    // background-color: ${({ theme }) => theme.primaryColor};
-    // border: 1px solid ${({ theme }) => theme.white};
+    border: 1px solid ${({ theme }) => theme.graye6};
+    border-radius: .6rem;
 
     p {
       font-size: .9rem
@@ -151,8 +155,9 @@ export const CareersPageStyled = styled.div`
   }
 
   .contactForm {
-    background-color: ${({ theme }) => theme.verylightgray};
-    padding: 24px
+    background-color: ${({ theme }) => theme.lightWhiteF8};
+    padding: 24px;
+    border-radius: .8rem;
   }
 
 `;

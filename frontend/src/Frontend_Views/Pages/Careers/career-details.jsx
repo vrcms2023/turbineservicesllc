@@ -193,9 +193,9 @@ const Careers = () => {
       <CareersPageStyled>
         <div className="container mb-md-5 py-md-4">
           <div className="row d-flex flex-rowreverse">
-            <div className="col-md-7 col-lg-9 p-0">
+            <div className="col-md-7 col-lg-8 p-md-0">
               <JobBriefDetails jobDetails={posts} />
-              <div className="jobDescription mb-4">
+              <div className="jobDescription mb-4 p-3">
                 {posts.description && (
                   <RichTextView
                     data={posts.description}
@@ -218,7 +218,7 @@ const Careers = () => {
               </div>
               <JobCurrentOpenings />
             </div>
-            <div className="col-md-3 pe-0">
+            <div className="col-md-5 col-lg-4 p-0 mb-5">
               <ApplyForm jobDetails={posts} />
             </div>
           </div>

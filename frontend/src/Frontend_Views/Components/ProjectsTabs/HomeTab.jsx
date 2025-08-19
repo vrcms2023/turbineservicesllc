@@ -43,7 +43,7 @@ const HomeTab = ({ project, thumbImgs, pdfs }) => {
 
   return (
     <>
-      <div className="px-5">
+      <div className="px-2">
         <Title title={aboutstitle} cssClass="title" />
         <Title title={aboutussubtitle} cssClass="subTitle" />
         <div className="py-3">{description}</div>

@@ -422,7 +422,7 @@ const Footer = () => {
                   <div className="d-block mt-2 d-flex flex-column flex-md-row justify-content-center justify-content-md-start  align-items-center ">
                     <span>Designed & developed by </span>
                     <a
-                      href="https://www.vitsols.com"
+                      href="https://www.vitsols.com" target="_blank"
                       className="dby fw-medium"
                       aria-label=" VITSOLS web design and digital solutions company"
                     >

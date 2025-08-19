@@ -20,7 +20,11 @@ import "filepond/dist/filepond.min.css";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import { toast } from "react-toastify";
 
-registerPlugin(FilePondPluginFileValidateType, FilePondPluginImagePreview, FilePondPluginImageExifOrientation);
+registerPlugin(
+  FilePondPluginFileValidateType,
+  FilePondPluginImagePreview,
+  FilePondPluginImageExifOrientation
+);
 
 const ImageUploadForm = ({
   title,
@@ -216,7 +220,10 @@ const ImageUploadForm = ({
 
       formData.append("id", editImage.id);
       formData = setFormData(formData, data);
-      const response = await axiosFileUploadServiceApi.patch(`${imageUpdateURL}${editImage.id}/`, formData);
+      const response = await axiosFileUploadServiceApi.patch(
+        `${imageUpdateURL}${editImage.id}/`,
+        formData
+      );
       if (response?.status === 200) {
         updatedFileChnages([response]);
         closePopupWindow();
@@ -299,7 +306,13 @@ const ImageUploadForm = ({
       let formData = new FormData();
       formData.append("path", "");
       formData = setFormData(formData, data);
-
+      const isValid = validateDataisEmptyornot(data);
+      if (!isValid) {
+        toast.error("No data has been added", {
+          position: "top-center",
+        });
+        return true;
+      }
       arrURL.push(axiosFileUploadServiceApi.post(imagePostURL, formData));
     }
 
@@ -323,6 +336,17 @@ const ImageUploadForm = ({
       window.scrollTo(0, 0);
       console.log(error);
     }
+  };
+
+  const validateDataisEmptyornot = (data) => {
+    let isValid = false;
+    for (const key in data) {
+      if (data[key] && key !== "category" && key !== "alternitivetext") {
+        isValid = true;
+        break;
+      }
+    }
+    return isValid;
   };
 
   const getFormDataonSubmit = (data) => {
@@ -432,74 +456,87 @@ const ImageUploadForm = ({
             )}
             <div id="FilePondDiv">
               <div className="row">
-              <div className={`${editImage?.id && editImage.path ? "col-6 col-md-6 pe-0" : "col-12"}`}>
-                <div className={`mb-0 ${!hideFileFound ? "d-none" : ""}`}>
-                  <FilePond
-                    labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
-                    labelInvalidField="invalid files"
-                    name="path"
-                    files={files}
-                    onerror={onerror}
-                    onupdatefiles={onUpdateFiles}
-                    allowMultiple={true}
-                    maxFiles={maxFiles ? maxFiles : 4}
-                    maxParallelUploads={4}
-                    disabled={disabledFile}
-                    credits={false}
-                    acceptedFileTypes={extTypes}
-                    instantUpload={false}
-                  />
+                <div
+                  className={`${editImage?.id && editImage.path ? "col-6 col-md-6 pe-0" : "col-12"}`}
+                >
+                  <div className={`mb-0 ${!hideFileFound ? "d-none" : ""}`}>
+                    <FilePond
+                      labelIdle='Drag & Drop your files or <span className="filepond--label-action">Browse</span>'
+                      labelInvalidField="invalid files"
+                      name="path"
+                      files={files}
+                      onerror={onerror}
+                      onupdatefiles={onUpdateFiles}
+                      allowMultiple={true}
+                      maxFiles={maxFiles ? maxFiles : 4}
+                      maxParallelUploads={4}
+                      disabled={disabledFile}
+                      credits={false}
+                      acceptedFileTypes={extTypes}
+                      instantUpload={false}
+                    />
+                  </div>
+                  {maxFiles !== 1 ? (
+                    <div className="text-muted">
+                      <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
+                        You can upload a maximum of {maxFiles ? maxFiles : 4} images at a time.
+                      </small>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+
+                  {error ? <Error>{error}</Error> : ""}
                 </div>
-                {maxFiles !== 1 ? (
-                  <div className="text-muted">
+                {editImage?.id && editImage.path && editImage.contentType === ".pdf" && (
+                  <div className="col-6 col-md-6">
+                    <div>
+                      <b className="d-block">File name</b>
+                      <a
+                        href="#!"
+                        onClick={() => downloadPDF(`${baseURL}${editImage.path}`)}
+                        className="mx-1 text-dark"
+                      >
+                        {editImage.originalname}
+                      </a>
+                    </div>
+                  </div>
+                )}
+                {editImage?.id &&
+                  (editImage?.path || editImage?.thumbnail_url) &&
+                  editImage?.contentType !== ".pdf" && (
+                    <div className="col-6 col-md-6">
+                      <img
+                        src={getImageURL(editImage)}
+                        alt={editImage?.alternitivetext}
+                        className=""
+                        style={{
+                          width: "100%",
+                          height: "74px",
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          borderRadius: "6px",
+                        }}
+                      />
+                    </div>
+                  )}
+                {dimensions && (
+                  <div className="col-12">
                     <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
-                      You can upload a maximum of {maxFiles ? maxFiles : 4} images at a time.
+                      Recommended size <strong>{dimensions.w}</strong> -{" "}
+                      <strong>{dimensions.h}</strong>
                     </small>
                   </div>
-                ) : (
-                  ""
                 )}
-
-                {error ? <Error>{error}</Error> : ""}
-              </div>
-              {editImage?.id && editImage.path && editImage.contentType === ".pdf" && (
-                <div className="col-6 col-md-6">
-                  <div>
-                    <b className="d-block">File name</b>
-                    <a href="#!" onClick={() => downloadPDF(`${baseURL}${editImage.path}`)} className="mx-1 text-dark">
-                      {editImage.originalname}
-                    </a>
-                  </div>
-                </div>
-              )}
-              {editImage?.id && (editImage?.path || editImage?.thumbnail_url) && editImage?.contentType !== ".pdf" && (
-                <div className="col-6 col-md-6">
-                  <img
-                    src={getImageURL(editImage)}
-                    alt={editImage?.alternitivetext}
-                    className=""
-                    style={{
-                      width: "100%",
-                      height: "74px",
-                      objectFit: "cover",
-                      objectPosition: "center",
-                      borderRadius: "6px",
-                    }}
+                <div className={`${!hideFileFound ? "d-none" : ""}`}>
+                  <InputFields
+                    label={alternitivetextTitle}
+                    type="text"
+                    fieldName={altTitleFieldName}
+                    register={register}
                   />
                 </div>
-              )}
-              {dimensions && (
-                <div className="col-12">
-                  <small className="d-block text-center" style={{ fontSize: ".75rem" }}>
-                    Recommended size <strong>{dimensions.w}</strong> - <strong>{dimensions.h}</strong>
-                  </small>
-                </div>
-              )}
-              <div className={`${!hideFileFound ? "d-none" : ""}`}>
-                <InputFields label={alternitivetextTitle} type="text" fieldName={altTitleFieldName} register={register} />
               </div>
-</div>
-
             </div>
           </div>
 
@@ -508,7 +545,16 @@ const ImageUploadForm = ({
               const { label, type, fieldName, value } = showExtraFormFields[e];
 
               if (type == "richText") {
-                return <RichTextInputEditor_V2 Controller={Controller} control={control} key={index} label={label} name={fieldName} value={value} />;
+                return (
+                  <RichTextInputEditor_V2
+                    Controller={Controller}
+                    control={control}
+                    key={index}
+                    label={label}
+                    name={fieldName}
+                    value={value}
+                  />
+                );
               } else {
                 return (
                   <InputFields
@@ -565,7 +611,15 @@ const ImageUploadForm = ({
                   let key = Object.keys(item);
                   let field = item[key];
                   if (field.readonly) return "";
-                  return <InputField key={index} label={field.label} type={field.type} fieldName={field.fieldName} register={register} />;
+                  return (
+                    <InputField
+                      key={index}
+                      label={field.label}
+                      type={field.type}
+                      fieldName={field.fieldName}
+                      register={register}
+                    />
+                  );
                 })}
               </>
             </div>

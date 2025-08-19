@@ -92,4 +92,10 @@ export const fieldValidation = {
       message: "Only PDF, DOCX, and RTF files are allowed",
     },
   ],
+  URL: {
+    pattern: {
+      value: /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/\S*)?$/,
+      message: "Please enter valid URL format",
+    },
+  },
 };

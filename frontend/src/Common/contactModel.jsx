@@ -18,10 +18,7 @@ const ContactModel = ({ closeModel, downloadPDF }) => {
           </div>
           <div className="modal-body px-4 py-3">
             {/* User Contact Form */}
-            <UserContactForm
-              closeModel={closeModel}
-              downloadPDF={downloadPDF}
-            />
+            <UserContactForm closeModel={closeModel} downloadPDF={downloadPDF} />
           </div>
         </div>
       </div>

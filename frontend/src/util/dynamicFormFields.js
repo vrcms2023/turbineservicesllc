@@ -333,6 +333,7 @@ export const getImageGalleryFields = (category) => {
       type: "text",
       id: "image_video_WebURL",
       fieldName: "image_WebURL",
+      validationObject: fieldValidation.URL,
     },
     image_title: {
       label: "Image Title",
@@ -360,6 +361,7 @@ export const getVideoGalleryFields = (category) => {
       type: "text",
       id: "image_video_WebURL",
       fieldName: "video_WebURL",
+      validationObject: fieldValidation.URL,
     },
     image_title: {
       label: "Image Title",

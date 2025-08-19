@@ -17,9 +17,7 @@ import { getDummyImage, getImagePath } from "../../util/commonUtil";
 const HomeProjects = () => {
   const [ProjectCategoryType, setProjectCategoryType] = useState([]);
   const getPorjectCategory = async () => {
-    const response = await axiosClientServiceApi.get(
-      `/project/clientCategory/`
-    );
+    const response = await axiosClientServiceApi.get(`/project/clientCategory/`);
 
     if (response?.status === 200) {
       setProjectCategoryType(response.data);
@@ -29,7 +27,7 @@ const HomeProjects = () => {
     getPorjectCategory();
   }, []);
 
-  console.log(ProjectCategoryType, "ProjectCategoryType")
+  console.log(ProjectCategoryType, "ProjectCategoryType");
   return (
     <div className="container">
       {/* <Title title="PROJECTS" cssClass="text-center fs-3 mb-5" /> */}
@@ -56,9 +54,7 @@ const HomeProjects = () => {
                         }}
                       /> */}
 
-                      <p className="card-text my-4 lineClamp lc9">
-                        {item.category_description}
-                      </p>
+                      <p className="card-text my-4 lineClamp lc9">{item.category_description}</p>
                       <Link to={`${item.readMore_link}`}>
                         Continue{" "}
                         {/* <svg

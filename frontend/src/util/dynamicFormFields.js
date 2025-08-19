@@ -579,11 +579,11 @@ export const getAdvertisementFormDynamicFields = (advertisement) => {
       fieldName: "category",
     },
 
-    alternitivetext: {
-      label: "alternitivetext",
-      type: "text",
-      fieldName: "alternitivetext",
-    },
+    // alternitivetext: {
+    //   label: "alternitivetext",
+    //   type: "text",
+    //   fieldName: "alternitivetext",
+    // },
   };
 };
 
@@ -631,6 +631,7 @@ export const getProjectCategoryFormDynamicFields = (editCategory, options, disab
     readMore_link: {
       label: "More Link",
       type: "text",
+      value: "/projects",
       fieldName: "readMore_link",
     },
   };

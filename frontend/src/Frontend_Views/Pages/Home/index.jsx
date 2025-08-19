@@ -1224,7 +1224,7 @@ const Home = () => {
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.services?.visibility}
-              title={"Image with Text Description – 2-Column"}
+              title={"Image with Text Description – 2-Column -Duplicate - Turbine Trainings"}
               componentName={"services"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.services?.id}
@@ -1332,12 +1332,14 @@ const Home = () => {
             />
           )}
           {showHideCompList?.news?.visibility && (
-
             <div className="container">
               <div className="row py-5 homeNews">
                 <div className="col-md-12 d-flex justify-content-center align-items-center">
                   <div className="container">
-                    <Title title="News" cssClass="fs-1 fw-bold text-center my-5 pt-0 pt-md-5 text-uppercase" />
+                    <Title
+                      title="News"
+                      cssClass="fs-1 fw-bold text-center my-5 pt-0 pt-md-5 text-uppercase"
+                    />
                     <HomeNews news={news} setNews={setResponseData} pagetype={pageType} />
 
                     <div className="d-flex justify-content-center align-items-center mt-4">
@@ -1367,7 +1369,6 @@ const Home = () => {
                     AnchersvgColor="#17427C"
                   /> */}
                     </div>
-
                   </div>
                 </div>
               </div>

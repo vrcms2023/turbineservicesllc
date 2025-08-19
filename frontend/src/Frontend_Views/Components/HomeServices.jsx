@@ -12,7 +12,11 @@ import ServiceForm from "../../Frontend_Admin/Components/forms/ImgTitleIntoForm-
 import ModelBg from "../../Common/ModelBg";
 import EditIcon from "../../Common/AdminEditIcon";
 import { axiosClientServiceApi } from "../../util/axiosUtil";
-import { mapServicePagetoComponent, sortByDate, sortByCreatedDate } from "../../util/dataFormatUtil";
+import {
+  mapServicePagetoComponent,
+  sortByDate,
+  sortByCreatedDate,
+} from "../../util/dataFormatUtil";
 import { getImagePath } from "../../util/commonUtil";
 import RichTextView from "../../Common/RichTextView";
 import Ancher from "../../Common/Ancher";
@@ -84,7 +88,11 @@ const HomeServices = ({ title }) => {
       )}
       {clientServiceList.length > 0 && (
         <div className="text-end">
-          <Ancher Ancherpath="/services/all-services" AncherLabel="All Services" AncherClass="text-white me-2 mt-3 d-flex justify-content-center justify-content-md-end" />
+          <Ancher
+            Ancherpath="/all-services"
+            AncherLabel="All Services"
+            AncherClass="text-white me-2 mt-3 d-flex justify-content-center justify-content-md-end"
+          />
         </div>
       )}
 

@@ -53,8 +53,8 @@ const ApplyForm = ({ jobDetails }) => {
   };
   return (
     <CareersFormStyled>
-      <div className="container py-3">
-        <form className="my-2 contactForm" onSubmit={handleSubmit(onFormSubmit)}>
+      <div className="container">
+        <form className="contactForm" onSubmit={handleSubmit(onFormSubmit)}>
           <div className="row">
             <div className="col-md-12 ">
               <Title title="Apply Now" cssClass={"fs-5 fw-medium "} />

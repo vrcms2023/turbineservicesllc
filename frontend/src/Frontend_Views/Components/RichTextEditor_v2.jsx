@@ -8,12 +8,7 @@ const RichTextEditor = ({ onChange, value, field }) => {
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
       [{ color: [] }, { background: [] }],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
+      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link"],
       ["clean"],
       [{ font: [] }],
@@ -25,7 +20,7 @@ const RichTextEditor = ({ onChange, value, field }) => {
     <ReactQuill
       {...field}
       theme="snow"
-      value={value}
+      value={value === "undefined" ? "" : value}
       onChange={onChange}
       modules={toolbar}
     />

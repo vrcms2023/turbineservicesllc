@@ -26,7 +26,7 @@ const ResetPassword = () => {
   const [serverError, setServerError] = useState(false);
 
   const resetPassword = async (email) => {
-    reset();
+    setServerError("");
     const body = JSON.stringify(email);
     try {
       const data = await axiosClientServiceApi.post(`/user/auth/users/reset_password/`, body);
@@ -53,7 +53,7 @@ const ResetPassword = () => {
     <LoginStyled>
       <div className="text-center">
         <Ancher
-          Ancherpath="/"
+          Ancherpath="/login"
           AncherClass="btn btn-outline mt-5 w-auto"
           handleModel=""
           AncherLabel=""

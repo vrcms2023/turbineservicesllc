@@ -53,7 +53,7 @@ const ResendActivationEmail = () => {
     <LoginStyled>
       <div className="text-center">
         <Ancher
-          Ancherpath="/"
+          Ancherpath="/login"
           AncherClass="btn btn-outline mt-5 w-auto"
           handleModel=""
           AncherLabel=""

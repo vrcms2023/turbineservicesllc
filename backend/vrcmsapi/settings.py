@@ -175,7 +175,7 @@ EMAIL_CUSTOMER_THANK_YOU_MESSAGE = "Thanks for contacting"
 EMAIL_CUSTOMER_AUTO_REPLY_MESSAGE = " This automatic reply is just to let you know that we received your message and we will get back to you with a response as quickly as possible. During business hours, we do our best to reply as quick as we can, usually within a couple of hours."
 EMAIL_CUSTOMER_JOB_THANK_YOU_MESSAGE="Thank you for apply job in"
 APP_NAME = " ICONSENGG "
-
+APP_CONTACT_EMAIL = "Info@turbineservicesllc.com"
 RESUME_FILE_SIZE = 5
 
 # Password validation

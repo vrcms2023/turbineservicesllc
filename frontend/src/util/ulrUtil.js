@@ -1,7 +1,9 @@
 import { getCookie } from "./cookieUtil";
 
 export function getBaseURL() {
-  return process.env.NODE_ENV === "production" ? process.env.REACT_APP_SERVER_URL : "http://127.0.0.1:8000";
+  return process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_SERVER_URL
+    : "http://127.0.0.1:8000";
 }
 
 // export function getBaseURL() {
@@ -9,7 +11,11 @@ export function getBaseURL() {
 // }
 
 export function removeActiveClass() {
-  const menuIDs = ["ServicesnavbarDropdown", "KnowledgeHubnavbarDropdown", "AdminSettingnavbarDropdown"];
+  const menuIDs = [
+    "ServicesnavbarDropdown",
+    "KnowledgeHubnavbarDropdown",
+    "AdminSettingnavbarDropdown",
+  ];
   menuIDs.forEach((menuID) => {
     const id = document.getElementById(menuID);
     if (id) {
@@ -27,5 +33,7 @@ export const getUserName = () => {
 };
 
 export const getReactHostDetils = () => {
-  return process.env.NODE_ENV === "production" ? process.env.REACT_APP_SERVER_URL : "http://localhost:3000";
+  return process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_SERVER_URL
+    : "http://localhost:3000";
 };

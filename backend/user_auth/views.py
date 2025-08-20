@@ -10,6 +10,7 @@ from .models import User
 from djoser.views import UserViewSet
 from rest_framework.permissions import IsAdminUser
 
+
 # Create your views here.
 
 @method_decorator(ensure_csrf_cookie, name='dispatch')
@@ -44,3 +45,4 @@ class AdminUserViewSet(UserViewSet):
         user = self.get_object()
         user.delete()
         return Response({"detail": "User deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+    

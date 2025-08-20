@@ -166,7 +166,7 @@ function App() {
     <>
       <SEO />
 
-      {flashAdd && <Advertisement setFlashAdd={setFlashAdd} />}
+      {<Advertisement setFlashAdd={setFlashAdd} flashAdd={flashAdd} />}
 
       <ThemeProvider theme={ThemeTwo}>
         <GlobalStyles />

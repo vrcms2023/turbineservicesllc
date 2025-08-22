@@ -57,7 +57,9 @@ const AppliedJobAdministration = () => {
         responseType: "blob",
         withCredentials: true,
       });
-      const filename = response.headers["content-disposition"].split("filename=")[1].replace(/"/g, "");
+      const filename = response.headers["content-disposition"]
+        .split("filename=")[1]
+        .replace(/"/g, "");
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
@@ -111,31 +113,30 @@ const AppliedJobAdministration = () => {
         <div className="col-md-3">
           <Title title={"Applicant list"} cssClass="fs-1 pageTitle" />
         </div>
-        {userDetails?.length > 0 && (
-          <>
-            <div className="col-md-7">
-              <Search
-                setObject={setResponseData}
-                clientSearchURL={"/careers/appliedJobsearchContacts/"}
-                adminSearchURL={"/careers/appliedJobsearchContacts/"}
-                clientDefaultURL={"/careers/applyJob/"}
-                searchfiledDeatails={" Name / Email / Phone Number / Job Title / Job ID"}
-                setPageloadResults={setPageloadResults}
-                setSearchquery={setSearchquery}
-                searchQuery={searchQuery}
-              />
-            </div>
 
-            <div className="col-md-2 p-0">
-              <Button
-                label={"Download List"}
-                handlerChange={downloadExcelfile}
-                cssClass="btn btn-outline float-end"
-                icon="fa-file-excel-o me-2 d-inline-block"
-              />
-            </div>
-          </>
-        )}
+        <>
+          <div className="col-md-7">
+            <Search
+              setObject={setResponseData}
+              clientSearchURL={"/careers/appliedJobsearchContacts/"}
+              adminSearchURL={"/careers/appliedJobsearchContacts/"}
+              clientDefaultURL={"/careers/applyJob/"}
+              searchfiledDeatails={" Name / Email / Phone Number / Job Title / Job ID"}
+              setPageloadResults={setPageloadResults}
+              setSearchquery={setSearchquery}
+              searchQuery={searchQuery}
+            />
+          </div>
+
+          <div className="col-md-2 p-0">
+            <Button
+              label={"Download List"}
+              handlerChange={downloadExcelfile}
+              cssClass="btn btn-outline float-end"
+              icon="fa-file-excel-o me-2 d-inline-block"
+            />
+          </div>
+        </>
       </div>
 
       <div className="row px-3 px-lg-5 py-4 table-responsive">
@@ -170,17 +171,31 @@ const AppliedJobAdministration = () => {
                   <td class="align-middle">{user.jobID} </td>
                   <td class="align-middle">
                     {getDateAndTimeValue(user.created_at)}
-                    {getTodayDate(user.created_at) && <span className="badge bg-warning text-dark px-2 ms-2">NEW</span>}
+                    {getTodayDate(user.created_at) && (
+                      <span className="badge bg-warning text-dark px-2 ms-2">NEW</span>
+                    )}
                   </td>
                   <td class="align-middle">
-                    <a href="#!" onClick={() => downloadPDF(`${user.path}`)} className="mx-1 text-dark">
+                    <a
+                      href="#!"
+                      onClick={() => downloadPDF(`${user.path}`)}
+                      className="mx-1 text-dark"
+                    >
                       <i class="fa fs-6 me-2 text-secondary fa-download" aria-hidden="true"></i>
                       {user.original_name ? user.original_name : "Resume"}
                     </a>
                   </td>
                   <td>
-                    <Link to="" className=" ms-4" onClick={() => handleApplicantdetailsDelete(user)}>
-                      <i className="fa fa-trash-o fs-4 text-danger" aria-hidden="true" title="Delete"></i>
+                    <Link
+                      to=""
+                      className=" ms-4"
+                      onClick={() => handleApplicantdetailsDelete(user)}
+                    >
+                      <i
+                        className="fa fa-trash-o fs-4 text-danger"
+                        aria-hidden="true"
+                        title="Delete"
+                      ></i>
                     </Link>
                   </td>
                 </tr>
@@ -196,7 +211,11 @@ const AppliedJobAdministration = () => {
           <CustomPagination
             paginationData={paginationData}
             paginationURL={"/careers/applyJob/"}
-            paginationSearchURL={searchQuery ? `/careers/appliedJobsearchContacts/${searchQuery}/` : "/careers/applyJob/"}
+            paginationSearchURL={
+              searchQuery
+                ? `/careers/appliedJobsearchContacts/${searchQuery}/`
+                : "/careers/applyJob/"
+            }
             searchQuery={searchQuery}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}

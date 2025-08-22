@@ -29,6 +29,7 @@ import DownloadBrochures from "../../Frontend_Views/Components/DownloadBrochures
 import BriefIntroFrontend from "../BriefIntro";
 import BriefIntroAdmin from "../../Frontend_Admin/Components/BriefIntro";
 import ApplicationLogo from "../Logo/ApplicationLogo";
+import CopyToClipboard from "../CopyToClipboard";
 
 const Footer = () => {
   const editComponentObj = {
@@ -112,9 +113,7 @@ const Footer = () => {
   useEffect(() => {
     const getFooterValues = async () => {
       try {
-        const response = await axiosClientServiceApi.get(
-          `/footer/getTermsAndCondition/`
-        );
+        const response = await axiosClientServiceApi.get(`/footer/getTermsAndCondition/`);
         if (response?.data?.terms?.length > 0) {
           setTermsAndPolicyData(response?.data?.terms[0]);
         }
@@ -153,9 +152,7 @@ const Footer = () => {
                       <div className="breiftopMargin">
                         {isAdmin && hasPermission && (
                           <EditIcon
-                            editHandler={() =>
-                              editHandler("footerAboutBrief", true)
-                            }
+                            editHandler={() => editHandler("footerAboutBrief", true)}
                             editlabel={"Breif"}
                           />
                         )}
@@ -209,9 +206,7 @@ const Footer = () => {
             <hr className="d-block d-md-none my-4" />
 
             <div
-              className={`col-md-4 col-lg-4 text-center text-md-start reachUs ${
-                isAdmin ? "" : ""
-              }`}
+              className={`col-md-4 col-lg-4 text-center text-md-start reachUs ${isAdmin ? "" : ""}`}
             >
               {/* {isAdmin && (
                   <Ancher 
@@ -259,9 +254,7 @@ const Footer = () => {
                       className="fa fa-paper-plane fs-5 me-2"
                       aria-hidden="true"
                     ></i> */}
-                    <Link to={`mailto: ${address?.emailid}`}>
-                      {address?.emailid}
-                    </Link>
+                    <Link to={`mailto: ${address?.emailid}`}>{address?.emailid}</Link>
                   </p>
                 </>
               ) : (
@@ -274,9 +267,7 @@ const Footer = () => {
                       className="fa fa-paper-plane fs-5 me-2"
                       aria-hidden="true"
                     ></i> */}
-                    <Link to={`mailto: ${address?.emailid_2}`}>
-                      {address?.emailid_2}
-                    </Link>
+                    <Link to={`mailto: ${address?.emailid_2}`}>{address?.emailid_2}</Link>
                   </p>
                 </>
               ) : (
@@ -289,9 +280,7 @@ const Footer = () => {
                       className="fa fa-envelope fs-5 me-2"
                       aria-hidden="true"
                     ></i> */}
-                    <Link to={`mailto: ${address?.emailid_3}`}>
-                      {address?.emailid_3}
-                    </Link>
+                    <Link to={`mailto: ${address?.emailid_3}`}>{address?.emailid_3}</Link>
                   </p>
                 </>
               ) : (
@@ -324,14 +313,13 @@ const Footer = () => {
 
                 <div
                   className={`socialLinks ${
-                    isAdmin
-                      ? "border border-warning mb-3 position-relative p-3"
-                      : ""
+                    isAdmin ? "border border-warning mb-3 position-relative p-3" : ""
                   }`}
                 >
                   {isAdmin && (
                     <EditIcon
-                      editHandler={() => editHandler("address", true)} editlabel={"Social"}
+                      editHandler={() => editHandler("address", true)}
+                      editlabel={"Social"}
                     />
                   )}
 
@@ -340,34 +328,36 @@ const Footer = () => {
                       to={`https://wa.me/${footerValues.whatsapp_number}?text=Thank you for contact us`}
                       target="_blank"
                     >
-                      <i
-                        className="fa fa-brands fa-whatsapp"
-                        aria-hidden="true"
-                      ></i>
+                      <i className="fa fa-brands fa-whatsapp" aria-hidden="true"></i>
                     </Link>
                   )}
 
                   {footerValues.facebook_url && (
-                    <Link to={footerValues.facebook_url} target="_blank" aria-label="Facebook Profile">
-                      <i
-                        className="fa fa-facebook-square"
-                        aria-hidden="true"
-                        
-                      ></i>
+                    <Link
+                      to={footerValues.facebook_url}
+                      target="_blank"
+                      aria-label="Facebook Profile"
+                    >
+                      <i className="fa fa-facebook-square" aria-hidden="true"></i>
                     </Link>
                   )}
 
                   {footerValues.twitter_url && (
-                    <Link to={footerValues.twitter_url} target="_blank" aria-label="Twitter Profile">
-                      <i
-                        className="fa fa-twitter-square"
-                        aria-hidden="true"
-                      ></i>
+                    <Link
+                      to={footerValues.twitter_url}
+                      target="_blank"
+                      aria-label="Twitter Profile"
+                    >
+                      <i className="fa fa-twitter-square" aria-hidden="true"></i>
                     </Link>
                   )}
 
                   {footerValues.youtube_url ? (
-                    <Link to={footerValues.youtube_url} target="_blank" aria-label="Youtube Channel">
+                    <Link
+                      to={footerValues.youtube_url}
+                      target="_blank"
+                      aria-label="Youtube Channel"
+                    >
                       <i className="fa fa-youtube-play" aria-hidden="true"></i>
                     </Link>
                   ) : (
@@ -375,16 +365,21 @@ const Footer = () => {
                   )}
 
                   {footerValues.linkedIn_url && (
-                    <Link to={footerValues.linkedIn_url} target="_blank" aria-label="Linked In Profile">
-                      <i
-                        className="fa fa-linkedin-square"
-                        aria-hidden="true"
-                      ></i>
+                    <Link
+                      to={footerValues.linkedIn_url}
+                      target="_blank"
+                      aria-label="Linked In Profile"
+                    >
+                      <i className="fa fa-linkedin-square" aria-hidden="true"></i>
                     </Link>
                   )}
 
                   {footerValues.instagram_url && (
-                    <Link to={footerValues.instagram_url} target="_blank" aria-label="Instagram Profile">
+                    <Link
+                      to={footerValues.instagram_url}
+                      target="_blank"
+                      aria-label="Instagram Profile"
+                    >
                       <i className="fa fa-instagram" aria-hidden="true"></i>
                     </Link>
                   )}
@@ -396,7 +391,11 @@ const Footer = () => {
                   )}
 
                   {footerValues.pinterest_url && (
-                    <Link to={footerValues.pinterest_url} target="_blank" aria-label="Pinterest Profile">
+                    <Link
+                      to={footerValues.pinterest_url}
+                      target="_blank"
+                      aria-label="Pinterest Profile"
+                    >
                       <i className="fa fa-pinterest" aria-hidden="true"></i>
                     </Link>
                   )}
@@ -418,17 +417,24 @@ const Footer = () => {
             <div className="row">
               <div className="col-md-12 d-flex flex-column flex-md-row justify-content-center justify-content-md-between">
                 <div className="d-flex flex-column gap-1 text-center text-md-start">
-                  <div> &copy; {fullYear} - {addressList[0]?.company_name}. All rights reserved </div>
+                  <div>
+                    <CopyToClipboard>
+                      &copy; {fullYear} - {addressList[0]?.company_name}. All rights reserved
+                    </CopyToClipboard>
+                  </div>
                   <div className="d-block mt-2 d-flex flex-column flex-md-row justify-content-center justify-content-md-start  align-items-center ">
-                    <span>Designed & developed by </span>
+                    <CopyToClipboard>
+                      <span>Designed & developed by </span>
+                    </CopyToClipboard>
+                    &nbsp;
                     <a
-                      href="https://www.vitsols.com" target="_blank"
+                      href="https://www.vitsols.com"
+                      target="_blank"
                       className="dby fw-medium"
                       aria-label=" VITSOLS web design and digital solutions company"
                     >
                       VITSOLS – Web Design & Digital Solutions
                     </a>
-
                     {/* Variation 1 – Web Design Keyword (low–medium competition)
                       <a 
                           href="https://www.vitsols.com"
@@ -438,7 +444,6 @@ const Footer = () => {
                           VITSOLS – Responsive Web Design
                         </a>
                     */}
-
                     {/* Variation 2 – CMS Keyword (low competition) 
 
                     <a 
@@ -449,7 +454,6 @@ const Footer = () => {
                         VITSOLS – Custom CMS Development
                     </a>
                     */}
-
                     {/* Variation 3 – Digital Marketing Keyword (medium competition) 
                     
                     <a 
@@ -460,39 +464,32 @@ const Footer = () => {
                       VITSOLS – Digital Marketing & Web Design
                     </a>
                     */}
-                </div>
-                  
-                </div>
-              <div className="d-flex gap-2 my-3 justify-content-center">
-                    <Link
-                      to="#"
-                      className="text-decoration-underline"
-                      onClick={() => showModel("TC")}
-                    >
-                      Terms & Conditions
-                    </Link>
-                    <span className="d-inline-block ">|</span>
-                    <Link
-                      to="#"
-                      className="text-decoration-underline"
-                      onClick={() => showModel("PP")}
-                    >
-                      Privacy Policy
-                    </Link>
                   </div>
-                  
+                </div>
+                <div className="d-flex gap-2 my-3 justify-content-center">
+                  <Link
+                    to="#"
+                    className="text-decoration-underline"
+                    onClick={() => showModel("TC")}
+                  >
+                    Terms & Conditions
+                  </Link>
+                  <span className="d-inline-block ">|</span>
+                  <Link
+                    to="#"
+                    className="text-decoration-underline"
+                    onClick={() => showModel("PP")}
+                  >
+                    Privacy Policy
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </footer>
       {modelShow && (
-        <Model
-          obj={termsAndConditionData}
-          privacy={""}
-          closeModel={closeModel}
-          flag="footer"
-        />
+        <Model obj={termsAndConditionData} privacy={""} closeModel={closeModel} flag="footer" />
       )}
       {componentEdit.address && (
         <div className="adminEditTestmonial selected">
@@ -516,11 +513,7 @@ const Footer = () => {
       )}
       {componentEdit.contact && (
         <div className="adminEditTestmonial selected">
-          <ContactInputs
-            editHandler={editHandler}
-            componentType="contact"
-            popupTitle="Contact"
-          />
+          <ContactInputs editHandler={editHandler} componentType="contact" popupTitle="Contact" />
         </div>
       )}
       {modelShow && <ModelBg closeModel={closeModel} />}

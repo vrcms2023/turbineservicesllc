@@ -41,7 +41,7 @@ const UserAdmin = () => {
   }, []);
 
   const handleUserDelete = (user) => {
-    console.log(user);
+    // console.log(user);
     const deleteUser = async () => {
       const response = await axiosServiceApi.delete(`/user/auth/deleteuser/${user.id}/`);
       if (response?.status === 204) {

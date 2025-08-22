@@ -26,7 +26,7 @@ const RaqUseForm = ({ closeModel, downloadPDF, buttonLabel = "DOWNLOAD" }) => {
   };
 
   const onFormSubmit = async (data) => {
-    console.log(data);
+    //console.log(data);
     try {
       const response = await axiosClientServiceApi.post(`/contactus/raqform/`, {
         ...data,

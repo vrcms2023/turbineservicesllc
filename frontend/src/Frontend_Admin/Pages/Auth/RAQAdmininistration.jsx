@@ -24,10 +24,16 @@ const RAQAdmininistration = () => {
 
   const getAllRaqFormDetails = async () => {
     try {
-      const response = await axiosServiceApi.get(`/contactus/raqform/`);
+      const url = searchQuery
+        ? `/contactus/raqsearchContacts/${searchQuery}/`
+        : `/contactus/raqform/`;
+      const response = await axiosServiceApi.get(url);
       if (response?.status === 200 && response.data?.results?.length > 0) {
         setResponseData(response.data);
         setPageloadResults(true);
+      } else {
+        setUserDetails([]);
+        setPageloadResults(false);
       }
     } catch (error) {
       toast.error("Unable to load contactus details");
@@ -49,7 +55,9 @@ const RAQAdmininistration = () => {
         responseType: "blob",
         withCredentials: true,
       });
-      const filename = response.headers["content-disposition"].split("filename=")[1].replace(/"/g, "");
+      const filename = response.headers["content-disposition"]
+        .split("filename=")[1]
+        .replace(/"/g, "");
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
@@ -99,31 +107,30 @@ const RAQAdmininistration = () => {
         <div className="col-md-3">
           <Title title={"RAQ Contacts"} cssClass="fs-1 pageTitle" />
         </div>
-        {userDetails?.length > 0 && (
-          <>
-            <div className="col-md-7">
-              <Search
-                setObject={setResponseData}
-                clientSearchURL={"/contactus/raqsearchContacts/"}
-                adminSearchURL={"/contactus/raqform/"}
-                clientDefaultURL={"/contactus/raqform/"}
-                searchfiledDeatails={" Name / Email / Phone Number"}
-                setPageloadResults={setPageloadResults}
-                setSearchquery={setSearchquery}
-                searchQuery={searchQuery}
-              />
-            </div>
 
-            <div className="col-md-2 p-0">
-              <Button
-                label={"RAQ Contacts"}
-                handlerChange={downloadExcelfile}
-                cssClass="btn btn-outline float-end"
-                icon="fa-download  me-2 d-inline-block"
-              />
-            </div>
-          </>
-        )}
+        <>
+          <div className="col-md-7">
+            <Search
+              setObject={setResponseData}
+              clientSearchURL={"/contactus/raqsearchContacts/"}
+              adminSearchURL={"/contactus/raqform/"}
+              clientDefaultURL={"/contactus/raqform/"}
+              searchfiledDeatails={" Name / Email / Phone Number"}
+              setPageloadResults={setPageloadResults}
+              setSearchquery={setSearchquery}
+              searchQuery={searchQuery}
+            />
+          </div>
+
+          <div className="col-md-2 p-0">
+            <Button
+              label={"RAQ Contacts"}
+              handlerChange={downloadExcelfile}
+              cssClass="btn btn-outline float-end"
+              icon="fa-download  me-2 d-inline-block"
+            />
+          </div>
+        </>
       </div>
 
       <div className="row px-3 px-lg-5 py-4 table-responsive">
@@ -155,11 +162,17 @@ const RAQAdmininistration = () => {
                   <td class="align-middle">{user.description} </td>
                   <td class="align-middle">
                     {getDateAndTimeValue(user.created_at)}
-                    {getTodayDate(user.created_at) && <span className="badge bg-warning text-dark px-2 ms-2">NEW</span>}
+                    {getTodayDate(user.created_at) && (
+                      <span className="badge bg-warning text-dark px-2 ms-2">NEW</span>
+                    )}
                   </td>
                   <td>
                     <Link to="" className=" ms-4" onClick={() => handleRAQdetailsDelete(user)}>
-                      <i className="fa fa-trash-o fs-4 text-danger" aria-hidden="true" title="Delete"></i>
+                      <i
+                        className="fa fa-trash-o fs-4 text-danger"
+                        aria-hidden="true"
+                        title="Delete"
+                      ></i>
                     </Link>
                   </td>
                   {/* <td class="align-middle"> */}
@@ -191,7 +204,9 @@ const RAQAdmininistration = () => {
           <CustomPagination
             paginationData={paginationData}
             paginationURL={"/contactus/raqform/"}
-            paginationSearchURL={searchQuery ? `/contactus/searchContacts/${searchQuery}/` : "/contactus/raqform/"}
+            paginationSearchURL={
+              searchQuery ? `/contactus/searchContacts/${searchQuery}/` : "/contactus/raqform/"
+            }
             searchQuery={searchQuery}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}

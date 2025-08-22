@@ -3,11 +3,11 @@ import { useLocation } from "react-router-dom";
 import { StyledShareComponent } from "./StyledComponents/Styled-Share-Component";
 // uselocation
 
-const ShareButtons = ({name}) => {
-  const location = useLocation()
+const ShareButtons = ({ name }) => {
+  const location = useLocation();
   // const shareUrl = "https://yourwebsite.com/careers";
   const shareUrl = `${window.location.origin}${location.pathname}`;
-  console.log(shareUrl, "shareUrl");
+  //console.log(shareUrl, "shareUrl");
   const title = "Explore exciting career opportunities with us!";
   const emailSubject = "Career Opportunities at Our Company";
   const emailBody = `Hi,\n\nI thought you might be interested in this job opportunity:\n\n${shareUrl}`;
@@ -32,11 +32,8 @@ const ShareButtons = ({name}) => {
 
   return (
     <StyledShareComponent ref={wrapperRef}>
-      <div
-        className="btn btn-sm btn-outline share"
-        onMouseOver={() => setShow(true)}
-      >
-        <i className="fa fa-share-alt me-1" aria-hidden="true"></i> 
+      <div className="btn btn-sm btn-outline share" onMouseOver={() => setShow(true)}>
+        <i className="fa fa-share-alt me-1" aria-hidden="true"></i>
         <span className="">{name}</span>
       </div>
 
@@ -44,19 +41,22 @@ const ShareButtons = ({name}) => {
         <div className="share-buttons" onMouseOver={() => setShow(true)}>
           <a
             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i className="fa fa-facebook-square" />
           </a>
           <a
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i className="fa fa-linkedin-square" />
           </a>
           <a
             href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`}
-            target="_blank" rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <i className="fa fa-twitter-square" />
           </a>

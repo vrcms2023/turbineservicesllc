@@ -58,6 +58,7 @@ const Registration = () => {
   const submitForm = (data) => {
     data.email = data.email.toLowerCase();
     dispatch(registerUser(data));
+    setCustomError("");
   };
 
   return (

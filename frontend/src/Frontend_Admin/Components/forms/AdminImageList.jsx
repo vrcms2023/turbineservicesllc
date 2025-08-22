@@ -146,7 +146,7 @@ const AdminImageList = ({
     }
   };
 
-  console.log(Object.keys(editCarousel).length, "editCarousel");
+  // console.log(Object.keys(editCarousel).length, "editCarousel");
   return (
     <div>
       <EditAdminPopupHeader closeHandler={closeHandler} title={popupTitle} />
@@ -164,7 +164,11 @@ const AdminImageList = ({
                   {carousel?.map((item, index) => (
                     <Droppable key={index} droppableId={item.id}>
                       {(provided, snapshot) => (
-                        <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)} {...provided.droppableProps}>
+                        <div
+                          ref={provided.innerRef}
+                          style={getListStyle(snapshot.isDraggingOver)}
+                          {...provided.droppableProps}
+                        >
                           <AdminCarouselItem
                             item={item}
                             index={index}
@@ -185,11 +189,15 @@ const AdminImageList = ({
             ""
           )}
 
-          <small className={`text-center py-1 fw-medium text-white ${Object.keys(editCarousel).length > 0 ? "bg-warning " : "bg-secondary"}`}>
+          <small
+            className={`text-center py-1 fw-medium text-white ${Object.keys(editCarousel).length > 0 ? "bg-warning " : "bg-secondary"}`}
+          >
             {Object.keys(editCarousel).length > 0 ? "EDIT" : "ADD NEW"}
           </small>
           {/* <hr className="border-1 border-white" /> */}
-          <div className={`mb-5 mb-md-0 border border-2 p-2 ${Object.keys(editCarousel).length > 0 ? " border-warning" : "border-secondary"}`}>
+          <div
+            className={`mb-5 mb-md-0 border border-2 p-2 ${Object.keys(editCarousel).length > 0 ? " border-warning" : "border-secondary"}`}
+          >
             <ImageUploadForm
               title={imageLabel}
               project={project}
@@ -228,22 +236,38 @@ const AdminCarouselItem = ({ item, index, componentType, handleCarouselEdit, thu
   const { isAdmin, hasPermission } = useAdminLoginStatus();
 
   return (
-    <Draggable isDragDisabled={!isAdmin ? true : false} key={item.id} draggableId={item.id} index={index} id={item.id}>
+    <Draggable
+      isDragDisabled={!isAdmin ? true : false}
+      key={item.id}
+      draggableId={item.id}
+      index={index}
+      id={item.id}
+    >
       {(provided) => (
         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
           <div className="row mb-1 p-1 slideItem" key={index}>
             <div className="col-2 col-md-2">
               {/* <i className="fa fa-picture-o fs-2 d-lg-none" aria-hidden="true"></i> */}
 
-              <img src={getImageURL(item)} alt={item.alternitivetext} className="w-100  d-lg-block" />
+              <img
+                src={getImageURL(item)}
+                alt={item.alternitivetext}
+                className="w-100  d-lg-block"
+              />
             </div>
             <div className="col col-md-8 text-left ps-0">
-              <h6 className="fw-medium lc1 mb-1 lineClamp">{getObjectTitle(componentType, item)}</h6>
+              <h6 className="fw-medium lc1 mb-1 lineClamp">
+                {getObjectTitle(componentType, item)}
+              </h6>
               <small className="description text-muted d-none d-md-block">
                 {/* {getObjectDescription(componentType, item)} */}
                 {/* {item.carouseDescription && item.carouseDescription}
                 {item.image_description && item.image_description} */}
-                <RichTextView data={getObjectDescription(componentType, item)} className={""} showMorelink={false} />
+                <RichTextView
+                  data={getObjectDescription(componentType, item)}
+                  className={""}
+                  showMorelink={false}
+                />
                 {/* <RichTextView
                     data={item.carouseDescription && item.carouseDescription}
                     className={""}

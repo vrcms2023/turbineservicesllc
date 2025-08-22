@@ -5,12 +5,7 @@ import SkeletonImage from "../../Common/Skeltons/SkeletonImage";
 import EditIcon from "../../Common/AdminEditIcon";
 import { Link } from "react-router-dom";
 import Title from "../../Common/Title";
-import {
-  getImagePath,
-  getListStyle,
-  reorder,
-  updateArrIndex,
-} from "../../util/commonUtil";
+import { getImagePath, getListStyle, reorder, updateArrIndex } from "../../util/commonUtil";
 import useAdminLoginStatus from "../../Common/customhook/useAdminLoginStatus";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import { axiosServiceApi } from "../../util/axiosUtil";
@@ -55,7 +50,7 @@ export const ClientListComponent = ({
   const clientThumbHandler = (item) => {
     // console.log(clientsList, id, "Client item")
     const findImg = clientsList.find((client) => client.id === item.id);
-    console.log(findImg, "Client item");
+    //console.log(findImg, "Client item");
     setShowModal(!showModal);
     setImg(findImg);
   };
@@ -112,25 +107,13 @@ export const ClientListComponent = ({
       </ClientStyled>
 
       {/* {show && <ModelBg />} */}
-      {showModal && (
-        <DynamicCarousel
-          obj={img}
-          all={clientsList}
-          closeCarousel={closeModel}
-        />
-      )}
+      {showModal && <DynamicCarousel obj={img} all={clientsList} closeCarousel={closeModel} />}
       {showModal && <ModelBg closeModel={closeModel} />}
     </div>
   );
 };
 
-const Client = ({
-  item,
-  index,
-  editHandler,
-  deleteAboutSection,
-  clientThumbHandler,
-}) => {
+const Client = ({ item, index, editHandler, deleteAboutSection, clientThumbHandler }) => {
   const { isAdmin, hasPermission } = useAdminLoginStatus();
   return (
     <Draggable
@@ -142,9 +125,7 @@ const Client = ({
     >
       {(provided) => (
         <div
-          className={`${
-            isAdmin ? "col-12 clientAdmin" : "col-md-3 clientFrontend "
-          } image`}
+          className={`${isAdmin ? "col-12 clientAdmin" : "col-md-3 clientFrontend "} image`}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -163,14 +144,8 @@ const Client = ({
                   editHandler={() => editHandler("editSection", true, item)}
                   editlabel="Clients"
                 />
-                <Link
-                  className="deleteSection"
-                  onClick={() => deleteAboutSection(item)}
-                >
-                  <i
-                    className="fa fa-trash-o text-danger fs-4"
-                    aria-hidden="true"
-                  ></i>
+                <Link className="deleteSection" onClick={() => deleteAboutSection(item)}>
+                  <i className="fa fa-trash-o text-danger fs-4" aria-hidden="true"></i>
                 </Link>
               </>
             )}

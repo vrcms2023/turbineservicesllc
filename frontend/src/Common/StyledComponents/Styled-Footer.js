@@ -18,7 +18,7 @@ export const FooterStyled = styled.div`
     // font-size: .8rem;
 
     .footerCompanyBrief {
-      background: ${({ theme }) => theme.grayddd};
+      background: ${({ theme }) => theme.white};
 
       p {
         color: ${({ theme }) => theme.gray444};
@@ -69,7 +69,7 @@ export const FooterStyled = styled.div`
       font-weight: 500;
       font-style: normal;
       font-size: 1.6rem !important;
-      color: ${({ theme }) => theme.black};
+      color: ${({ theme }) => theme.white};
     }
 
     h4 {

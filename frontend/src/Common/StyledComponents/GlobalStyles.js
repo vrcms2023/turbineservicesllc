@@ -157,9 +157,11 @@ body, p {
     .briefIntro {
         padding-left: 0 !important;
         padding-bottom: 0 !important;
-        
+      }
+    .careerIntro{
+      background: rgba(255, 255, 255, .98);
+      border-radius: 30px 0 0 30px;
     }
-
     @media (max-width: 991px) {
     
         .briefIntro {

@@ -58,9 +58,12 @@ const Services = () => {
   const location = useLocation();
   const isNewServiceCreated = useRef(false);
   const { serviceMenu, serviceerror } = useSelector((state) => state.serviceMenu);
+  const serviceContentRef = useRef(null);
+
 
   useEffect(() => {
     const pageURL = location.pathname;
+    
     if (pageURL && serviceMenu.length > 0 && !isNewServiceCreated.current) {
       const sortedMapped = sortByFieldName(serviceMenu, "service_postion");
       const selectedMneu = _.filter(sortedMapped, (item) => {
@@ -76,7 +79,7 @@ const Services = () => {
       }
       setSelectedServiceList([]);
     }
-  }, [location, serviceMenu]);
+  }, [location?.pathname, serviceMenu]);
 
   // useEffect(() => {
   //   window.scrollTo(0, 0);
@@ -88,6 +91,15 @@ const Services = () => {
       id.classList.add("active");
     }
   });
+
+useEffect(() => {
+  if (!serviceContentRef.current) return;
+
+  serviceContentRef.current.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
+}, [location?.pathname]);
 
   // useEffect(() => {
   //   if (pageLoadServiceID && pageLoadServiceName && pageLoadServiceURL)
@@ -327,6 +339,7 @@ const Services = () => {
                 ""
               )}
 
+
               <div className="d-flex justify-content-end align-items-end position-relative">
                 <ShareButtons />
               </div>
@@ -341,7 +354,8 @@ const Services = () => {
               /> */}
                 </div>
               </div>
-              {selectedServiceProject.page_url !== "/services/addservices" &&
+             <span  ref={serviceContentRef}></span>
+              {selectedServiceProject?.page_url !== "/services/addservices" &&
                 selectedServiceList.map((item, index) => (
                   <div
                     className={`row ${isAdmin ? "border border-warning mb-3 position-relative" : ""} ${index % 2 === 0 ? "normalCSS" : "flipCSS"}`}

@@ -139,7 +139,7 @@ export const HomeClientsStyled = styled.div`
     width: 200px !important;
     height: 100px;
     padding: 16px;
-    border: 2px dashed ${({ theme }) => theme.grayccc};
+    border: 1px dashed ${({ theme }) => theme.grayccc};
     background: white;
     margin: 0 12px;
     cursor: pointer;
@@ -147,8 +147,8 @@ export const HomeClientsStyled = styled.div`
   div {
     img {
       margin: 0 auto;
-      width: 100%;
-      height: 100% !important;
+      width: 120px;
+      height: 80px !important;
       // box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     }
   }

@@ -957,18 +957,18 @@ const Home = () => {
         </div>
         {/* === END COUNTER ======================================== */}
 
-        {/* ==== INDUSTRIES WE SERVE - START ============================================== */}
+        {/* ==== INDUSTRIES WE SERVE - START ======================================================================================================= */}
         <div
           className={
             showHideCompList?.industriesweserve?.visibility && isAdmin && hasPermission
-              ? "componentOnBorder"
+              ? "border border-info mb-2"
               : ""
           }
         >
           {isAdmin && hasPermission && (
             <ShowHideToggle
               showhideStatus={showHideCompList?.industriesweserve?.visibility}
-              title={"Industries We Serve [ CAROUSEL] "}
+              title={"Industries We Serve"}
               componentName={"industriesweserve"}
               showHideHandler={showHideHandler}
               id={showHideCompList?.industriesweserve?.id}
@@ -976,45 +976,37 @@ const Home = () => {
           )}
           {showHideCompList?.industriesweserve?.visibility && (
             <>
-              <div className="container pt-0">
+              <div className="container pt-5">
                 <div className="breiftopMargin">
                   {isAdmin && hasPermission && (
                     <EditIcon
                       editHandler={() => editHandler("industriesweserveBrief", true)}
-                      editlabel="Brief"
+                      editlabel={"Industries Brief"}
                     />
                   )}
 
                   <BriefIntroFrontend
-                    pageType={"industriesweserveBrief"}
                     introState={componentEdit.industriesweserveBrief}
-                    detailsContainerCss="col-lg-10 offset-lg-1 text-center"
-                    linkCss="btn-outline"
+                    linkCss="btn btn-outline d-flex justify-content-center align-items-center gap-3"
                     linkLabel="Read More"
                     moreLink=""
-                    introTitleCss=""
-                    introSubTitleCss=""
-                    introDecTitleCss=""
-                    anchorContainer=""
-                    anchersvgColor=""
+                    introTitleCss="mb-0 text-center fw-medium"
+                    introSubTitleCss="fw-medium text-muted text-center"
+                    introDecTitleCss="fs-6 fw-normal mx-4 text-center"
+                    detailsContainerCss="col-md-12"
+                    anchorContainer="d-flex justify-content-center align-items-center mt-4"
+                    anchersvgColor="#17427C"
+                    pageType={"industriesweserveBrief"}
                     maxHeight="300"
                   />
 
                   {componentEdit.industriesweserveBrief && (
                     <div className={`adminEditTestmonial selected `}>
-                      <AdminBanner
+                      <BriefIntroAdmin
                         editHandler={editHandler}
-                        componentType="industriesweserve"
-                        popupTitle="Industries We Serve"
-                        getImageListURL="carousel/createCarousel/industriesweserve/"
-                        deleteImageURL="carousel/updateCarousel/"
-                        imagePostURL="carousel/createCarousel/industriesweserve/"
-                        imageUpdateURL="carousel/updateCarousel/"
-                        imageIndexURL="carousel/updateCarouselindex/"
-                        imageLabel="industries we serve"
-                        showDescription={false}
-                        showExtraFormFields={getCarouselFields("industriesweserve")}
-                        dimensions={imageDimensionsJson("carousel")}
+                        componentType="industriesweserveBrief"
+                        popupTitle="Brief Intro Banner"
+                        pageType="industriesweserveBrief"
                       />
                     </div>
                   )}
@@ -1026,7 +1018,7 @@ const Home = () => {
                     {isAdmin && hasPermission && (
                       <EditIcon
                         editHandler={() => editHandler("industriesweserve", true)}
-                        editlabel="Carousel"
+                        editlabel={"Industries"}
                       />
                     )}
 
@@ -1451,9 +1443,9 @@ const Home = () => {
             />
           )}
           {showHideCompList?.homecareers?.visibility && (
-            <div className="row homeCareers py-5">
+            <div className="row homeCareers  py-5">
               <div className="col-lg-6"></div>
-              <div className="col-md-12 col-lg-6 pe-lg-5">
+              <div className="col-md-12 col-lg-6 careerIntro shadow-lg pe-lg-5">
                 <BriefIntroFrontend
                   introState={componentEdit.briefIntro}
                   pageType="careers"
@@ -1461,7 +1453,7 @@ const Home = () => {
                   introSubTitleCss="fw-medium text-muted text-md-center"
                   introDecTitleCss="fs-6 fw-normal w-75 m-auto text-md-center"
                 />
-                <div className="bg-white px-5 pb-4 d-flex justify-content-center align-items-center">
+                <div className="px-5 pb-4 d-flex justify-content-center align-items-center">
                   <Ancher
                     AncherLabel="Careers"
                     Ancherpath="/careers"

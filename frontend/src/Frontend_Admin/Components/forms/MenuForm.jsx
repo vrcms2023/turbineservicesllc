@@ -130,7 +130,7 @@ const MenuForm = ({ editHandler, menuList, editMenu, componentType, popupTitle, 
       setError("Menu url should be starting with /");
       return true;
     }
-    if (!data?.id && isParentVal) {
+    if (data?.id && isParentVal) {
       data["page_parent_ID"] = "";
     }
     if (data.id === data.page_parent_ID) {
@@ -226,6 +226,7 @@ const MenuForm = ({ editHandler, menuList, editMenu, componentType, popupTitle, 
   const isParentHandler = () => {
     setisParentVal(!isParentVal);
     setError("");
+    editMenu.page_parent_ID="";
   };
 
   const isMaintainerHandler = () => {

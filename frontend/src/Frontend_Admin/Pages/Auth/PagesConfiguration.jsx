@@ -179,7 +179,7 @@ const PagesConfiguration = () => {
 
   const tableHeader = () => {
     return (
-      <thead className="">
+      <thead>
         <tr>
           <th>Menu Lable</th>
           <th>URL</th>
@@ -374,6 +374,7 @@ const PagesConfiguration = () => {
     };
 
     const updateObjectsIndex = async (data) => {
+      //const data = menuItems.filter(Boolean);
       try {
         let response = await axiosServiceApi.put(
           `/pageMenu/updateindex/`,

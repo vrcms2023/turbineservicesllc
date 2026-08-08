@@ -47,7 +47,7 @@ export const HomePageStyles = styled.div`
 }
 
 .homePage .pageBanner img {
-  height: calc(60vh - 100px);
+  height: calc(80vh - 100px);
 }
 
 .homeProjectsInfo .breiftopMargin {

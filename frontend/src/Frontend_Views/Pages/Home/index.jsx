@@ -1445,7 +1445,7 @@ const Home = () => {
           {showHideCompList?.homecareers?.visibility && (
             <div className="row homeCareers  py-5">
               <div className="col-lg-6"></div>
-              <div className="col-md-12 col-lg-6 careerIntro shadow-lg pe-lg-5">
+              <div className="col-md-12 col-lg-6 careerIntro shadow-md p-lg-4">
                 <BriefIntroFrontend
                   introState={componentEdit.briefIntro}
                   pageType="careers"
@@ -1457,7 +1457,7 @@ const Home = () => {
                   <Ancher
                     AncherLabel="Careers"
                     Ancherpath="/careers"
-                    AncherClass="btn btn-primary d-flex justify-content-center align-items-center gap-3 w-50"
+                    AncherClass="btn btn-primary d-flex justify-content-center align-items-center gap-3"
                     AnchersvgColor="#ffffff"
                   />
                 </div>

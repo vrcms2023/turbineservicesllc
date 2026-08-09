@@ -47,6 +47,7 @@ body {
     background-color: ${({ theme }) => theme.background};
     font-size: 16px;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 body, p {
@@ -59,6 +60,7 @@ body, p {
   padding: 8px 16px !important;
   border: 0px !important;
   border-radius: 0 !important;
+ 
   // transition: all .35s;
   // padding: .6rem 1.2rem !important;
   // font-family: Amarante;
@@ -145,7 +147,9 @@ body, p {
 .homeCareers {
     background-color:${({ theme }) => theme.teritoryColor};
     background-image:url(${careerBgImg});
-    min-height: 500px;
+    min-height: 70vh;
+    height: 100%;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;

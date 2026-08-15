@@ -98,7 +98,7 @@ const AddressForm = ({ editHandler, componentType, address, popupTitle }) => {
         data["created_by"] = userName;
         data["address_position"] = listofAddress.length;
         response = await axiosServiceApi.post(`/address/createAddress/`, data);
-        console.log("New Address", response);
+        //console.log("New Address", response);
       }
 
       if (response.status === 200 || response.status === 201) {

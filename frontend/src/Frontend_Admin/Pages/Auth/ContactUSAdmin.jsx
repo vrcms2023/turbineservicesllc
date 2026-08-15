@@ -59,7 +59,7 @@ const ContactUSAdmin = () => {
       const filename = response.headers["content-disposition"]
         .split("filename=")[1]
         .replace(/"/g, "");
-      console.log("filename", filename);
+      //console.log("filename", filename);
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;

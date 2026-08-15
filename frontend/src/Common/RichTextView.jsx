@@ -5,10 +5,11 @@ import Button from "./Button";
 const RichTextView = ({ data, className = "", characterLimit = 400, showMorelink = true }) => {
   if (!data) return;
   if (data === "undefined") return;
+  const normalizedHtml = data.replace(/&nbsp;/g, " ").replace(/\u00A0/g, " ");
   const [showFullContent, setShowFullContent] = useState(false);
   const displayedContent = showFullContent
-    ? data
-    : data.slice(0, characterLimit) + (data.length > characterLimit ? "..." : "");
+    ? normalizedHtml
+    : normalizedHtml.slice(0, characterLimit) + (normalizedHtml.length > characterLimit ? "..." : "");
 
   const toggleShowContent = () => {
     setShowFullContent(!showFullContent);
@@ -21,7 +22,7 @@ const RichTextView = ({ data, className = "", characterLimit = 400, showMorelink
             <div
               className={className}
               dangerouslySetInnerHTML={{
-                __html: showMorelink ? displayedContent : data,
+                __html: showMorelink ? displayedContent : normalizedHtml,
               }}
             ></div>
           </div>
